@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="crisps" size="0.150000 0.200000" />
+    <ImageTarget name="grechka_otbornaya_cr" size="0.020000 0.015000" />
+    <ImageTarget name="2807774_1" size="0.080000 0.217415" />
+    <ImageTarget name="catalog_product_main_1626" size="0.100000 0.120000" />
+  </Tracking>
+</QCARConfig>
