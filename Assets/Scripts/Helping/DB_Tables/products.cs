@@ -15,6 +15,6 @@ public class products
 
     public override string ToString()
     {
-        return $"{product_id}, {name}, {type}, {nutri_score}, {calories}, {prots}, {fats}, {carbs};";//string.Format("[products: product_id={0}, name={1},  type={2}, calories={3}, prots={4}, fats={5}, carbs={6}]", product_id, name, type, calories, prots, fats, carbs);
+        return $"{product_id}, {name}, {type}, {nutri_score}, {calories}, {prots}, {fats}, {carbs};";
     }
 }

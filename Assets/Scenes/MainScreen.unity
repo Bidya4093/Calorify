@@ -17625,14 +17625,13 @@ GameObject:
   - component: {fileID: 1835977773}
   - component: {fileID: 1835977775}
   - component: {fileID: 1835977774}
-  - component: {fileID: 1835977776}
   m_Layer: 5
   m_Name: ManualAddPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1835977773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17693,19 +17692,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835977772}
   m_CullTransparentMesh: 1
---- !u!114 &1835977776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835977772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f94d3e3b99d79e14e95acd6fa11dfec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DebugText: {fileID: 145238111}
 --- !u!1 &1835990274
 GameObject:
   m_ObjectHideFlags: 0
