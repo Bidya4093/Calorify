@@ -26,17 +26,18 @@ public class ShowPopUpInfo : MonoBehaviour
     {
         if (index.text.Length > 0)
         {
-            Item item = FoodStatic.GetItem(Int32.Parse(index.text));
+            ProductsLoader productsLoader = new ProductsLoader();
+            products item = productsLoader.GetById(Int32.Parse(index.text));
 
             if (inputMass.text.Length == 0) mass = 100;
             else mass = Int32.Parse(inputMass.text);
 
-            calculatedCals = (int)(item.Calories * (mass / 100f));
-            calculatedProts = (int)(item.Prots * (mass / 100f));
-            calculatedFats = (int)(item.Fats * (mass / 100f));
-            calculatedCarbs = (int)(item.Carbs * (mass / 100f));
+            calculatedCals = (int)(item.calories * (mass / 100f));
+            calculatedProts = (int)(item.prots * (mass / 100f));
+            calculatedFats = (int)(item.fats * (mass / 100f));
+            calculatedCarbs = (int)(item.carbs * (mass / 100f));
 
-            itemName.text = item.Name;
+            itemName.text = item.name;
             calories.text = $"{calculatedCals.ToString()}";
             prots.text = $"{calculatedProts.ToString()}";
             carbs.text = $"{calculatedCarbs.ToString()}";
