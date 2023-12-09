@@ -19,6 +19,7 @@ public class PanelChanger : MonoBehaviour
     public Button profileButton;
     public Button nextButton;
     public Button previousButton;
+    public Button registerButton;
     public Sprite openProfileSprite;
     public Sprite closeProfileSprite;
 
@@ -89,17 +90,18 @@ public class PanelChanger : MonoBehaviour
     public void ToNextPanel()
     {
         authPanels[currentAuthPanelIndex].SetActive(false);
+
         currentAuthPanelIndex++;
-        if (currentAuthPanelIndex == authPanels.Length)
-        {
-            nextButton.gameObject.SetActive(false);
-            SceneManager.LoadScene("MainScreen");
-            return;
-        }
+
         authPanels[currentAuthPanelIndex].SetActive(true);
         if (ErrorOutput.text.Length != 0)
         {
             ErrorOutput.text = "";
+        }
+        if (currentAuthPanelIndex == authPanels.Length - 1)
+        {
+            nextButton.gameObject.SetActive(false);
+            registerButton.gameObject.SetActive(true);
         }
     }
 

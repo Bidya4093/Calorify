@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Firebase.Auth;
+using Firebase.Database;
+using System.Threading.Tasks;
+using System;
+using Firebase;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class ProfileUI : MonoBehaviour
 {
@@ -12,68 +19,171 @@ public class ProfileUI : MonoBehaviour
     public TMP_InputField profileWeightInput;
     public Toggle[] profileGoalToggles;
     public ToggleGroup profileGoalToggleGroup;
+    public FirebaseUser User;
+    private DatabaseReference DBreference;
 
-    void Start()
+    private void Start()
     {
-        Debug.Log("Profile Started");
-        profileNameInput.text = User.GetUsername();
-        profileHeightInput.text = User.GetHeight().ToString();
-        profileWeightInput.text = User.GetWeight().ToString();
-        profileGoalToggles[User.GetGoal()].isOn = true;
-
-        profileNameInput.onEndEdit.AddListener(UpdateUsername);
-        profileHeightInput.onEndEdit.AddListener(UpdateHeight);
-        profileWeightInput.onEndEdit.AddListener(UpdateWeight);
+        User = FirebaseManager.firebaseUser;
+        DBreference = FirebaseManager.DBreference;
+        //StartCoroutine(LoginTest("tester4@gmail.com", "testpassword"));
+        StartCoroutine(LoadUserData());
     }
 
-
-    public void UpdateUsername(string username)
+    public IEnumerator LoadUserData()
     {
-        try
-        {
-            User.SetUsername(username);
-        }
-        catch
-        {
-            profileNameInput.text = User.GetUsername();
-        }
-    }
+        Task<DataSnapshot> DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
-    public void UpdateHeight(string height)
-    {
+        Debug.Log(DBTask.Result.GetRawJsonValue());
 
-        Debug.Log("Height: " + height);
-
-        try
+        if (DBTask.Exception != null)
         {
-            User.SetHeight(float.Parse(height));
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
         }
-        catch
+        else if (DBTask.Result.Value == null)
         {
-            profileHeightInput.text = User.GetHeight().ToString();
+            //No data exists yet
+            profileNameInput.text = "None";
+            profileHeightInput.text = "0";
+            profileWeightInput.text = "0";
+            profileGoalToggles[(int)GoalType.KeepFit].isOn = true;
         }
-    }
-
-    public void UpdateWeight(string weight)
-    {
-        Debug.Log("Weight: " + weight);
-
-        try
+        else
         {
-            User.SetWeight(float.Parse(weight));
-        }
-        catch
-        {
-            profileWeightInput.text = User.GetWeight().ToString();
+            //Data has been retrieved
+            DataSnapshot snapshot = DBTask.Result;
+            
+            profileNameInput.text = snapshot.Child("username").Value.ToString();
+            profileHeightInput.text = snapshot.Child("height").Value.ToString();
+            profileWeightInput.text = snapshot.Child("weight").Value.ToString();
+            profileGoalToggles[Convert.ToInt32(snapshot.Child("goal").Value)].isOn = true;
         }
     }
 
-    public void UpdateGoal(short goal)
+    public IEnumerator LoginTest(string _email, string _password)
     {
-        Debug.Log("GoalType: " + goal);
-        User.SetGoal(goal);
+        //Call the Firebase auth signin function passing the email and password
+        Task<AuthResult> LoginTask = FirebaseManager.auth.SignInWithEmailAndPasswordAsync(_email, _password);
+        //Wait until the task completes
+        yield return new WaitUntil(predicate: () => LoginTask.IsCompleted);
+
+        if (LoginTask.Exception != null)
+        {
+            //If there are errors handle them
+            Debug.LogWarning(message: $"Failed to register task with {LoginTask.Exception}");
+            FirebaseException firebaseEx = LoginTask.Exception.GetBaseException() as FirebaseException;
+            AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
+        }
+        else
+        {
+            //firebaseUser is now logged in
+            //Now get the result
+            User = LoginTask.Result.User;
+
+            StartCoroutine(LoadUserData());
+
+        }
+    }
+
+    public void OnEndEditUsername()
+    {
+        StartCoroutine(UpdateUsernameAuth());
+        StartCoroutine(UpdateUsernameDatabase());
+    }
+    public void OnEndEditHeight()
+    {
+        StartCoroutine(UpdateHeight());
+    }
+    public void OnEndEditWeight()
+    {
+        StartCoroutine(UpdateWeight());
+    }
+    public void OnEndEditGoal()
+    {
+        StartCoroutine(UpdateGoal());
+    }
+
+
+    private IEnumerator UpdateUsernameAuth()
+    {
+        //Create a user profile and set the username
+        UserProfile profile = new UserProfile { DisplayName = profileNameInput.text };
+
+        //Call the Firebase auth update user profile function passing the profile with the username
+        Task ProfileTask = User.UpdateUserProfileAsync(profile);
+        //Wait until the task completes
+        yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
+
+        if (ProfileTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
+        }
+        else
+        {
+            //Auth username is now updated
+        }
+    }
+
+    private IEnumerator UpdateUsernameDatabase()
+    {
+        //Set the currently logged in user username in the database
+        Task DBTask = DBreference.Child("users").Child(User.UserId).Child("username").SetValueAsync(profileNameInput.text);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Database username is now updated
+        }
+    }
+
+    public IEnumerator UpdateHeight()
+    {
+        Task DBTask = DBreference.Child("users").Child(User.UserId).Child("height").SetValueAsync(profileHeightInput.text);
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Height are now updated
+        }
+    }
+
+    public IEnumerator UpdateWeight()
+    {
+        Task DBTask = DBreference.Child("users").Child(User.UserId).Child("weight").SetValueAsync(profileWeightInput.text);
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Height are now updated
+        }
+    }
+
+    public IEnumerator UpdateGoal()
+    {
+        Task DBTask = DBreference.Child("users").Child(User.UserId).Child("goal").SetValueAsync(profileWeightInput.text);
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Height are now updated
+        }
     }
 }
-
-// Зберігати зміненні дані в профілю
-// Записувати дані після зміни в базу даних

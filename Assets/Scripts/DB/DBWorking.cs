@@ -9,6 +9,7 @@ using System;
 public class DBWorking : MonoBehaviour
 {
     static string dbName = "URI=file:Users.db";
+    static public User user;
     void Start()
     {
         CreateDB();
@@ -41,13 +42,12 @@ public class DBWorking : MonoBehaviour
             using (var command = connection.CreateCommand())
             {
                 command.CommandText = "INSERT INTO User (Name, Email, Password, Mass, Height, Goal, ActivityLevel) VALUES (@Name, @Email, @Password, @Mass, @Height, @Goal, @ActivityLevel);";
-                command.Parameters.AddWithValue("@Name", User.GetUsername());
-                command.Parameters.AddWithValue("@Email", User.GetEmail());
-                command.Parameters.AddWithValue("@Password", User.GetPassword());
-                command.Parameters.AddWithValue("@Mass", User.GetWeight());
-                command.Parameters.AddWithValue("@Height", User.GetHeight());
-                command.Parameters.AddWithValue("@Goal", User.GetGoal());
-                command.Parameters.AddWithValue("@ActivityLevel", User.GetActivity());
+                command.Parameters.AddWithValue("@Name", user.GetUsername());
+                command.Parameters.AddWithValue("@Email", user.GetEmail());
+                command.Parameters.AddWithValue("@Mass", user.GetWeight());
+                command.Parameters.AddWithValue("@Height", user.GetHeight());
+                command.Parameters.AddWithValue("@Goal", user.GetGoal());
+                command.Parameters.AddWithValue("@ActivityLevel", user.GetActivity());
                 command.ExecuteNonQuery();
             }
             connection.Close();
@@ -71,12 +71,12 @@ public class DBWorking : MonoBehaviour
                 {
                     while (reader.Read())
                     {
-                        User.SetAll(reader["Name"].ToString(), reader["Email"].ToString(), reader["Password"].ToString(), Convert.ToInt16(reader["Goal"]), Convert.ToInt16(reader["ActivityLevel"]), float.Parse(reader["Mass"].ToString()), float.Parse(reader["Height"].ToString()));
+                        user.SetAll(reader["Name"].ToString(), reader["Email"].ToString(), Convert.ToInt16(reader["Goal"]), Convert.ToInt16(reader["ActivityLevel"]), float.Parse(reader["Mass"].ToString()), float.Parse(reader["Height"].ToString()));
                     }
                 }
             }
         }
-        if (User.GetEmail().Length == 0)
+        if (user.GetEmail().Length == 0)
         {
             throw new Exception("User not exist!");
         }

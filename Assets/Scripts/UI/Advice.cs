@@ -26,9 +26,7 @@ public class Advice : MonoBehaviour
         if (url.Contains("https://") || url.Contains("http://"))
         {
             Application.OpenURL(url);
-            Debug.Log(url);
         }
-        Debug.Log("Do Stuff");
     }
 
 }

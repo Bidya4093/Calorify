@@ -12,6 +12,7 @@ public class ShowPopUp : MonoBehaviour
     {
         panel.SetActive(true);
         textMeshPro.text = index.ToString();
+        Debug.Log("Crisps detected");
     }
 
     public void Hide()

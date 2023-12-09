@@ -1,6 +1,8 @@
+using Firebase.Database;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +15,6 @@ public class ShowPopUpInfo : MonoBehaviour
     public TextMeshProUGUI prots;
     public TextMeshProUGUI carbs;
     public TextMeshProUGUI fats;
-
     public Image caloriesScanProgressBar;
     public TextMeshProUGUI caloriesScanPercent;
 
@@ -37,7 +38,7 @@ public class ShowPopUpInfo : MonoBehaviour
             calculatedCarbs = (int)(item.Carbs * (mass / 100f));
 
             itemName.text = item.Name;
-            calories.text = $"{calculatedCals.ToString()}";
+            calories.text = $"{calculatedCals}";
             prots.text = $"{calculatedProts.ToString()}";
             carbs.text = $"{calculatedCarbs.ToString()}";
             fats.text = $"{calculatedFats.ToString()}";
@@ -45,15 +46,19 @@ public class ShowPopUpInfo : MonoBehaviour
         }
     }
 
+
+
     public void AddToRatio()
     {
         ChangeProgressBarValue progressBar = new ChangeProgressBarValue();
         progressBar.AddProductData(calculatedCals, calculatedCarbs, calculatedFats, calculatedProts);
 
-        float percentage = (float)User.CaloriesEaten / (float)User.CaloriesNeeded;
+
+        float percentage = (float)MacrosManager.caloriesEaten / (float)MacrosManager.caloriesNeeded;
 
         caloriesScanProgressBar.fillAmount = percentage;
         caloriesScanPercent.text = $"{Mathf.RoundToInt(percentage * 100f)}%";
 
     }
+
 }

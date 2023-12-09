@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "502411584954",
+    "firebase_url": "https://calorify-76167-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "calorify-76167",
+    "storage_bucket": "calorify-76167.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502411584954:android:c3bca72b9d0baa4b926983",
+        "android_client_info": {
+          "package_name": "com.BUFU.Calorify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx_bio71hB0ypVp1OpEKj2pOId45_43ZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

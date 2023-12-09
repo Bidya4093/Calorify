@@ -12,6 +12,7 @@ public class SignUp : MonoBehaviour
     public TMP_InputField heightInput;
     public TMP_InputField weightInput;
     public TMP_Text ErrorOutput;
+    public User user = new User();
 
     void Start()
     {
@@ -28,8 +29,8 @@ public class SignUp : MonoBehaviour
                 // sign up panel
                 try
                 {
-                    User.SetEmail(emailInput.text);
-                    User.SetPassword(passwordInput.text);
+                    user.SetEmail(emailInput.text);
+                    user.SetPassword(passwordInput.text);
 
                     if (ErrorOutput.text.Length != 0)
                     {
@@ -46,7 +47,7 @@ public class SignUp : MonoBehaviour
                 // name panel
                 try
                 {
-                    User.SetUsername(usernameInput.text);
+                    user.SetUsername(usernameInput.text);
 
                     if (ErrorOutput.text.Length != 0)
                     {
@@ -64,7 +65,7 @@ public class SignUp : MonoBehaviour
                 // height panel
                 try
                 {
-                    User.SetHeight(heightInput.text);
+                    user.SetHeight(heightInput.text);
 
                     if (ErrorOutput.text.Length != 0)
                     {
@@ -81,7 +82,7 @@ public class SignUp : MonoBehaviour
                 // weight panel
                 try
                 {
-                    User.SetWeight(weightInput.text);
+                    user.SetWeight(weightInput.text);
 
                     if (ErrorOutput.text.Length != 0)
                     {
@@ -114,12 +115,12 @@ public class SignUp : MonoBehaviour
 
     public void SetGoal(short option)
     {
-        User.SetGoal(option);
+        user.SetGoal(option);
     }
 
     public void SetActivity(short option)
     {
-        User.SetActivity(option);
+        user.SetActivity(option);
     }
 }
 

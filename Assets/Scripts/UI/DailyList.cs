@@ -18,17 +18,15 @@ public class DailyList : MonoBehaviour
 
     void Start()
     {
-        if (list.transform.childCount == 0)
-        {
-            emptyText.text = "Пусто";
-        }
-        else
-        {
-            emptyText.text = string.Empty;
-        }
+        CheckEmptyList();
     }
 
     void Update()
+    {
+        CheckEmptyList();
+    }
+
+    void CheckEmptyList()
     {
         if (list.transform.childCount == 0)
         {
@@ -120,5 +118,10 @@ public class DailyList : MonoBehaviour
         Image lineImage = line.AddComponent<Image>();
         lineImage.color = Color.black;
         line.transform.SetParent(dish.transform);
+
+
+
+        // Get user data
+
     }
 }
