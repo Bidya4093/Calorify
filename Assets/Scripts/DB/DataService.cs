@@ -68,21 +68,6 @@ public class DataService  {
 	{
 		return _connection.Table<products>();
 	}
-
-	public void AddProduct()
-	{
-        var p = new products
-        {
-			name = "Johnny",
-			type = "Mnemonic",
-			calories = 21f,
-			prots = 2f,
-			fats = 2f,
-			carbs = 2f
-
-		};
-		_connection.Insert(p);
-	}
 }
 
 	//public IEnumerable<Person> GetPersons(){
