@@ -1,0 +1,120 @@
+.btn-icon {
+    height: 45px;
+    width: 45px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-scale-mode: scale-to-fit;
+    flex-grow: 0;
+    margin: 0;
+    padding: 0;
+    background-image: resource('Images/add-icon');
+}
+
+.btn-icon-reverse {
+    -unity-background-image-tint-color: rgb(86, 110, 86);
+}
+
+.progress-bar-divider {
+    flex-grow: 0;
+    width: 6px;
+    background-color: rgb(240, 240, 240);
+}
+
+.btn {
+    background-color: rgb(86, 110, 86);
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 40px;
+    padding-bottom: 0;
+    padding-left: 0;
+    width: 450px;
+    height: 110px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    color: rgb(255, 255, 255);
+    font-size: 48px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium%20SDF.asset?fileID=11400000&guid=7f7a750633f75154db90439e26dcf9d5&type=2#Ubuntu-Medium SDF');
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.btn-reverse {
+    border-top-width: 6px;
+    border-right-width: 6px;
+    border-bottom-width: 6px;
+    border-left-width: 6px;
+    border-left-color: rgb(86, 110, 86);
+    border-right-color: rgb(86, 110, 86);
+    border-top-color: rgb(86, 110, 86);
+    border-bottom-color: rgb(86, 110, 86);
+    background-color: rgba(86, 110, 86, 0);
+    color: rgb(86, 110, 86);
+    padding-right: 36px;
+}
+
+.title-md {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    font-size: 60px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
+}
+
+.nutri-score-badge {
+    font-size: 48px;
+    width: 72px;
+    height: 72px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+}
+
+.nutri-score-badge-a {
+    background-color: rgb(14, 138, 74);
+}
+
+.nutri-score-badge-c {
+    background-color: rgb(251, 199, 7);
+}
+
+.nutri-score-badge .unity-label {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    text-overflow: clip;
+    width: auto;
+    height: 46px;
+}

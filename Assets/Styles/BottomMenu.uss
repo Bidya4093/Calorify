@@ -1,0 +1,35 @@
+.menu-icon {
+    -unity-background-image-tint-color: #A2B971;
+}
+
+.menu-icon-scaner {
+    -unity-background-image-tint-color: #566E56;
+}
+
+.menu-item:hover .menu-icon {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.menu-label {
+    height: 36px;
+    width: 186px;
+    font-size: 30px;
+    text-overflow: clip;
+    -unity-text-align: middle-center;
+}
+
+.menu-item {
+    flex-grow: 0;
+    align-items: center;
+    flex-shrink: 0;
+    -unity-text-align: upper-left;
+    justify-content: center;
+    width: 186px;
+}
+
+.menu-item:hover {
+    color: rgb(255, 255, 255);
+    -unity-font-style: normal;
+    -unity-text-align: upper-left;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+}

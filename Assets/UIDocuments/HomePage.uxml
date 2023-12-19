@@ -1,0 +1,174 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="BottomMenu" src="project://database/Assets/UIDocuments/BottomMenu.uxml?fileID=9197481963319205126&amp;guid=d484617e92ad0c8488cdb87b417cc233&amp;type=3#BottomMenu" />
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <Style src="project://database/Assets/Styles/TopMenu.uss?fileID=7433441132597879392&amp;guid=cfd48effb5a2bfe4b91783051803ca45&amp;type=3#TopMenu" />
+    <Style src="project://database/Assets/Styles/RadialProgress.uss?fileID=7433441132597879392&amp;guid=54e4e5c72d3a5ef4aa2946f873ef3048&amp;type=3#RadialProgress" />
+    <Style src="project://database/Assets/Styles/ProgressBar.uss?fileID=7433441132597879392&amp;guid=b9d7b140d76c1be48986505d84bbba16&amp;type=3#ProgressBar" />
+    <Style src="project://database/Assets/Styles/History.uss?fileID=7433441132597879392&amp;guid=012b3098c08edbb42b92e61857d4491c&amp;type=3#History" />
+    <ui:VisualElement name="HomeContainer" class="home-container" style="flex-grow: 1; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular%20SDF.asset?fileID=11400000&amp;guid=a527efa328e9d254c9f575cebcf9c2a4&amp;type=2#Ubuntu-Regular SDF&apos;);">
+        <ui:VisualElement name="TopMenu" style="flex-grow: 0; height: 120px; flex-direction: row; justify-content: space-between; margin-bottom: 30px; flex-shrink: 0;">
+            <ui:Button display-tooltip-when-elided="true" name="ProfileBtn" enable-rich-text="false" selectable="false" class="top-menu-btn" style="background-color: rgb(255, 255, 255);">
+                <ui:VisualElement name="ProfileIcon" class="top-menu-icon" style="background-image: resource(&apos;Images/profile-icon&apos;); width: 50px;" />
+            </ui:Button>
+            <ui:VisualElement name="HomeNavBtn" style="flex-grow: 1; margin-top: 0; margin-right: 24px; margin-bottom: 0; margin-left: 24px; border-top-left-radius: 33px; border-top-right-radius: 33px; border-bottom-right-radius: 33px; border-bottom-left-radius: 33px; background-color: rgb(217, 217, 217); flex-direction: row; padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px; font-size: 48px;">
+                <ui:Button text="Харчування" display-tooltip-when-elided="true" class="top-menu-btn active" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: auto; flex-grow: 1; flex-shrink: 1;" />
+                <ui:Button text="Активність" display-tooltip-when-elided="true" class="top-menu-btn" style="width: auto; flex-grow: 1; flex-shrink: 1;" />
+            </ui:VisualElement>
+            <ui:Button display-tooltip-when-elided="true" name="MessageBtn" enable-rich-text="false" class="top-menu-btn" style="background-color: rgb(255, 255, 255);">
+                <ui:VisualElement name="MessageIcon" style="flex-grow: 0; background-image: resource(&apos;Images/message-icon&apos;); display: flex; -unity-background-scale-mode: scale-to-fit; width: 72px; height: 78px; flex-shrink: 1;" />
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:VisualElement name="MainSection" class="container">
+            <ui:VisualElement name="TopContainer" style="flex-grow: 0; padding-top: 0; margin-right: 60px; margin-left: 60px; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
+                <ui:Label tabindex="-1" text="Статистика за день" display-tooltip-when-elided="true" name="MainSectionTitle" class="home-title" />
+                <ui:Button display-tooltip-when-elided="true" name="NutritionStatsBtn" class="btn-icon" style="background-image: resource(&apos;Images/nutrition-stats-icon&apos;); height: 100%; width: 65px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ChartsContainer" style="flex-grow: 0; margin-bottom: 55px;">
+                <ui:VisualElement name="MacrosContainer" style="flex-grow: 0; flex-direction: row; margin-right: 60px; margin-left: 60px; align-items: center; justify-content: space-between; -unity-text-align: upper-center; margin-bottom: 40px;">
+                    <ui:VisualElement name="ProteinsChart" style="flex-grow: 1; flex-shrink: 0; justify-content: flex-start; align-items: center; width: 240px;">
+                        <MyUILibrary.RadialProgress progress="40.29851" focusable="false" class="radial-progress proteins-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; justify-content: center;">
+                            <ui:Label tabindex="-1" text="Білки" display-tooltip-when-elided="true" style="font-size: 48px;" />
+                        </MyUILibrary.RadialProgress>
+                        <ui:Label tabindex="-1" text="54 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="FatsChart" style="flex-grow: 1; flex-shrink: 0; margin-right: 72px; margin-left: 72px; align-items: center; width: 240px;">
+                        <MyUILibrary.RadialProgress progress="40.29851" focusable="false" class="radial-progress fats-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center;">
+                            <ui:Label tabindex="-1" text="Жири" display-tooltip-when-elided="true" style="font-size: 48px;" />
+                        </MyUILibrary.RadialProgress>
+                        <ui:Label tabindex="-1" text="54 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="CarbsChart" style="flex-grow: 1; flex-shrink: 0; width: 240px; align-items: center;">
+                        <MyUILibrary.RadialProgress progress="40.29851" focusable="false" class="radial-progress carbs-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center;">
+                            <ui:Label tabindex="-1" text="Вуглев." display-tooltip-when-elided="true" select-line-by-triple-click="true" style="font-size: 48px;" />
+                        </MyUILibrary.RadialProgress>
+                        <ui:Label tabindex="-1" text="54 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="ChartsInnerContainer" style="flex-grow: 0; flex-direction: row; margin-right: 45px; margin-left: 75px; justify-content: space-between;">
+                    <ui:VisualElement name="CaloriesChart" style="flex-grow: 0; flex-shrink: 0; width: 360px; align-items: center;">
+                        <MyUILibrary.RadialProgress progress="40.29851" focusable="false" class="radial-progress carbs-progress calories-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 325px; height: 360px; align-items: stretch; -unity-text-align: middle-center;">
+                            <ui:Label tabindex="-1" text="30%" display-tooltip-when-elided="true" select-line-by-triple-click="true" style="font-size: 78px;" />
+                        </MyUILibrary.RadialProgress>
+                        <ui:Label tabindex="-1" text="2200 / 2200 ккал." display-tooltip-when-elided="true" style="font-size: 48px; color: rgb(85, 85, 85); margin-top: 18px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-items: stretch; -unity-text-align: upper-center;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="ChartsBtnContainer" style="flex-grow: 1; justify-content: center; align-items: flex-end;">
+                        <ui:Button text="ВОДА" display-tooltip-when-elided="true" name="AddActivityBtn" class="btn btn-reverse" style="margin-bottom: 45px;">
+                            <ui:VisualElement name="AddFoodIcon" class="btn-icon btn-icon-reverse" style="background-image: resource(&apos;Images/add-icon&apos;); width: 45px; height: 45px;" />
+                        </ui:Button>
+                        <ui:Button text="СТРАВА" display-tooltip-when-elided="true" name="AddFoodBtn" class="btn">
+                            <ui:VisualElement name="AddFoodIcon" class="btn-icon" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="WaterContainer" style="flex-grow: 0; margin-right: 45px; margin-left: 45px; background-color: rgb(240, 240, 240); height: 150px; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; font-size: 36px; padding-top: 15px; padding-right: 45px; padding-bottom: 30px; padding-left: 45px; justify-content: space-between;">
+                <ui:VisualElement name="WaterTextContainer" style="flex-direction: row; align-items: flex-end; justify-content: space-between; width: auto;">
+                    <ui:Label tabindex="-1" text="Спожито води" display-tooltip-when-elided="true" />
+                    <ui:Label tabindex="-1" text="1.8 / 2.4 л." display-tooltip-when-elided="true" />
+                </ui:VisualElement>
+                <ui:VisualElement name="WaterProgressBarContainer" style="flex-grow: 0;">
+                    <ui:ProgressBar value="80" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
+                        <ui:VisualElement name="ProgressBarDividersContainer" style="flex-grow: 1; position: absolute; flex-direction: row; right: 0; left: 0; bottom: 0; top: 0; justify-content: space-evenly;">
+                            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
+                            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
+                            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
+                        </ui:VisualElement>
+                    </ui:ProgressBar>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="HistorySection" class="container" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; padding-right: 60px; padding-left: 60px; flex-shrink: 1;">
+            <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="home-title" style="margin-bottom: 30px; visibility: visible; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-left: 0;" />
+            <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" elastic-animation-interval-ms="5" elasticity="0.07" style="height: 1100px;">
+                <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">
+                    <ui:VisualElement name="HistoryItem" class="history-item">
+                        <ui:VisualElement name="HistoryItemImage" class="history-item__image">
+                            <ui:VisualElement name="HistoryItemScore" class="nutri-score-badge nutri-score-badge-c history-item__score">
+                                <ui:Label tabindex="-1" text="С" display-tooltip-when-elided="true" class="history-item__score-text" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; text-overflow: clip; width: 46px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="HistoryItemContainer" class="history-item__container">
+                            <ui:VisualElement name="HistoryItemTop" class="history-item__top">
+                                <ui:Label tabindex="-1" text="Яєчня" display-tooltip-when-elided="true" name="HistoryItemTitle" class="history-item__title" />
+                                <ui:Button text="Button" display-tooltip-when-elided="true" name="HistoryItemEditBtn" class="btn-icon history-item__edit-btn" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="HistoryItemBottom" class="history-item__bottom">
+                                <ui:Label tabindex="-1" text="330 ккал" display-tooltip-when-elided="true" name="HistoryItemCalories" class="history-item__calories" />
+                                <ui:Label tabindex="-1" text="150 г" display-tooltip-when-elided="true" name="HistoryItemWeight" class="history-item__weight" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="HistoryItem" class="history-item">
+                        <ui:VisualElement name="HistoryItemImage" class="history-item__image" style="background-image: resource(&apos;Images/buckwheat&apos;);">
+                            <ui:VisualElement name="HistoryItemScore" class="nutri-score-badge nutri-score-badge-a history-item__score">
+                                <ui:Label tabindex="-1" text="A" display-tooltip-when-elided="true" selectable="true" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="HistoryItemContainer" class="history-item__container">
+                            <ui:VisualElement name="HistoryItemTop" class="history-item__top">
+                                <ui:Label tabindex="-1" text="Гречана каша" display-tooltip-when-elided="true" name="HistoryItemTitle" class="history-item__title" />
+                                <ui:Button text="Button" display-tooltip-when-elided="true" name="HistoryItemEditBtn" class="btn-icon history-item__edit-btn" style="background-image: resource(&apos;Images/edit-icon 1&apos;);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="HistoryItemBottom" class="history-item__bottom">
+                                <ui:Label tabindex="-1" text="330 ккал" display-tooltip-when-elided="true" name="HistoryItemCalories" class="history-item__calories" />
+                                <ui:Label tabindex="-1" text="150 г" display-tooltip-when-elided="true" name="HistoryItemWeight" class="history-item__weight" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="HistoryItem" class="history-item">
+                        <ui:VisualElement name="HistoryItemImage" class="history-item__image" style="background-image: resource(&apos;Images/buckwheat&apos;);">
+                            <ui:VisualElement name="HistoryItemScore" class="history-item__score" style="font-size: 48px; width: 72px; height: 72px; border-top-left-radius: 50%; border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%; background-color: rgb(14, 138, 74); position: absolute; top: -24px; right: -24px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; -unity-text-align: middle-center; color: rgb(255, 255, 255);">
+                                <ui:Label tabindex="-1" text="A" display-tooltip-when-elided="true" class="history-item__score-text" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; text-overflow: clip; width: auto; height: 46px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="HistoryItemContainer" class="history-item__container">
+                            <ui:VisualElement name="HistoryItemTop" class="history-item__top">
+                                <ui:Label tabindex="-1" text="Яєчня" display-tooltip-when-elided="true" name="HistoryItemTitle" class="history-item__title" />
+                                <ui:Button text="Button" display-tooltip-when-elided="true" name="HistoryItemEditBtn" class="btn-icon history-item__edit-btn" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="HistoryItemBottom" class="history-item__bottom">
+                                <ui:Label tabindex="-1" text="330 ккал" display-tooltip-when-elided="true" name="HistoryItemCalories" class="history-item__calories" />
+                                <ui:Label tabindex="-1" text="150 г" display-tooltip-when-elided="true" name="HistoryItemWeight" class="history-item__weight" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="HistoryItem" class="history-item">
+                        <ui:VisualElement name="HistoryItemImage" class="history-item__image" style="background-image: resource(&apos;Images/buckwheat&apos;);">
+                            <ui:VisualElement name="HistoryItemScore" class="history-item__score" style="font-size: 48px; width: 72px; height: 72px; border-top-left-radius: 50%; border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%; background-color: rgb(14, 138, 74); position: absolute; top: -24px; right: -24px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; -unity-text-align: middle-center; color: rgb(255, 255, 255);">
+                                <ui:Label tabindex="-1" text="A" display-tooltip-when-elided="true" class="history-item__score-text" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; text-overflow: clip; width: auto; height: 46px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="HistoryItemContainer" class="history-item__container">
+                            <ui:VisualElement name="HistoryItemTop" class="history-item__top">
+                                <ui:Label tabindex="-1" text="Яєчня" display-tooltip-when-elided="true" name="HistoryItemTitle" class="history-item__title" />
+                                <ui:Button text="Button" display-tooltip-when-elided="true" name="HistoryItemEditBtn" class="btn-icon history-item__edit-btn" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="HistoryItemBottom" class="history-item__bottom">
+                                <ui:Label tabindex="-1" text="330 ккал" display-tooltip-when-elided="true" name="HistoryItemCalories" class="history-item__calories" />
+                                <ui:Label tabindex="-1" text="150 г" display-tooltip-when-elided="true" name="HistoryItemWeight" class="history-item__weight" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="HistoryItem" class="history-item">
+                        <ui:VisualElement name="HistoryItemImage" class="history-item__image" style="background-image: resource(&apos;Images/buckwheat&apos;);">
+                            <ui:VisualElement name="HistoryItemScore" class="history-item__score" style="font-size: 48px; width: 72px; height: 72px; border-top-left-radius: 50%; border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%; background-color: rgb(14, 138, 74); position: absolute; top: -24px; right: -24px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; -unity-text-align: middle-center; color: rgb(255, 255, 255);">
+                                <ui:Label tabindex="-1" text="A" display-tooltip-when-elided="true" class="history-item__score-text" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; text-overflow: clip; width: auto; height: 46px;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="HistoryItemContainer" class="history-item__container">
+                            <ui:VisualElement name="HistoryItemTop" class="history-item__top">
+                                <ui:Label tabindex="-1" text="Яєчня" display-tooltip-when-elided="true" name="HistoryItemTitle" class="history-item__title" />
+                                <ui:Button text="Button" display-tooltip-when-elided="true" name="HistoryItemEditBtn" class="btn-icon history-item__edit-btn" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="HistoryItemBottom" class="history-item__bottom">
+                                <ui:Label tabindex="-1" text="330 ккал" display-tooltip-when-elided="true" name="HistoryItemCalories" class="history-item__calories" />
+                                <ui:Label tabindex="-1" text="150 г" display-tooltip-when-elided="true" name="HistoryItemWeight" class="history-item__weight" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Instance template="BottomMenu" style="position: absolute; bottom: 0; right: 0; left: 0;" />
+</ui:UXML>

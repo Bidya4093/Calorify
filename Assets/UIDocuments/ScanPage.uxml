@@ -1,0 +1,68 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="BottomMenu" src="project://database/Assets/UIDocuments/BottomMenu.uxml?fileID=9197481963319205126&amp;guid=d484617e92ad0c8488cdb87b417cc233&amp;type=3#BottomMenu" />
+    <Style src="project://database/Assets/Styles/ScanPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ScanPanel" />
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <ui:Instance template="BottomMenu" name="BottomMenuTemplate" style="height: 100%; position: absolute; width: 100%;" />
+    <ui:VisualElement name="ScanPanelContainer" style="position: relative; border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px; background-color: rgb(255, 255, 255); margin-top: 270px; margin-right: 60px; margin-left: 60px; flex-grow: 1; margin-bottom: 480px; padding-bottom: 45px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&amp;guid=adb52135dcca16c44b46cb4ddce45978&amp;type=3#Ubuntu-Regular&apos;);">
+        <ui:VisualElement name="ScanPanelImage" style="background-image: resource(&apos;Images/buckwheat-big&apos;); -unity-background-scale-mode: scale-and-crop; flex-grow: 1; justify-content: flex-start; max-height: 540px; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px; border-top-left-radius: 35px; border-top-right-radius: 35px;" />
+        <ui:VisualElement name="ScanPanelContent" style="align-items: center;">
+            <ui:VisualElement name="ScanPanelTop" style="margin-right: 0; margin-left: 0; margin-top: 12px; margin-bottom: 60px; flex-direction: row; padding-right: 45px; padding-left: 45px; width: 100%; justify-content: space-between; height: 80px;">
+                <ui:Label tabindex="-1" text="Гречана каша" display-tooltip-when-elided="true" name="ScanPanelTitle" class="title-md" style="align-self: flex-end;" />
+                <ui:VisualElement name="ScanPanelNutriScore" style="flex-direction: row; align-items: center; align-self: flex-start;">
+                    <ui:Label tabindex="-1" text="NUTRI-SCORE:" display-tooltip-when-elided="true" name="ScanPanelNutriScoreText" class="scan-panel__score-text" style="margin-top: 0; margin-right: 20px; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 36px; color: rgb(85, 85, 85); align-self: auto;" />
+                    <ui:VisualElement name="ScanPanelNutriScoreBadge" class="nutri-score-badge nutri-score-badge-a" style="flex-grow: 1;">
+                        <ui:Label tabindex="-1" text="A" display-tooltip-when-elided="true" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ScanPanelInfo" style="flex-grow: 1; font-size: 54px; width: 100%; padding-right: 60px; padding-left: 60px; padding-bottom: 72px;">
+                <ui:VisualElement name="ScanPanelInfoItem" style="flex-grow: 1; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
+                    <ui:Label tabindex="-1" text="Білки" display-tooltip-when-elided="true" name="ScanPanelInfoItemTitle" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:ProgressBar value="40" name="ScanPanelInfoItemProgressBar" class="scan-panel__info-item-progress-bar progress-bar__proteins">
+                        <ui:VisualElement class="progress-bar__additional" style="width: 279px;" />
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; font-size: 48px; margin-top: 9px;">
+                            <ui:Label tabindex="-1" text="13,6 гр." display-tooltip-when-elided="true" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 7px; margin-bottom: 0; margin-left: 0;" />
+                            <ui:Label tabindex="-1" text="(+11%)" display-tooltip-when-elided="true" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                    </ui:ProgressBar>
+                </ui:VisualElement>
+                <ui:VisualElement name="ScanPanelInfoItem" style="flex-grow: 1; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
+                    <ui:Label tabindex="-1" text="Жири" display-tooltip-when-elided="true" name="ScanPanelInfoItemTitle" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:ProgressBar value="22" name="ScanPanelInfoItemProgressBar" class="scan-panel__info-item-progress-bar progress-bar__fats">
+                        <ui:VisualElement class="progress-bar__additional" />
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; font-size: 48px; margin-top: 9px;">
+                            <ui:Label tabindex="-1" text="3,3 гр." display-tooltip-when-elided="true" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 7px; margin-bottom: 0; margin-left: 0;" />
+                            <ui:Label tabindex="-1" text="(+6%)" display-tooltip-when-elided="true" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                    </ui:ProgressBar>
+                </ui:VisualElement>
+                <ui:VisualElement name="ScanPanelInfoItem" style="flex-grow: 1; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
+                    <ui:Label tabindex="-1" text="Вуглев." display-tooltip-when-elided="true" name="ScanPanelInfoItemTitle" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:ProgressBar value="40" name="ScanPanelInfoItemProgressBar" class="scan-panel__info-item-progress-bar progress-bar__carbs">
+                        <ui:VisualElement class="progress-bar__additional" style="width: 407px;" />
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; font-size: 48px; margin-top: 9px;">
+                            <ui:Label tabindex="-1" text="62,5 гр." display-tooltip-when-elided="true" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 7px; margin-bottom: 0; margin-left: 0;" />
+                            <ui:Label tabindex="-1" text="(+37%)" display-tooltip-when-elided="true" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                    </ui:ProgressBar>
+                </ui:VisualElement>
+                <ui:VisualElement name="ScanPanelInfoItem" style="flex-grow: 1; flex-direction: row; justify-content: space-between; align-items: center;">
+                    <ui:Label tabindex="-1" text="Калорії" display-tooltip-when-elided="true" name="ScanPanelInfoItemTitle" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:ProgressBar value="52" name="ScanPanelInfoItemProgressBar" class="scan-panel__info-item-progress-bar progress-bar__calories">
+                        <ui:VisualElement class="progress-bar__additional" style="width: 367px;" />
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; font-size: 48px; margin-top: 9px;">
+                            <ui:Label tabindex="-1" text="200 ккал " display-tooltip-when-elided="true" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 7px; margin-bottom: 0; margin-left: 0;" />
+                            <ui:Label tabindex="-1" text="(+16%)" display-tooltip-when-elided="true" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                    </ui:ProgressBar>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:IntegerField label="Вага:" value="350" name="ScanPanelWeightInput" placeholder-text="100" class="scan-panel__weight-input" style="align-items: center; flex-shrink: 1; flex-grow: 1; justify-content: flex-start; font-size: 54px;">
+                <ui:Label tabindex="-1" text="гр." display-tooltip-when-elided="true" style="font-size: 42px; align-self: flex-end; color: rgb(85, 85, 85); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+            </ui:IntegerField>
+            <ui:Button text="ДОБАВИТИ" display-tooltip-when-elided="true" name="ScanPanelBtn" class="btn" style="width: 540px;">
+                <ui:VisualElement name="ScanPanelBtnIcon" class="btn-icon" style="flex-grow: 1; background-image: resource(&apos;Images/add-icon&apos;);" />
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

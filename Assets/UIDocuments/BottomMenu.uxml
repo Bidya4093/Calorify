@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/BottomMenu.uss?fileID=7433441132597879392&amp;guid=ed42d1e45f6a5a2488cc573278a6da0b&amp;type=3#BottomMenu" />
+    <ui:VisualElement name="BottomMenuContainer" style="flex-grow: 1; justify-content: flex-end; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular%20SDF.asset?fileID=11400000&amp;guid=a527efa328e9d254c9f575cebcf9c2a4&amp;type=2#Ubuntu-Regular SDF&apos;); border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px;">
+        <ui:VisualElement name="menu" style="flex-grow: 0; height: 240px; width: 100%; justify-content: space-between; flex-direction: row; padding-right: 120px; padding-left: 120px; padding-top: 85px; padding-bottom: 24px; color: rgb(162, 185, 113); background-image: resource(&apos;Images/menu-bg&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); align-items: stretch;">
+            <ui:VisualElement name="home" focusable="false" class="menu-item" style="top: auto; bottom: auto; justify-content: center;">
+                <ui:VisualElement name="menu-icon" class="menu-icon" style="flex-grow: 0; background-image: resource(&apos;Images/home&apos;); width: 95px; height: 80px; min-height: 0; margin-bottom: 10px; margin-top: 0; margin-right: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                <ui:Label tabindex="-1" text="ГОЛОВНА" display-tooltip-when-elided="true" class="menu-label" style="position: relative; bottom: auto; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; justify-content: flex-end;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="scaner" class="menu-item" style="flex-grow: 0; flex-shrink: 0; flex-basis: auto; -unity-text-align: upper-left; font-size: 14px; align-items: center; justify-content: flex-end; top: 0;">
+                <ui:VisualElement name="scaner-container" style="flex-grow: 1; width: 186px; height: 185px; position: absolute; top: -100px; flex-shrink: 1; background-color: rgb(162, 185, 113); border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(56, 56, 56, 0); justify-content: center; align-items: center;">
+                    <ui:VisualElement name="menu-icon" class="menu-icon menu-icon-scaner" style="flex-grow: 0; background-image: resource(&apos;Images/scaner&apos;); width: 120px; height: 110px; align-items: auto; justify-content: flex-start;" />
+                </ui:VisualElement>
+                <ui:Label tabindex="-1" text="СКАНЕР" display-tooltip-when-elided="true" class="menu-label" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="advices" class="menu-item" style="flex-grow: 0; flex-shrink: 0; flex-basis: auto; align-items: center; justify-content: center; width: 186px; align-self: auto; top: 0; bottom: 0;">
+                <ui:VisualElement name="menu-icon" class="menu-icon" style="flex-grow: 0; height: 85px; width: 85px; margin-bottom: 10px; background-image: resource(&apos;Images/lamp&apos;); position: relative; top: auto;" />
+                <ui:Label tabindex="-1" text="ПОРАДИ" display-tooltip-when-elided="true" class="menu-label" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

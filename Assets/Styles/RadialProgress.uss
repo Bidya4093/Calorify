@@ -1,0 +1,35 @@
+.radial-progress {
+    --track-color: rgb(130, 130, 130);
+    --progress-color: rgb(46, 132, 24);
+    --diagram-line-width: 35;
+    --percentage-color: white;
+    flex-direction: row;
+    justify-content: center;
+    width: 208px;
+    height: 240px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.fats-progress {
+    --track-color: rgba(85, 95, 184, 0.1);
+    --progress-color: rgb(85, 95, 184);
+}
+
+.proteins-progress {
+    --track-color: rgba(238, 125, 20, 0.1);
+    --progress-color: rgb(238, 125, 20);
+}
+
+.carbs-progress {
+    --track-color: rgba(110, 167, 17, 0.1);
+    --progress-color: rgb(110, 167, 17);
+}
+
+.calories-progress {
+    --track-color: rgba(99, 123, 99, 0.1);
+    --progress-color: rgb(99, 123, 99);
+    --diagram-line-width: 40;
+}
