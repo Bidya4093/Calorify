@@ -79,7 +79,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="HistorySection" class="container" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; padding-right: 60px; padding-left: 60px; flex-shrink: 1;">
             <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="home-title" style="margin-bottom: 30px; visibility: visible; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-left: 0;" />
-            <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" elastic-animation-interval-ms="5" elasticity="0.07" style="height: 1100px;">
+            <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" elastic-animation-interval-ms="5" elasticity="0.07" style="visibility: visible; display: flex;">
                 <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">
                     <ui:VisualElement name="HistoryItem" class="history-item">
                         <ui:VisualElement name="HistoryItemImage" class="history-item__image">
