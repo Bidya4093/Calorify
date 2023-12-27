@@ -1,0 +1,48 @@
+.advice-topic__article {
+    height: 300px;
+    flex-direction: row;
+    margin-bottom: 45px;
+}
+
+.topic__article-image {
+    width: 300px;
+    height: 300px;
+    background-image: resource('Images/Advices/advice-3');
+    margin-right: 30px;
+    -unity-background-scale-mode: stretch-to-fill;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+}
+
+.topic__article-container {
+    flex-grow: 1;
+    font-size: 42px;
+    padding-bottom: 45px;
+    padding-top: 30px;
+}
+
+.topic__article-title {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    white-space: normal;
+}
+
+.topic__article-url {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 15px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Light.ttf?fileID=12800000&guid=83e473fdc1f9c154bbb06385ccdbb0b0&type=3#Ubuntu-Light');
+}

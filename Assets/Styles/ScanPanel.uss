@@ -1,5 +1,8 @@
 .scan-panel__weight-input {
     margin: 0 0 60px 0;
+    flex-grow: 1;
+    align-items: center;
+    font-size: 54px;
 }
 
 .scan-panel__weight-input .unity-text-element {
@@ -37,7 +40,7 @@
     margin: 0;
     border-width: 3px;
     border-color: rgba(85, 85, 85, 0.33);
-    background-color: none;
+    background-color: transparent;
 }
 
 .scan-panel__info-item-progress-bar .unity-progress-bar__container {
@@ -75,7 +78,6 @@
     background-color: rgb(99, 123, 99);
 }
 
-
 .progress-bar__carbs .progress-bar__additional {
     background-color: rgba(110, 167, 17, 0.5);
 }
@@ -92,4 +94,12 @@
     background-color: rgba(99, 123, 99, 0.5);
 }
 
-
+.scan-pane__weight-input-postfix {
+    font-size: 42px;
+    align-self: flex-end;
+    color: rgb(85, 85, 85);
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}

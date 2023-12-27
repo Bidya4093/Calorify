@@ -1,9 +1,7 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="BottomMenu" src="project://database/Assets/UIDocuments/BottomMenu.uxml?fileID=9197481963319205126&amp;guid=d484617e92ad0c8488cdb87b417cc233&amp;type=3#BottomMenu" />
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="project://database/Assets/Styles/ScanPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ScanPanel" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
-    <ui:Instance template="BottomMenu" name="BottomMenuTemplate" style="height: 100%; position: absolute; width: 100%;" />
-    <ui:VisualElement name="ScanPanelContainer" style="position: relative; border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px; background-color: rgb(255, 255, 255); margin-top: 270px; margin-right: 60px; margin-left: 60px; flex-grow: 1; margin-bottom: 480px; padding-bottom: 45px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&amp;guid=adb52135dcca16c44b46cb4ddce45978&amp;type=3#Ubuntu-Regular&apos;);">
+    <ui:VisualElement name="ScanPanelContainer" style="position: relative; border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px; background-color: rgb(255, 255, 255); margin-top: 270px; margin-right: 60px; margin-left: 60px; flex-grow: 1; margin-bottom: 480px; padding-bottom: 45px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&amp;guid=adb52135dcca16c44b46cb4ddce45978&amp;type=3#Ubuntu-Regular&apos;); display: flex;">
         <ui:VisualElement name="ScanPanelImage" style="background-image: resource(&apos;Images/buckwheat-big&apos;); -unity-background-scale-mode: scale-and-crop; flex-grow: 1; justify-content: flex-start; max-height: 540px; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px; border-top-left-radius: 35px; border-top-right-radius: 35px;" />
         <ui:VisualElement name="ScanPanelContent" style="align-items: center;">
             <ui:VisualElement name="ScanPanelTop" style="margin-right: 0; margin-left: 0; margin-top: 12px; margin-bottom: 60px; flex-direction: row; padding-right: 45px; padding-left: 45px; width: 100%; justify-content: space-between; height: 80px;">
@@ -57,10 +55,10 @@
                     </ui:ProgressBar>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:IntegerField label="Вага:" value="350" name="ScanPanelWeightInput" placeholder-text="100" class="scan-panel__weight-input" style="align-items: center; flex-shrink: 1; flex-grow: 1; justify-content: flex-start; font-size: 54px;">
-                <ui:Label tabindex="-1" text="гр." display-tooltip-when-elided="true" style="font-size: 42px; align-self: flex-end; color: rgb(85, 85, 85); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+            <ui:IntegerField label="Вага:" value="350" name="ScanPanelWeightInput" placeholder-text="100" class="scan-panel__weight-input">
+                <ui:Label tabindex="-1" text="гр." display-tooltip-when-elided="true" class="scan-pane__weight-input-postfix" />
             </ui:IntegerField>
-            <ui:Button text="ДОБАВИТИ" display-tooltip-when-elided="true" name="ScanPanelBtn" class="btn" style="width: 540px;">
+            <ui:Button text="ДОБАВИТИ" display-tooltip-when-elided="true" name="ScanPanelBtn" selectable="true" class="btn" style="width: 540px; text-overflow: ellipsis;">
                 <ui:VisualElement name="ScanPanelBtnIcon" class="btn-icon" style="flex-grow: 1; background-image: resource(&apos;Images/add-icon&apos;);" />
             </ui:Button>
         </ui:VisualElement>

@@ -1,0 +1,66 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Header" src="project://database/Assets/UIDocuments/Header.uxml?fileID=9197481963319205126&amp;guid=db660bb7a104c324582399ab35c0c753&amp;type=3#Header" />
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <Style src="project://database/Assets/Styles/AdviceTopic.uss?fileID=7433441132597879392&amp;guid=a129a5cadf2e670448d4263acfc21ece&amp;type=3#AdviceTopic" />
+    <ui:VisualElement name="ContentContainer" class="content-container header-margin">
+        <ui:ScrollView elastic-animation-interval-ms="5" elasticity="0.07" touch-scroll-type="Elastic" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
+            <ui:VisualElement name="AdviceTopicArticle" class="advice-topic__article">
+                <ui:VisualElement name="TopicArticleImage" class="topic__article-image" />
+                <ui:VisualElement name="TopicArticleContainer" class="topic__article-container">
+                    <ui:Label tabindex="-1" text="Основи харчування для жіночого здоров’я: правила здоровго харчування" display-tooltip-when-elided="true" name="TopicArticleTitle" class="topic__article-title" />
+                    <ui:Label tabindex="-1" text="alexus.com.ua" display-tooltip-when-elided="true" name="TopicArticleURL" class="topic__article-url" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="AdviceTopicArticle" class="advice-topic__article">
+                <ui:VisualElement name="TopicArticleImage" class="topic__article-image" style="background-image: resource(&apos;Images/Advices/advice-4&apos;);" />
+                <ui:VisualElement name="TopicArticleContainer" class="topic__article-container">
+                    <ui:Label tabindex="-1" text="Як набути здорову вагу" display-tooltip-when-elided="true" name="TopicArticleTitle" class="topic__article-title" />
+                    <ui:Label tabindex="-1" text="alexus.com.ua" display-tooltip-when-elided="true" name="TopicArticleURL" class="topic__article-url" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="AdviceTopicArticle" class="advice-topic__article">
+                <ui:VisualElement name="TopicArticleImage" class="topic__article-image" style="background-image: resource(&apos;Images/Advices/advice-4&apos;);" />
+                <ui:VisualElement name="TopicArticleContainer" class="topic__article-container">
+                    <ui:Label tabindex="-1" text="Як набути здорову вагу" display-tooltip-when-elided="true" name="TopicArticleTitle" class="topic__article-title" />
+                    <ui:Label tabindex="-1" text="alexus.com.ua" display-tooltip-when-elided="true" name="TopicArticleURL" class="topic__article-url" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="AdviceTopicArticle" class="advice-topic__article">
+                <ui:VisualElement name="TopicArticleImage" class="topic__article-image" style="background-image: resource(&apos;Images/Advices/advice-4&apos;);" />
+                <ui:VisualElement name="TopicArticleContainer" class="topic__article-container">
+                    <ui:Label tabindex="-1" text="Як набути здорову вагу" display-tooltip-when-elided="true" name="TopicArticleTitle" class="topic__article-title" />
+                    <ui:Label tabindex="-1" text="alexus.com.ua" display-tooltip-when-elided="true" name="TopicArticleURL" class="topic__article-url" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="AdviceTopicArticle" class="advice-topic__article">
+                <ui:VisualElement name="TopicArticleImage" class="topic__article-image" style="background-image: resource(&apos;Images/Advices/advice-4&apos;);" />
+                <ui:VisualElement name="TopicArticleContainer" class="topic__article-container">
+                    <ui:Label tabindex="-1" text="Як набути здорову вагу" display-tooltip-when-elided="true" name="TopicArticleTitle" class="topic__article-title" />
+                    <ui:Label tabindex="-1" text="alexus.com.ua" display-tooltip-when-elided="true" name="TopicArticleURL" class="topic__article-url" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="AdviceTopicArticle" class="advice-topic__article">
+                <ui:VisualElement name="TopicArticleImage" class="topic__article-image" style="background-image: resource(&apos;Images/Advices/advice-4&apos;);" />
+                <ui:VisualElement name="TopicArticleContainer" class="topic__article-container">
+                    <ui:Label tabindex="-1" text="Як набути здорову вагу" display-tooltip-when-elided="true" name="TopicArticleTitle" class="topic__article-title" />
+                    <ui:Label tabindex="-1" text="alexus.com.ua" display-tooltip-when-elided="true" name="TopicArticleURL" class="topic__article-url" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="AdviceTopicArticle" class="advice-topic__article">
+                <ui:VisualElement name="TopicArticleImage" class="topic__article-image" style="background-image: resource(&apos;Images/Advices/advice-4&apos;);" />
+                <ui:VisualElement name="TopicArticleContainer" class="topic__article-container">
+                    <ui:Label tabindex="-1" text="Як набути здорову вагу" display-tooltip-when-elided="true" name="TopicArticleTitle" class="topic__article-title" />
+                    <ui:Label tabindex="-1" text="alexus.com.ua" display-tooltip-when-elided="true" name="TopicArticleURL" class="topic__article-url" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="AdviceTopicArticle" class="advice-topic__article">
+                <ui:VisualElement name="TopicArticleImage" class="topic__article-image" style="background-image: resource(&apos;Images/Advices/advice-4&apos;);" />
+                <ui:VisualElement name="TopicArticleContainer" class="topic__article-container">
+                    <ui:Label tabindex="-1" text="Як набути здорову вагу" display-tooltip-when-elided="true" name="TopicArticleTitle" class="topic__article-title" />
+                    <ui:Label tabindex="-1" text="alexus.com.ua" display-tooltip-when-elided="true" name="TopicArticleURL" class="topic__article-url" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:ScrollView>
+    </ui:VisualElement>
+    <ui:Instance template="Header" style="position: absolute; width: 100%;" />
+</ui:UXML>

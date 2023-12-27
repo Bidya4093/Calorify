@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <ui:VisualElement name="Header">
+        <ui:VisualElement name="Header" class="header" style="text-shadow: 0 0 0 rgb(0, 0, 0);">
+            <ui:Button text="Button" display-tooltip-when-elided="true" name="CloseBtn" class="btn-icon close-btn" />
+            <ui:Label tabindex="-1" text="Сповіщення" display-tooltip-when-elided="true" name="HeaderTitle" class="header__title" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="ContentContainer" class="content-container" style="flex-grow: 1; align-items: center;">
+        <ui:VisualElement name="ProfileCard" style="height: 570px; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; background-image: resource(&apos;Images/profile-card&apos;); width: 100%;" />
+        <Shadow shadow-corner-radius="45" name="Shadow" shadow-scale="28.9" style="color: rgb(0, 0, 0); margin-top: 100px; width: 505px; height: 93px;">
+            <ui:VisualElement style="flex-grow: 1; background-color: rgb(255, 255, 255); border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px;" />
+        </Shadow>
+    </ui:VisualElement>
+</ui:UXML>

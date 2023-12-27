@@ -1,5 +1,4 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="BottomMenu" src="project://database/Assets/UIDocuments/BottomMenu.uxml?fileID=9197481963319205126&amp;guid=d484617e92ad0c8488cdb87b417cc233&amp;type=3#BottomMenu" />
     <Style src="project://database/Assets/Styles/Advice.uss?fileID=7433441132597879392&amp;guid=3a7409e6a5e48ff46a8e137b56aa4f2a&amp;type=3#Advice" />
     <ui:VisualElement name="AdviceContainer" class="advice__container">
         <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" elasticity="0.07" elastic-animation-interval-ms="5" touch-scroll-type="Elastic" nested-interaction-kind="ForwardScrolling">
@@ -125,5 +124,4 @@
             </ui:VisualElement>
         </ui:ScrollView>
     </ui:VisualElement>
-    <ui:Instance template="BottomMenu" style="position: absolute; flex-grow: 1; bottom: 0; right: 0; left: 0;" />
 </ui:UXML>

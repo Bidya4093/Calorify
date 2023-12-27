@@ -2,21 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ShowPopUp : MonoBehaviour
 {
-    public GameObject panel;
-    public TextMeshProUGUI textMeshPro;
+    private VisualElement scanPanel;
 
-    public void Show(int index)
+    private void Start()
     {
-        panel.SetActive(true);
-        textMeshPro.text = index.ToString();
+        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        scanPanel = root.Q<VisualElement>("ScanPanelContainer");
+    }
+    public void Show()
+    {
+        //scanPanel.SetEnabled(true);
+        scanPanel.style.display = DisplayStyle.Flex;
         Debug.Log("Crisps detected");
     }
 
     public void Hide()
     {
-        panel.SetActive(false);
+        //scanPanel.SetEnabled(false);
+        scanPanel.style.display = DisplayStyle.None;
     }
 }

@@ -1,0 +1,35 @@
+.history-activity__item {
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 140px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.history-activity__item-icon {
+    background-image: resource('Images/flame-icon');
+    width: 60px;
+    height: 60px;
+    margin-right: 14px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.history-activity__item-title {
+    font-size: 54px;
+}
+
+.history-activity__item-image {
+    background-image: resource('Images/activity-icon-1');
+    height: 120px;
+    width: 100px;
+    -unity-background-scale-mode: scale-to-fit;
+    margin-right: 40px;
+}
+/*
+.history-activity__item-text {
+}
+*/
+.activity-stats__item {
+    -unity-text-align: upper-center;
+    width: 300px;
+}
