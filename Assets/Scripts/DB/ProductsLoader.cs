@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ProductsLoader : MonoBehaviour
 {
@@ -10,8 +7,8 @@ public class ProductsLoader : MonoBehaviour
 
     public ProductsLoader() 
     {
-        var connection = new DataService("productsdb.db");
-        var products = connection.GetProducts();
+        var dataService = new DataService("productsdb.db");
+        var products = dataService.GetConnection().Table<products>();
         dishes = new List<products>();
         ToList(products);
     }
@@ -44,5 +41,4 @@ public class ProductsLoader : MonoBehaviour
             dishes.Add(product);
         }
     }
-
 }

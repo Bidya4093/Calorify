@@ -64,10 +64,15 @@ public class DataService  {
 
 	}
 
-	public IEnumerable<products> GetProducts()
+	public SQLiteConnection GetConnection()
 	{
-		return _connection.Table<products>();
+		return _connection;
 	}
+
+	//public IEnumerable<products> GetProducts()
+	//{
+	//	return _connection.Table<products>();
+	//}
 }
 
 	//public IEnumerable<Person> GetPersons(){
