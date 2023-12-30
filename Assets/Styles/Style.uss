@@ -251,3 +251,66 @@
 .header-margin {
     margin-top: 160px;
 }
+
+.profile-title {
+    font-size: 54px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&guid=adb52135dcca16c44b46cb4ddce45978&type=3#Ubuntu-Regular');
+    margin-bottom: 40px;
+}
+
+.profile-wrapper {
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    background-color: rgb(255, 255, 255);
+    padding-top: 45px;
+    padding-right: 45px;
+    padding-bottom: 45px;
+    padding-left: 45px;
+}
+
+.option {
+    flex-direction: row;
+    margin-bottom: 60px;
+}
+
+.option__icon-wrapper {
+    width: 120px;
+    height: 120px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-color: rgb(217, 217, 217);
+    align-items: center;
+    justify-content: center;
+    margin-right: 45px;
+}
+
+.option__icon {
+    background-image: resource('Images/goal-icon');
+    width: 60px;
+    height: 60px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.option__container {
+    flex-grow: 1;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.option__title {
+    color: rgb(85, 85, 85);
+    font-size: 38px;
+}
+
+.option__value {
+    font-size: 48px;
+}
+
+.personal-data__container {
+    margin-bottom: 0;
+}

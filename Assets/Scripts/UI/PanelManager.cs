@@ -22,7 +22,6 @@ public class PanelManager : MonoBehaviour
     private Button backBtn;
     private Button profileBtn;
 
-    public Texture blurTexture;
 
 
     public GameObject scanPageObject;
@@ -43,7 +42,6 @@ public class PanelManager : MonoBehaviour
         homeBtn.RegisterCallback<ClickEvent>(OnHomeBtnClick);
         scanBtn.RegisterCallback<ClickEvent>(OnScanBtnClick);
         adviceBtn.RegisterCallback<ClickEvent>(OnAdviceBtnClick);
-        //root.Q<BlurPanel>("scene-toolbar").SetImage(blurTexture);
 
     }
 

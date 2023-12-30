@@ -441,7 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: a67eebd0b4484be4e8345152a8a528c0, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: b6c11a0ee33574c46a4240f4585ced03, type: 3}
   m_SortingOrder: 1
 --- !u!4 &1205989847
 Transform:
@@ -595,7 +595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1898785191
 Transform:
   m_ObjectHideFlags: 0
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 2ea428c28e3c49d4da5f0102eba81d9c, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: b6c11a0ee33574c46a4240f4585ced03, type: 3}
   m_SortingOrder: 0
 --- !u!114 &1898785193
 MonoBehaviour:
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898785190}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85fd3f68c9705894091a99be2e7acb56, type: 3}
   m_Name: 
@@ -653,7 +653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5896208ffcdb5c841a6248ac38571f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blurTexture: {fileID: 2800000, guid: 5b2f2544e54595342a135bd26f497bec, type: 3}
   scanPageObject: {fileID: 240184876}
 --- !u!114 &1898785195
 MonoBehaviour:

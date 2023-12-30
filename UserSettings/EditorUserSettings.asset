@@ -29,6 +29,15 @@ EditorUserSettings:
     RecentlyUsedSceneGuid-7:
       value: 0753015406050f0a0b5d5b2445205c4445161c7c7a2925637a2d1f66e6b5666b
       flags: 0
+    UIBuilder.DisableMouseWheelZooming:
+      value: 2550581500
+      flags: 0
+    UIBuilder.EditorExtensionModeKey:
+      value: 2550581500
+      flags: 0
+    UIToolkit.EnableEventDebugger:
+      value: 2550581500
+      flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650
       flags: 0
