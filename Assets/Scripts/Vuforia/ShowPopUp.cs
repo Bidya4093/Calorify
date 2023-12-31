@@ -15,14 +15,11 @@ public class ShowPopUp : MonoBehaviour
     }
     public void Show()
     {
-        //scanPanel.SetEnabled(true);
         scanPanel.style.display = DisplayStyle.Flex;
-        Debug.Log("Crisps detected");
     }
 
     public void Hide()
     {
-        //scanPanel.SetEnabled(false);
         scanPanel.style.display = DisplayStyle.None;
     }
 }

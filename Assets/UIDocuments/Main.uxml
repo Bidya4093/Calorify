@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="HomePage" src="project://database/Assets/UIDocuments/HomePage.uxml?fileID=9197481963319205126&amp;guid=800f0e35a4ba5ba42ad6b00da76e9f17&amp;type=3#HomePage" />
     <ui:Template name="ScanPage" src="project://database/Assets/UIDocuments/ScanPage.uxml?fileID=9197481963319205126&amp;guid=a91575f7e47988f409e5623ac1197e1d&amp;type=3#ScanPage" />
-    <ui:Template name="AdvicePage" src="project://database/Assets/UIDocuments/AdvicePage.uxml?fileID=9197481963319205126&amp;guid=f8dee475fb5c59e4d8001770b31de475&amp;type=3#AdvicePage" />
+    <ui:Template name="AdvicePage" src="project://database/Assets/UIDocuments/AdvicePage.uxml?fileID=9197481963319205126&amp;guid=c8b94afe595d5ab4f8675c1bd44436bd&amp;type=3#AdvicePage" />
     <ui:Template name="BottomMenu" src="project://database/Assets/UIDocuments/BottomMenu.uxml?fileID=9197481963319205126&amp;guid=d484617e92ad0c8488cdb87b417cc233&amp;type=3#BottomMenu" />
     <Style src="project://database/Assets/Styles/RadialProgress.uss?fileID=7433441132597879392&amp;guid=54e4e5c72d3a5ef4aa2946f873ef3048&amp;type=3#RadialProgress" />
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
@@ -9,7 +9,7 @@
     <Style src="project://database/Assets/Styles/ScanPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ScanPanel" />
     <Style src="project://database/Assets/Styles/Advice.uss?fileID=7433441132597879392&amp;guid=3a7409e6a5e48ff46a8e137b56aa4f2a&amp;type=3#Advice" />
     <Style src="project://database/Assets/Styles/BottomMenu.uss?fileID=7433441132597879392&amp;guid=ed42d1e45f6a5a2488cc573278a6da0b&amp;type=3#BottomMenu" />
-    <ui:Instance template="HomePage" name="HomePage" style="display: flex;" />
+    <ui:Instance template="HomePage" name="HomePage" style="display: flex; height: 100%;" />
     <ui:Instance template="ScanPage" name="ScanPage" style="display: none;" />
     <ui:Instance template="AdvicePage" name="AdvicePage" style="display: none;" />
     <ui:Instance template="BottomMenu" name="BottomMenu" style="flex-grow: 1;" />

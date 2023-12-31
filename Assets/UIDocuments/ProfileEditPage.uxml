@@ -46,7 +46,7 @@
                             <ui:FloatField label="Вага:" value="69" name="UserParametersWeightInput" class="user-parameters__input" />
                             <ui:Label tabindex="-1" text="кг" display-tooltip-when-elided="true" name="UserParametersWeightInputPostfix" class="user-parameters__input-postfix" />
                         </ui:VisualElement>
-                        <ui:RadioButtonGroup label="Стать:" value="-1" choices="Ч,Ж" name="UserParametersRadioToggle" class="user-parameters__radio-group" style="margin-top: 0; margin-right: 90px; margin-bottom: 0; margin-left: 0; font-size: 52px;" />
+                        <ui:RadioButtonGroup label="Стать:" value="1" choices="Ч,Ж" name="UserParametersRadioToggle" class="user-parameters__radio-group" style="margin-top: 0; margin-right: 90px; margin-bottom: 0; margin-left: 0; font-size: 52px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </Shadow>
@@ -57,9 +57,8 @@
     </ui:VisualElement>
     <Shadow name="HeaderShadow" shadow-color="#000000FF" class="shadow-45" style="overflow: visible; position: absolute; top: 0; right: 0; left: 0; flex-grow: 1; width: 100%;">
         <ui:VisualElement name="Header" class="header" style="text-shadow: 0 0 0 rgb(0, 0, 0); flex-grow: 1;">
-            <ui:Button display-tooltip-when-elided="true" name="CloseBtn" class="btn-icon close-btn" style="background-image: resource(&apos;Images/back-icon&apos;); -unity-background-image-tint-color: rgb(0, 0, 0); width: 74px;" />
+            <ui:Button display-tooltip-when-elided="true" name="BackBtn" class="btn-icon close-btn" style="background-image: resource(&apos;Images/back-icon&apos;); -unity-background-image-tint-color: rgb(0, 0, 0); width: 74px;" />
             <ui:Label tabindex="-1" text="Редагування профілю" display-tooltip-when-elided="true" name="HeaderTitle" class="header__title" />
         </ui:VisualElement>
     </Shadow>
-    <ui:VisualElement />
 </ui:UXML>

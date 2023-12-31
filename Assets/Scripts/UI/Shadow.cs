@@ -302,8 +302,6 @@ class Shadow : VisualElement
             // Do not scale the inner rectangle
             Vector3 newPos = k_Vertices[i].position;
             newPos = newPos + new Vector3(shadowOffsetX, shadowOffsetY, 0);
-            //float scaleDiffX = (dimensions.x * 0.5f) * shadowScale - (dimensions.x * 0.5f);
-            //float calcScaleY = scaleDiffX / (dimensions.y * 0.5f) + 1;
             float calcScaleX = shadowSize * (1 / (dimensions.x * 0.5f)) + 1;
             float calcScaleY = shadowSize * (1 / (dimensions.y * 0.5f)) + 1;
 
@@ -322,26 +320,6 @@ class Shadow : VisualElement
             // Scale verticles using scale factor
             k_Vertices[i].position = newPos;
         }
-
-        //for (int i = 0; i < k_Vertices.Length; i++)
-        //{
-        //    // Do not scale the inner rectangle
-        //    Vector3 newPos = k_Vertices[i].position;
-        //    newPos = newPos + new Vector3(shadowOffsetX, shadowOffsetY, 0);
-
-        //    if (i >= 4 && i <= 7)
-        //    {
-        //        // Do nothing
-        //    }
-        //    else
-        //    {
-        //        newPos = ((newPos - (dimensions * 0.5f)) * shadowSize) + (dimensions * 0.5f);
-
-        //    }
-
-        //    // Scale verticles using scale factor
-        //    k_Vertices[i].position = newPos;
-        //}
 
         List<ushort> tris = new List<ushort>();
         tris.AddRange(new ushort[]{

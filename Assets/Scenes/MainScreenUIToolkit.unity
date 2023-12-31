@@ -410,6 +410,67 @@ Transform:
   - {fileID: 2096228718}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &778118119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 778118121}
+  - component: {fileID: 778118120}
+  - component: {fileID: 778118122}
+  m_Layer: 5
+  m_Name: ProfilePage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &778118120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778118119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 81356cd36375f74458d4481b6bfe466a, type: 3}
+  m_SortingOrder: 0
+--- !u!4 &778118121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778118119}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &778118122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778118119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e891764d636754199558b4aa4fda87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1205989845
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,8 +481,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1205989847}
   - component: {fileID: 1205989846}
+  - component: {fileID: 1205989848}
   m_Layer: 5
-  m_Name: UIDocument
+  m_Name: ProductPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,7 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: b6c11a0ee33574c46a4240f4585ced03, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: f6281d01b05d2c64183403c3692d9be2, type: 3}
   m_SortingOrder: 1
 --- !u!4 &1205989847
 Transform:
@@ -458,6 +520,80 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1205989848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205989845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a344bd46a466bf448b016f7b796917db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1409445061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1409445063}
+  - component: {fileID: 1409445062}
+  - component: {fileID: 1409445064}
+  m_Layer: 5
+  m_Name: MessagePage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1409445062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409445061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: ad90daf482da788418893068262acde9, type: 3}
+  m_SortingOrder: 0
+--- !u!4 &1409445063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409445061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1409445064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409445061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9933c22c62516724387ded03fc3be53c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainObjectPage: {fileID: 1898785190}
 --- !u!1 &1810716365
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,12 +726,12 @@ GameObject:
   - component: {fileID: 1898785194}
   - component: {fileID: 1898785195}
   m_Layer: 5
-  m_Name: MainUIDocument
+  m_Name: MainPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1898785191
 Transform:
   m_ObjectHideFlags: 0
@@ -625,7 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: b6c11a0ee33574c46a4240f4585ced03, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 2ea428c28e3c49d4da5f0102eba81d9c, type: 3}
   m_SortingOrder: 0
 --- !u!114 &1898785193
 MonoBehaviour:
@@ -654,6 +790,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scanPageObject: {fileID: 240184876}
+  messagePageObject: {fileID: 1409445061}
+  profilePageObject: {fileID: 778118119}
+  productPanelObject: {fileID: 1205989845}
 --- !u!114 &1898785195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,7 +929,7 @@ MonoBehaviour:
   mImageTargetType: 3
   mWidth: 0.14999999
   mHeight: 0.19999999
-  mRuntimeTexture: {fileID: 2800000, guid: fb1fe448f16837a428aa40db1afb469d, type: 3}
+  mRuntimeTexture: {fileID: 2800000, guid: ff2821958076a2a4b8efe557394edc03, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -821,5 +960,7 @@ SceneRoots:
   - {fileID: 93943616}
   - {fileID: 1810716367}
   - {fileID: 1205989847}
+  - {fileID: 1409445063}
+  - {fileID: 778118121}
   - {fileID: 1898785191}
   - {fileID: 240184879}

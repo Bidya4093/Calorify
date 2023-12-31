@@ -1,86 +1,82 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="TopMenu" src="project://database/Assets/TopMenu.uxml?fileID=9197481963319205126&amp;guid=7be0b6e660666744ba8ade54e9f02f9f&amp;type=3#TopMenu" />
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/RadialProgress.uss?fileID=7433441132597879392&amp;guid=54e4e5c72d3a5ef4aa2946f873ef3048&amp;type=3#RadialProgress" />
     <Style src="project://database/Assets/Styles/Activity.uss?fileID=7433441132597879392&amp;guid=df3ba75a70e9d424ab6fc823c445323c&amp;type=3#Activity" />
-    <ui:VisualElement name="ActivityContainer" style="flex-grow: 1;">
-        <ui:VisualElement name="ContentContainer" class="content-container" style="flex-grow: 1;">
-            <ui:Instance template="TopMenu" />
-            <Shadow name="MainSectionShadow" class="shadow-45" style="margin-bottom: 30px;">
-                <ui:VisualElement name="MainSection" class="wrapper" style="margin-bottom: 0;">
-                    <ui:VisualElement name="TopContainer" style="flex-grow: 0; padding-top: 0; margin-right: 60px; margin-left: 60px; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 95px;">
-                        <ui:Label tabindex="-1" text="Статистика" display-tooltip-when-elided="true" name="MainSectionTitle" class="home-title" />
-                        <ui:Button display-tooltip-when-elided="true" name="NutritionStatsBtn" class="btn-icon" style="background-image: resource(&apos;Images/nutrition-stats-icon&apos;); height: 100%; width: 72px;" />
-                    </ui:VisualElement>
-                    <ui:VisualElement name="ActivityStatistics" style="flex-grow: 0; align-items: center;">
-                        <ui:VisualElement name="StatisticsContainer" style="margin-bottom: 70px; font-size: 36px; margin-right: 45px; margin-left: 45px; flex-direction: row; max-width: 100%; justify-content: center; flex-grow: 1;">
-                            <ui:VisualElement class="activity-stats__item">
-                                <ui:Label tabindex="-1" text="2" display-tooltip-when-elided="true" name="ActivityStatisticsTitle" style="margin-bottom: 30px; font-size: 90px;" />
-                                <ui:Label tabindex="-1" text="Кількість тренувань" display-tooltip-when-elided="true" name="ActivityStatisticsText" enable-rich-text="false" style="white-space: normal; color: rgb(85, 85, 85);" />
-                            </ui:VisualElement>
-                            <ui:VisualElement class="activity-stats__item">
-                                <ui:VisualElement style="margin-bottom: 30px; flex-direction: row; justify-content: center;">
-                                    <ui:Label tabindex="-1" text="205" display-tooltip-when-elided="true" name="ActivityStatisticsTitle" style="font-size: 90px; justify-content: flex-end; align-items: stretch; flex-shrink: 1; margin-right: 10px;" />
-                                    <ui:Label tabindex="-1" text="хв" display-tooltip-when-elided="true" name="ActivityStatisticsPostfix" style="-unity-text-align: lower-center; font-size: 48px; color: rgb(78, 78, 78); margin-bottom: 10px;" />
-                                </ui:VisualElement>
-                                <ui:Label tabindex="-1" text="Заг. тривалість тренувань" display-tooltip-when-elided="true" name="ActivityStatisticsText" enable-rich-text="false" style="white-space: normal; color: rgb(85, 85, 85);" />
-                            </ui:VisualElement>
-                            <ui:VisualElement class="activity-stats__item">
-                                <ui:VisualElement style="margin-bottom: 30px; flex-direction: row; justify-content: center;">
-                                    <ui:Label tabindex="-1" text="156" display-tooltip-when-elided="true" name="ActivityStatisticsTitle" style="font-size: 90px; justify-content: flex-end; align-items: stretch; flex-shrink: 1; margin-right: 10px;" />
-                                    <ui:Label tabindex="-1" text="хв" display-tooltip-when-elided="true" name="ActivityStatisticsPostfix" style="-unity-text-align: lower-center; font-size: 48px; color: rgb(78, 78, 78); margin-bottom: 10px;" />
-                                </ui:VisualElement>
-                                <ui:Label tabindex="-1" text="Сер. тривалість тренування" display-tooltip-when-elided="true" name="ActivityStatisticsText" enable-rich-text="false" style="white-space: normal; color: rgb(85, 85, 85);" />
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                        <ui:Button text="ТРЕНУВАННЯ" display-tooltip-when-elided="true" name="AddActivityBtn" class="btn btn-reverse" style="width: 540px;">
-                            <ui:VisualElement name="AddFoodIcon" class="btn-icon btn-icon-reverse" style="background-image: resource(&apos;Images/add-icon&apos;); width: 45px; height: 45px;" />
-                        </ui:Button>
-                    </ui:VisualElement>
+    <ui:VisualElement name="ActivityContainer">
+        <Shadow name="MainSectionShadow" class="shadow-45" style="margin-bottom: 30px;">
+            <ui:VisualElement name="MainSection" class="wrapper" style="margin-bottom: 0;">
+                <ui:VisualElement name="TopContainer" style="flex-grow: 0; padding-top: 0; margin-right: 60px; margin-left: 60px; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 95px;">
+                    <ui:Label tabindex="-1" text="Статистика" display-tooltip-when-elided="true" name="MainSectionTitle" class="home-title" />
+                    <ui:Button display-tooltip-when-elided="true" name="NutritionStatsBtn" class="btn-icon" style="background-image: resource(&apos;Images/nutrition-stats-icon&apos;); height: 100%; width: 72px;" />
                 </ui:VisualElement>
-            </Shadow>
-            <Shadow name="ActivityHistoryShadow" class="shadow-45" style="margin-bottom: 30px;">
-                <ui:VisualElement name="ActivityHistory" class="wrapper" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; padding-right: 60px; padding-left: 60px; flex-shrink: 1;">
-                    <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="title" />
-                    <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" style="visibility: visible; display: flex;">
-                        <ui:VisualElement name="HistoryContainer">
-                            <ui:VisualElement name="HistoryActivityItem" class="history-activity__item">
-                                <ui:VisualElement name="HistoryActivityItemImage" class="history-activity__item-image" />
-                                <ui:VisualElement style="justify-content: space-between; height: 100%;">
-                                    <ui:Label tabindex="-1" text="Ходьба" display-tooltip-when-elided="true" name="HistoryActivityItemTitle" class="history-activity__item-title" />
-                                    <ui:VisualElement style="flex-direction: row;">
-                                        <ui:VisualElement style="flex-direction: row; align-items: center; color: rgb(106, 106, 106); font-size: 48px; margin-right: 60px;">
-                                            <ui:VisualElement name="HistoryActivityItemIcon" class="history-activity__item-icon" style="background-image: resource(&apos;Images/clock-icon&apos;);" />
-                                            <ui:Label tabindex="-1" text="170 хв" display-tooltip-when-elided="true" name="HistoryActivityItemDuration" class="history-activity__item-text" />
-                                        </ui:VisualElement>
-                                        <ui:VisualElement style="flex-direction: row; align-items: center; color: rgb(106, 106, 106); font-size: 48px;">
-                                            <ui:VisualElement name="HistoryActivityItemIcon" class="history-activity__item-icon" />
-                                            <ui:Label tabindex="-1" text="895 ккал" display-tooltip-when-elided="true" name="HistoryActivityItemCalories" class="history-activity__item-text" />
-                                        </ui:VisualElement>
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
+                <ui:VisualElement name="ActivityStatistics" style="flex-grow: 0; align-items: center;">
+                    <ui:VisualElement name="StatisticsContainer" style="margin-bottom: 70px; font-size: 36px; margin-right: 45px; margin-left: 45px; flex-direction: row; max-width: 100%; justify-content: center; flex-grow: 1;">
+                        <ui:VisualElement class="activity-stats__item">
+                            <ui:Label tabindex="-1" text="2" display-tooltip-when-elided="true" name="ActivityStatisticsTitle" style="margin-bottom: 30px; font-size: 90px;" />
+                            <ui:Label tabindex="-1" text="Кількість тренувань" display-tooltip-when-elided="true" name="ActivityStatisticsText" enable-rich-text="false" style="white-space: normal; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="activity-stats__item">
+                            <ui:VisualElement style="margin-bottom: 30px; flex-direction: row; justify-content: center;">
+                                <ui:Label tabindex="-1" text="205" display-tooltip-when-elided="true" name="ActivityStatisticsTitle" style="font-size: 90px; justify-content: flex-end; align-items: stretch; flex-shrink: 1; margin-right: 10px;" />
+                                <ui:Label tabindex="-1" text="хв" display-tooltip-when-elided="true" name="ActivityStatisticsPostfix" style="-unity-text-align: lower-center; font-size: 48px; color: rgb(78, 78, 78); margin-bottom: 10px;" />
                             </ui:VisualElement>
-                            <ui:VisualElement name="HistoryActivityItem" class="history-activity__item" style="margin-bottom: 0;">
-                                <ui:VisualElement name="HistoryActivityItemImage" class="history-activity__item-image" style="background-image: resource(&apos;Images/activity-icon-2&apos;);" />
-                                <ui:VisualElement style="justify-content: space-between; height: 100%;">
-                                    <ui:Label tabindex="-1" text="Вільна активність" display-tooltip-when-elided="true" name="HistoryActivityItemTitle" class="history-activity__item-title" />
-                                    <ui:VisualElement style="flex-direction: row;">
-                                        <ui:VisualElement style="flex-direction: row; align-items: center; color: rgb(106, 106, 106); font-size: 48px; margin-right: 60px;">
-                                            <ui:VisualElement name="HistoryActivityItemIcon" class="history-activity__item-icon" style="background-image: resource(&apos;Images/clock-icon&apos;);" />
-                                            <ui:Label tabindex="-1" text="142хв" display-tooltip-when-elided="true" name="HistoryActivityItemDuration" class="history-activity__item-text" />
-                                        </ui:VisualElement>
-                                        <ui:VisualElement style="flex-direction: row; align-items: center; color: rgb(106, 106, 106); font-size: 48px;">
-                                            <ui:VisualElement name="HistoryActivityItemIcon" class="history-activity__item-icon" />
-                                            <ui:Label tabindex="-1" text="673 ккал" display-tooltip-when-elided="true" name="HistoryActivityItemCalories" class="history-activity__item-text" />
-                                        </ui:VisualElement>
+                            <ui:Label tabindex="-1" text="Заг. тривалість тренувань" display-tooltip-when-elided="true" name="ActivityStatisticsText" enable-rich-text="false" style="white-space: normal; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="activity-stats__item">
+                            <ui:VisualElement style="margin-bottom: 30px; flex-direction: row; justify-content: center;">
+                                <ui:Label tabindex="-1" text="156" display-tooltip-when-elided="true" name="ActivityStatisticsTitle" style="font-size: 90px; justify-content: flex-end; align-items: stretch; flex-shrink: 1; margin-right: 10px;" />
+                                <ui:Label tabindex="-1" text="хв" display-tooltip-when-elided="true" name="ActivityStatisticsPostfix" style="-unity-text-align: lower-center; font-size: 48px; color: rgb(78, 78, 78); margin-bottom: 10px;" />
+                            </ui:VisualElement>
+                            <ui:Label tabindex="-1" text="Сер. тривалість тренування" display-tooltip-when-elided="true" name="ActivityStatisticsText" enable-rich-text="false" style="white-space: normal; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:Button text="ТРЕНУВАННЯ" display-tooltip-when-elided="true" name="AddActivityBtn" class="btn btn-reverse" style="width: 540px;">
+                        <ui:VisualElement name="AddFoodIcon" class="btn-icon btn-icon-reverse" style="background-image: resource(&apos;Images/add-icon&apos;); width: 45px; height: 45px;" />
+                    </ui:Button>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </Shadow>
+        <Shadow name="ActivityHistoryShadow" class="shadow-45" style="margin-bottom: 30px;">
+            <ui:VisualElement name="ActivityHistory" class="wrapper" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; padding-right: 60px; padding-left: 60px; flex-shrink: 1;">
+                <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="title" />
+                <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" style="visibility: visible; display: flex;">
+                    <ui:VisualElement name="HistoryContainer">
+                        <ui:VisualElement name="HistoryActivityItem" class="history-activity__item">
+                            <ui:VisualElement name="HistoryActivityItemImage" class="history-activity__item-image" />
+                            <ui:VisualElement style="justify-content: space-between; height: 100%;">
+                                <ui:Label tabindex="-1" text="Ходьба" display-tooltip-when-elided="true" name="HistoryActivityItemTitle" class="history-activity__item-title" />
+                                <ui:VisualElement style="flex-direction: row;">
+                                    <ui:VisualElement style="flex-direction: row; align-items: center; color: rgb(106, 106, 106); font-size: 48px; margin-right: 60px;">
+                                        <ui:VisualElement name="HistoryActivityItemIcon" class="history-activity__item-icon" style="background-image: resource(&apos;Images/clock-icon&apos;);" />
+                                        <ui:Label tabindex="-1" text="170 хв" display-tooltip-when-elided="true" name="HistoryActivityItemDuration" class="history-activity__item-text" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-direction: row; align-items: center; color: rgb(106, 106, 106); font-size: 48px;">
+                                        <ui:VisualElement name="HistoryActivityItemIcon" class="history-activity__item-icon" />
+                                        <ui:Label tabindex="-1" text="895 ккал" display-tooltip-when-elided="true" name="HistoryActivityItemCalories" class="history-activity__item-text" />
                                     </ui:VisualElement>
                                 </ui:VisualElement>
                             </ui:VisualElement>
                         </ui:VisualElement>
-                    </ui:ScrollView>
-                </ui:VisualElement>
-            </Shadow>
-        </ui:VisualElement>
+                        <ui:VisualElement name="HistoryActivityItem" class="history-activity__item" style="margin-bottom: 0;">
+                            <ui:VisualElement name="HistoryActivityItemImage" class="history-activity__item-image" style="background-image: resource(&apos;Images/activity-icon-2&apos;);" />
+                            <ui:VisualElement style="justify-content: space-between; height: 100%;">
+                                <ui:Label tabindex="-1" text="Вільна активність" display-tooltip-when-elided="true" name="HistoryActivityItemTitle" class="history-activity__item-title" />
+                                <ui:VisualElement style="flex-direction: row;">
+                                    <ui:VisualElement style="flex-direction: row; align-items: center; color: rgb(106, 106, 106); font-size: 48px; margin-right: 60px;">
+                                        <ui:VisualElement name="HistoryActivityItemIcon" class="history-activity__item-icon" style="background-image: resource(&apos;Images/clock-icon&apos;);" />
+                                        <ui:Label tabindex="-1" text="142хв" display-tooltip-when-elided="true" name="HistoryActivityItemDuration" class="history-activity__item-text" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-direction: row; align-items: center; color: rgb(106, 106, 106); font-size: 48px;">
+                                        <ui:VisualElement name="HistoryActivityItemIcon" class="history-activity__item-icon" />
+                                        <ui:Label tabindex="-1" text="673 ккал" display-tooltip-when-elided="true" name="HistoryActivityItemCalories" class="history-activity__item-text" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </Shadow>
     </ui:VisualElement>
 </ui:UXML>

@@ -58,7 +58,7 @@
             <ui:IntegerField label="Вага:" value="350" name="ScanPanelWeightInput" placeholder-text="100" class="scan-panel__weight-input">
                 <ui:Label tabindex="-1" text="гр." display-tooltip-when-elided="true" class="scan-pane__weight-input-postfix" />
             </ui:IntegerField>
-            <ui:Button text="ДОБАВИТИ" display-tooltip-when-elided="true" name="ScanPanelBtn" selectable="true" class="btn" style="width: 540px; text-overflow: ellipsis;">
+            <ui:Button text="ДОДАТИ" display-tooltip-when-elided="true" name="ScanPanelBtn" selectable="true" class="btn" style="width: 540px; text-overflow: ellipsis;">
                 <ui:VisualElement name="ScanPanelBtnIcon" class="btn-icon" style="flex-grow: 1; background-image: resource(&apos;Images/add-icon&apos;);" />
             </ui:Button>
         </ui:VisualElement>

@@ -1,9 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="HomePage" src="project://database/Assets/UIDocuments/HomePage.uxml?fileID=9197481963319205126&amp;guid=800f0e35a4ba5ba42ad6b00da76e9f17&amp;type=3#HomePage" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
     <Style src="project://database/Assets/Styles/ProductPanel.uss?fileID=7433441132597879392&amp;guid=0940b9ab884c7cb409527aca10c87212&amp;type=3#ProductPanel" />
     <Style src="project://database/Assets/Styles/ScanPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ScanPanel" />
+    <ui:VisualElement name="ProductPanelBackground" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.37);" />
     <ui:VisualElement name="ProductPanelContainer" class="product-panel__container">
         <ui:VisualElement name="ProductPanelTop" class="product-panel__top">
             <Shadow name="HistoryItemImageShadow" shadow-color="#00000033" shadow-offset-y="10" shadow-corner-radius="45" shadow-size="-15" class="history-item__image-shadow">
@@ -58,12 +58,11 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </Shadow>
-        <ui:VisualElement style="align-items: center;">
+        <ui:VisualElement name="ProductPanelBottom" style="align-items: center;">
             <ui:IntegerField label="Вага:" value="350" name="ProductPanelWeightInput" placeholder-text="100" class="product-panel__weight-input">
                 <ui:Label tabindex="-1" text="гр." display-tooltip-when-elided="true" style="font-size: 42px; align-self: flex-end; color: rgb(85, 85, 85); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
             </ui:IntegerField>
             <ui:Button text="Зберегти зміни" display-tooltip-when-elided="true" name="ProductPanelBtn" selectable="true" class="btn" style="text-overflow: ellipsis; padding-right: 0; font-size: 42px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&amp;guid=adb52135dcca16c44b46cb4ddce45978&amp;type=3#Ubuntu-Regular&apos;);" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:Instance template="HomePage" style="display: none;" />
 </ui:UXML>
