@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Styles/Advice.uss?fileID=7433441132597879392&amp;guid=3a7409e6a5e48ff46a8e137b56aa4f2a&amp;type=3#Advice" />
     <ui:VisualElement name="AdviceContainer" class="advice__container">
-        <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" elasticity="0.07" elastic-animation-interval-ms="5" touch-scroll-type="Elastic" nested-interaction-kind="ForwardScrolling">
+        <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" elasticity="0.07" elastic-animation-interval-ms="5" touch-scroll-type="Clamped" nested-interaction-kind="ForwardScrolling">
             <ui:VisualElement name="AdviceRow" class="advice__row">
                 <ui:VisualElement name="AdviceHead" style="flex-direction: row; justify-content: space-between; margin-bottom: 30px;">
                     <ui:Label tabindex="-1" text="Основи здорового харчування" display-tooltip-when-elided="true" name="AdviceHeadTitle" class="advice__head-title" />
@@ -9,7 +9,7 @@
                         <ui:VisualElement style="background-image: resource(&apos;Images/more-icon&apos;); width: 18px; -unity-background-scale-mode: scale-to-fit; position: absolute; height: 100%; margin-top: 3px;" />
                     </ui:Button>
                 </ui:VisualElement>
-                <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" elasticity="0.07" elastic-animation-interval-ms="5">
+                <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elasticity="0.07" elastic-animation-interval-ms="5">
                     <ui:VisualElement name="AdviceArticles" style="flex-grow: 1; flex-shrink: 0;">
                         <ui:VisualElement name="AdviceArticlesItem" style="flex-grow: 0; width: 450px; height: 600px; margin-right: 30px; border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px; justify-content: flex-end; padding-right: 30px; padding-left: 30px; padding-bottom: 45px; padding-top: 45px; background-image: resource(&apos;Images/Advices/advice-1&apos;);">
                             <ui:Label tabindex="-1" text="Жіноче здоров’я і харчування" display-tooltip-when-elided="true" name="AdviceArticlesItemTitle" style="font-size: 42px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&amp;guid=dca4865c624e76f48b83f1a5ae3ca00e&amp;type=3#Ubuntu-Medium&apos;); white-space: normal; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
@@ -39,7 +39,7 @@
                         <ui:VisualElement style="background-image: resource(&apos;Images/more-icon&apos;); width: 18px; -unity-background-scale-mode: scale-to-fit; position: absolute; height: 100%; margin-top: 3px;" />
                     </ui:Button>
                 </ui:VisualElement>
-                <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" elasticity="0.07" elastic-animation-interval-ms="5" touch-scroll-type="Elastic">
+                <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" elasticity="0.07" elastic-animation-interval-ms="5" touch-scroll-type="Clamped">
                     <ui:VisualElement name="AdviceArticles" style="flex-grow: 0; flex-shrink: 0;">
                         <ui:VisualElement name="AdviceArticlesItem" style="flex-grow: 0; width: 450px; height: 600px; margin-right: 30px; border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px; justify-content: flex-end; padding-right: 30px; padding-left: 30px; padding-bottom: 45px; padding-top: 45px; background-image: resource(&apos;Images/Advices/advice-3&apos;);">
                             <ui:Label tabindex="-1" text="Основи раціону  для жіночого харчування" display-tooltip-when-elided="true" name="AdviceArticlesItemTitle" style="font-size: 42px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&amp;guid=dca4865c624e76f48b83f1a5ae3ca00e&amp;type=3#Ubuntu-Medium&apos;); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; text-overflow: ellipsis; overflow: hidden; white-space: normal; height: 96px;" />
@@ -69,7 +69,7 @@
                         <ui:VisualElement style="background-image: resource(&apos;Images/more-icon&apos;); width: 18px; -unity-background-scale-mode: scale-to-fit; position: absolute; height: 100%; margin-top: 3px;" />
                     </ui:Button>
                 </ui:VisualElement>
-                <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" elasticity="0.07" elastic-animation-interval-ms="5">
+                <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elasticity="0.07" elastic-animation-interval-ms="5">
                     <ui:VisualElement name="AdviceArticles" style="flex-grow: 1; flex-shrink: 0;">
                         <ui:VisualElement name="AdviceArticlesItem" style="flex-grow: 0; width: 450px; height: 600px; margin-right: 30px; border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px; justify-content: flex-end; padding-right: 30px; padding-left: 30px; padding-bottom: 45px; padding-top: 45px; background-image: resource(&apos;Images/Advices/advice-5&apos;);">
                             <ui:Label tabindex="-1" text="Хороший сон - міцний організм" display-tooltip-when-elided="true" name="AdviceArticlesItemTitle" style="font-size: 42px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&amp;guid=dca4865c624e76f48b83f1a5ae3ca00e&amp;type=3#Ubuntu-Medium&apos;); white-space: normal; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
@@ -99,7 +99,7 @@
                         <ui:VisualElement style="background-image: resource(&apos;Images/more-icon&apos;); width: 18px; -unity-background-scale-mode: scale-to-fit; position: absolute; height: 100%; margin-top: 3px;" />
                     </ui:Button>
                 </ui:VisualElement>
-                <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" elasticity="0.07" elastic-animation-interval-ms="5">
+                <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elasticity="0.07" elastic-animation-interval-ms="5">
                     <ui:VisualElement name="AdviceArticles" style="flex-grow: 1; flex-shrink: 0;">
                         <ui:VisualElement name="AdviceArticlesItem" style="flex-grow: 0; width: 450px; height: 600px; margin-right: 30px; border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px; justify-content: flex-end; padding-right: 30px; padding-left: 30px; padding-bottom: 45px; padding-top: 45px; background-image: resource(&apos;Images/Advices/advice-1&apos;);">
                             <ui:Label tabindex="-1" text="Жіноче здоров’я і харчування" display-tooltip-when-elided="true" name="AdviceArticlesItemTitle" style="font-size: 42px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&amp;guid=dca4865c624e76f48b83f1a5ae3ca00e&amp;type=3#Ubuntu-Medium&apos;); white-space: normal; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />

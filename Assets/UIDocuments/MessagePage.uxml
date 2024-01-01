@@ -3,7 +3,7 @@
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/Message.uss?fileID=7433441132597879392&amp;guid=32315167952c6f84c823a647bbd6a947&amp;type=3#Message" />
     <ui:VisualElement name="ContentContainer" class="content-container header-margin" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
-        <ui:ScrollView elasticity="0.07" elastic-animation-interval-ms="5" touch-scroll-type="Elastic" style="display: flex;">
+        <ui:ScrollView elasticity="0.07" elastic-animation-interval-ms="5" touch-scroll-type="Clamped" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="display: flex;">
             <Shadow name="MessageItemShadow" shadow-size="30" shadow-corner-radius="0" class="message-item__shadow message-item__first shadow-45">
                 <ui:VisualElement name="MessageItem" class="message-item">
                     <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
@@ -11,6 +11,78 @@
                     <Shadow shadow-offset-x="0" shadow-offset-y="0" shadow-corner-radius="45" shadow-size="-5" shadow-color="#00000026" name="MessageItemNewShadow" class="message-item__new-shadow">
                         <ui:Label tabindex="-1" text="NEW" display-tooltip-when-elided="true" name="MessageItemNew" class="message-item__new" style="border-bottom-left-radius: 45px; width: 180px; height: 60px;" />
                     </Shadow>
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
+                </ui:VisualElement>
+            </Shadow>
+            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
+                <ui:VisualElement name="MessageItem" class="message-item">
+                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
+                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
                 </ui:VisualElement>
             </Shadow>
             <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">

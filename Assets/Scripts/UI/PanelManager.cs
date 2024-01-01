@@ -9,7 +9,8 @@ public class PanelManager : MonoBehaviour
     private TemplateContainer advicePage;
     private TemplateContainer adviceTopicsPage;
     private TemplateContainer adviceTopicPage;
-
+    private VisualElement homeContainer;
+    private TemplateContainer activityTemplate;
     private VisualElement bottomMenu;
 
     private List<VisualElement> bottomMenuBtns;
@@ -21,7 +22,8 @@ public class PanelManager : MonoBehaviour
     private Button messageBtn;
     private Button profileBtn;
     private Button closeAdviceTopicBtn;
-
+    private Button rationBtn;
+    private Button activityBtn;
 
     public GameObject scanPageObject;
     public GameObject messagePageObject;
@@ -53,11 +55,11 @@ public class PanelManager : MonoBehaviour
         advicePage = mainRoot.Q<TemplateContainer>("AdvicePage");
         adviceTopicsPage = mainRoot.Q<TemplateContainer>("AdviceTopicsPage");
         adviceTopicPage = mainRoot.Q<TemplateContainer>("AdviceTopicPage");
+        homeContainer = homePage.Q<VisualElement>("HomeContainer");
+        activityTemplate = homePage.Q<TemplateContainer>("ActivityTemplate");
 
 
         bottomMenu = mainRoot.Q<TemplateContainer>("BottomMenu");
-
-
         bottomMenuBtns = bottomMenu.Query<VisualElement>(className: "menu__item").ToList();
 
         homeBtn = bottomMenu.Q<VisualElement>("home");
@@ -65,15 +67,19 @@ public class PanelManager : MonoBehaviour
         adviceBtn = bottomMenu.Q<VisualElement>("advices");
         profileBtn = mainRoot.Q<Button>("ProfileBtn");
         messageBtn = mainRoot.Q<Button>("MessageBtn");
+        rationBtn = homePage.Q<Button>("RationBtn");
+        activityBtn = homePage.Q<Button>("ActivityBtn");
         closeAdviceTopicBtn = adviceTopicPage.Q<Button>("CloseBtn");
 
 
         homeBtn.RegisterCallback<ClickEvent>(OnHomeBtnClick);
         scanBtn.RegisterCallback<ClickEvent>(OnScanBtnClick);
         adviceBtn.RegisterCallback<ClickEvent>(OnAdviceBtnClick);
-        profileBtn.RegisterCallback<ClickEvent>(OpenProfilePage);
-        messageBtn.RegisterCallback<ClickEvent>(OpenMessagePage);
-        closeAdviceTopicBtn.RegisterCallback<ClickEvent>(CloseAdviceTopicPage);
+        profileBtn.clicked += OpenProfilePage;
+        messageBtn.clicked += OpenMessagePage;
+        rationBtn.clicked += OpenRationPanel;
+        activityBtn.clicked += OpenActivityPanel;
+        closeAdviceTopicBtn.clicked += CloseAdviceTopicPage;
 
 
         AttachProductPanelToProduct();
@@ -130,13 +136,13 @@ public class PanelManager : MonoBehaviour
         advicePage.style.display = DisplayStyle.Flex;
     }
 
-    private void OpenProfilePage(ClickEvent evt)
+    private void OpenProfilePage()
     {
         mainRoot.style.display = DisplayStyle.None;
         profileRoot.style.display = DisplayStyle.Flex;
     }
 
-    private void OpenMessagePage(ClickEvent evt)
+    private void OpenMessagePage()
     {
         mainRoot.style.display = DisplayStyle.None;
         messageRoot.style.display = DisplayStyle.Flex;
@@ -153,10 +159,26 @@ public class PanelManager : MonoBehaviour
         adviceTopicsPage.style.display = DisplayStyle.None;
     }
 
-    private void CloseAdviceTopicPage(ClickEvent evt)
+    private void CloseAdviceTopicPage()
     {
         adviceTopicPage.style.display = DisplayStyle.None;
         adviceTopicsPage.style.display = DisplayStyle.Flex;
+    }
+
+    private void OpenRationPanel()
+    {
+        rationBtn.AddToClassList("active");
+        activityBtn.RemoveFromClassList("active");
+        homeContainer.style.display = DisplayStyle.Flex;
+        activityTemplate.style.display = DisplayStyle.None;
+    }
+
+    private void OpenActivityPanel()
+    {
+        rationBtn.RemoveFromClassList("active");
+        activityBtn.AddToClassList("active");
+        homeContainer.style.display = DisplayStyle.None;
+        activityTemplate.style.display = DisplayStyle.Flex;
     }
 
 }

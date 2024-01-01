@@ -40,7 +40,7 @@
         <Shadow name="ActivityHistoryShadow" class="shadow-45" style="margin-bottom: 30px;">
             <ui:VisualElement name="ActivityHistory" class="wrapper" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; padding-right: 60px; padding-left: 60px; flex-shrink: 1;">
                 <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="title" />
-                <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" style="visibility: visible; display: flex;">
+                <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" style="visibility: visible; display: flex;">
                     <ui:VisualElement name="HistoryContainer">
                         <ui:VisualElement name="HistoryActivityItem" class="history-activity__item">
                             <ui:VisualElement name="HistoryActivityItemImage" class="history-activity__item-image" />
