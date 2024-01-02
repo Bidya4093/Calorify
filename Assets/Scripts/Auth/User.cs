@@ -18,7 +18,7 @@ enum ActivityType
     Often
 }
 
-public class User : MonoBehaviour
+public class User
 {
     // Дані користувача
     public string username;

@@ -115,7 +115,7 @@ public class FirebaseManager : MonoBehaviour
             firebaseUser = LoginTask.Result.User;
             Debug.LogFormat("User signed in successfully: {0} ({1})", firebaseUser.DisplayName, firebaseUser.Email);
             warningLoginText.text = "";
-            SceneManager.LoadScene("MainScreen");
+            SceneManager.LoadScene("MainScreenUIToolkit");
 
             //yield return new WaitForSeconds(2);
             //StartCoroutine(UpdateUsernameDatabase("Updated username"));
@@ -202,7 +202,7 @@ public class FirebaseManager : MonoBehaviour
                         //Now return to login screen
                         warningRegisterText.text = "";
                         CreateUser();
-                        SceneManager.LoadScene("MainScreen");
+                        SceneManager.LoadScene("MainScreenUIToolkit");
                     }
                 }
             }

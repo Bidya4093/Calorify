@@ -53,8 +53,8 @@ public class PanelManager : MonoBehaviour
         homePage = mainRoot.Q<TemplateContainer>("HomePage");
         scanPage = mainRoot.Q<TemplateContainer>("ScanPage");
         advicePage = mainRoot.Q<TemplateContainer>("AdvicePage");
-        adviceTopicsPage = mainRoot.Q<TemplateContainer>("AdviceTopicsPage");
-        adviceTopicPage = mainRoot.Q<TemplateContainer>("AdviceTopicPage");
+        adviceTopicsPage = advicePage.Q<TemplateContainer>("AdviceTopicsPage");
+        adviceTopicPage = advicePage.Q<TemplateContainer>("AdviceTopicPage");
         homeContainer = homePage.Q<VisualElement>("HomeContainer");
         activityTemplate = homePage.Q<TemplateContainer>("ActivityTemplate");
 

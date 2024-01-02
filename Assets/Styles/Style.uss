@@ -314,3 +314,24 @@
 .personal-data__container {
     margin-bottom: 0;
 }
+
+.circle {
+}
+
+.circle-outer {
+    --circle-line-width: 75;
+    --circle-color: rgb(162, 185, 113);
+}
+
+.circle-middle {
+    --circle-line-width: 50;
+    --circle-color: rgb(162, 185, 113);
+}
+
+.circle-inner {
+    --circle-line-width: 25;
+    --circle-color: rgb(255, 255, 255);
+}
+
+.animation-label {
+}

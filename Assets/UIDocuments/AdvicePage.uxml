@@ -1,6 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="AdviceTopicPage" src="project://database/Assets/UIDocuments/AdviceTopicPage.uxml?fileID=9197481963319205126&amp;guid=f8dee475fb5c59e4d8001770b31de475&amp;type=3#AdvicePage" />
-    <ui:Template name="AdviceTopicsPage" src="project://database/Assets/UIDocuments/AdviceTopicsPage.uxml?fileID=9197481963319205126&amp;guid=a67eebd0b4484be4e8345152a8a528c0&amp;type=3#AdviceTopicsPage" />
+    <ui:Template name="AdviceTopicPage" src="project://database/Assets/UIDocuments/AdviceTopicsPage.uxml?fileID=9197481963319205126&amp;guid=f8dee475fb5c59e4d8001770b31de475&amp;type=3#AdviceTopicsPage" />
     <ui:Instance template="AdviceTopicPage" name="AdviceTopicsPage" />
-    <ui:Instance template="AdviceTopicsPage" name="AdviceTopicPage" style="display: none;" />
+    <ui:Instance template="AdviceTopicPage" name="AdviceTopicPage" style="display: none;" />
 </ui:UXML>

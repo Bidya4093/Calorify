@@ -1,21 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public float delayTime;
     public string nameOfScene;
+    public PlayableDirector director;
 
     void Start()
     {
-        StartCoroutine(LoadSceneAfterDelay());
+        director.stopped += LoadSceneAsync;
     }
 
-    IEnumerator LoadSceneAfterDelay()
+    void LoadSceneAsync(PlayableDirector aDirector)
     {
-        yield return new WaitForSeconds(delayTime);
-        SceneManager.LoadScene(nameOfScene);
+        if (director == aDirector) {
+            StartCoroutine(LoadSceneAsync());
+        }
+    }
+
+    IEnumerator LoadSceneAsync()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nameOfScene);
+        while (!asyncLoad.isDone)
+        {
+            Debug.Log(asyncLoad.progress);
+            yield return null;
+        }
     }
 }

@@ -24,3 +24,27 @@
     flex-grow: 1;
     margin-bottom: 72px;
 }
+
+.advice__row-scroll {
+}
+
+.advice_row-scroll-container {
+    flex-direction: row;
+    padding-right: 45px;
+    padding-left: 45px;
+}
+
+.advice__articles-item-last {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.advice__head {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 45px;
+    margin-right: 45px;
+    margin-left: 45px;
+}
