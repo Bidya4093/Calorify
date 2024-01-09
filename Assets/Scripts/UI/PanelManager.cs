@@ -8,7 +8,7 @@ public class PanelManager : MonoBehaviour
     private TemplateContainer scanPage;
     private TemplateContainer advicePage;
     private TemplateContainer adviceTopicsPage;
-    private TemplateContainer adviceTopicPage;
+    private VisualElement adviceTopicPage;
     private VisualElement homeContainer;
     private TemplateContainer activityTemplate;
     private VisualElement bottomMenu;
@@ -54,7 +54,7 @@ public class PanelManager : MonoBehaviour
         scanPage = mainRoot.Q<TemplateContainer>("ScanPage");
         advicePage = mainRoot.Q<TemplateContainer>("AdvicePage");
         adviceTopicsPage = advicePage.Q<TemplateContainer>("AdviceTopicsPage");
-        adviceTopicPage = advicePage.Q<TemplateContainer>("AdviceTopicPage");
+        adviceTopicPage = advicePage.Q<VisualElement>("AdviceTopicPage");
         homeContainer = homePage.Q<VisualElement>("HomeContainer");
         activityTemplate = homePage.Q<TemplateContainer>("ActivityTemplate");
 

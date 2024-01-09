@@ -32,7 +32,7 @@ public class ProfileUI : MonoBehaviour
 
     public IEnumerator LoadUserData()
     {
-        Task<DataSnapshot> DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();
+        Task<DataSnapshot> DBTask = FirebaseManager.DBreference.Child("users").Child(User.UserId).GetValueAsync();
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
         Debug.Log(DBTask.Result.GetRawJsonValue());

@@ -1,0 +1,254 @@
+.circle-outer {
+    --circle-line-width: 50;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-bounce;
+}
+
+.circle-middle {
+    --circle-line-width: 32;
+}
+
+.circle-inner {
+    --circle-line-width: 17;
+}
+
+.welcome {
+    flex-grow: 1;
+    background-color: rgb(86, 110, 86);
+    align-items: center;
+    padding-top: 140px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&guid=adb52135dcca16c44b46cb4ddce45978&type=3#Ubuntu-Regular');
+}
+
+.welcome__title {
+    font-size: 108px;
+    white-space: normal;
+    -unity-text-align: upper-center;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&guid=adb52135dcca16c44b46cb4ddce45978&type=3#Ubuntu-Regular');
+    color: rgb(255, 255, 255);
+    margin-bottom: 540px;
+}
+
+.auth-btn {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    background-color: rgba(217, 217, 217, 0.7);
+    color: rgb(86, 110, 86);
+    width: 800px;
+    height: 125px;
+    font-size: 72px;
+}
+
+.sign-in-btn {
+    width: 800px;
+    height: 125px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    font-size: 72px;
+}
+
+.auth-container {
+    flex-grow: 1;
+    background-color: rgb(86, 110, 86);
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&guid=adb52135dcca16c44b46cb4ddce45978&type=3#Ubuntu-Regular');
+    color: rgb(255, 255, 255);
+    padding-bottom: 230px;
+    padding-top: 120px;
+    justify-content: space-between;
+    font-size: 60px;
+}
+
+.auth-input-2 {
+    margin-top: 0;
+    margin-right: 110px;
+    margin-bottom: 0;
+    margin-left: 110px;
+    height: 135px;
+    flex-grow: 1;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: rgba(162, 185, 113, 0.5);
+    padding-right: 45px;
+    padding-left: 45px;
+}
+
+.auth-input-2 .unity-text-field__input {
+    color: rgb(255, 255, 255);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.sign-up-title {
+    flex-grow: 1;
+    -unity-text-align: middle-center;
+    font-size: 96px;
+}
+
+.sign-up-back-btn {
+    background-image: resource('Images/back-icon');
+    width: 90px;
+    height: 80px;
+    -unity-background-scale-mode: scale-to-fit;
+    margin-left: 60px;
+    margin-bottom: 60px;
+}
+
+.auth-radio-group {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.auth-radio-group .unity-radio-button__checkmark-background {
+    padding-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    flex-grow: 1;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    height: 100%;
+    background-color: rgba(162, 185, 113, 0.5);
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.auth-radio-group .unity-radio-button:checked .unity-radio-button__checkmark-background {
+    background-color: rgba(162, 185, 113, 0.2);
+}
+
+.auth-radio-group .unity-radio-button:checked .unity-radio-button__checkmark {
+    visibility: hidden;
+}
+
+.auth-radio-group .unity-radio-button {
+    height: 235px;
+    margin-bottom: 60px;
+    margin-right: 50px;
+    margin-left: 50px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.auth-radio-group .unity-radio-button .unity-label {
+    position: absolute;
+    -unity-text-align: middle-left;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 72px;
+    border-left-width: 60px;
+}
+
+.auth-input {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-top: 0;
+    margin-right: 50px;
+    margin-bottom: 0;
+    margin-left: 50px;
+    font-size: 72px;
+}
+
+.auth-input .unity-text-field__input {
+    background-color: rgba(162, 185, 113, 0.5);
+    height: 245px;
+    -unity-text-align: middle-center;
+    opacity: 1;
+    padding-top: 0;
+    padding-right: 130px;
+    padding-bottom: 0;
+    padding-left: 130px;
+    color: rgb(255, 255, 255);
+}
+
+.auth-input-line {
+    flex-grow: 1;
+    position: absolute;
+    height: 6px;
+    background-color: rgb(255, 255, 255);
+    bottom: 75px;
+    left: 110px;
+    right: 110px;
+}
+
+.auth-input-margin {
+    margin-left: 190px;
+    margin-right: 190px;
+}
+
+.auth-input .unity-float-field__input {
+    background-color: rgba(162, 185, 113, 0.5);
+    height: 245px;
+    -unity-text-align: middle-center;
+    opacity: 1;
+    padding-top: 0;
+    padding-right: 130px;
+    padding-bottom: 0;
+    padding-left: 130px;
+    color: rgb(255, 255, 255);
+}
+
+.auth-input .unity-integer-field__input {
+    background-color: rgba(162, 185, 113, 0.5);
+    height: 245px;
+    -unity-text-align: middle-center;
+    opacity: 1;
+    padding-top: 0;
+    padding-right: 130px;
+    padding-bottom: 0;
+    padding-left: 130px;
+    color: rgb(255, 255, 255);
+}
