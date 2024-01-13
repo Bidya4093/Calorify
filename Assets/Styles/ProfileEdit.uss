@@ -1,0 +1,176 @@
+.sign-out-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 75px;
+    height: 75px;
+    background-image: resource('Images/exit-icon');
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+}
+
+.change-image-btn {
+    font-size: 40px;
+    padding-right: 0;
+    width: 500px;
+}
+
+.personal-data {
+}
+
+.personal-data__title {
+}
+
+.option__input {
+    font-size: 48px;
+    margin: 0;
+    height: 68px;
+}
+
+.option__input .unity-text-field__input {
+    padding: 0;
+    margin: 0;
+    border-width: 0;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.option__input .unity-text-element {
+    padding: 10px;
+}
+
+.option__input:focus .unity-text-field__input {
+    background-color: rgb(217, 217, 217);
+}
+
+.user-parameters__input {
+    font-size: 52px;
+    -unity-text-align: middle-left;
+    height: 80px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.user-parameters__input-postfix {
+    font-size: 40px;
+    color: rgb(86, 110, 86);
+    width: 100px;
+    margin-left: 20px;
+}
+
+.user-parameters__input .unity-float-field__input {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 4px;
+    border-left-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    flex-grow: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    width: 220px;
+    flex-basis: auto;
+    -unity-text-align: middle-center;
+    border-left-color: rgb(86, 110, 86);
+    border-right-color: rgb(86, 110, 86);
+    border-top-color: rgb(86, 110, 86);
+    border-bottom-color: rgb(86, 110, 86);
+    color: rgb(85, 85, 85);
+}
+
+.user-parameters__input .unity-text-element {
+    width: 220px;
+}
+
+.user-parameters__input-container {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 45px;
+    -unity-text-align: lower-left;
+    margin-right: 25px;
+}
+
+.user-parameters__radio-group {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-parameters__radio-group .unity-radio-button__checkmark-background {
+    padding-top: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    flex-grow: 1;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    height: 100%;
+    background-color: rgb(217, 217, 217);
+}
+
+.user-parameters__radio-group .unity-radio-button:checked .unity-radio-button__checkmark-background {
+    padding-top: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    flex-grow: 1;
+    border-top-width: 6px;
+    border-right-width: 6px;
+    border-bottom-width: 6px;
+    border-left-width: 6px;
+    height: 100%;
+    background-color: rgb(217, 217, 217);
+    border-left-color: rgb(86, 110, 86);
+    border-right-color: rgb(86, 110, 86);
+    border-top-color: rgb(86, 110, 86);
+    border-bottom-color: rgb(86, 110, 86);
+}
+
+.user-parameters__radio-group .unity-radio-button:checked .unity-radio-button__checkmark {
+    visibility: hidden;
+}
+
+.user-parameters__radio-group .unity-radio-button {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+    width: 140px;
+    height: 80px;
+}
+
+.user-parameters__radio-group .unity-radio-button .unity-label {
+    position: absolute;
+    -unity-text-align: middle-center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 40px;
+}
+
+.user-parameters__radio-group .unity-radio-button-group__container {
+    flex-direction: row;
+}
+
+.user-parameters__radio-group > .unity-base-field__input {
+    flex-basis: auto;
+    flex-grow: 0;
+}
+
+.profile-edit__save-change-btn {
+    padding-right: 0;
+    width: 500px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&guid=adb52135dcca16c44b46cb4ddce45978&type=3#Ubuntu-Regular');
+}

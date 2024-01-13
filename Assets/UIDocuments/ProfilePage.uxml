@@ -1,0 +1,92 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <Style src="project://database/Assets/Styles/Profile.uss?fileID=7433441132597879392&amp;guid=9c2afcdb02c6a554c82b5728c434cb85&amp;type=3#Profile" />
+    <ui:VisualElement name="ContentContainer" class="content-container header-margin">
+        <ui:VisualElement name="ProfileCard" class="profile-card">
+            <ui:VisualElement name="ProfileCardDetails" class="profile-card__details">
+                <ui:VisualElement name="ProfileCardImage" class="profile-card__image" />
+                <ui:VisualElement name="ProfileCardInner" class="profile-card__inner">
+                    <ui:VisualElement name="ProfileCardTop" class="profile-card__top">
+                        <ui:Label tabindex="-1" text="Гілета Юлія" display-tooltip-when-elided="true" name="ProfileCardName" class="profile-card__name" />
+                        <ui:Button display-tooltip-when-elided="true" name="ProfileCardEditBtn" class="btn-icon profile-card__edit-btn" />
+                    </ui:VisualElement>
+                    <ui:Label tabindex="-1" text="hileta.yulia@gmail.com" display-tooltip-when-elided="true" name="ProfileCardEmail" class="profile-card__email" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ProfileCardQuoteContainer" class="profile-card__quote-container">
+                <ui:Label tabindex="-1" text="“До біса обставинии, я створюю можливості” " display-tooltip-when-elided="true" name="ProfileCardQuote" class="profile-card__quote" />
+                <ui:Label tabindex="-1" text="Брюс Лі" display-tooltip-when-elided="true" name="ProfileCardAuthor" class="profile-card__author" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <Shadow name="SettingsShadow" class="shadow-45" style="margin-bottom: 45px;">
+            <ui:VisualElement name="Settings" class="profile-wrapper">
+                <ui:Label tabindex="-1" text="Налаштування додатка" display-tooltip-when-elided="true" name="SettingsTitle" class="settings__title profile-title" />
+                <ui:VisualElement name="SettingsOptions" class="settings__options" style="border-left-color: rgb(217, 217, 217); border-right-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217); border-bottom-width: 1px;">
+                    <ui:VisualElement name="SettingsGoal" class="option">
+                        <ui:VisualElement name="SettingsGoalIconWrapper" class="option__icon-wrapper">
+                            <ui:VisualElement name="SettingsGoalIcon" class="option__icon" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="SettingGoalContainer" class="option__container">
+                            <ui:Label tabindex="-1" text="Мета" display-tooltip-when-elided="true" name="SettingsGoalTitle" class="option__title" />
+                            <ui:Label tabindex="-1" text="Підтримка" display-tooltip-when-elided="true" name="SettingsGoalValue" class="option__value" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="SettingsThemeMode" class="option">
+                        <ui:VisualElement name="SettingsThemeModeIconWrapper" class="option__icon-wrapper">
+                            <ui:VisualElement name="SettingsThemeModeIcon" class="option__icon" style="background-image: resource(&apos;Images/theme-mode-icon&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="SettingsThemeModeContainer" class="option__container">
+                            <ui:Label tabindex="-1" text="Тема" display-tooltip-when-elided="true" name="SettingsThemeModeTitle" class="option__title" />
+                            <ui:Label tabindex="-1" text="Світла" display-tooltip-when-elided="true" name="SettingsThemeModeValue" class="option__value" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="SettingsLanguage" class="option">
+                        <ui:VisualElement name="SettingsLanguageIconWrapper" class="option__icon-wrapper">
+                            <ui:VisualElement name="SettingsLanguageIcon" class="option__icon" style="background-image: resource(&apos;Images/language-icon&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="SettingsLanguageContainer" class="option__container">
+                            <ui:Label tabindex="-1" text="Мова" display-tooltip-when-elided="true" name="SettingsLanguageTitle" class="option__title" />
+                            <ui:Label tabindex="-1" text="Українська" display-tooltip-when-elided="true" name="SettingsLanguageValue" class="option__value" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="SettingsMeasurement" class="option">
+                        <ui:VisualElement name="SettingsMeasurementIconWrapper" class="option__icon-wrapper">
+                            <ui:VisualElement name="SettingsMeasurementIcon" class="option__icon" style="background-image: resource(&apos;Images/measurement-icon&apos;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="SettingsMeasurementContainer" class="option__container">
+                            <ui:Label tabindex="-1" text="Одиниці вимірування" display-tooltip-when-elided="true" name="SettingsMeasurementTitle" class="option__title" />
+                            <ui:Label tabindex="-1" text="Метри, кілограми" display-tooltip-when-elided="true" name="SettingsMeasurementValue" class="option__value" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="SettingsChangePassword" class="option" style="margin-bottom: 0;">
+                        <ui:VisualElement name="SettingsMeasurementIconWrapper" class="option__icon-wrapper">
+                            <ui:VisualElement name="SettingsMeasurementIcon" class="option__icon" style="background-image: resource(&apos;Images/change-password-icon&apos;); -unity-background-image-tint-color: rgb(86, 110, 86);" />
+                        </ui:VisualElement>
+                        <ui:Label tabindex="-1" text="Змінити пароль" display-tooltip-when-elided="true" name="SettingsMeasurementValue" class="option__value" style="-unity-text-align: middle-left;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="SettingsMessage" style="flex-grow: 1; margin-top: 30px; margin-right: 30px;">
+                    <ui:Toggle label="Звук сповіщень:" name="SettingsSoundToggle" value="true" class="settings__toggle settings__toggle--active">
+                        <ui:VisualElement name="SettingsToggleCheckmark" class="settings__toggle-checkmark" />
+                    </ui:Toggle>
+                    <ui:Toggle label="Вібрація сповіщень:" name="SettingsVibrationToggle" class="settings__toggle" style="margin-bottom: 0;">
+                        <ui:VisualElement name="SettingsToggleCheckmark" class="settings__toggle-checkmark" />
+                    </ui:Toggle>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </Shadow>
+        <ui:VisualElement name="Contacts" class="contacts">
+            <ui:VisualElement name="ContactsSupportBtn" class="contacts__icon" style="background-image: resource(&apos;Images/support-icon&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
+            <ui:VisualElement name="ContactsPrivacyPolicyBtn" class="contacts__icon" style="background-image: resource(&apos;Images/privacy-policy-icon&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
+            <ui:VisualElement name="ContactsEmailBtn" class="contacts__icon" style="background-image: resource(&apos;Images/message-icon&apos;);" />
+            <ui:VisualElement name="ContactsTelegramBtn" class="contacts__icon" style="background-image: resource(&apos;Images/telegram-icon&apos;);" />
+            <ui:VisualElement name="ContactsInstagramBtn" class="contacts__icon" style="background-image: resource(&apos;Images/instagram-icon&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <Shadow name="HeaderShadow" shadow-color="#000000FF" class="shadow-45" style="overflow: visible; position: absolute; top: 0; right: 0; left: 0; flex-grow: 1; width: 100%;">
+        <ui:VisualElement name="Header" class="header" style="text-shadow: 0 0 0 rgb(0, 0, 0); flex-grow: 1;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" name="CloseBtn" class="btn-icon close-btn" />
+            <ui:Label tabindex="-1" text="Акаунт та налаштування" display-tooltip-when-elided="true" name="HeaderTitle" class="header__title" />
+        </ui:VisualElement>
+    </Shadow>
+</ui:UXML>

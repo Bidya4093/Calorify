@@ -1,0 +1,161 @@
+.profile-card {
+    height: 570px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-image: resource('Images/profile-card');
+    width: 100%;
+    margin-bottom: 30px;
+    padding-top: 45px;
+    padding-right: 45px;
+    padding-bottom: 45px;
+    padding-left: 45px;
+    color: rgb(255, 255, 255);
+}
+
+.profile-card__details {
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.profile-card__quote-container {
+    flex-grow: 1;
+    max-width: 440px;
+    -unity-font-style: italic;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Light.ttf?fileID=12800000&guid=83e473fdc1f9c154bbb06385ccdbb0b0&type=3#Ubuntu-Light');
+}
+
+.profile-card__image {
+    background-image: resource('Images/profile-image');
+    -unity-background-scale-mode: scale-to-fit;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    width: 240px;
+    height: 240px;
+    margin-right: 45px;
+}
+
+.profile-card__inner {
+    flex-grow: 1;
+}
+
+.profile-card__top {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.profile-card__name {
+    font-size: 54px;
+}
+
+.profile-card__edit-btn {
+    background-image: resource('Images/edit-icon');
+    -unity-background-scale-mode: scale-to-fit;
+    width: 52px;
+    height: 72px;
+}
+
+.profile-card__email {
+    margin-left: 25px;
+    font-size: 42px;
+}
+
+.profile-card__quote {
+    flex-grow: 1;
+    -unity-text-align: middle-center;
+    font-size: 40px;
+    white-space: normal;
+}
+
+.profile-card__author {
+    -unity-text-align: upper-right;
+    font-size: 40px;
+}
+
+.settings__title {
+}
+
+.settings__options {
+    flex-grow: 1;
+    padding-bottom: 35px;
+}
+
+.settings__option {
+    flex-direction: row;
+    margin-bottom: 60px;
+}
+
+.settings__toggle {
+    margin: 0 0 45px 0;
+    height: 100px;
+    font-size: 46px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.settings__toggle .unity-label {
+}
+
+.settings__toggle-checkmark {
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    width: 68px;
+    height: 68px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    transition-property: translate, right;
+    transition-duration: 150ms, 150ms;
+    transition-timing-function: ease-out, ease-out;
+    transition-delay: 0s, 0s;
+    right: 92px;
+}
+
+.settings__toggle .unity-toggle__input {
+    flex-grow: 0;
+    flex-basis: auto;
+}
+
+.settings__toggle .unity-toggle__checkmark {
+    width: 170px;
+    height: 84px;
+    border-width: 0;
+    border-radius: 50px;
+    background-color: rgb(119, 119, 119);
+    background-image: none;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+}
+
+.settings__toggle:checked .unity-toggle__checkmark {
+    background-color: rgb(86, 110, 86);
+}
+
+.settings__toggle:checked .settings__toggle-checkmark {
+    transition-property: right, translate;
+    transition-duration: 150ms, 150ms;
+    transition-timing-function: ease-out, ease-out;
+    position: absolute;
+    right: 10px;
+}
+
+.contacts {
+    padding-right: 60px;
+    padding-left: 60px;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.contacts__icon {
+    -unity-background-scale-mode: scale-to-fit;
+    flex-grow: 1;
+    -unity-background-image-tint-color: rgb(85, 85, 85);
+}

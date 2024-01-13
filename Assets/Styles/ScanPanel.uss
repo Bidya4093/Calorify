@@ -1,0 +1,105 @@
+.scan-panel__weight-input {
+    margin: 0 0 60px 0;
+    flex-grow: 1;
+    align-items: center;
+    font-size: 54px;
+}
+
+.scan-panel__weight-input .unity-text-element {
+    padding: 0;
+    margin: 0;
+}
+
+.scan-panel__weight-input .unity-base-field__input {
+    margin: 0;
+    padding: 0;
+    max-width: 270px;
+    height: 90px;
+    -unity-text-align: middle-center;
+    font-size: 60px;
+    border-width: 0 0 3px 0;
+    border-color: rgb(86, 110, 86);
+    background-color: rgb(225, 225, 225);
+    border-radius: 15px;
+}
+
+.scan-panel__weight-input .unity-label {
+    min-width: auto;
+    margin-right: 20px;
+}
+
+.scan-panel__info-item-progress-bar {
+    width: 600px;
+    flex-direction: column;
+    -unity-text-align: upper-center;
+    margin: 0;
+}
+
+.scan-panel__info-item-progress-bar .unity-progress-bar__background {
+    border-radius: 20px;
+    margin: 0;
+    border-width: 3px;
+    border-color: rgba(85, 85, 85, 0.33);
+    background-color: transparent;
+}
+
+.scan-panel__info-item-progress-bar .unity-progress-bar__container {
+    min-height: 36px;
+}
+
+.scan-panel__info-item-progress-bar .unity-progress-bar__progress {
+    margin: 0;
+    border-radius: 16px;
+}
+
+.progress-bar__additional {
+    flex-grow: 1;
+    height: 30px;
+    position: absolute;
+    width: 30%;
+    border-radius: 16px;
+    background-color: rgba(28, 33, 33, 0.65);
+    margin: 3px;
+}
+
+.progress-bar__carbs .unity-progress-bar__progress {
+    background-color: rgb(110, 167, 17);
+}
+
+.progress-bar__proteins .unity-progress-bar__progress {
+    background-color: rgb(238, 125, 20);
+}
+
+.progress-bar__fats .unity-progress-bar__progress {
+    background-color: rgb(85, 95, 184);
+}
+
+.progress-bar__calories .unity-progress-bar__progress {
+    background-color: rgb(99, 123, 99);
+}
+
+.progress-bar__carbs .progress-bar__additional {
+    background-color: rgba(110, 167, 17, 0.5);
+}
+
+.progress-bar__proteins .progress-bar__additional {
+    background-color: rgba(238, 125, 20, 0.5);
+}
+
+.progress-bar__fats .progress-bar__additional {
+    background-color: rgba(85, 95, 184, 0.5);
+}
+
+.progress-bar__calories .progress-bar__additional {
+    background-color: rgba(99, 123, 99, 0.5);
+}
+
+.scan-pane__weight-input-postfix {
+    font-size: 42px;
+    align-self: flex-end;
+    color: rgb(85, 85, 85);
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}

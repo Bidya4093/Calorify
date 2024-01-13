@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <Shadow name="HeaderShadow" shadow-color="#000000FF" class="shadow-45" style="overflow: visible; position: absolute; top: 0; right: 0; left: 0; flex-grow: 1; width: 100%;">
+        <ui:VisualElement name="Header" class="header" style="text-shadow: 0 0 0 rgb(0, 0, 0); flex-grow: 1;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" name="CloseBtn" class="btn-icon close-btn" />
+            <ui:Label tabindex="-1" text="Сповіщення" display-tooltip-when-elided="true" name="HeaderTitle" class="header__title" />
+        </ui:VisualElement>
+    </Shadow>
+</ui:UXML>

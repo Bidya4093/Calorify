@@ -1,0 +1,39 @@
+.message-placeholder {
+    flex-grow: 1;
+    font-size: 36px;
+    color: rgb(128, 128, 128);
+    justify-content: center;
+    align-items: center;
+}
+
+.message-placeholder__title {
+    font-size: 72px;
+    margin-bottom: 45px;
+}
+
+.message-placeholder__text {
+    width: 500px;
+    white-space: normal;
+    -unity-text-align: upper-center;
+}
+
+.message-item__shadow {
+    margin-bottom: 30px;
+    margin-left: 45px;
+    margin-right: 45px;
+}
+
+.message-item__first {
+    margin-top: 45px;
+}
+
+.message-item__new-shadow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 60px;
+    width: 180px;
+    --shadow-corner-radius: 45;
+    --shadow-size: -5;
+    --shadow-color: rgba(0,0,0,0.15);
+}

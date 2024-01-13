@@ -1,0 +1,68 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
+    <Style src="project://database/Assets/Styles/ProductPanel.uss?fileID=7433441132597879392&amp;guid=0940b9ab884c7cb409527aca10c87212&amp;type=3#ProductPanel" />
+    <Style src="project://database/Assets/Styles/ScanPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ScanPanel" />
+    <ui:VisualElement name="ProductPanelBackground" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.37);" />
+    <ui:VisualElement name="ProductPanelContainer" class="product-panel__container">
+        <ui:VisualElement name="ProductPanelTop" class="product-panel__top">
+            <Shadow name="HistoryItemImageShadow" shadow-color="#00000033" shadow-offset-y="10" shadow-corner-radius="45" shadow-size="-15" class="history-item__image-shadow">
+                <ui:VisualElement name="HistoryItemImage" class="history-item__image">
+                    <ui:VisualElement name="HistoryItemScore" class="nutri-score-badge nutri-score-badge-c history-item__score">
+                        <ui:Label tabindex="-1" text="С" display-tooltip-when-elided="true" class="history-item__score-text" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; text-overflow: clip; width: 46px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </Shadow>
+            <ui:VisualElement name="ProductPanelTopContainer" class="history-item__container" style="flex-grow: 1; padding-bottom: 0; padding-top: 25px; margin-left: 55px;">
+                <ui:VisualElement name="ProductPanelHeader" class="history-item__top" style="margin-bottom: 30px;">
+                    <ui:Label tabindex="-1" text="Яєчня" display-tooltip-when-elided="true" name="ProductPanelTitle" class="history-item__title" />
+                    <ui:Button display-tooltip-when-elided="true" name="ProductPanelDeleteBtn" select-line-by-triple-click="true" class="btn-icon history-item__edit-btn" style="width: 72px; -unity-background-scale-mode: scale-to-fit; background-image: resource(&apos;Images/trash-icon&apos;);" />
+                </ui:VisualElement>
+                <ui:Label tabindex="-1" text="14:21" display-tooltip-when-elided="true" name="ProductPanelDate" class="history-item__calories" style="font-size: 42px; color: rgb(85, 85, 85);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <Shadow name="ProductPanelMacrosShadow" class="product-panel__macros-shadow">
+            <ui:VisualElement name="ProductPanelMacros" class="product-panel__macros" style="margin-bottom: 0;">
+                <ui:Label tabindex="-1" text="Поживна цінність" display-tooltip-when-elided="true" name="MacrosTitle" class="macros__title" />
+                <ui:VisualElement name="MacrosContainer" class="macros__container">
+                    <ui:VisualElement name="MacrosItem" class="macros__item">
+                        <ui:VisualElement name="MacrosItemCircle" class="macros__item-circle" />
+                        <ui:VisualElement name="MacrosInner" class="macros__inner">
+                            <ui:Label tabindex="-1" text="Білки" display-tooltip-when-elided="true" name="MacrosName" class="macros__name" />
+                            <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 240px; justify-content: center;">
+                                <ui:Label tabindex="-1" text="13,6" display-tooltip-when-elided="true" name="MacrosValue" class="macros__value" />
+                                <ui:Label tabindex="-1" text=" г" display-tooltip-when-elided="true" name="MacrosPostfix" class="macros__postfix" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="MacrosItem" class="macros__item">
+                        <ui:VisualElement name="MacrosItemCircle" class="macros__item-circle" style="background-color: rgb(85, 95, 184);" />
+                        <ui:VisualElement name="MacrosInner" class="macros__inner">
+                            <ui:Label tabindex="-1" text="Жири" display-tooltip-when-elided="true" name="MacrosName" class="macros__name" />
+                            <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 240px; justify-content: center;">
+                                <ui:Label tabindex="-1" text="3,3" display-tooltip-when-elided="true" name="MacrosValue" class="macros__value" />
+                                <ui:Label tabindex="-1" text=" г" display-tooltip-when-elided="true" name="MacrosPostfix" class="macros__postfix" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="MacrosItem" class="macros__item" style="margin-bottom: 0;">
+                        <ui:VisualElement name="MacrosItemCircle" class="macros__item-circle" style="background-color: rgb(110, 167, 17);" />
+                        <ui:VisualElement name="MacrosInner" class="macros__inner">
+                            <ui:Label tabindex="-1" text="Вуглеводи" display-tooltip-when-elided="true" name="MacrosName" class="macros__name" />
+                            <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 240px; justify-content: center;">
+                                <ui:Label tabindex="-1" text="62,5" display-tooltip-when-elided="true" name="MacrosValue" class="macros__value" />
+                                <ui:Label tabindex="-1" text=" г" display-tooltip-when-elided="true" name="MacrosPostfix" class="macros__postfix" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </Shadow>
+        <ui:VisualElement name="ProductPanelBottom" style="align-items: center;">
+            <ui:IntegerField label="Вага:" value="350" name="ProductPanelWeightInput" placeholder-text="100" class="product-panel__weight-input">
+                <ui:Label tabindex="-1" text="гр." display-tooltip-when-elided="true" style="font-size: 42px; align-self: flex-end; color: rgb(85, 85, 85); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+            </ui:IntegerField>
+            <ui:Button text="Зберегти зміни" display-tooltip-when-elided="true" name="ProductPanelBtn" selectable="true" class="btn" style="text-overflow: ellipsis; padding-right: 0; font-size: 42px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&amp;guid=adb52135dcca16c44b46cb4ddce45978&amp;type=3#Ubuntu-Regular&apos;);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

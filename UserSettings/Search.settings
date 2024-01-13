@@ -11,7 +11,7 @@ scopes = {
 	"last_search.DE949528" = ""
 	"OpenInspectorPreview.DE949528" = "0"
 	"currentGroup.DE949528" = "all"
-	"last_search.8DF93126" = "text"
+	"last_search.8DF93126" = "Forward Renderer Data"
 	"OpenInspectorPreview.8DF93126" = "0"
 	"currentGroup.8DF93126" = null
 	"picker_window_position_offset.0B486DF2" = "11.81538;49.47693;319.7538;550.1539"
@@ -75,6 +75,10 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"Forward Renderer Data"
+	"Forward Rendere"
+	"Fo"
+	"Renderin"
 	"text"
 ]
 searchItemFavorites = [

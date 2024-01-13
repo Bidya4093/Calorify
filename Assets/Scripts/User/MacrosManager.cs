@@ -18,34 +18,40 @@ public class MacrosManager : MonoBehaviour
     static public int carbsEaten = 0;
     static public int protsEaten = 0;
 
-    public FirebaseUser User;
+    public FirebaseUser user;
     private DatabaseReference DBreference;
 
     private void Start()
     {
-        User = FirebaseManager.firebaseUser;
-        DBreference = FirebaseManager.DBreference;
+        user = FirebaseAuth.DefaultInstance.CurrentUser;
+        DBreference = FirebaseDatabase.DefaultInstance.RootReference;
         StartCoroutine(LoadUserMacrosData());
     }
 
 
-    static public void Calculate(string sex, short activity, float weight, float height, int age)
+    static public void CalculateUserNeeds()
     {
         int calories = 0;
         double activityCoefficient = 1.2f;
+        SexType sex = User.Instance.sex;
+        ActivityType activity = User.Instance.activity;
+        float weight = User.Instance.weight;
+        float height = User.Instance.height;
+        int age = User.Instance.age;
+
 
         // BMR - basal metabolic rate
-        if (sex == "female")
+        if (sex == SexType.Female)
         {
             calories = (int)(655.1 + (9.563 * weight) + (1.85 * height) - (4.676 * age));
-        } else if (sex == "male")
+        } else if (sex == SexType.Male)
         {
             calories = (int)(66.47 + (13.75 * weight) + (5.003 * height) - (6.755 * age));
         }
 
-        if (activity == (short)ActivityType.None) activityCoefficient = 1.2f;
-        else if (activity == (short)ActivityType.Regular) activityCoefficient = 1.375f;
-        else if (activity == (short)ActivityType.Often) activityCoefficient = 1.55f;
+        if (activity == ActivityType.None) activityCoefficient = 1.2f;
+        else if (activity == ActivityType.Regular) activityCoefficient = 1.375f;
+        else if (activity == ActivityType.Often) activityCoefficient = 1.55f;
 
         // AMR - active metabolic rate
         caloriesNeeded = (int)(calories * activityCoefficient);
@@ -57,7 +63,7 @@ public class MacrosManager : MonoBehaviour
 
     public IEnumerator LoadUserMacrosData()
     {
-        Task<DataSnapshot> DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();
+        Task<DataSnapshot> DBTask = DBreference.Child("users").Child(user.UserId).GetValueAsync();
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
         if (DBTask.Exception != null)

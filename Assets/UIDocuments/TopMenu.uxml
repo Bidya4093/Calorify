@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <ui:VisualElement name="TopMenu" style="flex-grow: 0; height: 120px; flex-direction: row; justify-content: space-between; margin-bottom: 30px; flex-shrink: 0;">
+        <Shadow name="ProfileBtnShadow" class="shadow-30">
+            <ui:Button display-tooltip-when-elided="true" name="ProfileBtn" enable-rich-text="false" selectable="false" class="top-menu-btn" style="background-color: rgb(255, 255, 255);">
+                <ui:VisualElement name="ProfileIcon" class="top-menu-icon" style="background-image: resource(&apos;Images/profile-icon&apos;); width: 50px;" />
+            </ui:Button>
+        </Shadow>
+        <Shadow name="HomeNavBtnShadow" class="shadow-30" style="margin-right: 24px; margin-left: 24px; flex-grow: 1;">
+            <ui:VisualElement name="HomeNavBtn" style="flex-grow: 1; border-top-left-radius: 33px; border-top-right-radius: 33px; border-bottom-right-radius: 33px; border-bottom-left-radius: 33px; background-color: rgb(217, 217, 217); flex-direction: row; padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px; font-size: 48px;">
+                <ui:Button text="Харчування" display-tooltip-when-elided="true" name="RationBtn" class="top-menu-btn active" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: auto; flex-grow: 1; flex-shrink: 1;" />
+                <ui:Button text="Активність" display-tooltip-when-elided="true" name="ActivityBtn" class="top-menu-btn" style="width: auto; flex-grow: 1; flex-shrink: 1;" />
+            </ui:VisualElement>
+        </Shadow>
+        <Shadow name="MessageBtnShadow" class="shadow-30">
+            <ui:Button display-tooltip-when-elided="true" name="MessageBtn" enable-rich-text="false" class="top-menu-btn" style="background-color: rgb(255, 255, 255);">
+                <ui:VisualElement name="MessageIcon" style="flex-grow: 0; background-image: resource(&apos;Images/message-icon&apos;); display: flex; -unity-background-scale-mode: scale-to-fit; width: 72px; height: 78px; flex-shrink: 1; -unity-background-image-tint-color: rgb(0, 0, 0);" />
+            </ui:Button>
+        </Shadow>
+    </ui:VisualElement>
+</ui:UXML>

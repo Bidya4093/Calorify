@@ -1,0 +1,356 @@
+.btn-icon {
+    height: 45px;
+    width: 45px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-scale-mode: scale-to-fit;
+    flex-grow: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-icon-reverse {
+    -unity-background-image-tint-color: rgb(86, 110, 86);
+}
+
+.progress-bar-divider {
+    flex-grow: 0;
+    width: 6px;
+    background-color: rgb(240, 240, 240);
+}
+
+.btn {
+    background-color: rgb(86, 110, 86);
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 40px;
+    padding-bottom: 0;
+    padding-left: 0;
+    width: 450px;
+    height: 110px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    color: rgb(255, 255, 255);
+    font-size: 48px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.btn-reverse {
+    border-top-width: 6px;
+    border-right-width: 6px;
+    border-bottom-width: 6px;
+    border-left-width: 6px;
+    border-left-color: rgb(86, 110, 86);
+    border-right-color: rgb(86, 110, 86);
+    border-top-color: rgb(86, 110, 86);
+    border-bottom-color: rgb(86, 110, 86);
+    background-color: rgba(86, 110, 86, 0);
+    color: rgb(86, 110, 86);
+    padding-right: 36px;
+}
+
+.title-md {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    font-size: 60px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
+}
+
+.wrapper {
+    margin-top: 0;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    margin-bottom: 30px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+    flex-shrink: 0;
+}
+
+.nutri-score-badge {
+    font-size: 48px;
+    width: 72px;
+    height: 72px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+}
+
+.nutri-score-badge-a {
+    background-color: rgb(14, 138, 74);
+}
+
+.nutri-score-badge-c {
+    background-color: rgb(251, 199, 7);
+}
+
+.nutri-score-badge .unity-label {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    text-overflow: clip;
+    width: auto;
+    height: 46px;
+}
+
+.header {
+    height: 160px;
+    background-color: rgb(255, 255, 255);
+    padding-right: 65px;
+    padding-left: 65px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.close-btn {
+    background-image: resource('Images/close-icon');
+    width: 60px;
+    height: 60px;
+    margin-right: 65px;
+}
+
+.header__title {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
+    font-size: 48px;
+}
+
+.content-container {
+    flex-grow: 1;
+    background-color: rgb(240, 240, 240);
+    padding-top: 45px;
+    padding-right: 45px;
+    padding-bottom: 45px;
+    padding-left: 45px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&guid=adb52135dcca16c44b46cb4ddce45978&type=3#Ubuntu-Regular');
+}
+
+.unity-label {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.title {
+    font-size: 66px;
+    margin-bottom: 60px;
+}
+
+.message-item {
+    flex-grow: 1;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    margin-bottom: 0;
+    padding-top: 30px;
+    padding-bottom: 45px;
+    padding-right: 45px;
+    padding-left: 45px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    font-size: 36px;
+}
+
+.message-item__date {
+    color: rgb(128, 128, 128);
+}
+
+.message-item__text {
+    -unity-text-align: upper-center;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 15px;
+    white-space: normal;
+    font-size: 48px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.message-item__new {
+    position: absolute;
+    right: 0;
+    top: 0;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
+    color: rgb(255, 255, 255);
+    background-color: rgb(162, 185, 113);
+    padding-top: 12px;
+    padding-right: 45px;
+    padding-bottom: 12px;
+    padding-left: 45px;
+    border-bottom-left-radius: 45px;
+}
+
+.shadow-45 {
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-size: 5;
+    --shadow-corner-radius: 45;
+}
+
+.shadow-30 {
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-size: 3;
+    --shadow-corner-radius: 30;
+}
+
+.header__container {
+    position: absolute;
+    width: 100%;
+}
+
+.header-margin {
+    margin-top: 160px;
+}
+
+.profile-title {
+    font-size: 54px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&guid=adb52135dcca16c44b46cb4ddce45978&type=3#Ubuntu-Regular');
+    margin-bottom: 40px;
+}
+
+.profile-wrapper {
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    background-color: rgb(255, 255, 255);
+    padding-top: 45px;
+    padding-right: 45px;
+    padding-bottom: 45px;
+    padding-left: 45px;
+}
+
+.option {
+    flex-direction: row;
+    margin-bottom: 60px;
+}
+
+.option__icon-wrapper {
+    width: 120px;
+    height: 120px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-color: rgb(217, 217, 217);
+    align-items: center;
+    justify-content: center;
+    margin-right: 45px;
+}
+
+.option__icon {
+    background-image: resource('Images/goal-icon');
+    width: 60px;
+    height: 60px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.option__container {
+    flex-grow: 1;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.option__title {
+    color: rgb(85, 85, 85);
+    font-size: 38px;
+}
+
+.option__value {
+    font-size: 48px;
+}
+
+.personal-data__container {
+    margin-bottom: 0;
+}
+
+.circle {
+}
+
+.circle-outer {
+    --circle-line-width: 75;
+    --circle-color: rgb(162, 185, 113);
+}
+
+.circle-middle {
+    --circle-line-width: 50;
+    --circle-color: rgb(162, 185, 113);
+}
+
+.circle-inner {
+    --circle-line-width: 25;
+    --circle-color: rgb(255, 255, 255);
+}
+
+.animation-label {
+}
+
+.scroll-container {
+    display: flex;
+    padding-top: 30px;
+    padding-right: 45px;
+    padding-bottom: 275px;
+    padding-left: 45px;
+}
+
+.error-label {
+    position: absolute;
+    left: 110px;
+    top: -110px;
+    right: 110px;
+    bottom: auto;
+    white-space: normal;
+    color: rgb(255, 0, 0);
+    font-size: 42px;
+}

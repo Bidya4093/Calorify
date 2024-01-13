@@ -1,0 +1,50 @@
+.advice__container {
+    flex-grow: 1;
+    background-color: rgb(255, 255, 255);
+    padding-top: 45px;
+    padding-right: 45px;
+    padding-bottom: 45px;
+    padding-left: 45px;
+}
+
+.advice__head-title {
+    font-size: 48px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.advice__row {
+    flex-grow: 1;
+    margin-bottom: 72px;
+}
+
+.advice__row-scroll {
+}
+
+.advice_row-scroll-container {
+    flex-direction: row;
+    padding-right: 45px;
+    padding-left: 45px;
+}
+
+.advice__articles-item-last {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.advice__head {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 45px;
+    margin-right: 45px;
+    margin-left: 45px;
+}

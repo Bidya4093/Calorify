@@ -1,0 +1,64 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <Style src="project://database/Assets/Styles/Profile.uss?fileID=7433441132597879392&amp;guid=9c2afcdb02c6a554c82b5728c434cb85&amp;type=3#Profile" />
+    <Style src="project://database/Assets/Styles/ProfileEdit.uss?fileID=7433441132597879392&amp;guid=6cab7c0fa47696f479fb0e2815dbc495&amp;type=3#ProfileEdit" />
+    <ui:VisualElement name="ContentContainer" class="content-container header-margin">
+        <ui:VisualElement name="ProfileEditTop" style="align-items: center; margin-bottom: 50px;">
+            <ui:Button display-tooltip-when-elided="true" name="SignOutBtn" class="btn-icon sign-out-btn" />
+            <ui:VisualElement name="ProfileEditImage" style="flex-grow: 1; margin-bottom: 45px; width: 400px; height: 400px; background-image: resource(&apos;Images/profile-image&apos;); border-top-left-radius: 50%; border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%; border-left-color: rgb(86, 110, 86); border-right-color: rgb(86, 110, 86); border-top-color: rgb(86, 110, 86); border-bottom-color: rgb(86, 110, 86); border-top-width: 6px; border-right-width: 6px; border-bottom-width: 6px; border-left-width: 6px;" />
+            <ui:Button text="Вибрати зображення" display-tooltip-when-elided="true" name="ChangeImageBtn" selectable="true" class="btn btn-reverse change-image-btn" />
+        </ui:VisualElement>
+        <Shadow name="PersonalDataShadow" class="shadow-45" style="margin-bottom: 30px;">
+            <ui:VisualElement name="PersonalData" class="profile-wrapper personal-data">
+                <ui:Label tabindex="-1" text="Особисті дані" display-tooltip-when-elided="true" name="PersonalDataTitle" class="profile-title personal-data__title" />
+                <ui:VisualElement name="PersonalDataOptions">
+                    <ui:VisualElement name="PersonalDataEmail" class="option">
+                        <ui:VisualElement name="PersonalDataEmailIconWrapper" class="option__icon-wrapper">
+                            <ui:VisualElement name="PersonalDataEmailIcon" class="option__icon" style="background-image: resource(&apos;Images/message-icon&apos;); -unity-background-image-tint-color: rgb(86, 110, 86);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="PersonalDataEmailContainer" class="option__container personal-data__container">
+                            <ui:Label tabindex="-1" text="Електронна пошта" display-tooltip-when-elided="true" name="PersonalDataEmailTitle" class="option__title" />
+                            <ui:TextField picking-mode="Ignore" name="PersonalDataEmailInput" value="hileta.yulia@gmail.com" keyboard-type="EmailAddress" class="option__input" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PersonalDateName" class="option" style="margin-bottom: 0;">
+                        <ui:VisualElement name="PersonalDateNameIconWrapper" class="option__icon-wrapper">
+                            <ui:VisualElement name="PersonalDateNameIcon" class="option__icon" style="background-image: resource(&apos;Images/name-icon&apos;); -unity-background-image-tint-color: rgb(86, 110, 86);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="PersonalDateNameContainer" class="option__container personal-data__container">
+                            <ui:Label tabindex="-1" text="Як до вас звертатися?" display-tooltip-when-elided="true" name="PersonalDateNameTitle" class="option__title" />
+                            <ui:TextField picking-mode="Ignore" name="PersonalDataNameInput" value="Гілета Юлія" class="option__input" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </Shadow>
+        <ui:VisualElement name="UserParametersContainer" style="flex-grow: 1;">
+            <Shadow name="UserParametersShadow" class="shadow-45" style="margin-bottom: 45px;">
+                <ui:VisualElement name="UserParameters" class="profile-wrapper">
+                    <ui:Label tabindex="-1" text="Ваші параметри" display-tooltip-when-elided="true" name="UserParametersTitle" class="profile-title personal-data__title" />
+                    <ui:VisualElement name="UserParametersOptions">
+                        <ui:VisualElement name="UserParametersInputContainer" class="user-parameters__input-container" style="flex-grow: 1;">
+                            <ui:FloatField label="Ріст:" value="179" name="UserParametersHeightInput" class="user-parameters__input" />
+                            <ui:Label tabindex="-1" text="см" display-tooltip-when-elided="true" name="UserParametersHeightInputPostfix" class="user-parameters__input-postfix" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="UserParametersInputContainer" class="user-parameters__input-container">
+                            <ui:FloatField label="Вага:" value="69" name="UserParametersWeightInput" class="user-parameters__input" />
+                            <ui:Label tabindex="-1" text="кг" display-tooltip-when-elided="true" name="UserParametersWeightInputPostfix" class="user-parameters__input-postfix" />
+                        </ui:VisualElement>
+                        <ui:RadioButtonGroup label="Стать:" value="1" choices="Ч,Ж" name="UserParametersRadioToggle" class="user-parameters__radio-group" style="margin-top: 0; margin-right: 90px; margin-bottom: 0; margin-left: 0; font-size: 52px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </Shadow>
+            <ui:VisualElement name="ProfileEditBtnContainer" style="flex-grow: 1; align-items: center;">
+                <ui:Button text="Зберегти зміни" display-tooltip-when-elided="true" name="ProfileEditSaveChangesBtn" class="btn profile-edit__save-change-btn" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <Shadow name="HeaderShadow" shadow-color="#000000FF" class="shadow-45" style="overflow: visible; position: absolute; top: 0; right: 0; left: 0; flex-grow: 1; width: 100%;">
+        <ui:VisualElement name="Header" class="header" style="text-shadow: 0 0 0 rgb(0, 0, 0); flex-grow: 1;">
+            <ui:Button display-tooltip-when-elided="true" name="BackBtn" class="btn-icon close-btn" style="background-image: resource(&apos;Images/back-icon&apos;); -unity-background-image-tint-color: rgb(0, 0, 0); width: 74px;" />
+            <ui:Label tabindex="-1" text="Редагування профілю" display-tooltip-when-elided="true" name="HeaderTitle" class="header__title" />
+        </ui:VisualElement>
+    </Shadow>
+</ui:UXML>
