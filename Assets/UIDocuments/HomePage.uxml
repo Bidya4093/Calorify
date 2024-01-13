@@ -7,9 +7,9 @@
     <Style src="project://database/Assets/Styles/RadialProgress.uss?fileID=7433441132597879392&amp;guid=54e4e5c72d3a5ef4aa2946f873ef3048&amp;type=3#RadialProgress" />
     <ui:VisualElement name="MainContainer" class="content-container" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
         <ui:Instance template="TopMenu" name="TopMenu" style="flex-shrink: 0; margin-top: 45px; margin-right: 45px; margin-bottom: 0; margin-left: 45px;" />
-        <ui:VisualElement name="HomeContainer" style="flex-grow: 1;">
+        <ui:VisualElement name="HomeContainer" style="flex-grow: 1; display: flex;">
             <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" nested-interaction-kind="ForwardScrolling" style="visibility: visible; display: flex; margin-top: -30px;">
-                <ui:VisualElement name="HomeScrollContainer" style="display: flex; padding-top: 30px; padding-right: 45px; padding-bottom: 45px; padding-left: 45px;">
+                <ui:VisualElement name="HomeScrollContainer" class="scroll-container">
                     <Shadow name="MainSectionShadow" class="shadow-45" style="margin-bottom: 30px; flex-shrink: 0;">
                         <ui:VisualElement name="MainSection" class="wrapper" style="padding-bottom: 45px; margin-bottom: 0; color: rgb(0, 0, 0);">
                             <ui:VisualElement name="TopContainer" style="flex-grow: 0; padding-top: 0; margin-right: 60px; margin-left: 60px; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
@@ -71,7 +71,7 @@
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </Shadow>
-                    <Shadow name="HistoryShadow" class="shadow-45" style="margin-bottom: 230px;">
+                    <Shadow name="HistoryShadow" class="shadow-45">
                         <ui:VisualElement name="HistorySection" class="wrapper" style="padding-right: 60px; padding-left: 60px; margin-bottom: 0;">
                             <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="home-title" style="margin-bottom: 30px; visibility: visible; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-left: 0;" />
                             <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">

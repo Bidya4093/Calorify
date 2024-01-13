@@ -21,9 +21,10 @@
                     <ui:Label tabindex="-1" text="Створити профіль" display-tooltip-when-elided="true" name="EmailTitle" style="flex-grow: 1; -unity-text-align: middle-center;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="EmailInputContainer" style="align-items: center;">
-                    <ui:TextField picking-mode="Ignore" placeholder-text="Електронна адреса" name="SignUpEmailInput" keyboard-type="EmailAddress" class="auth-input-2" style="margin-bottom: 55px;" />
-                    <ui:TextField picking-mode="Ignore" placeholder-text="Пароль" name="SignUpPasswordInput" password="true" class="auth-input-2" style="margin-bottom: 45px; padding-right: 190px;">
-                        <ui:VisualElement name="SignUpShowPassword" style="position: absolute; right: 30px; top: 0; bottom: 0; background-image: resource(&apos;Images/show-password-icon&apos;); width: 110px; -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" class="error-label" />
+                    <ui:TextField picking-mode="Ignore" placeholder-text="Електронна адреса" name="SignUpEmailInput" keyboard-type="EmailAddress" max-length="80" hide-mobile-input="true" class="auth-input-2" style="margin-bottom: 55px;" />
+                    <ui:TextField picking-mode="Ignore" placeholder-text="Пароль" name="SignUpPasswordInput" password="true" max-length="50" hide-mobile-input="true" class="auth-input-2" style="margin-bottom: 45px; padding-right: 190px;">
+                        <ui:VisualElement name="SignUpShowPasswordBtn" style="position: absolute; right: 30px; top: 0; bottom: 0; background-image: resource(&apos;Images/show-password-icon&apos;); width: 110px; -unity-background-scale-mode: scale-to-fit;" />
                     </ui:TextField>
                     <ui:Label tabindex="-1" text="Вже маєте обліковий запис?  Увійдіть" display-tooltip-when-elided="true" name="SignUpLink" style="font-size: 48px;" />
                 </ui:VisualElement>
@@ -39,7 +40,7 @@
                 <ui:RadioButtonGroup value="2" choices="Втратити вагу,Набрати вагу,Підтримувати форму " name="GoalRadioGroup" class="auth-radio-group" />
             </ui:VisualElement>
             <ui:VisualElement name="SignInBottom" style="align-items: center;">
-                <ui:Button text="Продовжити" display-tooltip-when-elided="true" name="SignInContinueBtn" class="auth-btn" />
+                <ui:Button text="Продовжити" display-tooltip-when-elided="true" name="GoalContinueBtn" class="auth-btn" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Activity" class="auth-container" style="display: none;">
@@ -48,8 +49,8 @@
                 <ui:Label tabindex="-1" text="Наскільки ви &#10;фізично активні?" display-tooltip-when-elided="true" name="ActivityTitle" style="-unity-text-align: upper-center; font-size: 96px; margin-bottom: 540px;" />
                 <ui:RadioButtonGroup value="2" choices="Не дуже, 1-2 тренувань на тиждень, 3-5 тренувань на тиждень" name="ActivityRadioGroup" class="auth-radio-group" />
             </ui:VisualElement>
-            <ui:VisualElement name="SignInBottom" style="align-items: center;">
-                <ui:Button text="Продовжити" display-tooltip-when-elided="true" name="SignInContinueBtn" class="auth-btn" />
+            <ui:VisualElement name="ActivityBottom" style="align-items: center;">
+                <ui:Button text="Продовжити" display-tooltip-when-elided="true" name="ActivityContinueBtn" class="auth-btn" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Name" class="auth-container" style="display: none;">
@@ -58,6 +59,7 @@
                 <ui:Label tabindex="-1" text="Як вас звати?" display-tooltip-when-elided="true" name="NameTitle" enable-rich-text="false" style="-unity-text-align: upper-center; font-size: 96px; margin-bottom: 350px;" />
                 <ui:TextField picking-mode="Ignore" placeholder-text="Введіть ваше ім&apos;я" name="NameInput" select-all-on-focus="true" select-all-on-mouse-up="true" hide-placeholder-on-focus="true" class="auth-input">
                     <ui:VisualElement name="NameInputLine" class="auth-input-line" />
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" class="error-label" />
                 </ui:TextField>
             </ui:VisualElement>
             <ui:VisualElement name="NameBottom" style="align-items: center;">
@@ -71,6 +73,7 @@
                 <ui:FloatField name="HeightInput" class="auth-input auth-input-margin" style="height: 235px;">
                     <ui:VisualElement name="HeightInputLine" class="auth-input-line" />
                     <ui:Label tabindex="-1" text="см" display-tooltip-when-elided="true" name="HeightInputPostfix" style="position: absolute; height: 100%; right: 24px; -unity-text-align: middle-left; top: 12px;" />
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" class="error-label" />
                 </ui:FloatField>
             </ui:VisualElement>
             <ui:VisualElement name="HeightBottom" style="align-items: center;">
@@ -84,6 +87,7 @@
                 <ui:FloatField name="WeightInput" class="auth-input auth-input-margin" style="height: 235px;">
                     <ui:VisualElement name="WeightInputLine" class="auth-input-line" />
                     <ui:Label tabindex="-1" text="кг" display-tooltip-when-elided="true" name="WeightInputPostfix" style="position: absolute; height: 100%; right: 24px; -unity-text-align: middle-left; top: 12px;" />
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" class="error-label" />
                 </ui:FloatField>
             </ui:VisualElement>
             <ui:VisualElement name="WeightBottom" style="align-items: center;">
@@ -96,6 +100,7 @@
                 <ui:Label tabindex="-1" text="Ваш вік" display-tooltip-when-elided="true" name="AgeTitle" enable-rich-text="false" style="-unity-text-align: upper-center; font-size: 96px; margin-bottom: 350px;" />
                 <ui:IntegerField name="AgeInput" class="auth-input">
                     <ui:VisualElement name="AgeInputLine" class="auth-input-line" />
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" class="error-label" />
                 </ui:IntegerField>
             </ui:VisualElement>
             <ui:VisualElement name="AgeBottom" style="align-items: center;">
@@ -129,9 +134,10 @@
                 <ui:Label tabindex="-1" text="Увійти" display-tooltip-when-elided="true" name="SignInTitle" style="flex-grow: 1; -unity-text-align: middle-center;" />
             </ui:VisualElement>
             <ui:VisualElement name="SignInInputContainer" style="align-items: center;">
-                <ui:TextField picking-mode="Ignore" placeholder-text="Електронна адреса" name="SignInEmailInput" keyboard-type="EmailAddress" class="auth-input-2" style="margin-bottom: 55px;" />
-                <ui:TextField picking-mode="Ignore" placeholder-text="Пароль" name="SignInPasswordInput" password="true" class="auth-input-2" style="margin-bottom: 85px;">
-                    <ui:VisualElement name="SignUpShowPassword" style="position: absolute; right: 30px; top: 0; bottom: 0; background-image: resource(&apos;Images/show-password-icon&apos;); width: 110px; -unity-background-scale-mode: scale-to-fit;" />
+                <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" class="error-label" />
+                <ui:TextField picking-mode="Ignore" placeholder-text="Електронна адреса" name="SignInEmailInput" keyboard-type="EmailAddress" password="false" max-length="80" hide-mobile-input="true" class="auth-input-2" style="margin-bottom: 55px;" />
+                <ui:TextField placeholder-text="Пароль" name="SignInPasswordInput" password="true" max-length="50" hide-mobile-input="true" picking-mode="Ignore" class="auth-input-2" style="margin-bottom: 85px;">
+                    <ui:VisualElement name="SignInShowPasswordBtn" style="position: absolute; right: 30px; top: 0; bottom: 0; background-image: resource(&apos;Images/show-password-icon&apos;); width: 110px; -unity-background-scale-mode: scale-to-fit;" />
                 </ui:TextField>
                 <ui:Label tabindex="-1" text="Забули пароль?" display-tooltip-when-elided="true" name="SignInRecoverPasswordLink" style="font-size: 48px; flex-grow: 1; width: 850px; margin-bottom: 140px;" />
                 <ui:Label tabindex="-1" text="Не маєте облікового запису? &#10;Створити профіль" display-tooltip-when-elided="true" name="SignInLink" style="font-size: 48px; flex-grow: 1; width: 850px;" />

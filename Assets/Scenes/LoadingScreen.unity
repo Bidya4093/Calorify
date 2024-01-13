@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a057d718150aef5459cd6532d29da465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfScene: Authorization
+  scene: {fileID: 102900000, guid: 510b98c6fd5433943831da36d133b43a, type: 3}
   director: {fileID: 474338760}
 --- !u!1 &748146673
 GameObject:

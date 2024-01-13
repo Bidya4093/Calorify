@@ -2,7 +2,7 @@
     <ui:Template name="ProfilePage" src="project://database/Assets/UIDocuments/ProfilePage.uxml?fileID=9197481963319205126&amp;guid=b6c11a0ee33574c46a4240f4585ced03&amp;type=3#ProfilePage" />
     <ui:Template name="ProfileEditPage" src="project://database/Assets/UIDocuments/ProfileEditPage.uxml?fileID=9197481963319205126&amp;guid=cf090b5a22d2af8459aab2d750828f78&amp;type=3#ProfileEditPage" />
     <ui:Template name="ChangePasswordPage" src="project://database/Assets/UIDocuments/ChangePasswordPage.uxml?fileID=9197481963319205126&amp;guid=7d5ae082641a99340895bcc00f043586&amp;type=3#ChangePasswordPage" />
-    <ui:Instance template="ProfilePage" name="ProfileTemplate" style="flex-grow: 1;" />
+    <ui:Instance template="ProfilePage" name="ProfileTemplate" style="flex-grow: 1; display: flex;" />
     <ui:Instance template="ProfileEditPage" name="ProfileEditTemplate" style="flex-grow: 1; display: none;" />
     <ui:Instance template="ChangePasswordPage" name="ChangePasswordTemplate" style="display: none; flex-grow: 1;" />
 </ui:UXML>

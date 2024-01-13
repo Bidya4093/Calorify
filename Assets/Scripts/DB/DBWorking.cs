@@ -71,7 +71,7 @@ public class DBWorking : MonoBehaviour
                 {
                     while (reader.Read())
                     {
-                        user.SetAll(reader["Name"].ToString(), reader["Email"].ToString(), Convert.ToInt16(reader["Goal"]), Convert.ToInt16(reader["ActivityLevel"]), float.Parse(reader["Mass"].ToString()), float.Parse(reader["Height"].ToString()));
+                        //user.SetAll(SexType.Male, reader["Name"].ToString(), reader["Email"].ToString(), Convert.ToInt16(reader["Goal"]), Convert.ToInt16(reader["ActivityLevel"]), float.Parse(reader["Mass"].ToString()), float.Parse(reader["Height"].ToString()));
                     }
                 }
             }

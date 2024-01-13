@@ -19,20 +19,20 @@ public class ProfileUI : MonoBehaviour
     public TMP_InputField profileWeightInput;
     public Toggle[] profileGoalToggles;
     public ToggleGroup profileGoalToggleGroup;
-    public FirebaseUser User;
+    public FirebaseUser user;
     private DatabaseReference DBreference;
 
     private void Start()
     {
-        User = FirebaseManager.firebaseUser;
-        DBreference = FirebaseManager.DBreference;
+        user = FirebaseAuth.DefaultInstance.CurrentUser;
+        DBreference = FirebaseDatabase.DefaultInstance.RootReference;
         //StartCoroutine(LoginTest("tester4@gmail.com", "testpassword"));
         StartCoroutine(LoadUserData());
     }
 
     public IEnumerator LoadUserData()
     {
-        Task<DataSnapshot> DBTask = FirebaseManager.DBreference.Child("users").Child(User.UserId).GetValueAsync();
+        Task<DataSnapshot> DBTask = DBreference.Child("users").Child(user.UserId).GetValueAsync();
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
         Debug.Log(DBTask.Result.GetRawJsonValue());
@@ -44,20 +44,26 @@ public class ProfileUI : MonoBehaviour
         else if (DBTask.Result.Value == null)
         {
             //No data exists yet
-            profileNameInput.text = "None";
-            profileHeightInput.text = "0";
-            profileWeightInput.text = "0";
-            profileGoalToggles[(int)GoalType.KeepFit].isOn = true;
+            //profileNameInput.text = "None";
+            //profileHeightInput.text = "0";
+            //profileWeightInput.text = "0";
+            //profileGoalToggles[(int)GoalType.KeepFit].isOn = true;
         }
         else
         {
             //Data has been retrieved
             DataSnapshot snapshot = DBTask.Result;
-            
-            profileNameInput.text = snapshot.Child("username").Value.ToString();
-            profileHeightInput.text = snapshot.Child("height").Value.ToString();
-            profileWeightInput.text = snapshot.Child("weight").Value.ToString();
-            profileGoalToggles[Convert.ToInt32(snapshot.Child("goal").Value)].isOn = true;
+            //User UserJson = JsonUtility.FromJson<User>(snapshot.GetRawJsonValue());
+            object dataJson = JsonUtility.FromJson<object>(snapshot.GetRawJsonValue());
+            //Debug.Log(UserJson);
+            Debug.Log(dataJson);
+            Debug.Log(JsonUtility.ToJson(User.Instance));
+            //Debug.Log(JsonUtility.FromJson<User>(JsonUtility.ToJson(User.Instance)));
+
+            //profileNameInput.text = snapshot.Child("username").Value.ToString();
+            //profileHeightInput.text = snapshot.Child("height").Value.ToString();
+            //profileWeightInput.text = snapshot.Child("weight").Value.ToString();
+            //profileGoalToggles[Convert.ToInt32(snapshot.Child("goal").Value)].isOn = true;
         }
     }
 
@@ -79,7 +85,7 @@ public class ProfileUI : MonoBehaviour
         {
             //firebaseUser is now logged in
             //Now get the result
-            User = LoginTask.Result.User;
+            user = LoginTask.Result.User;
 
             StartCoroutine(LoadUserData());
 
@@ -111,7 +117,7 @@ public class ProfileUI : MonoBehaviour
         UserProfile profile = new UserProfile { DisplayName = profileNameInput.text };
 
         //Call the Firebase auth update user profile function passing the profile with the username
-        Task ProfileTask = User.UpdateUserProfileAsync(profile);
+        Task ProfileTask = user.UpdateUserProfileAsync(profile);
         //Wait until the task completes
         yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
 
@@ -128,7 +134,7 @@ public class ProfileUI : MonoBehaviour
     private IEnumerator UpdateUsernameDatabase()
     {
         //Set the currently logged in user username in the database
-        Task DBTask = DBreference.Child("users").Child(User.UserId).Child("username").SetValueAsync(profileNameInput.text);
+        Task DBTask = DBreference.Child("users").Child(user.UserId).Child("username").SetValueAsync(profileNameInput.text);
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -144,7 +150,7 @@ public class ProfileUI : MonoBehaviour
 
     public IEnumerator UpdateHeight()
     {
-        Task DBTask = DBreference.Child("users").Child(User.UserId).Child("height").SetValueAsync(profileHeightInput.text);
+        Task DBTask = DBreference.Child("users").Child(user.UserId).Child("height").SetValueAsync(profileHeightInput.text);
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
         if (DBTask.Exception != null)
@@ -159,7 +165,7 @@ public class ProfileUI : MonoBehaviour
 
     public IEnumerator UpdateWeight()
     {
-        Task DBTask = DBreference.Child("users").Child(User.UserId).Child("weight").SetValueAsync(profileWeightInput.text);
+        Task DBTask = DBreference.Child("users").Child(user.UserId).Child("weight").SetValueAsync(profileWeightInput.text);
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
         if (DBTask.Exception != null)
@@ -174,7 +180,7 @@ public class ProfileUI : MonoBehaviour
 
     public IEnumerator UpdateGoal()
     {
-        Task DBTask = DBreference.Child("users").Child(User.UserId).Child("goal").SetValueAsync(profileWeightInput.text);
+        Task DBTask = DBreference.Child("users").Child(user.UserId).Child("goal").SetValueAsync(profileWeightInput.text);
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
         if (DBTask.Exception != null)

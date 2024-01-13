@@ -335,3 +335,22 @@
 
 .animation-label {
 }
+
+.scroll-container {
+    display: flex;
+    padding-top: 30px;
+    padding-right: 45px;
+    padding-bottom: 275px;
+    padding-left: 45px;
+}
+
+.error-label {
+    position: absolute;
+    left: 110px;
+    top: -110px;
+    right: 110px;
+    bottom: auto;
+    white-space: normal;
+    color: rgb(255, 0, 0);
+    font-size: 42px;
+}

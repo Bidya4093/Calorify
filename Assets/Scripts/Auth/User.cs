@@ -1,33 +1,37 @@
 ﻿using System;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
+using System.Dynamic;
 using UnityEngine;
 
-enum GoalType
+public enum GoalType
 {
     LoseWeight,
     PutOnWeight,
     KeepFit
 }
 
-enum ActivityType
+public enum ActivityType
 {
     None,
     Regular,
     Often
 }
 
-public class User
+public enum SexType
+{
+    Male,
+    Female
+}
+
+public class User : MonoBehaviour
 {
     // Дані користувача
     public string username;
     public string email;
-    public short goal = (short)GoalType.KeepFit;
-    public short activity = (short)ActivityType.Regular;
+    public GoalType goal = GoalType.KeepFit;
+    public ActivityType activity = ActivityType.Regular;
     public float height = 0;
     public float weight = 0;
-    public string sex = "female";
+    public SexType sex = SexType.Female;
     public int age = 0;
 
     public int caloriesNeeded = 0;
@@ -39,7 +43,22 @@ public class User
     public int protsNeeded = 0;
     public int protsEaten = 0;
 
-    public User(string _username = "", string _email = "", string _sex = "female", int _age = 0, float _height = 0, float _weight = 0, short _goal = (short)GoalType.KeepFit, short _activity = (short)GoalType.KeepFit)
+    static public User Instance;
+
+    private void Awake()
+    {
+        CreateInstance();
+    }
+
+    private void CreateInstance()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
+    public User(string _username = "", string _email = "", SexType _sex = SexType.Female, int _age = 0, float _height = 0, float _weight = 0, GoalType _goal = GoalType.KeepFit, ActivityType _activity = ActivityType.Regular)
     {
         username = _username;
         email = _email;
@@ -92,7 +111,7 @@ public class User
         set { caloriesEaten = value; }
     }
 
-    public void SetAll(string _username, string _email, short _goal, short _activity, float _height, float _weight)
+    public void SetAll(string _username, string _email, GoalType _goal, ActivityType _activity, float _height, float _weight, SexType _sex, int _age)
     {
         SetUsername(_username);
         SetEmail(_email);
@@ -100,19 +119,41 @@ public class User
         SetActivity(_activity);
         SetHeight(_height);
         SetWeight(_weight);
+        SetSex(_sex);
+        SetAge(_age);
+    }
+
+    public void SetSex(SexType _sex)
+    {
+        sex = _sex;
+    }
+
+    public void SetAge(int _age)
+    {
+        if (_age <= 0)
+        {
+            throw new Exception("Age must be greater than 0!");
+        }
+        else if (_age > 150)
+        {
+            throw new Exception("Age must be less than 150!");
+        }
+        if (age == _age) return;
+
+        age = _age;
     }
 
     public void SetUsername(string _username) {
         if (_username.Length == 0)
         {
-            throw new Exception("Username field empty");
+            throw new Exception("Username empty");
         }
         username = _username;
     }
 
     public void SetEmail(string _email) {
         if (_email.Length == 0) { 
-            throw new Exception("Email field empty");
+            throw new Exception("Email empty");
         }
         if (!_email.Contains("@gmail.com") || !(_email.Length > 10))
         {
@@ -125,7 +166,7 @@ public class User
 
         if (_password.Length == 0)
         {
-            throw new Exception("Password field empty");
+            throw new Exception("Password empty");
         }
         if (!(_password.Length > 6))
         {
@@ -135,19 +176,13 @@ public class User
         // додати шкалу оцінки паролю
     }
 
-    public void SetGoal(short _goal) {
-        if (_goal < 0 && _goal >= Enum.GetNames(typeof(GoalType)).Length)
-        {
-            throw new Exception("GoalType doesn't exist");
-        }
+    public void SetGoal(GoalType _goal)
+    {
         goal = _goal;
     }
 
-    public void SetActivity(short _activity) {
-        if (_activity < 0 && _activity >= Enum.GetNames(typeof(ActivityType)).Length)
-        {
-            throw new Exception("ActivityType doesn't exist");
-        }
+    public void SetActivity(ActivityType _activity)
+    {
         activity = _activity;
     }
 
@@ -159,21 +194,22 @@ public class User
         {
             throw new Exception("Height must be less than 300!");
         }
+        if (height == _height) return;
+
         height = _height;
     }
 
-    public void SetHeight(string _height)
-    {
-        if (string.IsNullOrEmpty(_height))
-        {
-            throw new Exception("Height field empty");
-        }
+    //public void SetHeight(string _height)
+    //{
+    //    if (string.IsNullOrEmpty(_height))
+    //    {
+    //        throw new Exception("Height empty");
+    //    }
 
-        SetHeight(float.Parse(_height));
-    }
+    //    SetHeight(float.Parse(_height));
+    //}
 
     public void SetWeight(float _weight) {
-        if (weight == _weight) return;
         if (_weight <= 0)
         {
             throw new Exception("Weight must be greater than 0!");
@@ -182,26 +218,28 @@ public class User
         {
             throw new Exception("Weight must be less than 700!");
         }
+        if (weight == _weight) return;
+
         weight = _weight;
     }
 
-    public void SetWeight(string _weight)
-    {
-        if (string.IsNullOrEmpty(_weight))
-        {
-            throw new Exception("Weight field empty");
-        }
+    //public void SetWeight(string _weight)
+    //{
+    //    if (string.IsNullOrEmpty(_weight))
+    //    {
+    //        throw new Exception("Weight empty");
+    //    }
 
-        SetWeight(float.Parse(_weight));
-    }
+    //    SetWeight(float.Parse(_weight));
+    //}
 
     public string GetUsername() { return username; }
     public string GetEmail() { return email; }
-    public short GetGoal() { return goal; }
-    public short GetActivity() { return activity; }
+    public GoalType GetGoal() { return goal; }
+    public ActivityType GetActivity() { return activity; }
     public float GetHeight() { return height; }
     public float GetWeight() { return weight; }
-    public string GetSex() { return sex; }
+    public SexType GetSex() { return sex; }
     public int GetAge() { return age; }
 
 

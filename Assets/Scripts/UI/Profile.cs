@@ -1,3 +1,4 @@
+using Firebase.Auth;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -17,6 +18,7 @@ public class Profile : MonoBehaviour
     private Button backBtn;
     private VisualElement changePasswordOption;
     private Button closeChangePasswordPage;
+    private Button signOutBtn;
 
 
 
@@ -25,17 +27,16 @@ public class Profile : MonoBehaviour
         profileRoot = GetComponent<UIDocument>().rootVisualElement;
         mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
 
-        profileEditBtn = profileRoot.Q<Button>("ProfileCardEditBtn");
-        backBtn = profileRoot.Q<Button>("BackBtn");
-        closeProfilePage = profileRoot.Q<Button>("CloseBtn");
-        closeChangePasswordPage = profileRoot.Q<TemplateContainer>("ChangePasswordTemplate").Q<Button>("CloseBtn");
-
-        changePasswordOption = profileRoot.Q<VisualElement>("SettingsChangePassword");
-
-
-        profileEditTemplate = profileRoot.Q<TemplateContainer>("ProfileEditTemplate");
         profileTemplate = profileRoot.Q<TemplateContainer>("ProfileTemplate");
+        profileEditTemplate = profileRoot.Q<TemplateContainer>("ProfileEditTemplate");
         changePasswordTemplate = profileRoot.Q<TemplateContainer>("ChangePasswordTemplate");
+
+        profileEditBtn = profileTemplate.Q<Button>("ProfileCardEditBtn");
+        closeProfilePage = profileTemplate.Q<Button>("CloseBtn");
+        backBtn = profileEditTemplate.Q<Button>("BackBtn");
+        changePasswordOption = profileTemplate.Q<VisualElement>("SettingsChangePassword");
+        closeChangePasswordPage = changePasswordTemplate.Q<Button>("CloseBtn");
+        signOutBtn = profileEditTemplate.Q<Button>("SignOutBtn");
 
 
         profileEditBtn.clicked += OpenProfileEditPage;
@@ -43,6 +44,8 @@ public class Profile : MonoBehaviour
         backBtn.clicked += CloseProfileEditPage;
         changePasswordOption.RegisterCallback<ClickEvent>(OpenChangePasswordPage);
         closeChangePasswordPage.clicked += CloseChangePasswordPage;
+        signOutBtn.clicked += SignOut;
+
 
     }
 
@@ -74,5 +77,11 @@ public class Profile : MonoBehaviour
     {
         changePasswordTemplate.style.display = DisplayStyle.None;
         profileTemplate.style.display = DisplayStyle.Flex;
+    }
+
+    private void SignOut()
+    {
+        FirebaseAuth.DefaultInstance.SignOut();
+        StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Auth));
     }
 }

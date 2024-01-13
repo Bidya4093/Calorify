@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Authorization.unity
     guid: 510b98c6fd5433943831da36d133b43a
   - enabled: 1
-    path: Assets/Scenes/MainScreenUIToolkit.unity
+    path: Assets/Scenes/MainScreen.unity
     guid: db52c0f1f37f5cc43ad66ac37db5d523
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
