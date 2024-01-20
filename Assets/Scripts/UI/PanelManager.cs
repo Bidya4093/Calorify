@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -34,6 +35,7 @@ public class PanelManager : MonoBehaviour
     private VisualElement mainRoot;
     private VisualElement profileRoot;
     private VisualElement productPanelRoot;
+    private ProgressBar waterProgressBar;
 
 
 
@@ -43,7 +45,6 @@ public class PanelManager : MonoBehaviour
         messageRoot = messagePageObject.GetComponent<UIDocument>().rootVisualElement;
         profileRoot = profilePageObject.GetComponent<UIDocument>().rootVisualElement;
         productPanelRoot = productPanelObject.GetComponent<UIDocument>().rootVisualElement;
-
 
         messageRoot.style.display = DisplayStyle.None;
         profileRoot.style.display = DisplayStyle.None;
@@ -81,10 +82,19 @@ public class PanelManager : MonoBehaviour
         activityBtn.clicked += OpenActivityPanel;
         closeAdviceTopicBtn.clicked += CloseAdviceTopicPage;
 
+        waterProgressBar = homePage.Q<ProgressBar>("WaterProgressBar");
 
         AttachProductPanelToProduct();
 
         AttachTopicToAdviceTopicPage();
+
+        waterProgressBar.RegisterValueChangedCallback(ChangeWaterProgress);
+    }
+
+    private void ChangeWaterProgress(ChangeEvent<float> evt)
+    {
+        VisualElement progressBarProgress = (evt.currentTarget as ProgressBar).Query(className: "unity-progress-bar__progress");
+        progressBarProgress.style.width = Length.Percent(evt.newValue);
     }
 
     private void AttachProductPanelToProduct()

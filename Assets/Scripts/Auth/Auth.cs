@@ -14,9 +14,6 @@ using UnityEngine.UIElements;
 public class Auth : MonoBehaviour
 {
     // Поля вводу даних
-    private FirebaseAuth auth;
-    private FirebaseUser firebaseUser;
-    private DatabaseReference DBreference;
 
 
     private VisualElement authRoot;
@@ -43,10 +40,6 @@ public class Auth : MonoBehaviour
         authRoot = GetComponent<UIDocument>().rootVisualElement;
         signUpPage = authRoot.Q<VisualElement>("SignUp");
         signInPage = authRoot.Q<VisualElement>("SignIn");
-
-        auth = FirebaseAuth.DefaultInstance;
-        DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-        firebaseUser = auth.CurrentUser;
 
         Button emailContinueBtn = signUpPage.Q<Button>("EmailContinueBtn");
         Button goalContinueBtn = signUpPage.Q<Button>("GoalContinueBtn");
@@ -113,7 +106,6 @@ public class Auth : MonoBehaviour
             {
                 GoalType goal = (GoalType)goalRadio.value;
                 User.Instance.SetGoal(goal);
-                Debug.Log(User.Instance.GetGoal());
             });
         }
         catch (Exception ex)
@@ -130,7 +122,6 @@ public class Auth : MonoBehaviour
             {
                 ActivityType activity = (ActivityType)activityRadio.value;
                 User.Instance.SetActivity(activity);
-                Debug.Log(User.Instance.GetActivity());
             });
         }
         catch (Exception ex)
@@ -147,7 +138,6 @@ public class Auth : MonoBehaviour
             {
                 SexType sex = (SexType)sexRadio.value;
                 User.Instance.SetSex(sex);
-                Debug.Log(User.Instance.GetSex());
             });
         }
         catch (Exception ex)
@@ -162,7 +152,6 @@ public class Auth : MonoBehaviour
             return Task.Run(() =>
             {
                 User.Instance.SetUsername(nameInput.value);
-                Debug.Log(User.Instance.GetUsername());
             });
         }
         catch (Exception ex)
@@ -178,7 +167,6 @@ public class Auth : MonoBehaviour
             return Task.Run(() =>
             {
                 User.Instance.SetHeight(heightInput.value);
-                Debug.Log(User.Instance.GetUsername());
             });
         }
         catch (Exception ex)
@@ -194,7 +182,6 @@ public class Auth : MonoBehaviour
             return Task.Run(() =>
             {
                 User.Instance.SetWeight(weightInput.value);
-                Debug.Log(User.Instance.GetUsername());
             });
         }
         catch (Exception ex)
@@ -210,7 +197,6 @@ public class Auth : MonoBehaviour
             return Task.Run(() =>
             {
                 User.Instance.SetAge(ageInput.value);
-                Debug.Log(User.Instance.GetUsername());
             });
         }
         catch (Exception ex)
@@ -260,18 +246,15 @@ public class Auth : MonoBehaviour
         GetComponent<FirebaseManager>().RegisterButton();
     }
 
-    public void CreateUser(FirebaseUser user)
+    public IEnumerator CreateUser()
     {
         MacrosManager.CalculateUserNeeds();
 
-        User.Instance.caloriesNeeded = MacrosManager.caloriesNeeded;
-        User.Instance.carbsNeeded = MacrosManager.carbsNeeded;
-        User.Instance.fatsNeeded = MacrosManager.fatsNeeded;
-        User.Instance.protsNeeded = MacrosManager.protsNeeded;
+        User.Instance.WaterNeeded = 2400;
+        User.Instance.SetLanguage(Language.Ukrainian);
+        User.Instance.SetTheme(Theme.Light);
+        User.Instance.SetMeasurementUnits(MeasurementUnits.Metric);
 
-        string json = JsonUtility.ToJson(User.Instance);
-        Debug.Log("userid: " + user.UserId);
-        DBreference.Child("users").Child(user.UserId).SetRawJsonValueAsync(json);
+        yield return StartCoroutine(FirebaseManager.UpdateUserDatabaseData());
     }
-
 }

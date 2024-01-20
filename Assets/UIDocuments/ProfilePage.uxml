@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/Profile.uss?fileID=7433441132597879392&amp;guid=9c2afcdb02c6a554c82b5728c434cb85&amp;type=3#Profile" />
+    <Style src="project://database/Assets/Styles/Dropdown.uss?fileID=7433441132597879392&amp;guid=2a97e1218c785124bbfa07e45b7af30f&amp;type=3#Dropdown" />
     <ui:VisualElement name="ContentContainer" class="content-container header-margin">
         <ui:VisualElement name="ProfileCard" class="profile-card">
             <ui:VisualElement name="ProfileCardDetails" class="profile-card__details">
@@ -22,41 +23,29 @@
             <ui:VisualElement name="Settings" class="profile-wrapper">
                 <ui:Label tabindex="-1" text="Налаштування додатка" display-tooltip-when-elided="true" name="SettingsTitle" class="settings__title profile-title" />
                 <ui:VisualElement name="SettingsOptions" class="settings__options" style="border-left-color: rgb(217, 217, 217); border-right-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217); border-bottom-width: 1px;">
-                    <ui:VisualElement name="SettingsGoal" class="option">
+                    <ui:VisualElement name="SettingsGoal" class="option" style="flex-grow: 1;">
                         <ui:VisualElement name="SettingsGoalIconWrapper" class="option__icon-wrapper">
                             <ui:VisualElement name="SettingsGoalIcon" class="option__icon" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="SettingGoalContainer" class="option__container">
-                            <ui:Label tabindex="-1" text="Мета" display-tooltip-when-elided="true" name="SettingsGoalTitle" class="option__title" />
-                            <ui:Label tabindex="-1" text="Підтримка" display-tooltip-when-elided="true" name="SettingsGoalValue" class="option__value" />
-                        </ui:VisualElement>
+                        <ui:DropdownField label="Мета" index="0" choices="Підтримка, Схуднення, Набрати вагу" name="SettingsGoalDropdown" class="option__dropdown option__container" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="SettingsThemeMode" class="option">
+                    <ui:VisualElement name="SettingsThemeMode" class="option" style="display: flex;">
                         <ui:VisualElement name="SettingsThemeModeIconWrapper" class="option__icon-wrapper">
                             <ui:VisualElement name="SettingsThemeModeIcon" class="option__icon" style="background-image: resource(&apos;Images/theme-mode-icon&apos;);" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="SettingsThemeModeContainer" class="option__container">
-                            <ui:Label tabindex="-1" text="Тема" display-tooltip-when-elided="true" name="SettingsThemeModeTitle" class="option__title" />
-                            <ui:Label tabindex="-1" text="Світла" display-tooltip-when-elided="true" name="SettingsThemeModeValue" class="option__value" />
-                        </ui:VisualElement>
+                        <ui:DropdownField label="Тема" index="0" choices="Світла, Темна" name="SettingsThemeDropdown" class="option__dropdown option__container" style="overflow: visible;" />
                     </ui:VisualElement>
                     <ui:VisualElement name="SettingsLanguage" class="option">
                         <ui:VisualElement name="SettingsLanguageIconWrapper" class="option__icon-wrapper">
                             <ui:VisualElement name="SettingsLanguageIcon" class="option__icon" style="background-image: resource(&apos;Images/language-icon&apos;);" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="SettingsLanguageContainer" class="option__container">
-                            <ui:Label tabindex="-1" text="Мова" display-tooltip-when-elided="true" name="SettingsLanguageTitle" class="option__title" />
-                            <ui:Label tabindex="-1" text="Українська" display-tooltip-when-elided="true" name="SettingsLanguageValue" class="option__value" />
-                        </ui:VisualElement>
+                        <ui:DropdownField label="Мова" index="0" choices="Українська, Англійська" name="SettingsLanguageDropdown" class="option__dropdown option__container" style="overflow: visible;" />
                     </ui:VisualElement>
                     <ui:VisualElement name="SettingsMeasurement" class="option">
                         <ui:VisualElement name="SettingsMeasurementIconWrapper" class="option__icon-wrapper">
                             <ui:VisualElement name="SettingsMeasurementIcon" class="option__icon" style="background-image: resource(&apos;Images/measurement-icon&apos;);" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="SettingsMeasurementContainer" class="option__container">
-                            <ui:Label tabindex="-1" text="Одиниці вимірування" display-tooltip-when-elided="true" name="SettingsMeasurementTitle" class="option__title" />
-                            <ui:Label tabindex="-1" text="Метри, кілограми" display-tooltip-when-elided="true" name="SettingsMeasurementValue" class="option__value" />
-                        </ui:VisualElement>
+                        <ui:DropdownField label="Одиниці вимірування" index="0" choices="Метри; кілограми, Фути; фунти" name="SettingsMeasurementDropdown" class="option__dropdown option__container" style="overflow: visible;" />
                     </ui:VisualElement>
                     <ui:VisualElement name="SettingsChangePassword" class="option" style="margin-bottom: 0;">
                         <ui:VisualElement name="SettingsMeasurementIconWrapper" class="option__icon-wrapper">

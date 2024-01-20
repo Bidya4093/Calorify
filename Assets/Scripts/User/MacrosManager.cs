@@ -33,11 +33,11 @@ public class MacrosManager : MonoBehaviour
     {
         int calories = 0;
         double activityCoefficient = 1.2f;
-        SexType sex = User.Instance.sex;
-        ActivityType activity = User.Instance.activity;
-        float weight = User.Instance.weight;
-        float height = User.Instance.height;
-        int age = User.Instance.age;
+        SexType sex = User.Instance.GetSex();
+        ActivityType activity = User.Instance.GetActivity();
+        float weight = User.Instance.GetWeight();
+        float height = User.Instance.GetHeight();
+        int age = User.Instance.GetAge();
 
 
         // BMR - basal metabolic rate
@@ -59,6 +59,11 @@ public class MacrosManager : MonoBehaviour
         carbsNeeded = (int)(0.5f * calories / 4);
         fatsNeeded = (int)(0.25f * calories / 4);
         protsNeeded = (int)(0.3f * calories / 9);
+
+        User.Instance.CaloriesNeeded = caloriesNeeded;
+        User.Instance.CarbsNeeded = carbsNeeded;
+        User.Instance.FatsNeeded = fatsNeeded;
+        User.Instance.ProtsNeeded = protsNeeded;
     }
 
     public IEnumerator LoadUserMacrosData()

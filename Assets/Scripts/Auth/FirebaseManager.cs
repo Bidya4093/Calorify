@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Firebase.Database;
 using UnityEngine.UIElements;
 using System;
+using Firebase.Extensions;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -36,7 +37,6 @@ public class FirebaseManager : MonoBehaviour
         signInPasswordInput = root.Q<TextField>("SignInPasswordInput");
         signUpEmailInput = root.Q<TextField>("SignUpEmailInput");
         signUpPasswordInput = root.Q<TextField>("SignUpPasswordInput");
-
         StartCoroutine(CheckAndFixDependenciesAsync());
     }
 
@@ -67,6 +67,7 @@ public class FirebaseManager : MonoBehaviour
         auth = FirebaseAuth.DefaultInstance;
 
         auth.StateChanged += AuthStateChanged;
+
         DBreference = FirebaseDatabase.DefaultInstance.RootReference;
         AuthStateChanged(this, null);
     }
@@ -78,26 +79,79 @@ public class FirebaseManager : MonoBehaviour
             Task ReloadUserTask = firebaseUser.ReloadAsync();
 
             yield return new WaitUntil(() => ReloadUserTask.IsCompleted);
-            AutoLogin();
+            yield return AutoLogin();
         }
         else
         {
-            GetComponent<AuthPanelManager>().OpenSignInPage(null);
+
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != Scenes.Auth)
+            {
+                yield return StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Auth));
+                GetComponent<AuthPanelManager>().OpenSignInPage(null);
+            }
         }
     }
 
-    private void AutoLogin()
+    void HandleDatabaseValueChanged(object sender, ValueChangedEventArgs args)
+    {
+        if (args.DatabaseError != null)
+        {
+            Debug.LogError(args.DatabaseError.Message);
+            return;
+        }
+        else if (args.Snapshot.Value == null || args.Snapshot == null)
+        {
+            //No data exists yet
+            Debug.Log("No data exists yet");
+
+        }
+        else
+        {
+            // Do something with the data in args.Snapshot
+            Debug.Log("HandleDatabaseValueChanged");
+            DataSnapshot snapshot = args.Snapshot;
+            User.SetUserDataWithSnapshot(snapshot);
+        }
+    }
+
+    void SetUserDataWithFirebase()
+    {
+        DBreference.Child("users").Child(firebaseUser.UserId).GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                // Handle the error...
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                User.SetUserDataWithSnapshot(snapshot);
+                User.Instance.Show();
+                DataManager.Init();
+                DataManager.LoadChartsData();
+                DataManager.LoadProfileData();
+                DataManager.LoadSettingsData();
+            }
+        });
+    }
+
+    private IEnumerator AutoLogin()
     {
         if (firebaseUser != null)
         {
 
             if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != Scenes.Main)
             {
-                StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Main));
+                yield return StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Main));
             }
+            SetUserDataWithFirebase();
+
         }
         else
         {
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != Scenes.Auth)
+            {
+                yield return StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Auth));
+            }
             GetComponent<AuthPanelManager>().OpenSignInPage(null);
         }
     }
@@ -113,9 +167,11 @@ public class FirebaseManager : MonoBehaviour
                 Debug.Log("Signed out " + firebaseUser.Email);
             }
             firebaseUser = auth.CurrentUser;
+
             if (signedIn)
             {
                 Debug.Log("Signed in " + firebaseUser.Email);
+                FirebaseDatabase.DefaultInstance.GetReference("users/"+firebaseUser.UserId).ValueChanged += HandleDatabaseValueChanged;
             }
         }
     }
@@ -175,6 +231,8 @@ public class FirebaseManager : MonoBehaviour
             errorLabel.text = "";
 
             StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Main));
+            SetUserDataWithFirebase();
+
         }
     }
 
@@ -211,7 +269,6 @@ public class FirebaseManager : MonoBehaviour
             }
         }
     }
-    
 
     public IEnumerator Register(string _email, string _password, string _username)
     {
@@ -243,10 +300,7 @@ public class FirebaseManager : MonoBehaviour
                         message = "Email Already In Use";
                         break;
                 }
-                //warningRegisterText.text = message;
-                Debug.LogError(message);
                 errorLabel.text = message;
-
             }
             else
             {
@@ -255,8 +309,10 @@ public class FirebaseManager : MonoBehaviour
             UpdateProfile(_username);
             firebaseUser = RegisterTask.Result.User;
             errorLabel.text = "";
-            GetComponent<Auth>().CreateUser(firebaseUser);
-            StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Main));
+            yield return GetComponent<Auth>().CreateUser();
+            DBreference.Child("users").Child(firebaseUser.UserId).ValueChanged += HandleDatabaseValueChanged;
+            yield return StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Main));
+            SetUserDataWithFirebase();
         }
     }
 
@@ -318,6 +374,43 @@ public class FirebaseManager : MonoBehaviour
             }
         });
     }
+
+    static public IEnumerator UpdateUserDatabaseData()
+    {
+        string json = JsonUtility.ToJson(User.Instance);
+        Debug.Log("User JSON: " + json);
+
+        Task userDataTask = DBreference.Child("users").Child(firebaseUser.UserId).SetRawJsonValueAsync(json);
+        yield return new WaitUntil(predicate: () => userDataTask.IsCompleted);
+        if (userDataTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {userDataTask.Exception}");
+        } else
+        {
+            // user data has now been updated
+        }
+    }
+
+    static public IEnumerator UpdateUserValue(string nameValue, object value)
+    {
+        if (value is Enum)
+            value = (int)value;
+
+        Task userValueTask = DBreference.Child("users").Child(firebaseUser.UserId).Child(nameValue).SetValueAsync(value);
+
+        yield return new WaitUntil(predicate: () =>  userValueTask.IsCompleted);
+
+        if (userValueTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {userValueTask.Exception}");
+        }
+        else
+        {
+            // user value has now been updated
+            //onCallback.Invoke();
+        }
+    }
+
 }
 
 

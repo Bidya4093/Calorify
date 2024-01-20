@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -452,7 +452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778118119}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -722,12 +722,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1898785191}
   - component: {fileID: 1898785192}
+  - component: {fileID: 1898785199}
   - component: {fileID: 1898785193}
   - component: {fileID: 1898785194}
   - component: {fileID: 1898785195}
   - component: {fileID: 1898785196}
-  - component: {fileID: 1898785197}
-  - component: {fileID: 1898785198}
   m_Layer: 5
   m_Name: MainPage
   m_TagString: Untagged
@@ -822,12 +821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableAutoLogin: 1
   dependencyStatus: 0
-  usernameRegisterField: {fileID: 0}
-  emailRegisterField: {fileID: 0}
-  passwordRegisterField: {fileID: 0}
-  heightInput: {fileID: 0}
-  weightInput: {fileID: 0}
---- !u!114 &1898785197
+--- !u!114 &1898785199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -839,6 +833,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b86fa14d0e8aaf4a921880997c978ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  username: 
+  email: 
+  height: 0
+  weight: 0
+  age: 0
+  goal: 0
+  activity: 0
+  sex: 0
+  language: 
+  theme: 
+  measurementUnits: 
   caloriesNeeded: 0
   caloriesEaten: 0
   carbsNeeded: 0
@@ -847,23 +852,8 @@ MonoBehaviour:
   fatsEaten: 0
   protsNeeded: 0
   protsEaten: 0
---- !u!114 &1898785198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898785190}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb472adc67bc7264f881da717403d11c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profileNameInput: {fileID: 0}
-  profileHeightInput: {fileID: 0}
-  profileWeightInput: {fileID: 0}
-  profileGoalToggles: []
-  profileGoalToggleGroup: {fileID: 0}
+  waterNeeded: 0
+  waterDrunk: 0
 --- !u!1 &2096228717
 GameObject:
   m_ObjectHideFlags: 0

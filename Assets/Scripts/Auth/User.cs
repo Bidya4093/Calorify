@@ -1,6 +1,11 @@
-﻿using System;
+﻿using Firebase.Database;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using UnityEngine;
+
+
 
 public enum GoalType
 {
@@ -22,35 +27,76 @@ public enum SexType
     Female
 }
 
+public class StringEnum
+{
+    protected StringEnum(string value) { Value = value;  }
+    public string Value { get; private set; }
+    public override string ToString()
+    {
+        return Value;
+    }
+
+}
+
+public class Language : StringEnum
+{
+    public static List<Language> Values = new List<Language>();
+    private Language(string value) : base(value) { Values.Add(this); }
+    public static Language Ukrainian { get { return new Language("Українська"); } }
+    public static Language English { get { return new Language("Англійська"); } }
+}
+
+public class Theme : StringEnum
+{
+    public static List<Theme> Values = new List<Theme>();
+    private Theme(string value) : base(value) { Values.Add(this); }
+    public static Theme Light { get { return new Theme("Світла"); } }
+    public static Theme Dark { get { return new Theme("Темна"); } }
+}
+
+public class MeasurementUnits : StringEnum
+{
+    public static List<MeasurementUnits> Values = new List<MeasurementUnits>(); 
+    private MeasurementUnits(string value) : base(value) { Values.Add(this); }
+    public static MeasurementUnits Metric { get { return new MeasurementUnits("Метри, кілограми"); } }
+    public static MeasurementUnits US { get { return new MeasurementUnits("Фути, фунти"); } }
+}
+
+public class Goal : StringEnum
+{
+    public static List<Goal> Values = new List<Goal>();
+    private Goal(string value) : base(value) { Values.Add(this); }
+    public static Goal KeepFit { get { return new Goal("Підтримка"); } }
+    public static Goal LoseWeight { get { return new Goal("Схуднення"); } }
+    public static Goal PutOnWeight { get { return new Goal("Набір ваги"); } }
+}
+
+
 public class User : MonoBehaviour
 {
     // Дані користувача
-    public string username;
-    public string email;
-    public GoalType goal = GoalType.KeepFit;
-    public ActivityType activity = ActivityType.Regular;
-    public float height = 0;
-    public float weight = 0;
-    public SexType sex = SexType.Female;
-    public int age = 0;
+    [HideInInspector] public string username, email;
+    [HideInInspector] public float height = 0, weight = 0;
+    [HideInInspector] public int age = 0;
 
-    public int caloriesNeeded = 0;
-    public int caloriesEaten = 0;
-    public int carbsNeeded = 0;
-    public int carbsEaten = 0;
-    public int fatsNeeded = 0;
-    public int fatsEaten = 0;
-    public int protsNeeded = 0;
-    public int protsEaten = 0;
+    [HideInInspector] public GoalType goal = GoalType.KeepFit;
+    [HideInInspector] public ActivityType activity = ActivityType.Regular;
+    [HideInInspector] public SexType sex = SexType.Female;
+    [HideInInspector] public string language = Language.Ukrainian.ToString();
+    [HideInInspector] public string theme = Theme.Light.ToString();
+    [HideInInspector] public string measurementUnits = MeasurementUnits.Metric.ToString();
 
+    [HideInInspector] public int caloriesNeeded = 0, caloriesEaten = 0, carbsNeeded = 0, carbsEaten = 0;
+    [HideInInspector] public int fatsNeeded = 0, fatsEaten = 0, protsNeeded = 0, protsEaten = 0, waterNeeded = 0, waterDrunk = 0;
+    
     static public User Instance;
 
-    private void Awake()
+    void Start()
     {
         CreateInstance();
     }
 
-    private void CreateInstance()
+    public void CreateInstance()
     {
         if (Instance == null)
         {
@@ -68,6 +114,9 @@ public class User : MonoBehaviour
         weight = _weight;
         goal = _goal;
         activity = _activity;
+        language = Language.Ukrainian.ToString();
+        theme = Theme.Light.ToString();
+        measurementUnits = MeasurementUnits.Metric.ToString();
     }
 
     public int CarbsNeeded
@@ -111,12 +160,27 @@ public class User : MonoBehaviour
         set { caloriesEaten = value; }
     }
 
-    public void SetAll(string _username, string _email, GoalType _goal, ActivityType _activity, float _height, float _weight, SexType _sex, int _age)
+    public int WaterNeeded
+    {
+        get { return waterNeeded; }
+        set { waterNeeded = value; }
+    }
+
+    public int WaterDrunk
+    {
+        get { return waterDrunk; }
+        set { waterDrunk = value; }
+    }
+
+    public void SetAll(string _username, string _email, GoalType _goal, ActivityType _activity, float _height, float _weight, SexType _sex, int _age, Language _language, Theme _theme, MeasurementUnits _measurementUnits)
     {
         SetUsername(_username);
         SetEmail(_email);
         SetGoal(_goal);
         SetActivity(_activity);
+        SetLanguage(_language);
+        SetTheme(_theme);
+        SetMeasurementUnits(_measurementUnits);
         SetHeight(_height);
         SetWeight(_weight);
         SetSex(_sex);
@@ -185,11 +249,38 @@ public class User : MonoBehaviour
     {
         activity = _activity;
     }
+    public void SetLanguage(Language _language)
+    {
+        language = _language.ToString();
+    }
+
+    private void SetLanguage(string _language)
+    {
+        language = _language;
+    }
+    public void SetTheme(Theme _theme)
+    {
+        theme = _theme.ToString();
+    }
+
+    private void SetTheme(string _theme)
+    {
+        theme = _theme;
+    }
+    public void SetMeasurementUnits(MeasurementUnits _measurementUnits)
+    {
+        measurementUnits = _measurementUnits.ToString();
+    }
+
+    private void SetMeasurementUnits(string _measurementUnits)
+    {
+        measurementUnits = _measurementUnits;
+    }
 
     public void SetHeight(float _height) {
-        if (_height <= 0)
+        if (_height < 50)
         {
-            throw new Exception("Height must be greater than 0!");
+            throw new Exception("Height must be greater than 50!");
         } else if (_height > 300)
         {
             throw new Exception("Height must be less than 300!");
@@ -199,18 +290,8 @@ public class User : MonoBehaviour
         height = _height;
     }
 
-    //public void SetHeight(string _height)
-    //{
-    //    if (string.IsNullOrEmpty(_height))
-    //    {
-    //        throw new Exception("Height empty");
-    //    }
-
-    //    SetHeight(float.Parse(_height));
-    //}
-
     public void SetWeight(float _weight) {
-        if (_weight <= 0)
+        if (_weight < 0)
         {
             throw new Exception("Weight must be greater than 0!");
         }
@@ -223,16 +304,6 @@ public class User : MonoBehaviour
         weight = _weight;
     }
 
-    //public void SetWeight(string _weight)
-    //{
-    //    if (string.IsNullOrEmpty(_weight))
-    //    {
-    //        throw new Exception("Weight empty");
-    //    }
-
-    //    SetWeight(float.Parse(_weight));
-    //}
-
     public string GetUsername() { return username; }
     public string GetEmail() { return email; }
     public GoalType GetGoal() { return goal; }
@@ -241,11 +312,41 @@ public class User : MonoBehaviour
     public float GetWeight() { return weight; }
     public SexType GetSex() { return sex; }
     public int GetAge() { return age; }
+    public string GetTheme() { return theme; }
+    public string GetLanguage() { return language; }
+    public string GetMeasurementUnits() { return measurementUnits; }
 
 
     public void Show()
     {
-        Debug.Log($"User: {username} {email}. Goal {goal} Activity {activity} " +
-            $" Height {height} Weight {weight}");
+        Debug.Log("User: " + JsonUtility.ToJson(this));
+    }
+
+    static public void SetUserDataWithSnapshot(DataSnapshot snapshot)
+    {
+        Instance.SetUsername(snapshot.Child("username").Value.ToString());
+        Instance.SetEmail(snapshot.Child("email").Value.ToString());
+        Instance.SetGoal((GoalType)Convert.ToInt32(snapshot.Child("goal").Value));
+        Instance.SetActivity((ActivityType)Convert.ToInt32(snapshot.Child("activity").Value));
+        Instance.SetHeight(Convert.ToSingle(snapshot.Child("height").Value));
+        Instance.SetWeight(Convert.ToSingle(snapshot.Child("weight").Value));
+        Instance.SetSex((SexType)Convert.ToInt32(snapshot.Child("sex").Value));
+        Instance.SetAge(Convert.ToInt32(snapshot.Child("age").Value));
+        Instance.SetLanguage(snapshot.Child("language").Value.ToString());
+        Instance.SetTheme(snapshot.Child("theme").Value.ToString());
+        Instance.SetMeasurementUnits(snapshot.Child("measurementUnits").Value.ToString());
+
+        Instance.caloriesEaten = Convert.ToInt32(snapshot.Child("caloriesEaten").Value);
+        Instance.caloriesNeeded = Convert.ToInt32(snapshot.Child("caloriesNeeded").Value);
+        Instance.protsEaten = Convert.ToInt32(snapshot.Child("protsEaten").Value);
+        Instance.protsNeeded = Convert.ToInt32(snapshot.Child("protsNeeded").Value);
+        Instance.fatsEaten = Convert.ToInt32(snapshot.Child("fatsEaten").Value);
+        Instance.fatsNeeded = Convert.ToInt32(snapshot.Child("fatsNeeded").Value);
+        Instance.carbsEaten = Convert.ToInt32(snapshot.Child("carbsEaten").Value);
+        Instance.carbsNeeded = Convert.ToInt32(snapshot.Child("carbsNeeded").Value);
+        Instance.waterDrunk = Convert.ToInt32(snapshot.Child("waterDrunk").Value);
+        Instance.waterNeeded = Convert.ToInt32(snapshot.Child("waterNeeded").Value);
+
+
     }
 }

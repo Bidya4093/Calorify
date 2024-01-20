@@ -74,8 +74,6 @@ public class AuthPanelManager : MonoBehaviour
         signUpShowPasswordBtn = signUpPage.Q<VisualElement>("SignUpShowPasswordBtn");
         signInShowPasswordBtn.RegisterCallback<ClickEvent>(ToggleShowPassword);
         signUpShowPasswordBtn.RegisterCallback<ClickEvent>(ToggleShowPassword);
-
-        OpenSignUpPage(null);
     }
 
     public void OpenSignInPage(ClickEvent evt)

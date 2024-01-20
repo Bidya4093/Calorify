@@ -198,10 +198,10 @@ GameObject:
   m_Component:
   - component: {fileID: 431730924}
   - component: {fileID: 431730923}
+  - component: {fileID: 431730928}
   - component: {fileID: 431730925}
   - component: {fileID: 431730926}
   - component: {fileID: 431730927}
-  - component: {fileID: 431730928}
   m_Layer: 5
   m_Name: Auth
   m_TagString: Untagged
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5227ec892ff09fb468bec621215da4c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableAutoLogin: 0
+  enableAutoLogin: 1
   dependencyStatus: 0
 --- !u!114 &431730927
 MonoBehaviour:
@@ -290,14 +290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b86fa14d0e8aaf4a921880997c978ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  caloriesNeeded: 0
-  caloriesEaten: 0
-  carbsNeeded: 0
-  carbsEaten: 0
-  fatsNeeded: 0
-  fatsEaten: 0
-  protsNeeded: 0
-  protsEaten: 0
 --- !u!1 &615506915
 GameObject:
   m_ObjectHideFlags: 0

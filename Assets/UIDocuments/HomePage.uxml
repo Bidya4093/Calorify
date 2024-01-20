@@ -19,30 +19,30 @@
                             <ui:VisualElement name="ChartsContainer" style="flex-grow: 0; margin-bottom: 55px;">
                                 <ui:VisualElement name="MacrosContainer" style="flex-grow: 0; flex-direction: row; margin-right: 60px; margin-left: 60px; align-items: center; justify-content: space-between; -unity-text-align: upper-center; margin-bottom: 40px;">
                                     <ui:VisualElement name="ProteinsChart" style="flex-grow: 1; flex-shrink: 0; justify-content: flex-start; align-items: center; width: 240px;">
-                                        <MyUILibrary.RadialProgress progress="40.29851" focusable="false" class="radial-progress proteins-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; justify-content: center;">
+                                        <MyUILibrary.RadialProgress name="ProteinsRadialProgress" progress="0" focusable="false" class="radial-progress proteins-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; justify-content: center;">
                                             <ui:Label tabindex="-1" text="Білки" display-tooltip-when-elided="true" style="font-size: 48px;" />
                                         </MyUILibrary.RadialProgress>
-                                        <ui:Label tabindex="-1" text="54 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                        <ui:Label tabindex="-1" name="ProteinsRadialProgressLabel" text="0 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                     </ui:VisualElement>
                                     <ui:VisualElement name="FatsChart" style="flex-grow: 1; flex-shrink: 0; margin-right: 72px; margin-left: 72px; align-items: center; width: 240px;">
-                                        <MyUILibrary.RadialProgress progress="40.29851" focusable="false" class="radial-progress fats-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center;">
+                                        <MyUILibrary.RadialProgress name="FatsRadialProgress" progress="0" focusable="false" class="radial-progress fats-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center;">
                                             <ui:Label tabindex="-1" text="Жири" display-tooltip-when-elided="true" style="font-size: 48px;" />
                                         </MyUILibrary.RadialProgress>
-                                        <ui:Label tabindex="-1" text="54 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                        <ui:Label tabindex="-1" name="FatsRadialProgressLabel" text="0 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                     </ui:VisualElement>
                                     <ui:VisualElement name="CarbsChart" style="flex-grow: 1; flex-shrink: 0; width: 240px; align-items: center;">
-                                        <MyUILibrary.RadialProgress progress="40.29851" focusable="false" class="radial-progress carbs-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center;">
+                                        <MyUILibrary.RadialProgress name="CarbsRadialProgress" focusable="false" class="radial-progress carbs-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center;">
                                             <ui:Label tabindex="-1" text="Вуглев." display-tooltip-when-elided="true" select-line-by-triple-click="true" style="font-size: 48px;" />
                                         </MyUILibrary.RadialProgress>
-                                        <ui:Label tabindex="-1" text="54 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                        <ui:Label tabindex="-1" name="CarbsRadialProgressLabel" text="0 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                     </ui:VisualElement>
                                 </ui:VisualElement>
                                 <ui:VisualElement name="ChartsInnerContainer" style="flex-grow: 0; flex-direction: row; margin-right: 45px; margin-left: 75px; justify-content: space-between;">
                                     <ui:VisualElement name="CaloriesChart" style="flex-grow: 0; flex-shrink: 0; width: 360px; align-items: center;">
-                                        <MyUILibrary.RadialProgress progress="40.29851" focusable="false" class="radial-progress carbs-progress calories-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 325px; height: 360px; align-items: stretch; -unity-text-align: middle-center;">
-                                            <ui:Label tabindex="-1" text="30%" display-tooltip-when-elided="true" select-line-by-triple-click="true" style="font-size: 78px;" />
+                                        <MyUILibrary.RadialProgress name="CaloriesRadialProgress" progress="0" focusable="false" class="radial-progress carbs-progress calories-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 325px; height: 360px; align-items: stretch; -unity-text-align: middle-center;">
+                                            <ui:Label tabindex="-1" text="30%" display-tooltip-when-elided="true" select-line-by-triple-click="true" name="CaloriesRadialProgressPercent" style="font-size: 78px;" />
                                         </MyUILibrary.RadialProgress>
-                                        <ui:Label tabindex="-1" text="2200 / 2200 ккал." display-tooltip-when-elided="true" style="font-size: 48px; color: rgb(85, 85, 85); margin-top: 18px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-items: stretch; -unity-text-align: upper-center;" />
+                                        <ui:Label tabindex="-1" name="CaloriesRadialProgressLabel" text="0 / 2200 ккал." display-tooltip-when-elided="true" style="font-size: 48px; color: rgb(85, 85, 85); margin-top: 18px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-items: stretch; -unity-text-align: upper-center;" />
                                     </ui:VisualElement>
                                     <ui:VisualElement name="ChartsBtnContainer" style="flex-grow: 1; justify-content: center; align-items: flex-end;">
                                         <ui:Button text="ВОДА" display-tooltip-when-elided="true" name="AddActivityBtn" class="btn btn-reverse" style="margin-bottom: 45px;">
@@ -57,10 +57,10 @@
                             <ui:VisualElement name="WaterContainer" style="flex-grow: 0; margin-right: 45px; margin-left: 45px; background-color: rgb(240, 240, 240); height: 150px; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; font-size: 36px; padding-top: 15px; padding-right: 45px; padding-bottom: 30px; padding-left: 45px; justify-content: space-between;">
                                 <ui:VisualElement name="WaterTextContainer" style="flex-direction: row; align-items: flex-end; justify-content: space-between; width: auto;">
                                     <ui:Label tabindex="-1" text="Спожито води" display-tooltip-when-elided="true" />
-                                    <ui:Label tabindex="-1" text="1.8 / 2.4 л." display-tooltip-when-elided="true" />
+                                    <ui:Label tabindex="-1" text="1.8 / 2.4 л." display-tooltip-when-elided="true" name="WaterProgressBarLabel" />
                                 </ui:VisualElement>
                                 <ui:VisualElement name="WaterProgressBarContainer" style="flex-grow: 0;">
-                                    <ui:ProgressBar value="80" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
+                                    <ui:ProgressBar value="0" name="WaterProgressBar" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
                                         <ui:VisualElement name="ProgressBarDividersContainer" style="flex-grow: 1; position: absolute; flex-direction: row; right: 0; left: 0; bottom: 0; top: 0; justify-content: space-evenly;">
                                             <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
                                             <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />

@@ -18,7 +18,7 @@
                         </ui:VisualElement>
                         <ui:VisualElement name="PersonalDataEmailContainer" class="option__container personal-data__container">
                             <ui:Label tabindex="-1" text="Електронна пошта" display-tooltip-when-elided="true" name="PersonalDataEmailTitle" class="option__title" />
-                            <ui:TextField picking-mode="Ignore" name="PersonalDataEmailInput" value="hileta.yulia@gmail.com" keyboard-type="EmailAddress" class="option__input" />
+                            <ui:TextField picking-mode="Ignore" name="PersonalDataEmailInput" value="hileta.yulia@gmail.com" keyboard-type="EmailAddress" password="false" is-delayed="true" class="option__input" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="PersonalDateName" class="option" style="margin-bottom: 0;">
@@ -27,7 +27,7 @@
                         </ui:VisualElement>
                         <ui:VisualElement name="PersonalDateNameContainer" class="option__container personal-data__container">
                             <ui:Label tabindex="-1" text="Як до вас звертатися?" display-tooltip-when-elided="true" name="PersonalDateNameTitle" class="option__title" />
-                            <ui:TextField picking-mode="Ignore" name="PersonalDataNameInput" value="Гілета Юлія" class="option__input" />
+                            <ui:TextField picking-mode="Ignore" name="PersonalDataNameInput" value="Гілета Юлія" is-delayed="true" class="option__input" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -39,14 +39,14 @@
                     <ui:Label tabindex="-1" text="Ваші параметри" display-tooltip-when-elided="true" name="UserParametersTitle" class="profile-title personal-data__title" />
                     <ui:VisualElement name="UserParametersOptions">
                         <ui:VisualElement name="UserParametersInputContainer" class="user-parameters__input-container" style="flex-grow: 1;">
-                            <ui:FloatField label="Ріст:" value="179" name="UserParametersHeightInput" class="user-parameters__input" />
+                            <ui:FloatField label="Ріст:" value="179" name="UserParametersHeightInput" is-delayed="true" class="user-parameters__input" />
                             <ui:Label tabindex="-1" text="см" display-tooltip-when-elided="true" name="UserParametersHeightInputPostfix" class="user-parameters__input-postfix" />
                         </ui:VisualElement>
                         <ui:VisualElement name="UserParametersInputContainer" class="user-parameters__input-container">
-                            <ui:FloatField label="Вага:" value="69" name="UserParametersWeightInput" class="user-parameters__input" />
+                            <ui:FloatField label="Вага:" value="69" name="UserParametersWeightInput" is-delayed="true" class="user-parameters__input" />
                             <ui:Label tabindex="-1" text="кг" display-tooltip-when-elided="true" name="UserParametersWeightInputPostfix" class="user-parameters__input-postfix" />
                         </ui:VisualElement>
-                        <ui:RadioButtonGroup label="Стать:" value="1" choices="Ч,Ж" name="UserParametersRadioToggle" class="user-parameters__radio-group" style="margin-top: 0; margin-right: 90px; margin-bottom: 0; margin-left: 0; font-size: 52px;" />
+                        <ui:RadioButtonGroup label="Стать:" value="1" choices="Ч,Ж" name="UserParametersSexRadioToggle" class="user-parameters__radio-group" style="margin-top: 0; margin-right: 90px; margin-bottom: 0; margin-left: 0; font-size: 52px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </Shadow>
