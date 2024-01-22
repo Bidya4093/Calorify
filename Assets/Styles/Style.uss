@@ -157,7 +157,7 @@
     padding-bottom: 0;
     padding-left: 0;
     -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
-    font-size: 48px;
+    font-size: 56px;
 }
 
 .content-container {

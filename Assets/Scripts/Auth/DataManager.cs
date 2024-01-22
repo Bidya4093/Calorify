@@ -104,6 +104,13 @@ public class DataManager
         Profile.userParametersHeightInput.SetValueWithoutNotify(User.Instance.GetHeight());
         Profile.userParametersWeightInput.SetValueWithoutNotify(User.Instance.GetWeight());
         Profile.userParametersSexRadioToggle.SetValueWithoutNotify((int)User.Instance.GetSex());
+        if (user.PhotoUrl != null || user.PhotoUrl.OriginalString != "")
+        {
+            Profile.SetProfileImage();
+            return;
+        }
+        Profile.SetPlaceholderImageBySex();
+        
     }
 
     static public void LoadSettingsData()

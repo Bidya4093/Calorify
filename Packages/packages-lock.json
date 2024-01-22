@@ -180,6 +180,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.yasirkula.nativegallery": {
+      "version": "https://github.com/yasirkula/UnityNativeGallery.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "535827c3e4f18a496e933649c2c721d9ef267176"
+    },
     "dev.krajnc.uitoolkittimeline": {
       "version": "https://github.com/mihakrajnc/UITTimeline.git",
       "depth": 0,

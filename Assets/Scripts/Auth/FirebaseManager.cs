@@ -236,7 +236,7 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    public IEnumerator UpdateProfile(string _username)
+    static public IEnumerator UpdateProfile(string _username, Uri path)
     {
         if (_username == "")
         {
@@ -246,7 +246,7 @@ public class FirebaseManager : MonoBehaviour
             if (firebaseUser != null)
             {
                 //Create a firebaseUser profile and set the username
-                UserProfile profile = new UserProfile { DisplayName = _username };
+                UserProfile profile = new UserProfile { DisplayName = _username, PhotoUrl = path };
 
                 //Call the Firebase auth update firebaseUser profile function passing the profile with the username
                 Task ProfileTask = firebaseUser.UpdateUserProfileAsync(profile);
@@ -306,7 +306,7 @@ public class FirebaseManager : MonoBehaviour
             {
             //firebaseUser has now been created
             //Now get the result
-            UpdateProfile(_username);
+            UpdateProfile(_username, null);
             firebaseUser = RegisterTask.Result.User;
             errorLabel.text = "";
             yield return GetComponent<Auth>().CreateUser();
