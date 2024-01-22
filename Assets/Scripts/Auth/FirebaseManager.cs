@@ -84,7 +84,7 @@ public class FirebaseManager : MonoBehaviour
         else
         {
 
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != Scenes.Auth)
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != Scenes.Auth.ToString())
             {
                 yield return StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Auth));
                 GetComponent<AuthPanelManager>().OpenSignInPage(null);
@@ -139,7 +139,7 @@ public class FirebaseManager : MonoBehaviour
         if (firebaseUser != null)
         {
 
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != Scenes.Main)
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != Scenes.Main.ToString())
             {
                 yield return StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Main));
             }
@@ -148,7 +148,7 @@ public class FirebaseManager : MonoBehaviour
         }
         else
         {
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != Scenes.Auth)
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != Scenes.Auth.ToString())
             {
                 yield return StartCoroutine(SceneLoader.LoadSceneAsync(Scenes.Auth));
             }

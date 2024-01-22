@@ -109,7 +109,7 @@ public class Profile : MonoBehaviour
 
     static public void SetPlaceholderImageBySex()
     {
-        if (FirebaseAuth.DefaultInstance.CurrentUser.PhotoUrl == null)
+        if (FirebaseAuth.DefaultInstance.CurrentUser.PhotoUrl != null)
             return;
 
         if (User.Instance.GetSex() == SexType.Male)

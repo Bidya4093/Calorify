@@ -2,22 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
-
-public class Scenes
+public class Scenes : StringEnum
 {
-    public static readonly string Auth = "Authorization";
-    public static readonly string Main = "MainScreen";
-    public static readonly string Loading = "LoadingScreen";
+    public static List<Scenes> Values = new List<Scenes>();
+    private Scenes(string value) : base(value) { Values.Add(this); }
+    public static Scenes Auth { get { return new Scenes("Authorization"); } }
+    public static Scenes Main { get { return new Scenes("MainScreen"); } }
+    public static Scenes Loading { get { return new Scenes("LoadingScreen"); } }
 }
 
 public class SceneLoader : MonoBehaviour
 {
-    public SceneAsset scene;
+    //public string scene;
     public PlayableDirector director;
 
     void Start()
@@ -28,17 +28,18 @@ public class SceneLoader : MonoBehaviour
     void LoadSceneAsync(PlayableDirector aDirector)
     {
         if (director == aDirector) {
-            LoadSceneAsync(scene);
+            LoadSceneAsyncWrapper(Scenes.Auth);
         }
     }
 
-    void LoadSceneAsync(SceneAsset sceneAsset)
+    void LoadSceneAsyncWrapper(Scenes scene)
     {
-        StartCoroutine(LoadSceneAsync(sceneAsset.name));
+        StartCoroutine(LoadSceneAsync(scene));
     }
 
-    static public IEnumerator LoadSceneAsync(string nameOfScene)
+    static public IEnumerator LoadSceneAsync(Scenes sceneType)
     {
+        string nameOfScene = sceneType.ToString();
         if (SceneManager.GetSceneByName(nameOfScene) == null)
         {
             yield return new Exception("Scene not found");
