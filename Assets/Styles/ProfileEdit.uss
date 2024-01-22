@@ -174,3 +174,26 @@
     width: 500px;
     -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&guid=adb52135dcca16c44b46cb4ddce45978&type=3#Ubuntu-Regular');
 }
+
+.profile-edit__image {
+    flex-grow: 1;
+    margin-bottom: 45px;
+    width: 400px;
+    height: 400px;
+    background-image: resource('Images/woman-profile-placeholder');
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-left-color: rgb(86, 110, 86);
+    border-right-color: rgb(86, 110, 86);
+    border-top-color: rgb(86, 110, 86);
+    border-bottom-color: rgb(86, 110, 86);
+    border-top-width: 6px;
+    border-right-width: 6px;
+    border-bottom-width: 6px;
+    border-left-width: 6px;
+    justify-content: center;
+    align-items: center;
+    -unity-background-scale-mode: scale-and-crop;
+}

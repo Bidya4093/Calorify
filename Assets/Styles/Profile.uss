@@ -27,8 +27,8 @@
 }
 
 .profile-card__image {
-    background-image: resource('Images/profile-image');
-    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource('Images/woman-profile-placeholder');
+    -unity-background-scale-mode: scale-and-crop;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;

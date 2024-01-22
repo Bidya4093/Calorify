@@ -1,9 +1,11 @@
 using Firebase.Auth;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+using UnityEditor;
+using UnityEngine.Networking;
 
 public class Profile : MonoBehaviour
 {
@@ -36,10 +38,17 @@ public class Profile : MonoBehaviour
     static public Label profileCardEmail;
     static public Label changePasswordEmailLabel;
 
-    public static List<string> languageChoices = new List<string> { Language.Ukrainian.ToString(), Language.English.ToString() };
-    public static List<string> themeModeChoices = new List<string> { Theme.Light.ToString(), Theme.Dark.ToString() };
-    public static List<string> goalChoices = new List<string> { Goal.LoseWeight.ToString(), Goal.PutOnWeight.ToString(), Goal.KeepFit.ToString() };
-    public static List<string> measurementUnitChoices = new List<string> { MeasurementUnits.Metric.ToString(), MeasurementUnits.US.ToString() };
+    static public VisualElement profileCardImage;
+    static public VisualElement profileEditImage;
+    private Button changeImageBtn;
+
+    static public string pathToManProfilePlaceholder = "Images/man-profile-placeholder";
+    static public string pathToWomanProfilePlaceholder = "Images/woman-profile-placeholder";
+
+    static public List<string> languageChoices = new List<string> { Language.Ukrainian.ToString(), Language.English.ToString() };
+    static public List<string> themeModeChoices = new List<string> { Theme.Light.ToString(), Theme.Dark.ToString() };
+    static public List<string> goalChoices = new List<string> { Goal.LoseWeight.ToString(), Goal.PutOnWeight.ToString(), Goal.KeepFit.ToString() };
+    static public List<string> measurementUnitChoices = new List<string> { MeasurementUnits.Metric.ToString(), MeasurementUnits.US.ToString() };
 
 
     void Start()
@@ -80,6 +89,12 @@ public class Profile : MonoBehaviour
         profileCardEmail = profileRoot.Q<Label>("ProfileCardEmail");
         changePasswordEmailLabel = profileRoot.Q<Label>("ChangePasswordEmailLabel");
 
+        profileCardImage = profileRoot.Q<VisualElement>("ProfileCardImage");
+        profileEditImage = profileRoot.Q<VisualElement>("ProfileEditImage");
+        changeImageBtn = profileRoot.Q<Button>("ChangeImageBtn");
+
+        changeImageBtn.clicked += LoadProfileImageFromGallery;
+
         settingsGoalDropdown.RegisterValueChangedCallback(OnGoalDropdownValueChanged);
         settingsThemeDropdown.RegisterValueChangedCallback(OnThemeDropdownValueChanged);
         settingsLanguageDropdown.RegisterValueChangedCallback(OnLanguageDropdownValueChanged);
@@ -90,7 +105,23 @@ public class Profile : MonoBehaviour
         userParametersHeightInput.RegisterValueChangedCallback(OnHeightInputValueChanged);
         userParametersWeightInput.RegisterValueChangedCallback(OnWeightInputValueChanged);
         userParametersSexRadioToggle.RegisterValueChangedCallback(OnSexRadioToggleValueChanged);
+    }
 
+    static public void SetPlaceholderImageBySex()
+    {
+        if (FirebaseAuth.DefaultInstance.CurrentUser.PhotoUrl == null)
+            return;
+
+        if (User.Instance.GetSex() == SexType.Male)
+        {
+            profileCardImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToManProfilePlaceholder));
+            profileEditImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToManProfilePlaceholder));
+        } else if (User.Instance.GetSex() == SexType.Female)
+        {
+            profileCardImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToWomanProfilePlaceholder));
+            profileEditImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToWomanProfilePlaceholder));
+        }
+        
     }
 
     private void OpenProfileEditPage()
@@ -226,13 +257,53 @@ public class Profile : MonoBehaviour
             StartCoroutine(FirebaseManager.UpdateUserValue("sex", User.Instance.GetSex()));
             MacrosManager.CalculateUserNeeds();
             DataManager.LoadChartsData();
+            SetPlaceholderImageBySex();
             StartCoroutine(FirebaseManager.UpdateUserDatabaseData());
-
         }
         catch (Exception ex)
         {
             Debug.LogWarning(ex);
         }
+    }
+
+    private void LoadProfileImageFromGallery()
+    {
+        if (NativeGallery.IsMediaPickerBusy())
+            return;
+
+        NativeGallery.Permission permission = NativeGallery.GetImageFromGallery((path) =>
+        {
+            Debug.Log("Image path: " + path);
+            if (path != null)
+            {
+                SetProfileImage(path);
+                StartCoroutine(FirebaseManager.UpdateProfile(User.Instance.GetUsername(), new Uri(path)));
+            }
+        });
+
+        Debug.Log("Permission result: " + permission);
+    }
+
+    static public void SetProfileImage(string path = null)
+    {
+        if (path == null || path == "")
+            path = FirebaseAuth.DefaultInstance.CurrentUser.PhotoUrl.OriginalString;
+
+        // Create Texture from selected image
+        Texture2D texture = NativeGallery.LoadImageAtPath(path);
+        if (texture == null)
+        {
+            Debug.Log("Couldn't load texture from " + path);
+            return;
+        }
+        profileCardImage.style.backgroundImage = texture;
+        profileEditImage.style.backgroundImage = texture;
+    }
+
+    private async void RequestPermissionAsynchronously(NativeGallery.PermissionType permissionType, NativeGallery.MediaType mediaTypes)
+    {
+        NativeGallery.Permission permission = await NativeGallery.RequestPermissionAsync(permissionType, mediaTypes);
+        Debug.Log("Permission result: " + permission);
     }
 
 }
