@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine;
 
-public class ProductsLoader : MonoBehaviour
+public class ProductsLoader
 {
     public List<products> dishes;
 
