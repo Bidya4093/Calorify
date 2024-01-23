@@ -13,6 +13,6 @@ public class Todays_history
 
     public override string ToString()
     {
-        return $"{id}, {product_id}, {mass};";
+        return $"{id}, {product_id}, {mass}, {date};";
     }
 }

@@ -53,6 +53,7 @@
     margin-right: 15px;
     margin-left: 15px;
     margin-bottom: 80px;
+    align-items: center;
 }
 
 .history-item__image {

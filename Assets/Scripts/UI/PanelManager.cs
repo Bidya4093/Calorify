@@ -59,8 +59,6 @@ public class PanelManager : MonoBehaviour
         homeContainer = homePage.Q<VisualElement>("HomeContainer");
         activityTemplate = homePage.Q<TemplateContainer>("ActivityTemplate");
 
-        //scanPanelContainer = 
-
         bottomMenu = mainRoot.Q<TemplateContainer>("BottomMenu");
         bottomMenuBtns = bottomMenu.Query<VisualElement>(className: "menu__item").ToList();
 
@@ -85,8 +83,6 @@ public class PanelManager : MonoBehaviour
 
         waterProgressBar = homePage.Q<ProgressBar>("WaterProgressBar");
 
-        AttachProductPanelToProduct();
-
         AttachTopicToAdviceTopicPage();
 
         waterProgressBar.RegisterValueChangedCallback(ChangeWaterProgress);
@@ -96,14 +92,6 @@ public class PanelManager : MonoBehaviour
     {
         VisualElement progressBarProgress = (evt.currentTarget as ProgressBar).Query(className: "unity-progress-bar__progress");
         progressBarProgress.style.width = Length.Percent(evt.newValue);
-    }
-
-    private void AttachProductPanelToProduct()
-    {
-        homePage.Query<Button>("HistoryItemEditBtn").ForEach(editProductBtn =>
-        {
-            editProductBtn.clicked += OpenProductPanel;
-        });
     }
 
     private void AttachTopicToAdviceTopicPage()
@@ -161,10 +149,10 @@ public class PanelManager : MonoBehaviour
         messageRoot.style.display = DisplayStyle.Flex;
     }
 
-    private void OpenProductPanel()
-    {
-        productPanelRoot.style.display = DisplayStyle.Flex;
-    }
+    //private void OpenProductPanel()
+    //{
+    //    productPanelRoot.style.display = DisplayStyle.Flex;
+    //}
 
     private void OpenAdviceTopicPage()
     {

@@ -7,12 +7,13 @@ public class ProductPanel : MonoBehaviour
 {
     private VisualElement productPanelBackground;
     private VisualElement productPanelRoot;
+
     void Start()
     {
         productPanelRoot = GetComponent<UIDocument>().rootVisualElement;
         productPanelBackground = productPanelRoot.Q<VisualElement>("ProductPanelBackground");
 
-        productPanelBackground.RegisterCallback<ClickEvent>(CloseProductPanel);
+        //productPanelBackground.RegisterCallback<ClickEvent>(CloseProductPanel);
     }
 
     private void CloseProductPanel(ClickEvent evt)

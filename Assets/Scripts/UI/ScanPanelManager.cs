@@ -1,8 +1,6 @@
-using System.Threading.Tasks;
-using Unity.VisualScripting;
+using Firebase.Auth;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.Progress;
 
 public class ScanPanelManager : MonoBehaviour
 {
@@ -90,13 +88,13 @@ public class ScanPanelManager : MonoBehaviour
     {
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
 
-        Todays_history todaysHistory = todaysHistoryManager.InsertRecord(product.product_id, massInput.value);
+        Todays_history todaysHistory = todaysHistoryManager.InsertRecord(product.product_id, massInput.value, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
 
-        foreach (Todays_history item in todaysHistoryManager.GetHistory())
-        {
-            Debug.Log(item);
-        }
-        //ProductHistoryItem productHistoryItem = new ProductHistoryItem(todaysHistory);
+        //foreach (Todays_history item in todaysHistoryManager.GetHistory())
+        //{
+        //    Debug.Log(item);
+        //}
+        ProductHistoryItem productHistoryItem = new ProductHistoryItem(todaysHistory);
 
 
 

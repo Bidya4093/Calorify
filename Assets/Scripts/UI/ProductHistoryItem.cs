@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class ProductHistoryItem : VisualElement
@@ -7,9 +8,18 @@ public class ProductHistoryItem : VisualElement
 
     public new class UxmlFactory : UxmlFactory<ProductHistoryItem> { }
 
+    public VisualElement productPanelRoot;
+    public VisualElement historyList;
+    public TodaysHistoryManager todaysHistoryManager;
+    public Todays_history todaysHistory;
     public products product;
     public MacrosInfo macrosInfo;
     public int mass;
+
+    private Button deleteBtn;
+    private IntegerField massInput;
+    private Button saveChangesBtn;
+
 
     private readonly string ussItem = "history-item";
     private readonly string ussImageShadow = "history-item__image-shadow";
@@ -27,21 +37,27 @@ public class ProductHistoryItem : VisualElement
 
     public ProductHistoryItem() : this(null) { }
 
-    public ProductHistoryItem(Todays_history todaysHistory)
+    public ProductHistoryItem(Todays_history _todaysHistory)
     {
+        productPanelRoot = GameObject.Find("ProductPanel").GetComponent<UIDocument>().rootVisualElement;
+        deleteBtn = productPanelRoot.Q<Button>("ProductPanelDeleteBtn");
+        massInput = productPanelRoot.Q<IntegerField>("ProductPanelWeightInput");
+        saveChangesBtn = productPanelRoot.Q<Button>("ProductPanelBtn");
+        todaysHistoryManager = new TodaysHistoryManager();
+
+
+        todaysHistory = _todaysHistory;
         AddToClassList(ussItem);
         name = "HistoryItem";
         macrosInfo = MacrosManager.CalculateMacrosByMass(todaysHistory.mass, todaysHistory.product_id);
         product = new ProductsLoader().GetById(todaysHistory.product_id);
         mass = todaysHistory.mass;
-
+        
         Shadow imageShadow = new Shadow();
         imageShadow.name = "HistoryItemImageShadow";
         imageShadow.AddToClassList(ussImageShadow);
         hierarchy.Add(imageShadow);
-        Debug.Log(todaysHistory);
-        Debug.Log(macrosInfo);
-        Debug.Log(product);
+
         VisualElement image = new VisualElement();
         image.name = "HistoryItemImage";
         image.AddToClassList(ussImage);
@@ -97,11 +113,113 @@ public class ProductHistoryItem : VisualElement
         itemBottom.Add(weightLabel);
 
         VisualElement mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
-        VisualElement historyList = mainRoot.Q<VisualElement>("HistoryContainer");
+        historyList = mainRoot.Q<VisualElement>("HistoryContainer");
 
         if (historyList.childCount == 0)
             style.marginBottom = 0;
 
         historyList.Insert(0, this);
+
+        editBtn.RegisterCallback<ClickEvent>(OnEditBtnClick);
+
+        VisualElement productPanelBackground = productPanelRoot.Q<VisualElement>("ProductPanelBackground");
+        productPanelBackground.RegisterCallback<ClickEvent>(CloseProductPanel);
+    }
+
+    private void OnEditBtnClick(ClickEvent evt)
+    {
+        VisualElement productPanelRoot = GameObject.Find("ProductPanel").GetComponent<UIDocument>().rootVisualElement;
+        
+        productPanelRoot.style.display = DisplayStyle.Flex;
+
+        OpenProductPanelWithData();
+
+    }
+
+    private void OpenProductPanelWithData()
+    {
+        UpdateProductPanelData();
+        massInput.value = todaysHistory.mass;
+
+        deleteBtn.RegisterCallback<ClickEvent>(DeleteItem);
+        massInput.RegisterValueChangedCallback(ChangeItemData);
+        saveChangesBtn.RegisterCallback<ClickEvent>(SaveChanges);
+
+    }
+
+    private void UpdateProductPanelData()
+    {
+        VisualElement nutriScoreBadge = productPanelRoot.Q<VisualElement>("HistoryItemScore");
+        Label nutriScoreLabel = nutriScoreBadge.Q<Label>();
+        Label title = productPanelRoot.Q<Label>("ProductPanelTitle");
+        Label dateLabel = productPanelRoot.Q<Label>("ProductPanelDate");
+
+        nutriScoreBadge.ClearClassList();
+        nutriScoreBadge.AddToClassList(ussNutriScore);
+        nutriScoreBadge.AddToClassList(ussNutriScore + $"-{product.nutri_score.ToLower()}");
+        nutriScoreBadge.AddToClassList(ussItemScore);
+
+        nutriScoreLabel.text = product.nutri_score.ToUpper();
+        title.text = product.name;
+        dateLabel.text = todaysHistory.date;
+
+        UpdateProductMacrosData();
+    }
+
+    private void UpdateProductMacrosData()
+    {
+        Label caloriesLabel = productPanelRoot.Q<Label>("MacrosCaloriesValue");
+        Label protsLabel = productPanelRoot.Q<Label>("MacrosProtsValue");
+        Label fatsLabel = productPanelRoot.Q<Label>("MacrosFatsValue");
+        Label carbsLabel = productPanelRoot.Q<Label>("MacrosCarbsValue");
+
+        caloriesLabel.text = macrosInfo.calories.ToString();
+        protsLabel.text = macrosInfo.prots.ToString();
+        fatsLabel.text = macrosInfo.fats.ToString();
+        carbsLabel.text = macrosInfo.carbs.ToString();
+    }
+
+    private void CloseProductPanel(ClickEvent evt)
+    {
+        productPanelRoot.style.display = DisplayStyle.None;
+
+        deleteBtn.UnregisterCallback<ClickEvent>(DeleteItem);
+        massInput.UnregisterValueChangedCallback(ChangeItemData);
+        saveChangesBtn.UnregisterCallback<ClickEvent>(SaveChanges);
+    }
+
+    private void DeleteItem(ClickEvent evt)
+    {
+        RemoveFromHierarchy();
+        historyList.Query<ProductHistoryItem>("HistoryItem").Last().style.marginBottom = 0;
+        todaysHistoryManager.DeleteRecord(todaysHistory.id);
+        
+        CloseProductPanel(evt);
+    }
+
+    private void ChangeItemData(ChangeEvent<int> evt)
+    {
+        mass = (evt.target as IntegerField).value;
+        macrosInfo = MacrosManager.CalculateMacrosByMass(mass, todaysHistory.product_id);
+        UpdateProductMacrosData();
+    }
+
+    private void SaveChanges(ClickEvent evt)
+    {
+        todaysHistoryManager.UpdateMass(todaysHistory.id, mass);
+        todaysHistory.mass = mass;
+        UpdateCaloriesAndMass();
+        CloseProductPanel(evt);
+    }
+
+    private void UpdateCaloriesAndMass()
+    {
+
+        Label caloriesLabel = this.Q<Label>("HistoryItemCalories");
+        caloriesLabel.text = $"{macrosInfo.calories} κκΰλ";
+
+        Label weightLabel = this.Q<Label>("HistoryItemWeight");
+        weightLabel.text = $"{mass} γ";
+
     }
 }

@@ -37,15 +37,15 @@ public class TodaysHistoryManager
     // Inserting new records. Reconnecting recommended
     // When you insert water, specify that product_id = 22, mass = 0, water_amount - in liters
     // Otherwise, only set product_id and mass
-    public void InsertRecord(int product_id, int mass, string user_id, float water_amount = 0)
+    public Todays_history InsertRecord(int product_id, int mass, string user_id, float water_amount = 0)
     {
-        DateTime date = DateTime.Today;
+        DateTime date = DateTime.Now;
         Todays_history newRecord = new Todays_history
         {
             product_id = product_id,
             mass = mass,
             water_amount = water_amount,
-            date = date.ToString("yyyy-MM-dd"),
+            date = date.ToString("HH:mm"),
             user_id = user_id
         };
         connection.Insert(newRecord);
@@ -66,7 +66,7 @@ public class TodaysHistoryManager
     }
 
     // Deletes the record with the given index
-    public void DeleteRecord(int id, int newMass)
+    public void DeleteRecord(int id)
     {
         Todays_history recordToDelete = connection.Table<Todays_history>().Where(tag => tag.id == id).FirstOrDefault();
         if (recordToDelete != null)

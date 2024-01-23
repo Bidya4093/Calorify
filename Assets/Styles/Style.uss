@@ -76,19 +76,6 @@
     -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
 }
 
-.wrapper {
-    margin-top: 0;
-    background-color: rgb(255, 255, 255);
-    border-top-left-radius: 45px;
-    border-top-right-radius: 45px;
-    border-bottom-right-radius: 45px;
-    border-bottom-left-radius: 45px;
-    margin-bottom: 30px;
-    padding-bottom: 60px;
-    padding-top: 60px;
-    flex-shrink: 0;
-}
-
 .nutri-score-badge {
     font-size: 48px;
     width: 72px;
@@ -107,6 +94,19 @@
     border-left-width: 10px;
     -unity-text-align: middle-center;
     color: rgb(255, 255, 255);
+}
+
+.wrapper {
+    margin-top: 0;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    margin-bottom: 30px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+    flex-shrink: 0;
 }
 
 .nutri-score-badge-a {

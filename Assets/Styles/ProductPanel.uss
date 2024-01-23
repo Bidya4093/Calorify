@@ -43,7 +43,7 @@
 }
 
 .product-panel__top {
-    flex-grow: 1;
+    flex-grow: 0;
     flex-direction: row;
     margin-right: 15px;
     margin-left: 15px;
@@ -122,5 +122,5 @@
     margin-bottom: 40px;
     --shadow-corner-radius: 45;
     --shadow-size: -10;
-    --shadow-color: rgba(0,0,0,0.15);
+    --shadow-color: rgba(0, 0, 0, 0.15);
 }

@@ -12,7 +12,7 @@ public class Printer2 : MonoBehaviour
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
         ProductsLoader productsLoader = new ProductsLoader();
 
-        todaysHistoryManager.InsertRecord(3, 45f, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
+        todaysHistoryManager.InsertRecord(3, 45, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
 
         foreach(Todays_history record in todaysHistoryManager.GetHistory())
         {
