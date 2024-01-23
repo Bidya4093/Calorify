@@ -5,6 +5,7 @@ public class Todays_history
 
     [PrimaryKey, AutoIncrement]
     public int id { get; set; }
+    public string user_id { get; set; }
     public int product_id { get; set; }
     public int mass { get; set; }
     public float water_amount { get; set; }

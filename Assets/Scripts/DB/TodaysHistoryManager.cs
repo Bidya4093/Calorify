@@ -1,3 +1,4 @@
+using Firebase.Auth;
 using SQLite4Unity3d;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class TodaysHistoryManager
 {
     private List<Todays_history> records;
+    private List<Todays_history> currentUserRecords;
     SQLiteConnection connection;
 
     // Initialization where we create a new connection
@@ -15,6 +17,11 @@ public class TodaysHistoryManager
         connection = dataService.GetConnection();
         records = new List<Todays_history>();
         ToList(connection.Table<Todays_history>());
+        currentUserRecords = new List<Todays_history>();
+        foreach(Todays_history record in records)
+        {
+            if(record.user_id == FirebaseAuth.DefaultInstance.CurrentUser.UserId) currentUserRecords.Add(record);
+        }
     }
 
     public List<Todays_history> GetHistory()
@@ -22,10 +29,15 @@ public class TodaysHistoryManager
         return records;
     }
 
+    public List<Todays_history> GetCurrentUserHistory()
+    {
+        return currentUserRecords;
+    }
+
     // Inserting new records. Reconnecting recommended
     // When you insert water, specify that product_id = 22, mass = 0, water_amount - in liters
     // Otherwise, only set product_id and mass
-    public Todays_history InsertRecord(int product_id, int mass, float water_amount = 0)
+    public void InsertRecord(int product_id, int mass, string user_id, float water_amount = 0)
     {
         DateTime date = DateTime.Today;
         Todays_history newRecord = new Todays_history
@@ -33,7 +45,8 @@ public class TodaysHistoryManager
             product_id = product_id,
             mass = mass,
             water_amount = water_amount,
-            date = date.ToString("HH-mm")
+            date = date.ToString("yyyy-MM-dd"),
+            user_id = user_id
         };
         connection.Insert(newRecord);
         return newRecord;
