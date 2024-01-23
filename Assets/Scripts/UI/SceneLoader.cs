@@ -1,7 +1,7 @@
+using Firebase.Auth;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -28,6 +28,11 @@ public class SceneLoader : MonoBehaviour
     void LoadSceneAsync(PlayableDirector aDirector)
     {
         if (director == aDirector) {
+            if (FirebaseAuth.DefaultInstance.CurrentUser != null)
+            {
+                LoadSceneAsyncWrapper(Scenes.Main);
+                return;
+            }
             LoadSceneAsyncWrapper(Scenes.Auth);
         }
     }

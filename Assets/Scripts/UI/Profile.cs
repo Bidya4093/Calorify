@@ -107,23 +107,6 @@ public class Profile : MonoBehaviour
         userParametersSexRadioToggle.RegisterValueChangedCallback(OnSexRadioToggleValueChanged);
     }
 
-    static public void SetPlaceholderImageBySex()
-    {
-        if (FirebaseAuth.DefaultInstance.CurrentUser.PhotoUrl != null)
-            return;
-
-        if (User.Instance.GetSex() == SexType.Male)
-        {
-            profileCardImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToManProfilePlaceholder));
-            profileEditImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToManProfilePlaceholder));
-        } else if (User.Instance.GetSex() == SexType.Female)
-        {
-            profileCardImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToWomanProfilePlaceholder));
-            profileEditImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToWomanProfilePlaceholder));
-        }
-        
-    }
-
     private void OpenProfileEditPage()
     {
         profileEditTemplate.style.display = DisplayStyle.Flex;
@@ -164,7 +147,19 @@ public class Profile : MonoBehaviour
     {
         int choiceIndex = (evt.currentTarget as DropdownField).index;
         User.Instance.SetGoal((GoalType)choiceIndex);
-        StartCoroutine(FirebaseManager.UpdateUserValue("goal", User.Instance.GetGoal()));
+
+        try
+        {
+            StartCoroutine(FirebaseManager.UpdateUserValue("goal", User.Instance.GetGoal()));
+            MacrosManager.CalculateUserNeeds();
+            DataManager.LoadChartsData();
+            StartCoroutine(FirebaseManager.UpdateUserDatabaseData());
+
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning(ex);
+        }
 
     }
     private void OnThemeDropdownValueChanged(ChangeEvent<string> evt)
@@ -191,6 +186,7 @@ public class Profile : MonoBehaviour
         try
         {
             User.Instance.SetEmail((evt.target as TextField).value);
+            //FirebaseManager.UpdateEmail(User.Instance.GetEmail());
             StartCoroutine(FirebaseManager.UpdateUserValue("email", User.Instance.GetEmail()));
             profileCardEmail.text = User.Instance.GetEmail();
             changePasswordEmailLabel.text = User.Instance.GetEmail();
@@ -264,6 +260,24 @@ public class Profile : MonoBehaviour
         {
             Debug.LogWarning(ex);
         }
+    }
+
+    static public void SetPlaceholderImageBySex()
+    {
+        if (FirebaseAuth.DefaultInstance.CurrentUser.PhotoUrl != null)
+            return;
+
+        if (User.Instance.GetSex() == SexType.Male)
+        {
+            profileCardImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToManProfilePlaceholder));
+            profileEditImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToManProfilePlaceholder));
+        }
+        else if (User.Instance.GetSex() == SexType.Female)
+        {
+            profileCardImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToWomanProfilePlaceholder));
+            profileEditImage.style.backgroundImage = new StyleBackground(Resources.Load<VectorImage>(pathToWomanProfilePlaceholder));
+        }
+
     }
 
     private void LoadProfileImageFromGallery()

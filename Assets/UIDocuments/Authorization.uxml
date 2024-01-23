@@ -22,8 +22,8 @@
                 </ui:VisualElement>
                 <ui:VisualElement name="EmailInputContainer" style="align-items: center;">
                     <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" class="error-label" />
-                    <ui:TextField picking-mode="Ignore" placeholder-text="Електронна адреса" name="SignUpEmailInput" keyboard-type="EmailAddress" max-length="80" hide-mobile-input="true" class="auth-input-2" style="margin-bottom: 55px;" />
-                    <ui:TextField picking-mode="Ignore" placeholder-text="Пароль" name="SignUpPasswordInput" password="true" max-length="50" hide-mobile-input="true" class="auth-input-2" style="margin-bottom: 45px; padding-right: 190px;">
+                    <ui:TextField picking-mode="Ignore" placeholder-text="Електронна адреса" name="SignUpEmailInput" keyboard-type="EmailAddress" max-length="80" hide-mobile-input="false" auto-correction="true" class="auth-input-2" style="margin-bottom: 55px;" />
+                    <ui:TextField picking-mode="Ignore" placeholder-text="Пароль" name="SignUpPasswordInput" password="true" max-length="50" hide-mobile-input="false" class="auth-input-2" style="margin-bottom: 45px; padding-right: 190px;">
                         <ui:VisualElement name="SignUpShowPasswordBtn" style="position: absolute; right: 30px; top: 0; bottom: 0; background-image: resource(&apos;Images/show-password-icon&apos;); width: 110px; -unity-background-scale-mode: scale-to-fit;" />
                     </ui:TextField>
                     <ui:Label tabindex="-1" text="Вже маєте обліковий запис?  Увійдіть" display-tooltip-when-elided="true" name="SignUpLink" style="font-size: 48px;" />
@@ -57,7 +57,7 @@
             <ui:VisualElement name="NameContainer">
                 <ui:VisualElement name="BackBtn" class="sign-up-back-btn" />
                 <ui:Label tabindex="-1" text="Як вас звати?" display-tooltip-when-elided="true" name="NameTitle" enable-rich-text="false" style="-unity-text-align: upper-center; font-size: 96px; margin-bottom: 350px;" />
-                <ui:TextField picking-mode="Ignore" placeholder-text="Введіть ваше ім&apos;я" name="NameInput" select-all-on-focus="true" select-all-on-mouse-up="true" hide-placeholder-on-focus="true" class="auth-input">
+                <ui:TextField picking-mode="Ignore" placeholder-text="Введіть ваше ім&apos;я" name="NameInput" select-all-on-focus="true" select-all-on-mouse-up="true" hide-placeholder-on-focus="true" auto-correction="true" class="auth-input">
                     <ui:VisualElement name="NameInputLine" class="auth-input-line" />
                     <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" class="error-label" />
                 </ui:TextField>
@@ -135,8 +135,8 @@
             </ui:VisualElement>
             <ui:VisualElement name="SignInInputContainer" style="align-items: center;">
                 <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" class="error-label" />
-                <ui:TextField picking-mode="Ignore" placeholder-text="Електронна адреса" name="SignInEmailInput" keyboard-type="EmailAddress" password="false" max-length="80" hide-mobile-input="true" class="auth-input-2" style="margin-bottom: 55px;" />
-                <ui:TextField placeholder-text="Пароль" name="SignInPasswordInput" password="true" max-length="50" hide-mobile-input="true" picking-mode="Ignore" class="auth-input-2" style="margin-bottom: 85px;">
+                <ui:TextField picking-mode="Ignore" placeholder-text="Електронна адреса" name="SignInEmailInput" keyboard-type="EmailAddress" password="false" max-length="80" hide-mobile-input="false" auto-correction="true" class="auth-input-2" style="margin-bottom: 55px;" />
+                <ui:TextField placeholder-text="Пароль" name="SignInPasswordInput" password="true" max-length="50" hide-mobile-input="false" picking-mode="Ignore" auto-correction="false" class="auth-input-2" style="margin-bottom: 85px;">
                     <ui:VisualElement name="SignInShowPasswordBtn" style="position: absolute; right: 30px; top: 0; bottom: 0; background-image: resource(&apos;Images/show-password-icon&apos;); width: 110px; -unity-background-scale-mode: scale-to-fit;" />
                 </ui:TextField>
                 <ui:Label tabindex="-1" text="Забули пароль?" display-tooltip-when-elided="true" name="SignInRecoverPasswordLink" style="font-size: 48px; flex-grow: 1; width: 850px; margin-bottom: 140px;" />

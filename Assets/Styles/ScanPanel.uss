@@ -41,6 +41,7 @@
     border-width: 3px;
     border-color: rgba(85, 85, 85, 0.33);
     background-color: transparent;
+    overflow: hidden;
 }
 
 .scan-panel__info-item-progress-bar .unity-progress-bar__container {
@@ -54,12 +55,20 @@
 
 .progress-bar__additional {
     flex-grow: 1;
-    height: 30px;
     position: absolute;
     width: 30%;
     border-radius: 16px;
     background-color: rgba(28, 33, 33, 0.65);
     margin: 3px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    height: 100%;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
 }
 
 .progress-bar__carbs .unity-progress-bar__progress {
@@ -102,4 +111,20 @@
     margin-right: 0;
     margin-bottom: 0;
     margin-left: 0;
+}
+
+.progress-bar__additional-container {
+    flex-grow: 1;
+    position: absolute;
+    width: 100%;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    overflow: hidden;
+    height: 30px;
+    margin-top: 3px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    margin-left: 3px;
 }

@@ -188,7 +188,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91806064}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &91806069
 Camera:
   m_ObjectHideFlags: 0
@@ -727,6 +727,7 @@ GameObject:
   - component: {fileID: 1898785194}
   - component: {fileID: 1898785195}
   - component: {fileID: 1898785196}
+  - component: {fileID: 1898785200}
   m_Layer: 5
   m_Name: MainPage
   m_TagString: Untagged
@@ -854,6 +855,18 @@ MonoBehaviour:
   protsEaten: 0
   waterNeeded: 0
   waterDrunk: 0
+--- !u!114 &1898785200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898785190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f8b03b2a9e94f4f9c9467809d7af91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2096228717
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StatusFilter: 0
+  StatusFilter: 1
   UsePoseSmoothing: 0
   AnimationCurve:
     serializedVersion: 2
@@ -943,19 +956,7 @@ MonoBehaviour:
         m_CallState: 2
   OnTargetLost:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1898785195}
-        m_TargetAssemblyTypeName: ShowPopUp, Assembly-CSharp
-        m_MethodName: Hide
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2096228720
 MonoBehaviour:
   m_ObjectHideFlags: 0

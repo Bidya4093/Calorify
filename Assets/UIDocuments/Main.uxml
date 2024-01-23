@@ -10,7 +10,9 @@
     <Style src="project://database/Assets/Styles/Advice.uss?fileID=7433441132597879392&amp;guid=3a7409e6a5e48ff46a8e137b56aa4f2a&amp;type=3#Advice" />
     <Style src="project://database/Assets/Styles/BottomMenu.uss?fileID=7433441132597879392&amp;guid=ed42d1e45f6a5a2488cc573278a6da0b&amp;type=3#BottomMenu" />
     <ui:Instance template="HomePage" name="HomePage" style="display: flex; height: 100%;" />
-    <ui:Instance template="ScanPage" name="ScanPage" style="display: none;" />
+    <ui:Instance template="ScanPage" name="ScanPage" style="display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+        <AttributeOverrides element-name="ScanPanelProtsProgressBar" value="61.7" high-value="88.1" />
+    </ui:Instance>
     <ui:Instance template="AdvicePage" name="AdvicePage" style="display: none;" />
     <ui:Instance template="BottomMenu" name="BottomMenu" style="flex-grow: 1;" />
 </ui:UXML>

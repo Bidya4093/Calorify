@@ -3,6 +3,7 @@ using Firebase.Database;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -32,33 +33,39 @@ public class MacrosManager : MonoBehaviour
     static public void CalculateUserNeeds()
     {
         int calories = 0;
-        double activityCoefficient = 1.2f;
+        float activityCoefficient = 1.2f;
+        float goalCoefficient = 1f;
         SexType sex = User.Instance.GetSex();
         ActivityType activity = User.Instance.GetActivity();
         float weight = User.Instance.GetWeight();
         float height = User.Instance.GetHeight();
         int age = User.Instance.GetAge();
-
+        GoalType goal = User.Instance.GetGoal();
 
         // BMR - basal metabolic rate
         if (sex == SexType.Female)
         {
-            calories = (int)(655.1 + (9.563 * weight) + (1.85 * height) - (4.676 * age));
+            calories = (int)((10 * weight) + (6.25 * height) - (5 * age)) - 161;
         } else if (sex == SexType.Male)
         {
-            calories = (int)(66.47 + (13.75 * weight) + (5.003 * height) - (6.755 * age));
+            calories = (int)((10 * weight) + (6.25 * height) - (5 * age) + 5);
         }
 
         if (activity == ActivityType.None) activityCoefficient = 1.2f;
         else if (activity == ActivityType.Regular) activityCoefficient = 1.375f;
         else if (activity == ActivityType.Often) activityCoefficient = 1.55f;
 
+        if (goal == GoalType.LoseWeight) goalCoefficient = 0.9f;
+        else if (goal == GoalType.PutOnWeight) goalCoefficient = 1.2f;
+        
         // AMR - active metabolic rate
-        caloriesNeeded = (int)(calories * activityCoefficient);
+        caloriesNeeded = (int)(calories * activityCoefficient * goalCoefficient);
 
-        carbsNeeded = (int)(0.5f * calories / 4);
-        fatsNeeded = (int)(0.25f * calories / 4);
-        protsNeeded = (int)(0.3f * calories / 9);
+
+
+        carbsNeeded = (int)(0.5f * caloriesNeeded / 4);
+        fatsNeeded = (int)(0.25f * caloriesNeeded / 4);
+        protsNeeded = (int)(0.3f * caloriesNeeded / 9);
 
         User.Instance.CaloriesNeeded = caloriesNeeded;
         User.Instance.CarbsNeeded = carbsNeeded;

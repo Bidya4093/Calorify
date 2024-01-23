@@ -37,7 +37,7 @@ public class ShowPopUpInfo : MonoBehaviour
             calculatedProts = (int)(item.prots * (mass / 100f));
             calculatedFats = (int)(item.fats * (mass / 100f));
             calculatedCarbs = (int)(item.carbs * (mass / 100f));
-
+            
             itemName.text = item.name;
             calories.text = $"{calculatedCals.ToString()}";
             prots.text = $"{calculatedProts.ToString()}";

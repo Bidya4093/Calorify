@@ -3,18 +3,40 @@
     border-width: 0px;
     margin-top: 0px;
     width: 100%;
+    background-color: white;
+    border-radius: 45px;
+    overflow:hidden;
     font-size: 48px;
+    bottom: 0px;
 }
 
 .unity-base-dropdown__container-inner{
     padding: 0px;
     width: 100%;
-    border-top-left-radius: 45px;
-    border-top-right-radius: 45px;
+    background-color: white;
+
 }
 
 .unity-base-dropdown {
-    bottom: 0px;
+    background-color: rgba(1, 1, 1, 0.5);
+}
+
+.unity-base-dropdown__item {
+    padding: 60px 60px 75px 60px;
+    border-bottom-width: 1px;
+    border-bottom-color: #D9D9D9;
+}
+
+.unity-base-dropdown__item:hover {
+    background-color: transparent;
+}
+
+.unity-base-dropdown__item:hover .unity-label{
+    color: rgba(1,1,1,1);
+}
+
+.unity-base-dropdown__checkmark {
+    display: none;
 }
 
 /*

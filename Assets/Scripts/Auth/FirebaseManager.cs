@@ -186,6 +186,27 @@ public class FirebaseManager : MonoBehaviour
         StartCoroutine(Register(signUpEmailInput.value, signUpPasswordInput.value, User.Instance.GetUsername()));
     }
 
+    static public void UpdateEmail(string email)
+    {
+        if (firebaseUser != null)
+        {
+            firebaseUser.UpdateEmailAsync(email).ContinueWith(task => {
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("UpdateEmailAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("UpdateEmailAsync encountered an error: " + task.Exception);
+                    return;
+                }
+
+                Debug.Log("User email updated successfully.");
+            });
+        }
+    }
+
     private IEnumerator Login(string _email, string _password)
     {
         //Call the Firebase auth signin function passing the email and password

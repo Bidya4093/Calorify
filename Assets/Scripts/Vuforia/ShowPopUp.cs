@@ -15,6 +15,7 @@ public class ShowPopUp : MonoBehaviour
     }
     public void Show()
     {
+        Debug.Log("Workign");
         scanPanel.style.display = DisplayStyle.Flex;
     }
 

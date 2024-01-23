@@ -142,22 +142,19 @@
     right: -24px;
 }
 
-.unity-progress-bar__background {
+#HomePage .unity-progress-bar__background {
     border-width: 0 0 0 0;
     background-color: rgb(217, 217, 217);
     border-radius: 15px;
     overflow: hidden;
 }
 
-.unity-progress-bar__progress {
+#HomePage .unity-progress-bar__progress {
     background-color: rgb(127, 144, 236);
     border-radius: 15px;
     margin: 0;
     position: absolute;
     width: 0;
-}
-
-.unity-progress-bar__container {
 }
 
 .history-item__image-shadow {
