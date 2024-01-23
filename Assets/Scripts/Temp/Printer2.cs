@@ -10,7 +10,7 @@ public class Printer2 : MonoBehaviour
     {
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
         ProductsLoader productsLoader = new ProductsLoader();
-        foreach(Todays_history record in todaysHistoryManager.GetHistory())
+        foreach (Todays_history record in todaysHistoryManager.GetHistory())
         {
             products dish = productsLoader.GetById(record.product_id);
             Debug.Log($"Назва: {dish.name}; Маса: {record.mass}; Калорії: {record.mass * dish.calories / 100}");

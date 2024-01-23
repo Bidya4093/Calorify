@@ -46,6 +46,10 @@
                             <ui:FloatField label="Вага:" value="69" name="UserParametersWeightInput" is-delayed="true" class="user-parameters__input" />
                             <ui:Label tabindex="-1" text="кг" display-tooltip-when-elided="true" name="UserParametersWeightInputPostfix" class="user-parameters__input-postfix" />
                         </ui:VisualElement>
+                        <ui:VisualElement name="UserParametersInputContainer" class="user-parameters__input-container">
+                            <ui:IntegerField label="Вік:" value="18" name="UserParametersAgeInput" is-delayed="true" class="user-parameters__input" />
+                            <ui:Label tabindex="-1" text="р" display-tooltip-when-elided="true" name="UserParametersAgeInputPostfix" class="user-parameters__input-postfix" style="display: flex;" />
+                        </ui:VisualElement>
                         <ui:RadioButtonGroup label="Стать:" value="1" choices="Ч,Ж" name="UserParametersSexRadioToggle" class="user-parameters__radio-group" style="margin-top: 0; margin-right: 90px; margin-bottom: 0; margin-left: 0; font-size: 52px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>

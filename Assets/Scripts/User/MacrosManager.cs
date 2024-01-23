@@ -2,10 +2,16 @@ using Firebase.Auth;
 using Firebase.Database;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
 using UnityEngine;
+
+public class MacrosInfo
+{
+    public int calories;
+    public int carbs;
+    public int fats;
+    public int prots;
+}
 
 public class MacrosManager : MonoBehaviour
 {
@@ -26,7 +32,7 @@ public class MacrosManager : MonoBehaviour
     {
         user = FirebaseAuth.DefaultInstance.CurrentUser;
         DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-        StartCoroutine(LoadUserMacrosData());
+        //StartCoroutine(LoadUserMacrosData());
     }
 
 
@@ -71,6 +77,17 @@ public class MacrosManager : MonoBehaviour
         User.Instance.CarbsNeeded = carbsNeeded;
         User.Instance.FatsNeeded = fatsNeeded;
         User.Instance.ProtsNeeded = protsNeeded;
+    }
+    
+    static public MacrosInfo CalculateMacrosByMass(int mass, int productId)
+    {
+        MacrosInfo macrosInfo = new MacrosInfo();
+        products product = new ProductsLoader().GetById(productId);
+        macrosInfo.calories = (int)(product.calories * (mass / 100f));
+        macrosInfo.prots = (int)(product.prots * (mass / 100f));
+        macrosInfo.fats = (int)(product.fats * (mass / 100f));
+        macrosInfo.carbs = (int)(product.carbs * (mass / 100f));
+        return macrosInfo;
     }
 
     public IEnumerator LoadUserMacrosData()

@@ -63,10 +63,10 @@ public class DataManager
         carbsProgress.progress = ((float)User.Instance.CarbsEaten / (float)User.Instance.CarbsNeeded) *100f;
         waterProgressBar.value = ((float)User.Instance.WaterDrunk / (float)User.Instance.WaterNeeded) * 100f;
 
-        caloriesProgressBar.value = ((float)User.Instance.CarbsEaten / (float)User.Instance.CarbsNeeded) * 100f;
-        carbsProgressBar.value = ((float)User.Instance.ProtsEaten / (float)User.Instance.ProtsNeeded) * 100f;
-        protsProgressBar.value = ((float)User.Instance.CaloriesEaten / (float)User.Instance.CaloriesNeeded) * 100f;
+        caloriesProgressBar.value = ((float)User.Instance.CaloriesEaten / (float)User.Instance.CaloriesNeeded) * 100f;
         fatsProgressBar.value = ((float)User.Instance.FatsEaten / (float)User.Instance.FatsNeeded) * 100f;
+        protsProgressBar.value = ((float)User.Instance.ProtsEaten / (float)User.Instance.ProtsNeeded) * 100f;
+        carbsProgressBar.value = ((float)User.Instance.CarbsEaten / (float)User.Instance.CarbsNeeded) * 100f;
 
         caloriesProgressLabel.text = User.Instance.CaloriesEaten.ToString() + " / " + User.Instance.CaloriesNeeded.ToString() + " κκΰλ.";
         fatsProgressLabel.text = User.Instance.FatsEaten.ToString() + " / " + User.Instance.FatsNeeded.ToString() + " γ.";

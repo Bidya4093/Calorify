@@ -59,6 +59,7 @@ public class PanelManager : MonoBehaviour
         homeContainer = homePage.Q<VisualElement>("HomeContainer");
         activityTemplate = homePage.Q<TemplateContainer>("ActivityTemplate");
 
+        //scanPanelContainer = 
 
         bottomMenu = mainRoot.Q<TemplateContainer>("BottomMenu");
         bottomMenuBtns = bottomMenu.Query<VisualElement>(className: "menu__item").ToList();
@@ -128,10 +129,11 @@ public class PanelManager : MonoBehaviour
         });
         ClickedElement.AddToClassList("menu__item--active");
     }
-    private void OnHomeBtnClick(ClickEvent evt)
+    public void OnHomeBtnClick(ClickEvent evt)
     {
         OnBottomMenuClick(evt);
         homePage.style.display = DisplayStyle.Flex;
+        GetComponent<ScanPanelManager>().Hide();
     }
     private void OnScanBtnClick(ClickEvent evt)
     {
@@ -144,6 +146,7 @@ public class PanelManager : MonoBehaviour
     {
         OnBottomMenuClick(evt);
         advicePage.style.display = DisplayStyle.Flex;
+        GetComponent<ScanPanelManager>().Hide();
     }
 
     private void OpenProfilePage()

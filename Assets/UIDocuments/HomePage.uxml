@@ -1,7 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="TopMenu" src="project://database/Assets/UIDocuments/TopMenu.uxml?fileID=9197481963319205126&amp;guid=7be0b6e660666744ba8ade54e9f02f9f&amp;type=3#TopMenu" />
     <ui:Template name="ActivityPage" src="project://database/Assets/UIDocuments/ActivityPage.uxml?fileID=9197481963319205126&amp;guid=bbc182239366a14419a938593ffdc566&amp;type=3#ActivityPage" />
-    <ui:Template name="BottomMenu" src="project://database/Assets/UIDocuments/BottomMenu.uxml?fileID=9197481963319205126&amp;guid=d484617e92ad0c8488cdb87b417cc233&amp;type=3#BottomMenu" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
     <Style src="project://database/Assets/Styles/RadialProgress.uss?fileID=7433441132597879392&amp;guid=54e4e5c72d3a5ef4aa2946f873ef3048&amp;type=3#RadialProgress" />
@@ -74,84 +73,7 @@
                     <Shadow name="HistoryShadow" class="shadow-45">
                         <ui:VisualElement name="HistorySection" class="wrapper" style="padding-right: 60px; padding-left: 60px; margin-bottom: 0;">
                             <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="home-title" style="margin-bottom: 30px; visibility: visible; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-left: 0;" />
-                            <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">
-                                <ui:VisualElement name="HistoryItem" class="history-item">
-                                    <Shadow name="HistoryItemImageShadow" shadow-color="#00000033" shadow-offset-y="10" shadow-corner-radius="45" shadow-size="-15" class="history-item__image-shadow">
-                                        <ui:VisualElement name="HistoryItemImage" class="history-item__image">
-                                            <ui:VisualElement name="HistoryItemScore" class="nutri-score-badge nutri-score-badge-c history-item__score">
-                                                <ui:Label tabindex="-1" text="С" display-tooltip-when-elided="true" class="history-item__score-text" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; text-overflow: clip; width: 46px;" />
-                                            </ui:VisualElement>
-                                        </ui:VisualElement>
-                                    </Shadow>
-                                    <ui:VisualElement name="HistoryItemContainer" class="history-item__container">
-                                        <ui:VisualElement name="HistoryItemTop" class="history-item__top">
-                                            <ui:Label tabindex="-1" text="Яєчня" display-tooltip-when-elided="true" name="HistoryItemTitle" class="history-item__title" />
-                                            <ui:Button text="Button" display-tooltip-when-elided="true" name="HistoryItemEditBtn" class="btn-icon history-item__edit-btn" />
-                                        </ui:VisualElement>
-                                        <ui:VisualElement name="HistoryItemBottom" class="history-item__bottom">
-                                            <ui:Label tabindex="-1" text="330 ккал" display-tooltip-when-elided="true" name="HistoryItemCalories" class="history-item__calories" />
-                                            <ui:Label tabindex="-1" text="150 г" display-tooltip-when-elided="true" name="HistoryItemWeight" class="history-item__weight" />
-                                        </ui:VisualElement>
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                                <ui:VisualElement name="HistoryItem" class="history-item" style="display: flex;">
-                                    <Shadow name="HistoryItemImageShadow" shadow-color="#00000033" shadow-offset-y="10" shadow-corner-radius="45" shadow-size="-15" class="history-item__image-shadow">
-                                        <ui:VisualElement name="HistoryItemImage" class="history-item__image" style="background-image: resource(&apos;Images/buckwheat&apos;);">
-                                            <ui:VisualElement name="HistoryItemScore" class="nutri-score-badge nutri-score-badge-a history-item__score">
-                                                <ui:Label tabindex="-1" text="A" display-tooltip-when-elided="true" selectable="true" />
-                                            </ui:VisualElement>
-                                        </ui:VisualElement>
-                                    </Shadow>
-                                    <ui:VisualElement name="HistoryItemContainer" class="history-item__container">
-                                        <ui:VisualElement name="HistoryItemTop" class="history-item__top">
-                                            <ui:Label tabindex="-1" text="Гречана каша" display-tooltip-when-elided="true" name="HistoryItemTitle" class="history-item__title" />
-                                            <ui:Button text="Button" display-tooltip-when-elided="true" name="HistoryItemEditBtn" class="btn-icon history-item__edit-btn" />
-                                        </ui:VisualElement>
-                                        <ui:VisualElement name="HistoryItemBottom" class="history-item__bottom">
-                                            <ui:Label tabindex="-1" text="330 ккал" display-tooltip-when-elided="true" name="HistoryItemCalories" class="history-item__calories" />
-                                            <ui:Label tabindex="-1" text="150 г" display-tooltip-when-elided="true" name="HistoryItemWeight" class="history-item__weight" />
-                                        </ui:VisualElement>
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                                <ui:VisualElement name="HistoryItem" class="history-item">
-                                    <Shadow name="HistoryItemImageShadow" shadow-color="#00000033" shadow-offset-y="10" shadow-corner-radius="45" shadow-size="-15" class="history-item__image-shadow">
-                                        <ui:VisualElement name="HistoryItemImage" class="history-item__image">
-                                            <ui:VisualElement name="HistoryItemScore" class="nutri-score-badge nutri-score-badge-c history-item__score">
-                                                <ui:Label tabindex="-1" text="С" display-tooltip-when-elided="true" class="history-item__score-text" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; text-overflow: clip; width: 46px;" />
-                                            </ui:VisualElement>
-                                        </ui:VisualElement>
-                                    </Shadow>
-                                    <ui:VisualElement name="HistoryItemContainer" class="history-item__container">
-                                        <ui:VisualElement name="HistoryItemTop" class="history-item__top">
-                                            <ui:Label tabindex="-1" text="Яєчня" display-tooltip-when-elided="true" name="HistoryItemTitle" class="history-item__title" />
-                                            <ui:Button text="Button" display-tooltip-when-elided="true" name="HistoryItemEditBtn" class="btn-icon history-item__edit-btn" />
-                                        </ui:VisualElement>
-                                        <ui:VisualElement name="HistoryItemBottom" class="history-item__bottom">
-                                            <ui:Label tabindex="-1" text="330 ккал" display-tooltip-when-elided="true" name="HistoryItemCalories" class="history-item__calories" />
-                                            <ui:Label tabindex="-1" text="150 г" display-tooltip-when-elided="true" name="HistoryItemWeight" class="history-item__weight" />
-                                        </ui:VisualElement>
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                                <ui:VisualElement name="HistoryItem" class="history-item" style="display: flex; margin-bottom: 0;">
-                                    <Shadow name="HistoryItemImageShadow" shadow-color="#00000033" shadow-offset-y="10" shadow-corner-radius="45" shadow-size="-15" class="history-item__image-shadow">
-                                        <ui:VisualElement name="HistoryItemImage" class="history-item__image" style="background-image: resource(&apos;Images/buckwheat&apos;);">
-                                            <ui:VisualElement name="HistoryItemScore" class="nutri-score-badge nutri-score-badge-a history-item__score">
-                                                <ui:Label tabindex="-1" text="A" display-tooltip-when-elided="true" selectable="true" />
-                                            </ui:VisualElement>
-                                        </ui:VisualElement>
-                                    </Shadow>
-                                    <ui:VisualElement name="HistoryItemContainer" class="history-item__container">
-                                        <ui:VisualElement name="HistoryItemTop" class="history-item__top">
-                                            <ui:Label tabindex="-1" text="Гречана каша" display-tooltip-when-elided="true" name="HistoryItemTitle" class="history-item__title" />
-                                            <ui:Button text="Button" display-tooltip-when-elided="true" name="HistoryItemEditBtn" class="btn-icon history-item__edit-btn" />
-                                        </ui:VisualElement>
-                                        <ui:VisualElement name="HistoryItemBottom" class="history-item__bottom">
-                                            <ui:Label tabindex="-1" text="330 ккал" display-tooltip-when-elided="true" name="HistoryItemCalories" class="history-item__calories" />
-                                            <ui:Label tabindex="-1" text="150 г" display-tooltip-when-elided="true" name="HistoryItemWeight" class="history-item__weight" />
-                                        </ui:VisualElement>
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
+                            <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;" />
                         </ui:VisualElement>
                     </Shadow>
                 </ui:VisualElement>
@@ -159,5 +81,4 @@
         </ui:VisualElement>
         <ui:Instance template="ActivityPage" name="ActivityTemplate" style="display: none;" />
     </ui:VisualElement>
-    <ui:Instance template="BottomMenu" />
 </ui:UXML>

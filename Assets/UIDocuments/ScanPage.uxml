@@ -1,15 +1,15 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Styles/ScanPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ScanPanel" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
-    <ui:VisualElement name="ScanPanelContainer" style="border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px; background-color: rgb(255, 255, 255); margin-right: 0; margin-left: 0; flex-grow: 1; padding-bottom: 45px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&amp;guid=adb52135dcca16c44b46cb4ddce45978&amp;type=3#Ubuntu-Regular&apos;); display: flex; max-height: 1650px; padding-top: 12px; position: absolute; right: 60px; left: 60px; bottom: 480px;">
+    <ui:VisualElement name="ScanPanelContainer" style="border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px; background-color: rgb(255, 255, 255); margin-right: 0; margin-left: 0; flex-grow: 1; padding-bottom: 45px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&amp;guid=adb52135dcca16c44b46cb4ddce45978&amp;type=3#Ubuntu-Regular&apos;); display: none; max-height: 1650px; padding-top: 12px; position: absolute; right: 60px; left: 60px; bottom: 480px;">
         <ui:VisualElement name="ScanPanelImage" style="background-image: resource(&apos;Images/buckwheat-big&apos;); -unity-background-scale-mode: scale-and-crop; flex-grow: 1; border-top-left-radius: 35px; border-top-right-radius: 35px; margin-top: 0; margin-right: 12px; margin-bottom: 12px; margin-left: 12px; height: 540px;" />
         <ui:VisualElement name="ScanPanelContent" style="align-items: center;">
-            <ui:VisualElement name="ScanPanelTop" style="margin-right: 0; margin-left: 0; margin-top: 12px; margin-bottom: 60px; flex-direction: row; padding-right: 45px; padding-left: 45px; width: 100%; justify-content: space-between; height: 80px;">
-                <ui:Label tabindex="-1" text="Гречана каша" display-tooltip-when-elided="true" name="ScanPanelTitle" class="title-md" style="align-self: flex-end;" />
-                <ui:VisualElement name="ScanPanelNutriScore" style="flex-direction: row; align-items: center; align-self: flex-start;">
+            <ui:VisualElement name="ScanPanelTop" style="margin-right: 0; margin-left: 0; margin-top: 12px; margin-bottom: 60px; flex-direction: row; padding-right: 45px; padding-left: 45px; width: 100%; justify-content: space-between; flex-grow: 0; max-height: 100%; min-height: 80px;">
+                <ui:Label tabindex="-1" text="Гречана каша" display-tooltip-when-elided="true" name="ScanPanelTitle" class="title-md" style="align-self: flex-end; font-size: 48px; white-space: normal; flex-shrink: 1;" />
+                <ui:VisualElement name="ScanPanelNutriScore" style="flex-direction: row; align-items: center; align-self: flex-start; flex-shrink: 0;">
                     <ui:Label tabindex="-1" text="NUTRI-SCORE:" display-tooltip-when-elided="true" name="ScanPanelNutriScoreText" class="scan-panel__score-text" style="margin-top: 0; margin-right: 20px; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 36px; color: rgb(85, 85, 85); align-self: auto;" />
                     <ui:VisualElement name="ScanPanelNutriScoreBadge" class="nutri-score-badge nutri-score-badge-a" style="flex-grow: 1;">
-                        <ui:Label tabindex="-1" text="A" display-tooltip-when-elided="true" />
+                        <ui:Label tabindex="-1" text="A" display-tooltip-when-elided="true" name="ScanPanelNutriScoreLabel" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
@@ -63,10 +63,10 @@
                     </ui:ProgressBar>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:IntegerField label="Вага:" name="ScanPanelMassInput" placeholder-text="100" class="scan-panel__weight-input">
+            <ui:IntegerField label="Вага:" name="ScanPanelMassInput" placeholder-text="100" value="100" class="scan-panel__weight-input">
                 <ui:Label tabindex="-1" text="гр." display-tooltip-when-elided="true" class="scan-pane__weight-input-postfix" />
             </ui:IntegerField>
-            <ui:Button text="ДОДАТИ" display-tooltip-when-elided="true" name="ScanPanelBtn" selectable="true" class="btn" style="width: 540px; text-overflow: ellipsis;">
+            <ui:Button text="ДОДАТИ" display-tooltip-when-elided="true" name="ScanPanelBtn" selectable="true" class="btn" style="width: 540px; -unity-text-align: middle-center;">
                 <ui:VisualElement name="ScanPanelBtnIcon" class="btn-icon" style="flex-grow: 1; background-image: resource(&apos;Images/add-icon&apos;);" />
             </ui:Button>
         </ui:VisualElement>

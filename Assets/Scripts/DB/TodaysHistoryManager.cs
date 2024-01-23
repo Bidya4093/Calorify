@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TodaysHistoryManager : MonoBehaviour
+public class TodaysHistoryManager
 {
     private List<Todays_history> records;
     SQLiteConnection connection;
@@ -25,7 +25,7 @@ public class TodaysHistoryManager : MonoBehaviour
     // Inserting new records. Reconnecting recommended
     // When you insert water, specify that product_id = 22, mass = 0, water_amount - in liters
     // Otherwise, only set product_id and mass
-    public void InsertRecord(int product_id, float mass, float water_amount = 0)
+    public Todays_history InsertRecord(int product_id, int mass, float water_amount = 0)
     {
         DateTime date = DateTime.Today;
         Todays_history newRecord = new Todays_history
@@ -33,13 +33,14 @@ public class TodaysHistoryManager : MonoBehaviour
             product_id = product_id,
             mass = mass,
             water_amount = water_amount,
-            date = date.ToString("yyyy-MM-dd")
+            date = date.ToString("HH-mm")
         };
         connection.Insert(newRecord);
+        return newRecord;
     }
 
     // Changes mass for the record with the given index
-    public void UpdateMass(int id, float newMass)
+    public void UpdateMass(int id, int newMass)
     {
        Todays_history updatedRecord = connection.Table<Todays_history>().Where(tag => tag.id == id).FirstOrDefault();
        if (updatedRecord != null) {
@@ -52,7 +53,7 @@ public class TodaysHistoryManager : MonoBehaviour
     }
 
     // Deletes the record with the given index
-    public void DeleteRecord(int id, float newMass)
+    public void DeleteRecord(int id, int newMass)
     {
         Todays_history recordToDelete = connection.Table<Todays_history>().Where(tag => tag.id == id).FirstOrDefault();
         if (recordToDelete != null)

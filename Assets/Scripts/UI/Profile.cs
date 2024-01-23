@@ -32,6 +32,7 @@ public class Profile : MonoBehaviour
     static public TextField personalDataNameInput;
     static public FloatField userParametersHeightInput;
     static public FloatField userParametersWeightInput;
+    static public IntegerField userParametersAgeInput;
     static public RadioButtonGroup userParametersSexRadioToggle;
 
     static public Label profileCardName;
@@ -83,6 +84,7 @@ public class Profile : MonoBehaviour
         personalDataNameInput = profileRoot.Q<TextField>("PersonalDataNameInput");
         userParametersHeightInput = profileRoot.Q<FloatField>("UserParametersHeightInput");
         userParametersWeightInput = profileRoot.Q<FloatField>("UserParametersWeightInput");
+        userParametersAgeInput = profileRoot.Q<IntegerField>("UserParametersAgeInput");
         userParametersSexRadioToggle = profileRoot.Q<RadioButtonGroup>("UserParametersSexRadioToggle");
 
         profileCardName = profileRoot.Q<Label>("ProfileCardName");
@@ -104,6 +106,7 @@ public class Profile : MonoBehaviour
         personalDataNameInput.RegisterValueChangedCallback(OnNameInputValueChange);
         userParametersHeightInput.RegisterValueChangedCallback(OnHeightInputValueChanged);
         userParametersWeightInput.RegisterValueChangedCallback(OnWeightInputValueChanged);
+        userParametersAgeInput.RegisterValueChangedCallback(OnAgeInputValueChanged);
         userParametersSexRadioToggle.RegisterValueChangedCallback(OnSexRadioToggleValueChanged);
     }
 
@@ -235,6 +238,23 @@ public class Profile : MonoBehaviour
         {
             User.Instance.SetWeight((evt.target as FloatField).value);
             StartCoroutine(FirebaseManager.UpdateUserValue("weight", User.Instance.GetWeight()));
+            MacrosManager.CalculateUserNeeds();
+            DataManager.LoadChartsData();
+            StartCoroutine(FirebaseManager.UpdateUserDatabaseData());
+
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning(ex);
+        }
+    }
+
+    private void OnAgeInputValueChanged(ChangeEvent<int> evt)
+    {
+        try
+        {
+            User.Instance.SetAge((evt.target as IntegerField).value);
+            StartCoroutine(FirebaseManager.UpdateUserValue("age", User.Instance.GetAge()));
             MacrosManager.CalculateUserNeeds();
             DataManager.LoadChartsData();
             StartCoroutine(FirebaseManager.UpdateUserDatabaseData());

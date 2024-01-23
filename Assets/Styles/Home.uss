@@ -92,14 +92,7 @@
 
 .history-item__title {
     font-size: 60px;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-top: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-left: 0;
+    white-space: normal;
 }
 
 .history-item__edit-btn {
@@ -108,6 +101,7 @@
     -unity-font-style: bold;
     background-image: resource('Images/edit-icon');
     -unity-background-image-tint-color: rgb(0, 0, 0);
+    flex-shrink: 0;
 }
 
 .history-item__calories {
@@ -142,14 +136,14 @@
     right: -24px;
 }
 
-#HomePage .unity-progress-bar__background {
+#HomeContainer .unity-progress-bar__background {
     border-width: 0 0 0 0;
     background-color: rgb(217, 217, 217);
     border-radius: 15px;
     overflow: hidden;
 }
 
-#HomePage .unity-progress-bar__progress {
+#HomeContainer .unity-progress-bar__progress {
     background-color: rgb(127, 144, 236);
     border-radius: 15px;
     margin: 0;

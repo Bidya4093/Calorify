@@ -113,8 +113,20 @@
     background-color: rgb(14, 138, 74);
 }
 
+.nutri-score-badge-b {
+    background-color: rgb(115, 200, 44);
+}
+
 .nutri-score-badge-c {
     background-color: rgb(251, 199, 7);
+}
+
+.nutri-score-badge-d {
+    background-color: rgb(244, 114, 22);
+}
+
+.nutri-score-badge-e {
+    background-color: rgb(239, 49, 32);
 }
 
 .nutri-score-badge .unity-label {
@@ -391,4 +403,7 @@
 
 .option__dropdown .unity-base-field__input {
     font-size: 48px;
+}
+
+.history-item__score-text {
 }

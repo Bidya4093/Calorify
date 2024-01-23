@@ -197,3 +197,28 @@
     align-items: center;
     -unity-background-scale-mode: scale-and-crop;
 }
+
+.user-parameters__input .unity-integer-field__input {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 4px;
+    border-left-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    flex-grow: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    width: 220px;
+    flex-basis: auto;
+    -unity-text-align: middle-center;
+    border-left-color: rgb(86, 110, 86);
+    border-right-color: rgb(86, 110, 86);
+    border-top-color: rgb(86, 110, 86);
+    border-bottom-color: rgb(86, 110, 86);
+    color: rgb(85, 85, 85);
+}
