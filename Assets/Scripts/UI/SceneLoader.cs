@@ -1,6 +1,7 @@
 using Firebase.Auth;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -16,7 +17,6 @@ public class Scenes : StringEnum
 
 public class SceneLoader : MonoBehaviour
 {
-    //public string scene;
     public PlayableDirector director;
 
     void Start()
