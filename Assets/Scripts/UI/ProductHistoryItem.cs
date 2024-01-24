@@ -191,7 +191,8 @@ public class ProductHistoryItem : VisualElement
     private void DeleteItem(ClickEvent evt)
     {
         RemoveFromHierarchy();
-        historyList.Query<ProductHistoryItem>("HistoryItem").Last().style.marginBottom = 0;
+        if (historyList.Query<ProductHistoryItem>("HistoryItem").Last() != null)
+            historyList.Query<ProductHistoryItem>("HistoryItem").Last().style.marginBottom = 0;
         todaysHistoryManager.DeleteRecord(todaysHistory.id);
         
         CloseProductPanel(evt);

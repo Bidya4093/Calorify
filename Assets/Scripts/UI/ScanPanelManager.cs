@@ -98,7 +98,6 @@ public class ScanPanelManager : MonoBehaviour
     public void Show()
     {
         scanPanelContainer.style.display = DisplayStyle.Flex;
-        LoadProductData(7);
     }
 
     public void Hide()
@@ -113,7 +112,7 @@ public class ScanPanelManager : MonoBehaviour
 
     public void LoadProductData(int productId)
     {
-        // Show();
+         Show();
         product = productsLoader.GetById(productId);
 
         scanPanelTitle.text = product.name;
