@@ -88,17 +88,8 @@ public class ScanPanelManager : MonoBehaviour
     private void AddProductToDailyList(ClickEvent evt)
     {
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
-
         Todays_history todaysHistory = todaysHistoryManager.InsertRecord(product.product_id, massInput.value, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
-
-        //foreach (Todays_history item in todaysHistoryManager.GetHistory())
-        //{
-        //    Debug.Log(item);
-        //}
         ProductHistoryItem productHistoryItem = new ProductHistoryItem(todaysHistory);
-
-
-
 
         Hide();
         GetComponent<PanelManager>().OnHomeBtnClick(evt);
