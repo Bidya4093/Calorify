@@ -221,23 +221,23 @@ public class FirebaseManager : MonoBehaviour
             FirebaseException firebaseEx = LoginTask.Exception.GetBaseException() as FirebaseException;
             AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
 
-            string message = "Login Failed!";
+            string message = "Вхід неможливо виконати!";
             switch (errorCode)
             {
                 case AuthError.MissingEmail:
-                    message = "Missing Email";
+                    message = "Введіть електронну пошту!";
                     break;
                 case AuthError.MissingPassword:
-                    message = "Missing Password";
+                    message = "Введіть пароль!";
                     break;
                 case AuthError.WrongPassword:
-                    message = "Wrong Password";
+                    message = "Неправильний пароль!";
                     break;
                 case AuthError.InvalidEmail:
-                    message = "Invalid Email";
+                    message = "Неправильна електронна пошта!";
                     break;
                 case AuthError.UserNotFound:
-                    message = "Account does not exist";
+                    message = "Такого користувача не існує!";
                     break;
             }
             Debug.LogError(message);
@@ -305,20 +305,20 @@ public class FirebaseManager : MonoBehaviour
                 FirebaseException firebaseEx = RegisterTask.Exception.GetBaseException() as FirebaseException;
                 AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
 
-                string message = "Register Failed!";
+                string message = "Реєстрацію неможливо виконати!";
                 switch (errorCode)
                 {
                     case AuthError.MissingEmail:
-                        message = "Missing Email";
+                        message = "Введіть електронну пошту!";
                         break;
                     case AuthError.MissingPassword:
-                        message = "Missing Password";
+                        message = "Введіть пароль!";
                         break;
                     case AuthError.WeakPassword:
-                        message = "Weak Password";
+                        message = "Слабкий пароль!";
                         break;
                     case AuthError.EmailAlreadyInUse:
-                        message = "Email Already In Use";
+                        message = "Електронна пошта вже використовується!";
                         break;
                 }
                 errorLabel.text = message;
