@@ -73,7 +73,12 @@
                     <Shadow name="HistoryShadow" class="shadow-45">
                         <ui:VisualElement name="HistorySection" class="wrapper" style="padding-right: 60px; padding-left: 60px; margin-bottom: 0;">
                             <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="home-title" style="margin-bottom: 30px; visibility: visible; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-left: 0;" />
-                            <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;" />
+                            <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">
+                                <ui:VisualElement name="HistoryEmptyContainer" style="flex-grow: 1; color: rgb(128, 128, 128); font-size: 36px; -unity-text-align: upper-center; margin-bottom: 110px; margin-top: 110px;">
+                                    <ui:Label tabindex="-1" text="Порожньо" display-tooltip-when-elided="true" name="HistoryEmptyTitle" style="font-size: 72px; margin-bottom: 45px;" />
+                                    <ui:Label tabindex="-1" text="Тут буде відображатись їжа, &#10;яку Ви їли протягом дня" display-tooltip-when-elided="true" name="HistoryEmptyLabel" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
                         </ui:VisualElement>
                     </Shadow>
                 </ui:VisualElement>

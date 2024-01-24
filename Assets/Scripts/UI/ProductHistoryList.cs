@@ -7,16 +7,22 @@ using UnityEngine.UIElements;
 
 public class ProductHistoryList : MonoBehaviour
 {
-    List<ProductHistoryItem> productHistoryItems = new List<ProductHistoryItem> { };
+    static public List<ProductHistoryItem> items = new List<ProductHistoryItem> { };
+    static VisualElement mainRoot;
+    static VisualElement historyList;
+    static VisualElement historyEmptyContainer;
+    static public bool empty = true;
+
     void Start()
     {
         Render();
+        CheckEmptyList();
     }
 
     public void Render()
     {
-        VisualElement mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
-        VisualElement historyList = mainRoot.Q<VisualElement>("HistoryContainer");
+        mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
+        historyList = mainRoot.Q<VisualElement>("HistoryContainer");
 
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
 
@@ -25,11 +31,25 @@ public class ProductHistoryList : MonoBehaviour
         foreach (Todays_history item in todaysHistoryItems)
         {
             ProductHistoryItem historyItem = new ProductHistoryItem(item);
-            productHistoryItems.Insert(0, historyItem);
+            items.Insert(0, historyItem);
             historyList.Insert(0, historyItem);
+            empty = false;
         }
     }
 
+    static public void CheckEmptyList()
+    {
+        historyEmptyContainer = mainRoot.Q<VisualElement>("HistoryEmptyContainer");
 
+        if (historyList.Query<ProductHistoryItem>("HistoryItem").ToList().Count == 0)
+        {
+            historyEmptyContainer.style.display = DisplayStyle.Flex;
+            empty = true;
+        } else
+        {
+            historyEmptyContainer.style.display = DisplayStyle.None;
+            empty = false;
+        }
+    }
 
 }

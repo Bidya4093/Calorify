@@ -90,6 +90,11 @@ public class ScanPanelManager : MonoBehaviour
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
         Todays_history todaysHistory = todaysHistoryManager.InsertRecord(product.product_id, massInput.value, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
         ProductHistoryItem productHistoryItem = new ProductHistoryItem(todaysHistory);
+        ProductHistoryList.items.Add(productHistoryItem);
+
+        User.AddToEaten(productHistoryItem.macrosInfo);
+
+        DataManager.LoadChartsData();
 
         Hide();
         GetComponent<PanelManager>().OnHomeBtnClick(evt);
@@ -112,7 +117,7 @@ public class ScanPanelManager : MonoBehaviour
 
     public void LoadProductData(int productId)
     {
-         Show();
+        Show();
         product = productsLoader.GetById(productId);
 
         scanPanelTitle.text = product.name;

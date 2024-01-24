@@ -1,4 +1,7 @@
+using System;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -115,7 +118,7 @@ public class ProductHistoryItem : VisualElement
         VisualElement mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
         historyList = mainRoot.Q<VisualElement>("HistoryContainer");
 
-        if (historyList.childCount == 0)
+        if (ProductHistoryList.empty)
             style.marginBottom = 0;
 
         historyList.Insert(0, this);
@@ -124,6 +127,7 @@ public class ProductHistoryItem : VisualElement
 
         VisualElement productPanelBackground = productPanelRoot.Q<VisualElement>("ProductPanelBackground");
         productPanelBackground.RegisterCallback<ClickEvent>(CloseProductPanel);
+        ProductHistoryList.CheckEmptyList();
     }
 
     private void OnEditBtnClick(ClickEvent evt)
@@ -193,15 +197,20 @@ public class ProductHistoryItem : VisualElement
         RemoveFromHierarchy();
         if (historyList.Query<ProductHistoryItem>("HistoryItem").Last() != null)
             historyList.Query<ProductHistoryItem>("HistoryItem").Last().style.marginBottom = 0;
+        ProductHistoryList.CheckEmptyList();
         todaysHistoryManager.DeleteRecord(todaysHistory.id);
-        
+        User.SubtractFromEatem(macrosInfo);
+        ProductHistoryList.items.Remove(this);
+        DataManager.LoadChartsData();
         CloseProductPanel(evt);
     }
 
     private void ChangeItemData(ChangeEvent<int> evt)
     {
         mass = (evt.target as IntegerField).value;
+        User.SubtractFromEatem(macrosInfo);
         macrosInfo = MacrosManager.CalculateMacrosByMass(mass, todaysHistory.product_id);
+        User.AddToEaten(macrosInfo);
         UpdateProductMacrosData();
     }
 
@@ -210,6 +219,7 @@ public class ProductHistoryItem : VisualElement
         todaysHistoryManager.UpdateMass(todaysHistory.id, mass);
         todaysHistory.mass = mass;
         UpdateCaloriesAndMass();
+        DataManager.LoadChartsData();
         CloseProductPanel(evt);
     }
 

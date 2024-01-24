@@ -346,7 +346,38 @@ public class User : MonoBehaviour
         Instance.carbsNeeded = Convert.ToInt32(snapshot.Child("carbsNeeded").Value);
         Instance.waterDrunk = Convert.ToInt32(snapshot.Child("waterDrunk").Value);
         Instance.waterNeeded = Convert.ToInt32(snapshot.Child("waterNeeded").Value);
+    }
 
+    static public void AddToEaten(MacrosInfo macrosInfo)
+    {
+        Instance.caloriesEaten += macrosInfo.calories;
+        Instance.protsEaten += macrosInfo.prots;
+        Instance.fatsEaten += macrosInfo.fats;
+        Instance.carbsEaten += macrosInfo.carbs;
 
+        Instance.UpdateUserMacros();
+    }
+
+    static public void SubtractFromEatem(MacrosInfo macrosInfo)
+    {
+        Instance.caloriesEaten -= macrosInfo.calories;
+        Instance.protsEaten -= macrosInfo.prots;
+        Instance.fatsEaten -= macrosInfo.fats;
+        Instance.carbsEaten -= macrosInfo.carbs;
+
+        if (Instance.caloriesEaten < 0) Instance.caloriesEaten = 0;
+        if (Instance.protsEaten < 0) Instance.protsEaten = 0;
+        if (Instance.fatsEaten < 0) Instance.fatsEaten = 0;
+        if (Instance.carbsEaten < 0) Instance.carbsEaten = 0;
+
+        Instance.UpdateUserMacros();
+    }
+
+    public void UpdateUserMacros()
+    {
+        StartCoroutine(FirebaseManager.UpdateUserValue("caloriesEaten", Instance.CaloriesEaten));
+        StartCoroutine(FirebaseManager.UpdateUserValue("protsEaten", Instance.ProtsEaten));
+        StartCoroutine(FirebaseManager.UpdateUserValue("fatsEaten", Instance.FatsEaten));
+        StartCoroutine(FirebaseManager.UpdateUserValue("carbsEaten", Instance.CarbsEaten));
     }
 }
