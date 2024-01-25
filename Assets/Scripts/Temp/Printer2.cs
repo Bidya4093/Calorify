@@ -1,15 +1,16 @@
 using Firebase.Auth;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Printer2 : MonoBehaviour
 {
     private void Start()
     {
-        ActivitiesManager activitiesManager = new ActivitiesManager();
+        ProductsLoader productsLoader = new ProductsLoader();
 
-        foreach(Activity activity in activitiesManager.activitiesList)
+        foreach (products product in productsLoader.dishes)
         {
-            Debug.Log(activity);
+            Debug.Log(product);
         }
     }
 }

@@ -12,9 +12,10 @@ public class products
     public float prots { get; set; }
     public float fats { get; set; }
     public float carbs { get; set; }
+    public string vuforia_id { get; set; }
 
     public override string ToString()
     {
-        return $"{product_id}, {name}, {type}, {nutri_score}, {calories}, {prots}, {fats}, {carbs};";
+        return $"{product_id}, {name}, {type}, {nutri_score}, {calories}, {prots}, {fats}, {carbs}, {vuforia_id};";
     }
 }
