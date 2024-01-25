@@ -1,4 +1,7 @@
 using Firebase.Auth;
+using System;
+using Unity.Burst.Intrinsics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -115,16 +118,22 @@ public class ScanPanelManager : MonoBehaviour
         CalculateMacrosByMass((evt.target as IntegerField).value);
     }
 
-    public void LoadProductData(int productId)
+    public void LoadProductData(string vuforiaId)
     {
         Show();
-        product = productsLoader.GetById(productId);
+        product = productsLoader.GetByVuforiaId(vuforiaId);
+        if (product == null)
+        {
+            Debug.LogWarning("Product not found");
+            throw new Exception("Продукт не знайдено");
+        }
 
         scanPanelTitle.text = product.name;
         nutriScoreLabel.text = product.nutri_score.ToUpper();
         nutriScoreBadge.AddToClassList($"nutri-score-badge-{product.nutri_score.ToLower()}");
 
         CalculateMacrosByMass(massInput.value);
+
     }
 
     private void CalculateMacrosByMass(int mass)

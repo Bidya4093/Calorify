@@ -33,6 +33,15 @@ public class ProductsLoader
         return null;
     }
 
+    public products GetByVuforiaId(string vuforia_id)
+    {
+        foreach (products dish in dishes)
+        {
+            if (dish.vuforia_id == vuforia_id) return dish;
+        }
+        return null;
+    }
+
     private void ToList(IEnumerable<products> products)
     {
         foreach (var product in products)

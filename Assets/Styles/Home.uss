@@ -58,7 +58,7 @@
 
 .history-item__image {
     flex-grow: 0;
-    background-image: resource('Images/eggs');
+    background-image: resource('Images/product-placeholder-2');
     width: 210px;
     height: 210px;
     -unity-background-scale-mode: scale-to-fit;
@@ -94,6 +94,7 @@
 .history-item__title {
     font-size: 60px;
     white-space: normal;
+    flex-shrink: 1;
 }
 
 .history-item__edit-btn {

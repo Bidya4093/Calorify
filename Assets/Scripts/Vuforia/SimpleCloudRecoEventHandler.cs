@@ -1,17 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static UnityEngine.CullingGroup;
-using static Vuforia.CloudRecoBehaviour;
-using Vuforia;
 using UnityEngine;
 using Vuforia;
 
 public class SimpleCloudRecoEventHandler : MonoBehaviour
 {
-    CloudRecoBehaviour mCloudRecoBehaviour;
+    static CloudRecoBehaviour mCloudRecoBehaviour;
     bool mIsScanning = false;
-    string mTargetMetadata = "";
+    string mTargetId = "";
 
     public ImageTargetBehaviour ImageTargetTemplate;
 
@@ -19,7 +13,6 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
     void Awake()
     {
         mCloudRecoBehaviour = GetComponent<CloudRecoBehaviour>();
-        Debug.Log(mCloudRecoBehaviour);
         mCloudRecoBehaviour.RegisterOnInitializedEventHandler(OnInitialized);
         mCloudRecoBehaviour.RegisterOnInitErrorEventHandler(OnInitError);
         mCloudRecoBehaviour.RegisterOnUpdateErrorEventHandler(OnUpdateError);
@@ -29,7 +22,6 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
     //Unregister cloud reco callbacks when the handler is destroyed
     void OnDestroy()
     {
-        Debug.Log(mCloudRecoBehaviour);
         mCloudRecoBehaviour.UnregisterOnInitializedEventHandler(OnInitialized);
         mCloudRecoBehaviour.UnregisterOnInitErrorEventHandler(OnInitError);
         mCloudRecoBehaviour.UnregisterOnUpdateErrorEventHandler(OnUpdateError);
@@ -63,93 +55,45 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
 
     public void OnNewSearchResult(CloudRecoBehaviour.CloudRecoSearchResult cloudRecoSearchResult)
     {
+
         // Видобути назву об'єкта з метаданих
-        Debug.Log("Result: " + cloudRecoSearchResult);
         Debug.Log("Meta data id : " + cloudRecoSearchResult.UniqueTargetId);
-        Debug.Log("Meta data tracking rating: " + cloudRecoSearchResult.TrackingRating);
         Debug.Log("Meta data target name: " + cloudRecoSearchResult.TargetName);
-
-
-        Debug.Log("Meta data: " + cloudRecoSearchResult.MetaData);
-
+        mTargetId = cloudRecoSearchResult.UniqueTargetId;
         string targetName = cloudRecoSearchResult.TargetName;
+
 
         if (!string.IsNullOrEmpty(targetName))
         {
             // Вивести інформацію на основі назви об'єкта
-            DisplayInformationForTarget(targetName);
+            try
+            {
+                GameObject.Find("MainPage").GetComponent<ScanPanelManager>().LoadProductData(mTargetId);
+
+            }
+            catch (System.Exception ex)
+            {
+                GUIStyle style = new GUIStyle("sdfa");
+                style.fontSize = 60;
+                GUI.Label(new Rect((Screen.width - 600) / 2, (Screen.height - 150) / 2, 600, 150), ex.Message, style);
+            }
 
             // Зупинити сканування, вимкнувши поведінку
-            mCloudRecoBehaviour.enabled = false;
+            //mCloudRecoBehaviour.enabled = false;
 
             // Побудувати доповнення на основі об'єкта
-            if (ImageTargetTemplate)
-            {
-                // Увімкнути новий результат з тією самою ImageTargetBehaviour
-                mCloudRecoBehaviour.EnableObservers(cloudRecoSearchResult, ImageTargetTemplate.gameObject);
-            }
+            //if (ImageTargetTemplate)
+            //{
+            //    // Увімкнути новий результат з тією самою ImageTargetBehaviour
+            //    mCloudRecoBehaviour.EnableObservers(cloudRecoSearchResult, ImageTargetTemplate.gameObject);
+            //}
         }
     }
 
-    // Власний метод для відображення інформації на основі назви об'єкта
-    void DisplayInformationForTarget(string targetName)
+    public void ResetBehaviour()
     {
-        // Відобразити інформацію на основі назви об'єкта
-        switch (targetName)
-        {
-            case "lays_123":
-                Debug.Log("Відображення інформації для Об'єкта1");
-                
-                break;
-            case "grechka":
-                Debug.Log("калорії: 159");
-                // виводить інформацію
-                break;
-           
-            default:
-                Debug.Log("Невідома назва об'єкта: " + targetName);
-                break;
-        }
-    }
-
-
-    // Here we handle a cloud target recognition event
-    //public void OnNewSearchResult(CloudRecoBehaviour.CloudRecoSearchResult cloudRecoSearchResult)
-    //{
-    //    // Store the target metadata
-    //    mTargetMetadata = cloudRecoSearchResult.MetaData;
-
-    //    // Stop the scanning by disabling the behaviour
-    //    mCloudRecoBehaviour.enabled = false;
-    //    // Build augmentation based on target 
-
-
-
-    //    if (ImageTargetTemplate)
-    //    {
-    //        /* Enable the new result with the same ImageTargetBehaviour: */
-    //        mCloudRecoBehaviour.EnableObservers(cloudRecoSearchResult, ImageTargetTemplate.gameObject);
-    //    }
-    //}
-
-    void OnGUI()
-    {
-        // Display current 'scanning' status
-        GUI.Box(new Rect(100, 100, 200, 50), mIsScanning ? "Scanning" : "Not scanning");
-        // Display metadata of latest detected cloud-target
-        GUI.Box(new Rect(100, 200, 200, 50), "Metadata: " + mTargetMetadata);
-        // If not scanning, show button
-        // so that user can restart cloud scanning
-
-        if (!mIsScanning)
-        {
-            if (GUI.Button(new Rect(100, 300, 200, 50), "Restart Scanning"))
-            {
-                // Reset Behaviour
-                mCloudRecoBehaviour.enabled = true;
-                mTargetMetadata = "";
-            }
-        }
+        mTargetId = "";
+        mCloudRecoBehaviour.enabled = true;
     }
 }
 
