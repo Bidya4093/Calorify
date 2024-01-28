@@ -204,6 +204,7 @@ public class Auth : MonoBehaviour
         {
             User.Instance.SetEmail(signUpEmailInput.value);
             await GetComponent<FirebaseManager>().RegisterCheckError(signUpEmailInput.value, signUpPasswordInput.value);
+            //FirebaseManager.SendVerificationEmail();
         }
         catch (Exception ex)
         {

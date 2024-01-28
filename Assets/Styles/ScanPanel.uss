@@ -13,7 +13,6 @@
 .scan-panel__weight-input .unity-base-field__input {
     margin: 0;
     padding: 0;
-    max-width: 270px;
     height: 90px;
     -unity-text-align: middle-center;
     font-size: 60px;
@@ -21,6 +20,9 @@
     border-color: rgb(86, 110, 86);
     background-color: rgb(225, 225, 225);
     border-radius: 15px;
+    width: 270px;
+    flex-grow: 1;
+    max-width: 270px;
 }
 
 .scan-panel__weight-input .unity-label {

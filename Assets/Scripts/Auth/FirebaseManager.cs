@@ -240,7 +240,7 @@ public class FirebaseManager : MonoBehaviour
                     message = "Такого користувача не існує!";
                     break;
             }
-            Debug.LogError(message);
+            Debug.LogWarning(message);
             errorLabel.text = message;
         }
         else
@@ -291,6 +291,85 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
+    static public async Task ReauthenticateAsync(string password, string email = null)
+    {
+        if (String.IsNullOrEmpty(email)) {
+            email = firebaseUser?.Email;
+        }
+        // Get auth credentials from the user for re-authentication. The example below shows
+        // email and password credentials but there are multiple possible providers,
+        // such as GoogleAuthProvider or FacebookAuthProvider.
+        Credential credential = EmailAuthProvider.GetCredential(email, password);
+
+        if (firebaseUser != null)
+        {
+            await firebaseUser.ReauthenticateAsync(credential).ContinueWith(task =>
+            {
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("ReauthenticateAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("ReauthenticateAsync encountered an error: " + task.Exception);
+                    return;
+                }
+
+                Debug.Log("User reauthenticated successfully.");
+            });
+        }
+    }
+
+    static public bool IsPasswordsSame(string password, string repeatPassword)
+    {
+        return password.Equals(repeatPassword);
+    }
+
+    static public async Task UpdatePassword(string currentPassword, string newPassword)
+    {
+
+        await ReauthenticateAsync(currentPassword);
+        if (firebaseUser != null)
+        {
+            await firebaseUser.UpdatePasswordAsync(newPassword).ContinueWith(task => {
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("UpdatePasswordAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("UpdatePasswordAsync encountered an error: " + task.Exception);
+                    return;
+                }
+
+                Debug.Log("Password updated successfully.");
+            });
+        }
+    }
+
+    static public async Task SendVerificationEmail()
+    {
+        if (firebaseUser != null)
+        {
+            await firebaseUser.SendEmailVerificationAsync().ContinueWith(task =>
+            {
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("SendEmailVerificationAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("SendEmailVerificationAsync encountered an error: " + task.Exception);
+                    return;
+                }
+
+                Debug.Log("Email sent successfully.");
+            });
+        }
+    }
     public IEnumerator Register(string _email, string _password, string _username)
     {
             //Call the Firebase auth signin function passing the email and password=

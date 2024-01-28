@@ -14,7 +14,7 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="SignUp" style="display: none; flex-grow: 1;">
-        <ui:VisualElement name="Email" class="auth-container" style="flex-grow: 1; display: flex;">
+        <ui:VisualElement name="Email" class="auth-container" style="flex-grow: 1; display: none;">
             <ui:VisualElement name="EmailContainer">
                 <ui:VisualElement name="EmailHeader" style="flex-direction: row; justify-content: space-between; margin-right: 60px; margin-left: 60px; -unity-text-align: upper-center; margin-bottom: 230px;">
                     <ui:VisualElement name="BackBtn" style="background-image: resource(&apos;Images/back-icon&apos;); width: 90px;" />
@@ -31,6 +31,12 @@
             </ui:VisualElement>
             <ui:VisualElement name="EmailBottom" style="align-items: center;">
                 <ui:Button text="Продовжити" display-tooltip-when-elided="true" name="EmailContinueBtn" class="auth-btn" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Verification" class="auth-container" style="display: none;">
+            <ui:VisualElement name="CompleteAuthContainer">
+                <ui:VisualElement name="BackBtn" class="sign-up-back-btn" />
+                <ui:Label tabindex="-1" text="Підтвердіть &#10;електронну пошту&#10;для продовження!" display-tooltip-when-elided="true" name="CompleteAuthTitle" enable-rich-text="false" style="-unity-text-align: upper-center; font-size: 96px; margin-top: 360px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&amp;guid=dca4865c624e76f48b83f1a5ae3ca00e&amp;type=3#Ubuntu-Medium&apos;);" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Goal" class="auth-container" style="display: none;">

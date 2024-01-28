@@ -11,12 +11,13 @@ public class PanelManager : MonoBehaviour
     private TemplateContainer adviceTopicsPage;
     private VisualElement adviceTopicPage;
     private VisualElement homeContainer;
+    private VisualElement scanContainer;
     private TemplateContainer activityTemplate;
     private VisualElement bottomMenu;
 
     private List<VisualElement> bottomMenuBtns;
 
-    private VisualElement homeBtn;
+    public VisualElement homeBtn;
     private VisualElement scanBtn;
     private VisualElement adviceBtn;
 
@@ -25,16 +26,20 @@ public class PanelManager : MonoBehaviour
     private Button closeAdviceTopicBtn;
     private Button rationBtn;
     private Button activityBtn;
+    private Button waterBtn;
+    private Button productsBtn;
 
     public GameObject scanPageObject;
     public GameObject messagePageObject;
     public GameObject profilePageObject;
     public GameObject productPanelObject;
+    public GameObject waterPanelObject;
 
     private VisualElement messageRoot;
     private VisualElement mainRoot;
     private VisualElement profileRoot;
     private VisualElement productPanelRoot;
+    private VisualElement waterPanelRoot;
     private ProgressBar waterProgressBar;
 
 
@@ -45,11 +50,7 @@ public class PanelManager : MonoBehaviour
         messageRoot = messagePageObject.GetComponent<UIDocument>().rootVisualElement;
         profileRoot = profilePageObject.GetComponent<UIDocument>().rootVisualElement;
         productPanelRoot = productPanelObject.GetComponent<UIDocument>().rootVisualElement;
-
-        messageRoot.style.display = DisplayStyle.None;
-        profileRoot.style.display = DisplayStyle.None;
-        productPanelRoot.style.display = DisplayStyle.None;
-
+        waterPanelRoot = waterPanelObject.GetComponent<UIDocument>().rootVisualElement;
 
         homePage = mainRoot.Q<TemplateContainer>("HomePage");
         scanPage = mainRoot.Q<TemplateContainer>("ScanPage");
@@ -58,6 +59,7 @@ public class PanelManager : MonoBehaviour
         adviceTopicPage = advicePage.Q<VisualElement>("AdviceTopicPage");
         homeContainer = homePage.Q<VisualElement>("HomeContainer");
         activityTemplate = homePage.Q<TemplateContainer>("ActivityTemplate");
+        scanContainer = scanPage.Q<VisualElement>("ScanPanelContainer");
 
         bottomMenu = mainRoot.Q<TemplateContainer>("BottomMenu");
         bottomMenuBtns = bottomMenu.Query<VisualElement>(className: "menu__item").ToList();
@@ -69,8 +71,16 @@ public class PanelManager : MonoBehaviour
         messageBtn = mainRoot.Q<Button>("MessageBtn");
         rationBtn = homePage.Q<Button>("RationBtn");
         activityBtn = homePage.Q<Button>("ActivityBtn");
+        waterBtn = homePage.Q<Button>("WaterPanelBtn");
+        productsBtn = homePage.Q<Button>("ProductSearchBtn");
         closeAdviceTopicBtn = adviceTopicPage.Q<Button>("CloseBtn");
 
+
+        messageRoot.style.display = DisplayStyle.None;
+        profileRoot.style.display = DisplayStyle.None;
+        productPanelRoot.style.display = DisplayStyle.None;
+        waterPanelRoot.style.display = DisplayStyle.None;
+        scanContainer.style.display = DisplayStyle.None;
 
         homeBtn.RegisterCallback<ClickEvent>(OnHomeBtnClick);
         scanBtn.RegisterCallback<ClickEvent>(OnScanBtnClick);
@@ -79,6 +89,8 @@ public class PanelManager : MonoBehaviour
         messageBtn.clicked += OpenMessagePage;
         rationBtn.clicked += OpenRationPanel;
         activityBtn.clicked += OpenActivityPanel;
+        waterBtn.clicked += OpenWaterPanel;
+        //productsBtn.clicked += OpenProductsSearchPage;
         closeAdviceTopicBtn.clicked += CloseAdviceTopicPage;
 
         waterProgressBar = homePage.Q<ProgressBar>("WaterProgressBar");
@@ -104,8 +116,18 @@ public class PanelManager : MonoBehaviour
 
     private void OnBottomMenuClick (ClickEvent evt)
     {
-        VisualElement ClickedElement = evt.currentTarget as VisualElement;
+        if (evt == null) return;
+        VisualElement ClickedElement = evt?.currentTarget as VisualElement;
+        if (ClickedElement.ClassListContains("menu__item--active"))
+            return;
+        
+        ResetDisplay();
 
+        ClickedElement.AddToClassList("menu__item--active");
+    }
+
+    public void ResetDisplay()
+    {
         scanPageObject.SetActive(false);
         homePage.style.display = DisplayStyle.None;
         scanPage.style.display = DisplayStyle.None;
@@ -115,14 +137,20 @@ public class PanelManager : MonoBehaviour
         {
             btn.RemoveFromClassList("menu__item--active");
         });
-        ClickedElement.AddToClassList("menu__item--active");
     }
+
     public void OnHomeBtnClick(ClickEvent evt)
     {
         OnBottomMenuClick(evt);
+        ToHome();
+    }
+
+    public void ToHome()
+    {
         homePage.style.display = DisplayStyle.Flex;
         GetComponent<ScanPanelManager>().Hide();
     }
+
     private void OnScanBtnClick(ClickEvent evt)
     {
         OnBottomMenuClick(evt);
@@ -149,10 +177,10 @@ public class PanelManager : MonoBehaviour
         messageRoot.style.display = DisplayStyle.Flex;
     }
 
-    //private void OpenProductPanel()
-    //{
-    //    productPanelRoot.style.display = DisplayStyle.Flex;
-    //}
+    private void OpenWaterPanel()
+    {
+        waterPanelRoot.style.display = DisplayStyle.Flex;
+    }
 
     private void OpenAdviceTopicPage()
     {

@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="TopMenu" src="project://database/Assets/UIDocuments/TopMenu.uxml?fileID=9197481963319205126&amp;guid=7be0b6e660666744ba8ade54e9f02f9f&amp;type=3#TopMenu" />
+    <ui:Template name="WaterProgressBar" src="project://database/Assets/UIDocuments/WaterProgressBar.uxml?fileID=9197481963319205126&amp;guid=e32c39e3627c0ac41a5795809a4d17ae&amp;type=3#WaterProgressBar" />
     <ui:Template name="ActivityPage" src="project://database/Assets/UIDocuments/ActivityPage.uxml?fileID=9197481963319205126&amp;guid=bbc182239366a14419a938593ffdc566&amp;type=3#ActivityPage" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
@@ -44,10 +45,10 @@
                                         <ui:Label tabindex="-1" name="CaloriesRadialProgressLabel" text="0 / 2200 ккал." display-tooltip-when-elided="true" style="font-size: 48px; color: rgb(85, 85, 85); margin-top: 18px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-items: stretch; -unity-text-align: upper-center;" />
                                     </ui:VisualElement>
                                     <ui:VisualElement name="ChartsBtnContainer" style="flex-grow: 1; justify-content: center; align-items: flex-end;">
-                                        <ui:Button text="ВОДА" display-tooltip-when-elided="true" name="AddActivityBtn" class="btn btn-reverse" style="margin-bottom: 45px;">
+                                        <ui:Button text="ВОДА" display-tooltip-when-elided="true" name="WaterPanelBtn" class="btn btn-reverse" style="margin-bottom: 45px;">
                                             <ui:VisualElement name="AddFoodIcon" class="btn-icon btn-icon-reverse" style="background-image: resource(&apos;Images/add-icon&apos;); width: 45px; height: 45px;" />
                                         </ui:Button>
-                                        <ui:Button text="СТРАВА" display-tooltip-when-elided="true" name="AddFoodBtn" class="btn">
+                                        <ui:Button text="СТРАВА" display-tooltip-when-elided="true" name="ProductSearchBtn" class="btn">
                                             <ui:VisualElement name="AddFoodIcon" class="btn-icon" style="background-image: resource(&apos;Images/add-icon&apos;);" />
                                         </ui:Button>
                                     </ui:VisualElement>
@@ -59,13 +60,7 @@
                                     <ui:Label tabindex="-1" text="1.8 / 2.4 л." display-tooltip-when-elided="true" name="WaterProgressBarLabel" />
                                 </ui:VisualElement>
                                 <ui:VisualElement name="WaterProgressBarContainer" style="flex-grow: 0;">
-                                    <ui:ProgressBar value="0" name="WaterProgressBar" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
-                                        <ui:VisualElement name="ProgressBarDividersContainer" style="flex-grow: 1; position: absolute; flex-direction: row; right: 0; left: 0; bottom: 0; top: 0; justify-content: space-evenly;">
-                                            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
-                                            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
-                                            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
-                                        </ui:VisualElement>
-                                    </ui:ProgressBar>
+                                    <ui:Instance template="WaterProgressBar" name="WaterProgressBar" />
                                 </ui:VisualElement>
                             </ui:VisualElement>
                         </ui:VisualElement>

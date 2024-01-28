@@ -407,3 +407,27 @@
 
 .history-item__score-text {
 }
+
+.transparent-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.37);
+}
+
+#WaterProgressBar .unity-progress-bar__background {
+    border-width: 0 0 0 0;
+    background-color: rgb(217, 217, 217);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+#WaterProgressBar .unity-progress-bar__progress {
+    background-color: rgb(127, 144, 236);
+    border-radius: 15px;
+    margin: 0;
+    position: absolute;
+    width: 0;
+}

@@ -1,0 +1,65 @@
+.water__container {
+    padding-top: 30px;
+    padding-right: 45px;
+    padding-bottom: 45px;
+    padding-left: 45px;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    min-width: auto;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&guid=adb52135dcca16c44b46cb4ddce45978&type=3#Ubuntu-Regular');
+}
+
+.water__add-btn {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 30px;
+    margin-left: 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    flex-basis: 33%;
+    height: 120px;
+    max-width: 250px;
+    background-color: rgb(127, 144, 236);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#WaterPanelInput .unity-base-field__input {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-width: 5px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    width: 280px;
+    max-width: 280px;
+}
+
+#WaterPanelInputPrefix {
+    position: absolute;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 25px;
+    font-size: 48px;
+    color: rgb(85, 85, 85);
+    left: 100%;
+    top: 45px;
+}

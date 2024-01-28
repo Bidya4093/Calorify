@@ -99,8 +99,9 @@ public class ScanPanelManager : MonoBehaviour
 
         DataManager.LoadChartsData();
 
-        Hide();
-        GetComponent<PanelManager>().OnHomeBtnClick(evt);
+        GetComponent<PanelManager>().ResetDisplay();
+        GetComponent<PanelManager>().ToHome();
+        GetComponent<PanelManager>().homeBtn.AddToClassList("menu__item--active");
     }
 
     public void Show()
