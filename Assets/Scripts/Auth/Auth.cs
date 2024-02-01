@@ -44,11 +44,11 @@ public class Auth : MonoBehaviour
         Button ageContinueBtn = signUpPage.Q<Button>("AgeContinueBtn");
         Button sexContinueBtn = signUpPage.Q<Button>("SexContinueBtn");
         Button completeAuthBtn = signUpPage.Q<Button>("CompleteAuthBtn");
-        verificationContinueBtn = signUpPage.Q<Button>("VerificationContinueBtn");
+        //verificationContinueBtn = signUpPage.Q<Button>("VerificationContinueBtn");
 
         // Trigger validation on continue btn click
         RegisterValidation(emailContinueBtn, ValidateRegisterData);
-        verificationContinueBtn.RegisterCallback<ClickEvent>(ToNextSignUpPageBase);
+        //verificationContinueBtn.RegisterCallback<ClickEvent>(ToNextSignUpPageBase);
         RegisterValidation(goalContinueBtn, ValidateGoalRadio);
         RegisterValidation(activityContinueBtn, ValidateActivityRadio);
         RegisterValidation(nameContinueBtn, ValidateNameInput);

@@ -96,9 +96,9 @@ public class PanelManager : MonoBehaviour
         homeBtn.RegisterCallback<ClickEvent>(OnHomeBtnClick);
         scanBtn.RegisterCallback<ClickEvent>(OnScanBtnClick);
         adviceBtn.RegisterCallback<ClickEvent>(OnAdviceBtnClick);
-        profileBtn.clicked += OpenProfilePage;
         messageBtn.clicked += OpenMessagePage;
         rationBtn.clicked += OpenRationPanel;
+        profileBtn.clicked += OpenProfilePage;
         activityBtn.clicked += OpenActivityPanel;
         waterBtn.clicked += OpenWaterPanel;
         //productsBtn.clicked += OpenProductsSearchPage;
@@ -181,9 +181,12 @@ public class PanelManager : MonoBehaviour
     {
         profileRoot.style.display = DisplayStyle.Flex;
         mainBg.style.display = DisplayStyle.Flex;
-        profileRoot.AddToClassList("profile-template--slide-in");
-        mainRoot.AddToClassList("home-template--slide-out-right");
-        mainBg.AddToClassList("main-bg--active");
+        profileRoot.schedule.Execute(() =>
+        {
+            profileRoot.AddToClassList("profile-template--slide-in");
+            mainRoot.AddToClassList("home-template--slide-out-right");
+            mainBg.AddToClassList("main-bg--active");
+        }).Until(() => profileRoot.style.display == DisplayStyle.Flex);
     }
 
     private void HandleMainSlideOutEnd(TransitionEndEvent evt)

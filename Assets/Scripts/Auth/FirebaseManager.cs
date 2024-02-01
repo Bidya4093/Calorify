@@ -469,12 +469,12 @@ public class FirebaseManager : MonoBehaviour
                 firebaseUser = RegisterTask.Result.User;
                 if (firebaseUser != null)
                 {
-                    await SendVerificationEmail(firebaseUser);
+                    //await SendVerificationEmail(firebaseUser);
                     //verificationContainer.style.display = DisplayStyle.Flex;
                     //verificationContinueBtn.style.display = DisplayStyle.Flex;
 
-                    await CheckEmailVerification();
-                    //await DeleteUserAsync(RegisterTask.Result.User);
+                    //await CheckEmailVerification();
+                    await DeleteUserAsync(RegisterTask.Result.User);
                     //OnApplicationQuit();
                 }
             }
@@ -559,33 +559,6 @@ public class FirebaseManager : MonoBehaviour
             Debug.Log("Stop 2"); // <-- А це навіть не виводиться
         }
 
-    }
-
-    private void FixedUpdate()
-    {
-        //if (firebaseUser == null || !verificationEmail) return;
-
-        //if (timeRemaining > 0)
-        //{
-        //    timeRemaining -= Time.deltaTime;
-        //    Debug.Log(Math.Floor(timeRemaining));
-        //}
-        //else
-        //{
-        //    timeRemaining = 0;
-        //    verificationEmail = false;
-        //    verificationTimer.Stop();
-
-        //    if (!firebaseUser.IsEmailVerified)
-        //    {
-        //        DeleteUserAsync(firebaseUser);
-        //        GetComponent<AuthPanelManager>().ToPreviousSignUpPage(null);
-        //    }
-        //    else
-        //    {
-        //        GetComponent<AuthPanelManager>().ToNextSignUpPage(null, null);
-        //    }
-        //}
     }
 }
 
