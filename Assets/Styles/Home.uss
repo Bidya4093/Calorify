@@ -144,3 +144,53 @@
     --shadow-corner-radius: 45;
     --shadow-offset-y: 10;
 }
+
+.home-template {
+    transition-duration: var(--slide-in-transition);
+    transition-timing-function: ease-out;
+    transition-property: translate;
+    transition-delay: var(--slide-in-delay);
+    translate: 0 0;
+}
+
+.home-template--slide-out-right {
+    translate: 20% 0;
+}
+
+.home-template--slide-out-left {
+    translate: -20% 0;
+}
+
+.home-nav__btn-slider {
+    flex-grow: 1;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    flex-shrink: 0;
+    width: 50%;
+    flex-basis: 100%;
+    bottom: 6px;
+    top: 6px;
+    left: 6px;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    transition-property: translate;
+}
+
+.home-container {
+    transition-property: translate;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    translate: 0 0;
+}
+
+.activity-container {
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+    transition-property: translate;
+    translate: 100% 0;
+    position: absolute;
+}

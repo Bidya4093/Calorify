@@ -37,3 +37,17 @@
     --shadow-size: -5;
     --shadow-color: rgba(0,0,0,0.15);
 }
+
+.message-template {
+    flex-grow: 1;
+    display: flex;
+    translate: 100% 0;
+    transition-duration: var(--slide-in-transition);
+    transition-timing-function: ease-out;
+    transition-property: translate;
+    transition-delay: var(--slide-in-delay);
+}
+
+.message-template--slide-in {
+    translate: 0% 0;
+}

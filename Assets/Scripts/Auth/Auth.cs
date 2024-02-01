@@ -25,6 +25,7 @@ public class Auth : MonoBehaviour
     public RadioButtonGroup activityRadio;
     public RadioButtonGroup sexRadio;
 
+    public Button verificationContinueBtn;
 
     public delegate Task NextPageCallback();
 
@@ -43,13 +44,13 @@ public class Auth : MonoBehaviour
         Button ageContinueBtn = signUpPage.Q<Button>("AgeContinueBtn");
         Button sexContinueBtn = signUpPage.Q<Button>("SexContinueBtn");
         Button completeAuthBtn = signUpPage.Q<Button>("CompleteAuthBtn");
-
+        verificationContinueBtn = signUpPage.Q<Button>("VerificationContinueBtn");
 
         // Trigger validation on continue btn click
         RegisterValidation(emailContinueBtn, ValidateRegisterData);
+        verificationContinueBtn.RegisterCallback<ClickEvent>(ToNextSignUpPageBase);
         RegisterValidation(goalContinueBtn, ValidateGoalRadio);
         RegisterValidation(activityContinueBtn, ValidateActivityRadio);
-
         RegisterValidation(nameContinueBtn, ValidateNameInput);
         RegisterValidation(heightContinueBtn, ValidateHeightInput);
         RegisterValidation(weightContinueBtn, ValidateWeightInput);
@@ -62,8 +63,6 @@ public class Auth : MonoBehaviour
         signInEmailInput = signInPage.Q<TextField>("SignInEmailInput");
         signInPasswordInput = signInPage.Q<TextField>("SignInPasswordInput");
 
-        signUpEmailInput.value = "dsklf@gmail.com";
-        signUpPasswordInput.value = "dslkfj";
         goalRadio = signUpPage.Q<RadioButtonGroup>("GoalRadioGroup");
         activityRadio = signUpPage.Q<RadioButtonGroup>("ActivityRadioGroup");
         nameInput = signUpPage.Q<TextField>("NameInput");
@@ -71,6 +70,8 @@ public class Auth : MonoBehaviour
         weightInput = signUpPage.Q<FloatField>("WeightInput");
         ageInput = signUpPage.Q<IntegerField>("AgeInput");
         sexRadio = signUpPage.Q<RadioButtonGroup>("SexRadioGroup");
+
+        //verificationContinueBtn.SetEnabled(false);
         nameInput.value = "Bohdan";
         heightInput.value = 180f;
         weightInput.value = 70f;
@@ -82,13 +83,13 @@ public class Auth : MonoBehaviour
     {
         btn.RegisterCallback<ClickEvent>(async (ClickEvent evt) =>
         {
-            await GetComponent<AuthPanelManager>().ToNextSignUpPage(ValidateCallback, evt); ;
+            await GetComponent<AuthPanelManager>().ToNextSignUpPageWithCallback(ValidateCallback, evt);
         });
     }
 
     private void ToNextSignUpPageBase(ClickEvent evt)
     {
-        GetComponent<AuthPanelManager>().ToNextSignUpPage(null, evt);
+        GetComponent<AuthPanelManager>().ToNextSignUpPageWithCallback(null, evt);
     }
 
     Task ValidateGoalRadio()
@@ -204,7 +205,6 @@ public class Auth : MonoBehaviour
         {
             User.Instance.SetEmail(signUpEmailInput.value);
             await GetComponent<FirebaseManager>().RegisterCheckError(signUpEmailInput.value, signUpPasswordInput.value);
-            //FirebaseManager.SendVerificationEmail();
         }
         catch (Exception ex)
         {

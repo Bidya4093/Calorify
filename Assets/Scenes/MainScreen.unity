@@ -306,7 +306,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 81356cd36375f74458d4481b6bfe466a, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!4 &778118121
 Transform:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: ad90daf482da788418893068262acde9, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!4 &1409445063
 Transform:
   m_ObjectHideFlags: 0
@@ -685,8 +685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85fd3f68c9705894091a99be2e7acb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  document: {fileID: 1898785192}
-  swipeDistanceThreshold: 200
 --- !u!114 &1898785194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,7 +709,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898785190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5227ec892ff09fb468bec621215da4c3, type: 3}
   m_Name: 
@@ -725,7 +723,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898785190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b86fa14d0e8aaf4a921880997c978ca, type: 3}
   m_Name: 

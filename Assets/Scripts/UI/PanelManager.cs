@@ -12,6 +12,7 @@ public class PanelManager : MonoBehaviour
     private VisualElement adviceTopicPage;
     private VisualElement homeContainer;
     private VisualElement scanContainer;
+    private VisualElement mainBg;
     private TemplateContainer activityTemplate;
     private VisualElement bottomMenu;
 
@@ -20,6 +21,7 @@ public class PanelManager : MonoBehaviour
     public VisualElement homeBtn;
     private VisualElement scanBtn;
     private VisualElement adviceBtn;
+    private VisualElement btnSlider;
 
     private Button messageBtn;
     private Button profileBtn;
@@ -60,6 +62,8 @@ public class PanelManager : MonoBehaviour
         homeContainer = homePage.Q<VisualElement>("HomeContainer");
         activityTemplate = homePage.Q<TemplateContainer>("ActivityTemplate");
         scanContainer = scanPage.Q<VisualElement>("ScanPanelContainer");
+        mainBg = mainRoot.Q<VisualElement>("MainBackground");
+
 
         bottomMenu = mainRoot.Q<TemplateContainer>("BottomMenu");
         bottomMenuBtns = bottomMenu.Query<VisualElement>(className: "menu__item").ToList();
@@ -67,6 +71,8 @@ public class PanelManager : MonoBehaviour
         homeBtn = bottomMenu.Q<VisualElement>("home");
         scanBtn = bottomMenu.Q<VisualElement>("scaner");
         adviceBtn = bottomMenu.Q<VisualElement>("advices");
+        btnSlider = homePage.Q<VisualElement>("HomeNavBtnSlider");
+
         profileBtn = mainRoot.Q<Button>("ProfileBtn");
         messageBtn = mainRoot.Q<Button>("MessageBtn");
         rationBtn = homePage.Q<Button>("RationBtn");
@@ -81,6 +87,11 @@ public class PanelManager : MonoBehaviour
         productPanelRoot.style.display = DisplayStyle.None;
         waterPanelRoot.style.display = DisplayStyle.None;
         scanContainer.style.display = DisplayStyle.None;
+        mainBg.style.display = DisplayStyle.None;
+
+        mainRoot.AddToClassList("home-template");
+        profileRoot.AddToClassList("profile-template");
+        messageRoot.AddToClassList("message-template");
 
         homeBtn.RegisterCallback<ClickEvent>(OnHomeBtnClick);
         scanBtn.RegisterCallback<ClickEvent>(OnScanBtnClick);
@@ -98,6 +109,7 @@ public class PanelManager : MonoBehaviour
         AttachTopicToAdviceTopicPage();
 
         waterProgressBar.RegisterValueChangedCallback(ChangeWaterProgress);
+        mainRoot.RegisterCallback<TransitionEndEvent>(HandleMainSlideOutEnd);
     }
 
     private void ChangeWaterProgress(ChangeEvent<float> evt)
@@ -167,14 +179,28 @@ public class PanelManager : MonoBehaviour
 
     private void OpenProfilePage()
     {
-        mainRoot.style.display = DisplayStyle.None;
         profileRoot.style.display = DisplayStyle.Flex;
+        mainBg.style.display = DisplayStyle.Flex;
+        profileRoot.AddToClassList("profile-template--slide-in");
+        mainRoot.AddToClassList("home-template--slide-out-right");
+        mainBg.AddToClassList("main-bg--active");
+    }
+
+    private void HandleMainSlideOutEnd(TransitionEndEvent evt)
+    {
+        if (mainRoot.ClassListContains("slide-out-right") || mainRoot.ClassListContains("slide-out-left"))
+        {
+            mainRoot.style.display = DisplayStyle.None;
+        }
     }
 
     private void OpenMessagePage()
     {
-        mainRoot.style.display = DisplayStyle.None;
         messageRoot.style.display = DisplayStyle.Flex;
+        mainBg.style.display = DisplayStyle.Flex;
+        messageRoot.AddToClassList("message-template--slide-in");
+        mainRoot.AddToClassList("home-template--slide-out-left");
+        mainBg.AddToClassList("main-bg--active");
     }
 
     private void OpenWaterPanel()
@@ -196,18 +222,14 @@ public class PanelManager : MonoBehaviour
 
     private void OpenRationPanel()
     {
-        rationBtn.AddToClassList("active");
-        activityBtn.RemoveFromClassList("active");
-        homeContainer.style.display = DisplayStyle.Flex;
-        activityTemplate.style.display = DisplayStyle.None;
+        homeContainer.style.visibility = Visibility.Visible;
+        GetComponent<SwipeMenu>().ToRationPanel();
     }
 
     private void OpenActivityPanel()
     {
-        rationBtn.RemoveFromClassList("active");
-        activityBtn.AddToClassList("active");
-        homeContainer.style.display = DisplayStyle.None;
-        activityTemplate.style.display = DisplayStyle.Flex;
+        activityTemplate.style.visibility = Visibility.Visible;
+        GetComponent<SwipeMenu>().ToActivityPanel();
     }
 
 }

@@ -11,6 +11,7 @@ public class Profile : MonoBehaviour
 {
     private VisualElement mainRoot;
     private VisualElement profileRoot;
+    private VisualElement mainBg;
 
     private TemplateContainer profileEditTemplate;
     private TemplateContainer profileTemplate;
@@ -61,6 +62,7 @@ public class Profile : MonoBehaviour
     {
         profileRoot = GetComponent<UIDocument>().rootVisualElement;
         mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
+        mainBg = mainRoot.Q<VisualElement>("MainBackground");
 
         profileTemplate = profileRoot.Q<TemplateContainer>("ProfileTemplate");
         profileEditTemplate = profileRoot.Q<TemplateContainer>("ProfileEditTemplate");
@@ -106,7 +108,6 @@ public class Profile : MonoBehaviour
         closeChangePasswordPage.clicked += CloseChangePasswordPage;
         signOutBtn.clicked += SignOut;
         savePasswordBtn.clicked += SaveNewPassword;
-
         changeImageBtn.clicked += LoadProfileImageFromGallery;
 
         settingsGoalDropdown.RegisterValueChangedCallback(OnGoalDropdownValueChanged);
@@ -120,6 +121,8 @@ public class Profile : MonoBehaviour
         userParametersWeightInput.RegisterValueChangedCallback(OnWeightInputValueChanged);
         userParametersAgeInput.RegisterValueChangedCallback(OnAgeInputValueChanged);
         userParametersSexRadioToggle.RegisterValueChangedCallback(OnSexRadioToggleValueChanged);
+
+        profileRoot.RegisterCallback<TransitionEndEvent>(HandleProfileSlideInEnd);
     }
 
     private void OpenProfileEditPage()
@@ -136,8 +139,19 @@ public class Profile : MonoBehaviour
 
     private void CloseProfilePage()
     {
-        profileRoot.style.display = DisplayStyle.None;
         mainRoot.style.display = DisplayStyle.Flex;
+        profileRoot.RemoveFromClassList("profile-template--slide-in");
+        mainRoot.RemoveFromClassList("home-template--slide-out-right");
+        mainBg.RemoveFromClassList("main-bg--active");
+    }
+
+    private void HandleProfileSlideInEnd(TransitionEndEvent evt)
+    {
+        if (!profileRoot.ClassListContains("profile-template--slide-in"))
+        {
+            profileRoot.style.display = DisplayStyle.None;
+            mainBg.style.display = DisplayStyle.None;
+        }
     }
 
     private void OpenChangePasswordPage(ClickEvent evt)

@@ -30,7 +30,6 @@ public class AuthPanelManager : MonoBehaviour
     private VisualElement signUpShowPasswordBtn;
 
 
-
     void Start()
     {
         authRoot = GetComponent<UIDocument>().rootVisualElement;
@@ -143,7 +142,7 @@ public class AuthPanelManager : MonoBehaviour
         passwordInput.isPasswordField = !passwordInput.isPasswordField;
     }
 
-    public async Task ToNextSignUpPage(NextPageCallback nextPageCallback, ClickEvent evt)
+    public async Task ToNextSignUpPageWithCallback(NextPageCallback nextPageCallback, ClickEvent evt)
     {
         try
         {
@@ -151,20 +150,24 @@ public class AuthPanelManager : MonoBehaviour
             {
                 await nextPageCallback();
             }
-
-            currentSignUpStep++;
-            if (currentSignUpStep >= signUpStepPages.Count)
-            {
-                currentSignUpStep = signUpStepPages.Count - 1;
-                GetComponent<Auth>().CompleteSignUp(evt);
-                return;
-            }
-            UpdateSignUpPages();
+            ToNextSignUpPage(evt);
         }
         catch (Exception ex)
         {
             Debug.Log(ex.Message);
             FirebaseManager.errorLabel.text = ex.Message;
         }
+    }
+
+    public void ToNextSignUpPage(ClickEvent evt = null)
+    {
+        currentSignUpStep++;
+        if (currentSignUpStep >= signUpStepPages.Count)
+        {
+            currentSignUpStep = signUpStepPages.Count - 1;
+            GetComponent<Auth>().CompleteSignUp(evt);
+            return;
+        }
+        UpdateSignUpPages();
     }
 }

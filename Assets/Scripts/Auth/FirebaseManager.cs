@@ -7,6 +7,7 @@ using Firebase.Database;
 using UnityEngine.UIElements;
 using System;
 using Firebase.Extensions;
+using System.Timers;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -30,6 +31,13 @@ public class FirebaseManager : MonoBehaviour
     public TextField signUpEmailInput;
     public TextField signUpPasswordInput;
 
+    public Button verificationContinueBtn;
+    public VisualElement verificationContainer;
+
+    static public bool verificationEmail = false;
+    static public float timeRemaining = 20f;
+    //public Timer verificationTimer = new Timer(3000);
+
     void Start()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -37,13 +45,15 @@ public class FirebaseManager : MonoBehaviour
         signInPasswordInput = root.Q<TextField>("SignInPasswordInput");
         signUpEmailInput = root.Q<TextField>("SignUpEmailInput");
         signUpPasswordInput = root.Q<TextField>("SignUpPasswordInput");
+        verificationContinueBtn = root.Q<Button>("VerificationContinueBtn");
+        verificationContainer = root.Q<VisualElement>("Verification");
         StartCoroutine(CheckAndFixDependenciesAsync());
     }
 
     private IEnumerator CheckAndFixDependenciesAsync()
     {
         Task<DependencyStatus> DependencyTask = FirebaseApp.CheckAndFixDependenciesAsync();
-
+        
         yield return new WaitUntil(() => DependencyTask.IsCompleted);
 
         dependencyStatus = DependencyTask.Result;
@@ -349,11 +359,12 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    static public async Task SendVerificationEmail()
+    static public async Task SendVerificationEmail(FirebaseUser user = null)
     {
-        if (firebaseUser != null)
+        if (user == null) user = firebaseUser;
+        if (user != null)
         {
-            await firebaseUser.SendEmailVerificationAsync().ContinueWith(task =>
+            await user.SendEmailVerificationAsync().ContinueWith(task =>
             {
                 if (task.IsCanceled)
                 {
@@ -365,45 +376,47 @@ public class FirebaseManager : MonoBehaviour
                     Debug.LogError("SendEmailVerificationAsync encountered an error: " + task.Exception);
                     return;
                 }
-
+                verificationEmail = true;
+                timeRemaining = 20f;
                 Debug.Log("Email sent successfully.");
             });
         }
     }
     public IEnumerator Register(string _email, string _password, string _username)
     {
-            //Call the Firebase auth signin function passing the email and password=
-            Task<AuthResult> RegisterTask = auth.CreateUserWithEmailAndPasswordAsync(_email, _password);
+        //Call the Firebase auth signin function passing the email and password=
 
-            yield return new WaitUntil(predicate: () => RegisterTask.IsCompleted);
+        Task<AuthResult> RegisterTask =  Task.Run(() => auth.CreateUserWithEmailAndPasswordAsync(_email, _password));
 
-            if (RegisterTask.Exception != null)
+        yield return new WaitUntil(predicate: () => RegisterTask.IsCompleted);
+
+        if (RegisterTask.Exception != null)
+        {
+            //If there are errors handle them
+            Debug.LogWarning(message: $"Failed to register task with {RegisterTask.Exception}");
+            FirebaseException firebaseEx = RegisterTask.Exception.GetBaseException() as FirebaseException;
+            AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
+
+            string message = "Реєстрацію неможливо виконати!";
+            switch (errorCode)
             {
-                //If there are errors handle them
-                Debug.LogWarning(message: $"Failed to register task with {RegisterTask.Exception}");
-                FirebaseException firebaseEx = RegisterTask.Exception.GetBaseException() as FirebaseException;
-                AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
-
-                string message = "Реєстрацію неможливо виконати!";
-                switch (errorCode)
-                {
-                    case AuthError.MissingEmail:
-                        message = "Введіть електронну пошту!";
-                        break;
-                    case AuthError.MissingPassword:
-                        message = "Введіть пароль!";
-                        break;
-                    case AuthError.WeakPassword:
-                        message = "Слабкий пароль!";
-                        break;
-                    case AuthError.EmailAlreadyInUse:
-                        message = "Електронна пошта вже використовується!";
-                        break;
-                }
-                errorLabel.text = message;
+                case AuthError.MissingEmail:
+                    message = "Введіть електронну пошту!";
+                    break;
+                case AuthError.MissingPassword:
+                    message = "Введіть пароль!";
+                    break;
+                case AuthError.WeakPassword:
+                    message = "Слабкий пароль!";
+                    break;
+                case AuthError.EmailAlreadyInUse:
+                    message = "Електронна пошта вже використовується!";
+                    break;
             }
-            else
-            {
+            errorLabel.text = message;
+        }
+        else
+        {
             //firebaseUser has now been created
             //Now get the result
             UpdateProfile(_username, null);
@@ -419,7 +432,7 @@ public class FirebaseManager : MonoBehaviour
     public async Task RegisterCheckError(string _email, string _password)
     {
         //Call the Firebase auth signin function passing the email and password=
-        await auth.CreateUserWithEmailAndPasswordAsync(_email, _password).ContinueWith((RegisterTask) =>
+        await auth.CreateUserWithEmailAndPasswordAsync(_email, _password).ContinueWith(async (RegisterTask) =>
         {
             if (RegisterTask.Exception != null)
             {
@@ -427,7 +440,7 @@ public class FirebaseManager : MonoBehaviour
                 Debug.LogWarning(message: $"Failed to register task with {RegisterTask.Exception}");
                 FirebaseException firebaseEx = RegisterTask.Exception.GetBaseException() as FirebaseException;
                 AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
-
+                //RegisterTask.Exception.
                 string message = "Register Failed!";
                 switch (errorCode)
                 {
@@ -453,25 +466,38 @@ public class FirebaseManager : MonoBehaviour
             }
             else
             {
-                if (RegisterTask.Result.User != null)
+                firebaseUser = RegisterTask.Result.User;
+                if (firebaseUser != null)
                 {
-                    RegisterTask.Result.User.DeleteAsync().ContinueWith(task =>
-                    {
-                        if (task.IsCanceled)
-                        {
-                            Debug.LogError("DeleteAsync was canceled.");
-                            return;
-                        }
-                        if (task.IsFaulted)
-                        {
-                            Debug.LogError("DeleteAsync encountered an error: " + task.Exception);
-                            return;
-                        }
+                    await SendVerificationEmail(firebaseUser);
+                    //verificationContainer.style.display = DisplayStyle.Flex;
+                    //verificationContinueBtn.style.display = DisplayStyle.Flex;
 
-                        Debug.Log("User deleted successfully.");
-                    });
+                    await CheckEmailVerification();
+                    //await DeleteUserAsync(RegisterTask.Result.User);
+                    //OnApplicationQuit();
                 }
             }
+        });
+    }
+
+    static public async Task DeleteUserAsync(FirebaseUser user = null)
+    {
+        if (user == null) user = firebaseUser;
+        await user.DeleteAsync().ContinueWith(task =>
+        {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("DeleteAsync was canceled.");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("DeleteAsync encountered an error: " + task.Exception);
+                return;
+            }
+
+            Debug.Log("User deleted successfully.");
         });
     }
 
@@ -509,8 +535,58 @@ public class FirebaseManager : MonoBehaviour
             // user value has now been updated
             //onCallback.Invoke();
         }
+        
     }
 
+    private async Task CheckEmailVerification()
+    {
+        // ЧОМУ ТИ НЕ ПРАЦЮЄШ?????????????????????????????????????????
+        Debug.Log("Verification: " + firebaseUser.IsEmailVerified);
+
+        if (!firebaseUser.IsEmailVerified)
+        {
+            await firebaseUser.ReloadAsync();
+            await CheckEmailVerification();
+
+        }
+        else
+        {
+            Debug.Log("Stop 1");
+
+            //verificationContinueBtn.SetEnabled(true);// <-- Воно не працює
+            //verificationContinueBtn.style.display = DisplayStyle.Flex; // <-- Це не працює, але в іншому варіанті 
+            //GetComponent<AuthPanelManager>().ToNextSignUpPage(); // <-- І воно теж
+            Debug.Log("Stop 2"); // <-- А це навіть не виводиться
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        //if (firebaseUser == null || !verificationEmail) return;
+
+        //if (timeRemaining > 0)
+        //{
+        //    timeRemaining -= Time.deltaTime;
+        //    Debug.Log(Math.Floor(timeRemaining));
+        //}
+        //else
+        //{
+        //    timeRemaining = 0;
+        //    verificationEmail = false;
+        //    verificationTimer.Stop();
+
+        //    if (!firebaseUser.IsEmailVerified)
+        //    {
+        //        DeleteUserAsync(firebaseUser);
+        //        GetComponent<AuthPanelManager>().ToPreviousSignUpPage(null);
+        //    }
+        //    else
+        //    {
+        //        GetComponent<AuthPanelManager>().ToNextSignUpPage(null, null);
+        //    }
+        //}
+    }
 }
 
 

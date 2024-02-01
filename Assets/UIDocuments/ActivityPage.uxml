@@ -3,9 +3,9 @@
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/RadialProgress.uss?fileID=7433441132597879392&amp;guid=54e4e5c72d3a5ef4aa2946f873ef3048&amp;type=3#RadialProgress" />
     <Style src="project://database/Assets/Styles/Activity.uss?fileID=7433441132597879392&amp;guid=df3ba75a70e9d424ab6fc823c445323c&amp;type=3#Activity" />
-    <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" style="visibility: visible; display: flex; margin-top: -30px;">
-        <ui:VisualElement name="ActivityContainer" class="scroll-container">
-            <Shadow name="MainSectionShadow" class="shadow-45" style="margin-bottom: 30px;">
+    <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elastic-animation-interval-ms="0" elasticity="0" horizontal-scroller-visibility="Hidden" scroll-deceleration-rate="0.01" style="margin-top: -30px;">
+        <ui:VisualElement name="ActivityContainer" class="scroll-container" style="width: 100%;">
+            <Shadow name="MainSectionShadow" class="shadow-45" style="margin-bottom: 30px; flex-shrink: 0;">
                 <ui:VisualElement name="MainSection" class="wrapper" style="margin-bottom: 0;">
                     <ui:VisualElement name="TopContainer" style="flex-grow: 0; padding-top: 0; margin-right: 60px; margin-left: 60px; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 95px;">
                         <ui:Label tabindex="-1" text="Статистика" display-tooltip-when-elided="true" name="MainSectionTitle" class="home-title" />
@@ -38,7 +38,7 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </Shadow>
-            <Shadow name="ActivityHistoryShadow" class="shadow-45">
+            <Shadow name="ActivityHistoryShadow" class="shadow-45" style="flex-shrink: 0;">
                 <ui:VisualElement name="ActivityHistory" class="wrapper" style="margin-bottom: 0; margin-top: 0; margin-right: 0; margin-left: 0; padding-right: 60px; padding-left: 60px; flex-shrink: 1;">
                     <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="title" />
                     <ui:VisualElement name="HistoryContainer">
