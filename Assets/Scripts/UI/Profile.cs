@@ -11,6 +11,7 @@ public class Profile : MonoBehaviour
 {
     private VisualElement mainRoot;
     private VisualElement profileRoot;
+    private VisualElement mainBg;
 
     private TemplateContainer profileEditTemplate;
     private TemplateContainer profileTemplate;
@@ -22,6 +23,7 @@ public class Profile : MonoBehaviour
     private VisualElement changePasswordOption;
     private Button closeChangePasswordPage;
     private Button signOutBtn;
+    private Button savePasswordBtn;
 
     static public DropdownField settingsGoalDropdown;
     static public DropdownField settingsThemeDropdown;
@@ -34,6 +36,10 @@ public class Profile : MonoBehaviour
     static public FloatField userParametersWeightInput;
     static public IntegerField userParametersAgeInput;
     static public RadioButtonGroup userParametersSexRadioToggle;
+
+    static public TextField currentPasswordInput;
+    static public TextField newPasswordInput;
+    static public TextField repeatNewPasswordInput;
 
     static public Label profileCardName;
     static public Label profileCardEmail;
@@ -56,6 +62,7 @@ public class Profile : MonoBehaviour
     {
         profileRoot = GetComponent<UIDocument>().rootVisualElement;
         mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
+        mainBg = mainRoot.Q<VisualElement>("MainBackground");
 
         profileTemplate = profileRoot.Q<TemplateContainer>("ProfileTemplate");
         profileEditTemplate = profileRoot.Q<TemplateContainer>("ProfileEditTemplate");
@@ -67,13 +74,7 @@ public class Profile : MonoBehaviour
         changePasswordOption = profileTemplate.Q<VisualElement>("SettingsChangePassword");
         closeChangePasswordPage = changePasswordTemplate.Q<Button>("CloseBtn");
         signOutBtn = profileEditTemplate.Q<Button>("SignOutBtn");
-
-        profileEditBtn.clicked += OpenProfileEditPage;
-        closeProfilePage.clicked += CloseProfilePage;
-        backBtn.clicked += CloseProfileEditPage;
-        changePasswordOption.RegisterCallback<ClickEvent>(OpenChangePasswordPage);
-        closeChangePasswordPage.clicked += CloseChangePasswordPage;
-        signOutBtn.clicked += SignOut;
+        savePasswordBtn = changePasswordTemplate.Q<Button>("ChangePasswordSaveBtn");
 
         settingsGoalDropdown = profileRoot.Q<DropdownField>("SettingsGoalDropdown");
         settingsThemeDropdown = profileRoot.Q<DropdownField>("SettingsThemeDropdown");
@@ -87,6 +88,10 @@ public class Profile : MonoBehaviour
         userParametersAgeInput = profileRoot.Q<IntegerField>("UserParametersAgeInput");
         userParametersSexRadioToggle = profileRoot.Q<RadioButtonGroup>("UserParametersSexRadioToggle");
 
+        currentPasswordInput = changePasswordTemplate.Q<TextField>("CurrentPasswordInput");
+        newPasswordInput = changePasswordTemplate.Q<TextField>("NewPasswordInput");
+        repeatNewPasswordInput = changePasswordTemplate.Q<TextField>("RepeatNewPasswordInput");
+
         profileCardName = profileRoot.Q<Label>("ProfileCardName");
         profileCardEmail = profileRoot.Q<Label>("ProfileCardEmail");
         changePasswordEmailLabel = profileRoot.Q<Label>("ChangePasswordEmailLabel");
@@ -95,6 +100,14 @@ public class Profile : MonoBehaviour
         profileEditImage = profileRoot.Q<VisualElement>("ProfileEditImage");
         changeImageBtn = profileRoot.Q<Button>("ChangeImageBtn");
 
+
+        profileEditBtn.clicked += OpenProfileEditPage;
+        closeProfilePage.clicked += CloseProfilePage;
+        backBtn.clicked += CloseProfileEditPage;
+        changePasswordOption.RegisterCallback<ClickEvent>(OpenChangePasswordPage);
+        closeChangePasswordPage.clicked += CloseChangePasswordPage;
+        signOutBtn.clicked += SignOut;
+        savePasswordBtn.clicked += SaveNewPassword;
         changeImageBtn.clicked += LoadProfileImageFromGallery;
 
         settingsGoalDropdown.RegisterValueChangedCallback(OnGoalDropdownValueChanged);
@@ -108,6 +121,8 @@ public class Profile : MonoBehaviour
         userParametersWeightInput.RegisterValueChangedCallback(OnWeightInputValueChanged);
         userParametersAgeInput.RegisterValueChangedCallback(OnAgeInputValueChanged);
         userParametersSexRadioToggle.RegisterValueChangedCallback(OnSexRadioToggleValueChanged);
+
+        profileRoot.RegisterCallback<TransitionEndEvent>(HandleProfileSlideInEnd);
     }
 
     private void OpenProfileEditPage()
@@ -124,8 +139,19 @@ public class Profile : MonoBehaviour
 
     private void CloseProfilePage()
     {
-        profileRoot.style.display = DisplayStyle.None;
         mainRoot.style.display = DisplayStyle.Flex;
+        profileRoot.RemoveFromClassList("profile-template--slide-in");
+        mainRoot.RemoveFromClassList("home-template--slide-out-right");
+        mainBg.RemoveFromClassList("main-bg--active");
+    }
+
+    private void HandleProfileSlideInEnd(TransitionEndEvent evt)
+    {
+        if (!profileRoot.ClassListContains("profile-template--slide-in"))
+        {
+            profileRoot.style.display = DisplayStyle.None;
+            mainBg.style.display = DisplayStyle.None;
+        }
     }
 
     private void OpenChangePasswordPage(ClickEvent evt)
@@ -338,6 +364,14 @@ public class Profile : MonoBehaviour
     {
         NativeGallery.Permission permission = await NativeGallery.RequestPermissionAsync(permissionType, mediaTypes);
         Debug.Log("Permission result: " + permission);
+    }
+
+    private void SaveNewPassword()
+    {
+        if (FirebaseManager.IsPasswordsSame(newPasswordInput.text, repeatNewPasswordInput.text))
+        {
+            FirebaseManager.UpdatePassword(currentPasswordInput.text, newPasswordInput.text);
+        }
     }
 
 }

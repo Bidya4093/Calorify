@@ -306,7 +306,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 81356cd36375f74458d4481b6bfe466a, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!4 &778118121
 Transform:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203995908}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 036fb8a9f0166634389e5a5468bc326e, type: 3}
   m_Name: 
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: ad90daf482da788418893068262acde9, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!4 &1409445063
 Transform:
   m_ObjectHideFlags: 0
@@ -685,8 +685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85fd3f68c9705894091a99be2e7acb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  document: {fileID: 1898785192}
-  swipeDistanceThreshold: 200
 --- !u!114 &1898785194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,6 +701,7 @@ MonoBehaviour:
   messagePageObject: {fileID: 1409445061}
   profilePageObject: {fileID: 778118119}
   productPanelObject: {fileID: 1205989845}
+  waterPanelObject: {fileID: 1949728723}
 --- !u!114 &1898785196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,7 +709,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898785190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5227ec892ff09fb468bec621215da4c3, type: 3}
   m_Name: 
@@ -724,7 +723,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898785190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b86fa14d0e8aaf4a921880997c978ca, type: 3}
   m_Name: 
@@ -772,6 +771,67 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 179ce9171ea72ba4b90a35df58054ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1949728723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1949728725}
+  - component: {fileID: 1949728724}
+  - component: {fileID: 1949728726}
+  m_Layer: 5
+  m_Name: WaterPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1949728724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949728723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: fc5adc99fbfe6d24c838e014f339ece2, type: 3}
+  m_SortingOrder: 1
+--- !u!4 &1949728725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949728723}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949728726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949728723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8885082a192658245966e48314a1c98d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2096228717
@@ -937,6 +997,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1810716367}
+  - {fileID: 1949728725}
   - {fileID: 1205989847}
   - {fileID: 1409445063}
   - {fileID: 778118121}

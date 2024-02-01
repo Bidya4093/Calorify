@@ -159,3 +159,17 @@
     flex-grow: 1;
     -unity-background-image-tint-color: rgb(85, 85, 85);
 }
+
+.profile-template {
+    flex-grow: 1;
+    display: flex;
+    translate: -100% 0;
+    transition-duration: var(--slide-in-transition);
+    transition-timing-function: ease-out;
+    transition-property: translate;
+    transition-delay: var(--slide-in-delay);
+}
+
+.profile-template--slide-in {
+    translate: 0% 0;
+}

@@ -33,6 +33,15 @@
                 <ui:Button text="Продовжити" display-tooltip-when-elided="true" name="EmailContinueBtn" class="auth-btn" />
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:VisualElement name="Verification" class="auth-container" style="display: none;">
+            <ui:VisualElement name="VerificationContainer">
+                <ui:VisualElement name="BackBtn" class="sign-up-back-btn" />
+                <ui:Label tabindex="-1" text="Підтвердіть &#10;електронну пошту&#10;для продовження!" display-tooltip-when-elided="true" name="VerificationTitle" enable-rich-text="false" style="-unity-text-align: upper-center; font-size: 96px; margin-top: 360px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&amp;guid=dca4865c624e76f48b83f1a5ae3ca00e&amp;type=3#Ubuntu-Medium&apos;);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VerificationBottom" style="align-items: center;">
+                <ui:Button text="Продовжити" display-tooltip-when-elided="true" name="VerificationContinueBtn" class="auth-btn" style="display: flex;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
         <ui:VisualElement name="Goal" class="auth-container" style="display: none;">
             <ui:VisualElement name="GoalContainer">
                 <ui:VisualElement name="BackBtn" class="sign-up-back-btn" />

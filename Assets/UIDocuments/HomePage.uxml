@@ -1,15 +1,16 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="TopMenu" src="project://database/Assets/UIDocuments/TopMenu.uxml?fileID=9197481963319205126&amp;guid=7be0b6e660666744ba8ade54e9f02f9f&amp;type=3#TopMenu" />
+    <ui:Template name="WaterProgressBar" src="project://database/Assets/UIDocuments/WaterProgressBar.uxml?fileID=9197481963319205126&amp;guid=e32c39e3627c0ac41a5795809a4d17ae&amp;type=3#WaterProgressBar" />
     <ui:Template name="ActivityPage" src="project://database/Assets/UIDocuments/ActivityPage.uxml?fileID=9197481963319205126&amp;guid=bbc182239366a14419a938593ffdc566&amp;type=3#ActivityPage" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
     <Style src="project://database/Assets/Styles/RadialProgress.uss?fileID=7433441132597879392&amp;guid=54e4e5c72d3a5ef4aa2946f873ef3048&amp;type=3#RadialProgress" />
-    <ui:VisualElement name="MainContainer" class="content-container" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
-        <ui:Instance template="TopMenu" name="TopMenu" style="flex-shrink: 0; margin-top: 45px; margin-right: 45px; margin-bottom: 0; margin-left: 45px;" />
-        <ui:VisualElement name="HomeContainer" style="flex-grow: 1; display: flex;">
-            <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" nested-interaction-kind="ForwardScrolling" style="visibility: visible; display: flex; margin-top: -30px;">
-                <ui:VisualElement name="HomeScrollContainer" class="scroll-container">
-                    <Shadow name="MainSectionShadow" class="shadow-45" style="margin-bottom: 30px; flex-shrink: 0;">
+    <ui:Instance template="TopMenu" name="TopMenu" style="flex-shrink: 0; background-color: rgb(240, 240, 240); padding-top: 45px; padding-right: 45px; padding-bottom: 0; padding-left: 45px; top: 0;" />
+    <ui:VisualElement name="MainContainer" class="content-container" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; visibility: visible;">
+        <ui:VisualElement name="HomeContainer" class="home-container" style="display: flex;">
+            <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" scroll-deceleration-rate="0.01" style="margin-top: -30px;">
+                <ui:VisualElement name="HomeScrollContainer" class="scroll-container" style="flex-grow: 1;">
+                    <Shadow name="MainSectionShadow" shadow-size="133" shadow-corner-radius="154" class="shadow-45" style="margin-bottom: 30px; flex-shrink: 0;">
                         <ui:VisualElement name="MainSection" class="wrapper" style="padding-bottom: 45px; margin-bottom: 0; color: rgb(0, 0, 0);">
                             <ui:VisualElement name="TopContainer" style="flex-grow: 0; padding-top: 0; margin-right: 60px; margin-left: 60px; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
                                 <ui:Label tabindex="-1" text="Статистика за день" display-tooltip-when-elided="true" name="MainSectionTitle" class="home-title" />
@@ -44,10 +45,10 @@
                                         <ui:Label tabindex="-1" name="CaloriesRadialProgressLabel" text="0 / 2200 ккал." display-tooltip-when-elided="true" style="font-size: 48px; color: rgb(85, 85, 85); margin-top: 18px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-items: stretch; -unity-text-align: upper-center;" />
                                     </ui:VisualElement>
                                     <ui:VisualElement name="ChartsBtnContainer" style="flex-grow: 1; justify-content: center; align-items: flex-end;">
-                                        <ui:Button text="ВОДА" display-tooltip-when-elided="true" name="AddActivityBtn" class="btn btn-reverse" style="margin-bottom: 45px;">
+                                        <ui:Button text="ВОДА" display-tooltip-when-elided="true" name="WaterPanelBtn" class="btn btn-reverse" style="margin-bottom: 45px;">
                                             <ui:VisualElement name="AddFoodIcon" class="btn-icon btn-icon-reverse" style="background-image: resource(&apos;Images/add-icon&apos;); width: 45px; height: 45px;" />
                                         </ui:Button>
-                                        <ui:Button text="СТРАВА" display-tooltip-when-elided="true" name="AddFoodBtn" class="btn">
+                                        <ui:Button text="СТРАВА" display-tooltip-when-elided="true" name="ProductSearchBtn" class="btn">
                                             <ui:VisualElement name="AddFoodIcon" class="btn-icon" style="background-image: resource(&apos;Images/add-icon&apos;);" />
                                         </ui:Button>
                                     </ui:VisualElement>
@@ -59,20 +60,26 @@
                                     <ui:Label tabindex="-1" text="1.8 / 2.4 л." display-tooltip-when-elided="true" name="WaterProgressBarLabel" />
                                 </ui:VisualElement>
                                 <ui:VisualElement name="WaterProgressBarContainer" style="flex-grow: 0;">
-                                    <ui:ProgressBar value="0" name="WaterProgressBar" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
-                                        <ui:VisualElement name="ProgressBarDividersContainer" style="flex-grow: 1; position: absolute; flex-direction: row; right: 0; left: 0; bottom: 0; top: 0; justify-content: space-evenly;">
-                                            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
-                                            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
-                                            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
-                                        </ui:VisualElement>
-                                    </ui:ProgressBar>
+                                    <ui:Instance template="WaterProgressBar" name="WaterProgressBar" />
                                 </ui:VisualElement>
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </Shadow>
-                    <Shadow name="HistoryShadow" class="shadow-45">
+                    <Shadow name="HistoryShadow" class="shadow-45" style="flex-shrink: 0;">
                         <ui:VisualElement name="HistorySection" class="wrapper" style="padding-right: 60px; padding-left: 60px; margin-bottom: 0;">
-                            <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="home-title" style="margin-bottom: 30px; visibility: visible; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-left: 0;" />
+                            <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="home-title" style="margin-bottom: 30px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-left: 0;" />
+                            <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">
+                                <ui:VisualElement name="HistoryEmptyContainer" style="flex-grow: 1; color: rgb(128, 128, 128); font-size: 36px; -unity-text-align: upper-center; margin-bottom: 110px; margin-top: 110px;">
+                                    <ui:Label tabindex="-1" text="Порожньо" display-tooltip-when-elided="true" name="HistoryEmptyTitle" style="font-size: 72px; margin-bottom: 45px;" />
+                                    <ui:Label tabindex="-1" text="Тут буде відображатись їжа, &#10;яку Ви їли протягом дня" display-tooltip-when-elided="true" name="HistoryEmptyLabel" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">
+                                <ui:VisualElement name="HistoryEmptyContainer" style="flex-grow: 1; color: rgb(128, 128, 128); font-size: 36px; -unity-text-align: upper-center; margin-bottom: 110px; margin-top: 110px;">
+                                    <ui:Label tabindex="-1" text="Порожньо" display-tooltip-when-elided="true" name="HistoryEmptyTitle" style="font-size: 72px; margin-bottom: 45px;" />
+                                    <ui:Label tabindex="-1" text="Тут буде відображатись їжа, &#10;яку Ви їли протягом дня" display-tooltip-when-elided="true" name="HistoryEmptyLabel" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
                             <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">
                                 <ui:VisualElement name="HistoryEmptyContainer" style="flex-grow: 1; color: rgb(128, 128, 128); font-size: 36px; -unity-text-align: upper-center; margin-bottom: 110px; margin-top: 110px;">
                                     <ui:Label tabindex="-1" text="Порожньо" display-tooltip-when-elided="true" name="HistoryEmptyTitle" style="font-size: 72px; margin-bottom: 45px;" />
@@ -84,6 +91,6 @@
                 </ui:VisualElement>
             </ui:ScrollView>
         </ui:VisualElement>
-        <ui:Instance template="ActivityPage" name="ActivityTemplate" style="display: none;" />
+        <ui:Instance template="ActivityPage" name="ActivityTemplate" class="activity-container" style="flex-grow: 1; width: 100%; visibility: hidden; bottom: 0; top: 0;" />
     </ui:VisualElement>
 </ui:UXML>

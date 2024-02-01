@@ -380,4 +380,14 @@ public class User : MonoBehaviour
         StartCoroutine(FirebaseManager.UpdateUserValue("fatsEaten", Instance.FatsEaten));
         StartCoroutine(FirebaseManager.UpdateUserValue("carbsEaten", Instance.CarbsEaten));
     }
+
+    static public void AddWater(int waterAmount)
+    {
+        Instance.WaterDrunk += waterAmount;
+    }
+
+    static public void SetWater(int waterAmount)
+    {
+        Instance.WaterDrunk = waterAmount;
+    }
 }

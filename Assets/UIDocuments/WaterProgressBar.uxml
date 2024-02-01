@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:ProgressBar value="0" name="WaterProgressBar" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
+        <ui:VisualElement name="ProgressBarDividersContainer" style="flex-grow: 1; position: absolute; flex-direction: row; right: 0; left: 0; bottom: 0; top: 0; justify-content: space-evenly;">
+            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
+            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
+            <ui:VisualElement name="ProgressBarDivider" class="progress-bar-divider" />
+        </ui:VisualElement>
+    </ui:ProgressBar>
+</ui:UXML>

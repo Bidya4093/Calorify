@@ -61,7 +61,6 @@ public class DataManager
         fatsProgress.progress = ((float)User.Instance.FatsEaten / (float)User.Instance.FatsNeeded) *100f;
         proteinsProgress.progress = ((float)User.Instance.ProtsEaten / (float)User.Instance.ProtsNeeded) *100f;
         carbsProgress.progress = ((float)User.Instance.CarbsEaten / (float)User.Instance.CarbsNeeded) *100f;
-        waterProgressBar.value = ((float)User.Instance.WaterDrunk / (float)User.Instance.WaterNeeded) * 100f;
 
         caloriesProgressBar.value = ((float)User.Instance.CaloriesEaten / (float)User.Instance.CaloriesNeeded) * 100f;
         fatsProgressBar.value = ((float)User.Instance.FatsEaten / (float)User.Instance.FatsNeeded) * 100f;
@@ -72,7 +71,15 @@ public class DataManager
         fatsProgressLabel.text = User.Instance.FatsEaten.ToString() + " / " + User.Instance.FatsNeeded.ToString() + " ã.";
         proteinsProgressLabel.text = User.Instance.ProtsEaten.ToString() + " / " + User.Instance.ProtsNeeded.ToString() + " ã.";
         carbsProgressLabel.text = User.Instance.CarbsEaten.ToString() + " / " + User.Instance.CarbsNeeded.ToString() + " ã.";
-        waterProgressBarLabel.text = ((float)User.Instance.WaterDrunk/1000).ToString() + " / " + ((float)User.Instance.WaterNeeded/1000).ToString() + " ë.";
+        RenderWaterData();
+        GameObject.Find("WaterPanel").GetComponent<WaterPanel>().LoadWaterData();
+    }
+
+    static public void RenderWaterData()
+    {
+
+        waterProgressBar.value = ((float)User.Instance.WaterDrunk / (float)User.Instance.WaterNeeded) * 100f;
+        waterProgressBarLabel.text = ((float)User.Instance.WaterDrunk / 1000).ToString() + " / " + ((float)User.Instance.WaterNeeded / 1000).ToString() + " ë.";
     }
 
     static public void LoadProfileData()

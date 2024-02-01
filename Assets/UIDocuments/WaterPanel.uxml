@@ -1,0 +1,33 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="WaterProgressBar" src="project://database/Assets/UIDocuments/WaterProgressBar.uxml?fileID=9197481963319205126&amp;guid=e32c39e3627c0ac41a5795809a4d17ae&amp;type=3#WaterProgressBar" />
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <Style src="project://database/Assets/Styles/WaterPanel.uss?fileID=7433441132597879392&amp;guid=c15863c0ee75b8b409b8346ef6d28eac&amp;type=3#WaterPanel" />
+    <Style src="project://database/Assets/Styles/ScanPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ScanPanel" />
+    <ui:VisualElement name="WaterPanelBackground" class="transparent-bg" />
+    <ui:VisualElement name="WaterPanelContainer" class="water__container" style="padding-bottom: 15px; margin-top: 550px; background-image: resource(&apos;Images/water-panel-gradient&apos;);">
+        <ui:VisualElement name="WaterPanelTop" style="flex-direction: column;">
+            <ui:Label tabindex="-1" text="Спожито води" display-tooltip-when-elided="true" name="WaterPanelTitle" style="font-size: 48px; color: rgb(0, 0, 0); -unity-text-align: upper-center; margin-bottom: 30px;" />
+            <ui:Instance template="WaterProgressBar" style="margin-bottom: 45px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="WaterPanelRemains" style="-unity-text-align: upper-center; margin-bottom: 100px;">
+            <ui:Label tabindex="-1" text="Залишилось: " display-tooltip-when-elided="true" name="WaterPanelRemainsLabel" style="font-size: 48px; color: rgb(85, 85, 85);" />
+            <ui:Label tabindex="-1" text="0 мл." display-tooltip-when-elided="true" name="WaterPanelRemainsValue" style="font-size: 64px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="WaterPanelManualEdit" style="align-items: center;">
+            <ui:IntegerField name="WaterPanelInput" placeholder-text="0" value="0" class="scan-panel__weight-input" style="overflow: visible;">
+                <ui:Label tabindex="-1" text="/ 2400 мл." display-tooltip-when-elided="true" name="WaterPanelInputPrefix" />
+            </ui:IntegerField>
+        </ui:VisualElement>
+        <ui:VisualElement name="WaterPanelButtons" style="flex-direction: row; font-size: 48px; color: rgb(231, 234, 251); flex-wrap: wrap; justify-content: space-between;">
+            <WaterButton text="+ 0 мл." water-amount="50" name="WaterButton" />
+            <WaterButton text="+ 0 мл." water-amount="100" name="WaterButton" />
+            <WaterButton text="+ 0 мл." water-amount="150" name="WaterButton" />
+            <WaterButton text="+ 0 мл." water-amount="200" name="WaterButton" />
+            <WaterButton text="+ 0 мл." water-amount="250" name="WaterButton" />
+            <WaterButton text="+ 0 мл." water-amount="300" name="WaterButton" />
+            <WaterButton text="+ 0 мл." water-amount="350" name="WaterButton" />
+            <WaterButton text="+ 0 мл." water-amount="400" name="WaterButton" />
+            <WaterButton text="+ 0 мл." water-amount="500" name="WaterButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
