@@ -15,6 +15,8 @@ public class ManualAdd : MonoBehaviour
     private VisualElement activityScrollContainer;
     private VisualElement productRecentRequestsContainer;
     private VisualElement activityRecentRequestsContainer;
+    private VisualElement addProductEmptyContainer;
+    private VisualElement addActivityEmptyContainer;
     private VisualElement addProductRecentRequests;
     private VisualElement addActivityRecentRequests;
     private Button addProductCloseBtn;
@@ -43,6 +45,9 @@ public class ManualAdd : MonoBehaviour
         productScrollContainer = mainRoot.Q<VisualElement>("AddProductScrollContainer");
         activityScrollContainer = mainRoot.Q<VisualElement>("AddActivityScrollContainer");
 
+        addProductEmptyContainer = mainRoot.Q<VisualElement>("AddProductEmptyContainer");
+        addActivityEmptyContainer = mainRoot.Q<VisualElement>("AddActivityEmptyContainer");
+
         productRecentRequestsContainer = manualAddProductPage.Q<VisualElement>("AddProductRecentRequestsContainer");
         activityRecentRequestsContainer = manualAddActivityPage.Q<VisualElement>("AddActivityRecentRequestsContainer");
 
@@ -66,7 +71,26 @@ public class ManualAdd : MonoBehaviour
 
         addProductSearchInput.RegisterValueChangedCallback(SearchProduct);
         addActivitySearchInput.RegisterValueChangedCallback(SearchActivity);
+
+        //CheckEmptyActivity();
+        CheckEmptyProduct();
     }
+
+    private void CheckEmptyProduct()
+    {
+        if (recentProductsRequest.Count > 0)
+        {
+            addProductEmptyContainer.style.display = DisplayStyle.None;
+        } else
+        {
+            addProductEmptyContainer.style.display = DisplayStyle.Flex;
+        }
+    }
+
+    //private void CheckEmptyActivity()
+    //{
+    //    throw new NotImplementedException();
+    //}
 
     private void AddProductToDailyList(ClickEvent evt)
     {
@@ -91,6 +115,7 @@ public class ManualAdd : MonoBehaviour
             addProductRecentRequests.Insert(0, productItem);
         }
 
+        addProductEmptyContainer.style.display = DisplayStyle.None;
         productRecentRequestsContainer.style.display = DisplayStyle.Flex;
         addProductSearchInput.value = "";
         productPanel.addProductBtn.UnregisterCallback<ClickEvent>(AddProductToDailyList);

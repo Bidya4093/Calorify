@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="TopMenu" src="project://database/Assets/UIDocuments/TopMenu.uxml?fileID=9197481963319205126&amp;guid=7be0b6e660666744ba8ade54e9f02f9f&amp;type=3#TopMenu" />
     <ui:Template name="WaterProgressBar" src="project://database/Assets/UIDocuments/WaterProgressBar.uxml?fileID=9197481963319205126&amp;guid=e32c39e3627c0ac41a5795809a4d17ae&amp;type=3#WaterProgressBar" />
+    <ui:Template name="EmptyContainer" src="project://database/Assets/EmptyContainer.uxml?fileID=9197481963319205126&amp;guid=2342d334e58b5ff41bd39bbd53effc98&amp;type=3#EmptyContainer" />
     <ui:Template name="ActivityPage" src="project://database/Assets/UIDocuments/ActivityPage.uxml?fileID=9197481963319205126&amp;guid=bbc182239366a14419a938593ffdc566&amp;type=3#ActivityPage" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
@@ -69,16 +70,13 @@
                         <ui:VisualElement name="HistorySection" class="wrapper" style="padding-right: 60px; padding-left: 60px; margin-bottom: 0;">
                             <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="home-title" style="margin-bottom: 30px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-left: 0;" />
                             <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">
-                                <ui:VisualElement name="HistoryEmptyContainer" style="flex-grow: 1; color: rgb(128, 128, 128); font-size: 36px; -unity-text-align: upper-center; margin-bottom: 110px; margin-top: 110px;">
-                                    <ui:Label tabindex="-1" text="Порожньо" display-tooltip-when-elided="true" name="HistoryEmptyTitle" style="font-size: 72px; margin-bottom: 45px;" />
-                                    <ui:Label tabindex="-1" text="Тут буде відображатись їжа, &#10;яку Ви їли протягом дня" display-tooltip-when-elided="true" name="HistoryEmptyLabel" />
-                                </ui:VisualElement>
+                                <ui:Instance template="EmptyContainer" name="HistoryEmptyContainer" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </Shadow>
                 </ui:VisualElement>
             </ui:ScrollView>
         </ui:VisualElement>
-        <ui:Instance template="ActivityPage" name="ActivityTemplate" class="activity-container" style="flex-grow: 1; width: 100%; visibility: visible; bottom: 0; top: 0;" />
+        <ui:Instance template="ActivityPage" name="ActivityTemplate" class="activity-container" style="flex-grow: 1; width: 100%; visibility: hidden; bottom: 0; top: 0;" />
     </ui:VisualElement>
 </ui:UXML>

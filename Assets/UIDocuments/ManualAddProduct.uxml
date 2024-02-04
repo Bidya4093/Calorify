@@ -9,9 +9,13 @@
             <ui:TextField picking-mode="Ignore" name="AddProductSearchInput" placeholder-text="Введіть назву страви чи продукту" is-delayed="false" class="manual-search" />
         </ui:VisualElement>
         <ui:VisualElement name="AddProductContent" style="flex-grow: 1;">
-            <ui:VisualElement name="AddProductRecentRequestsContainer">
+            <ui:VisualElement name="AddProductRecentRequestsContainer" style="flex-grow: 1;">
                 <ui:Label tabindex="-1" text="Останні запити" display-tooltip-when-elided="true" name="AddProductContentLabel" style="font-size: 40px; color: rgb(85, 85, 85); border-bottom-width: 5px; border-left-color: rgb(217, 217, 217); border-right-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217); padding-bottom: 30px; margin-bottom: 55px;" />
                 <ui:VisualElement name="AddProductRecentRequests" />
+                <ui:VisualElement name="AddProductEmptyContainer" style="flex-grow: 1; color: rgb(128, 128, 128); font-size: 36px; -unity-text-align: upper-center; justify-content: center;">
+                    <ui:Label tabindex="-1" text="Порожньо" display-tooltip-when-elided="true" name="AddProductEmptyTitle" style="font-size: 72px; margin-bottom: 45px;" />
+                    <ui:Label tabindex="-1" text="Тут відображатимуться &#10;Ваші останні запити" display-tooltip-when-elided="true" name="AddProductEmptyLabel" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:ScrollView name="AddProductContentScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" scroll-deceleration-rate="0.01" style="margin-top: -30px;">
                 <ui:VisualElement name="AddProductScrollContainer" style="flex-grow: 1; padding-top: 30px; padding-bottom: 10px;" />
