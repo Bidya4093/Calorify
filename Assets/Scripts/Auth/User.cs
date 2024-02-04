@@ -71,6 +71,17 @@ public class Goal : StringEnum
     public static Goal PutOnWeight { get { return new Goal("Набір ваги"); } }
 }
 
+public class NutriScore : StringEnum
+{
+    public static List<NutriScore> Values = new List<NutriScore>();
+    private NutriScore(string value) : base(value) { Values.Add(this); }
+    public static NutriScore A { get { return new NutriScore("A"); } }
+    public static NutriScore B { get { return new NutriScore("B"); } }
+    public static NutriScore C { get { return new NutriScore("C"); } }
+    public static NutriScore D { get { return new NutriScore("D"); } }
+    public static NutriScore E { get { return new NutriScore("E"); } }
+}
+
 
 public class User : MonoBehaviour
 {
@@ -85,6 +96,8 @@ public class User : MonoBehaviour
     [HideInInspector] public string language = Language.Ukrainian.ToString();
     [HideInInspector] public string theme = Theme.Light.ToString();
     [HideInInspector] public string measurementUnits = MeasurementUnits.Metric.ToString();
+    [HideInInspector] public List<products> recentProductRequests = new List<products>();
+    [HideInInspector] public List<Activity> recentActivityRequests = new List<Activity>();
 
     [HideInInspector] public int caloriesNeeded = 0, caloriesEaten = 0, carbsNeeded = 0, carbsEaten = 0;
     [HideInInspector] public int fatsNeeded = 0, fatsEaten = 0, protsNeeded = 0, protsEaten = 0, waterNeeded = 0, waterDrunk = 0;
@@ -336,6 +349,8 @@ public class User : MonoBehaviour
         Instance.SetTheme(snapshot.Child("theme").Value.ToString());
         Instance.SetMeasurementUnits(snapshot.Child("measurementUnits").Value.ToString());
 
+        //Instance.recentProductsRequests = snapshot.Child
+        //Debug.Log(snapshot.Child("recentProductRequests").Value.ToString());
         Instance.caloriesEaten = Convert.ToInt32(snapshot.Child("caloriesEaten").Value);
         Instance.caloriesNeeded = Convert.ToInt32(snapshot.Child("caloriesNeeded").Value);
         Instance.protsEaten = Convert.ToInt32(snapshot.Child("protsEaten").Value);

@@ -22,6 +22,12 @@ public class WaterButton : Button
         text = "Water button";
     }
 
+    public WaterButton(string _text)
+    {
+        AddToClassList("water__add-btn");
+        text = _text;
+    }
+
     public int m_WaterAmount;
 
     public int waterAmount

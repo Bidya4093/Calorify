@@ -16,7 +16,9 @@ public class SwipeMenu : MonoBehaviour
     private ScrollView homeScroll;
     private ScrollView activityScroll;
 
-    private float swipeDistanceThreshold = 500;
+    private float swipeDistanceThreshold = 300;
+    private float velocityThreshold = 150;
+    private float maxDeltaPositionX;
     private float swipeInitThreshold = 40;
     private float sliderCurrentTranslate;
     private float homeCurrentTranslate;
@@ -141,6 +143,9 @@ public class SwipeMenu : MonoBehaviour
             homeTranslateXPercent += (evt.deltaPosition.x / homeContainer.resolvedStyle.width) * homeTranslateMax;
         }
 
+        if (maxDeltaPositionX < Mathf.Abs(evt.deltaPosition.x))
+            maxDeltaPositionX = Mathf.Abs(evt.deltaPosition.x);
+        Debug.Log("maxDeltaPositionX: " + maxDeltaPositionX);
         // Записуємо обраховану позицію елементам
         SetTranslate();
     }
@@ -183,6 +188,7 @@ public class SwipeMenu : MonoBehaviour
     private void OnPointerDownEvent(PointerDownEvent evt)
     {
         startTouchPosition = evt.position;
+        maxDeltaPositionX = 0;
         DisableScroll();
     }
 
@@ -196,7 +202,8 @@ public class SwipeMenu : MonoBehaviour
         // Знаходимо відстань свайпу.
         endTouchPosition = evt.position;
         float swipeDistance = (endTouchPosition - startTouchPosition).magnitude;
-        
+        Debug.Log("velocity threshold: " + (maxDeltaPositionX > velocityThreshold));
+        Debug.Log("swipe threshold: " + (swipeDistance > swipeDistanceThreshold));
         // Починаємо відслідковувати закінчення плавного переходу.
         homeContainer.RegisterCallback<TransitionEndEvent>(OnHomeTranstitionEnd);
         activityTemplate.RegisterCallback<TransitionEndEvent>(OnActivityTranstitionEnd);
@@ -205,7 +212,7 @@ public class SwipeMenu : MonoBehaviour
         homeScroll.contentContainer.UnregisterCallback<PointerMoveEvent>(PreventScroll);
         activityScroll.contentContainer.UnregisterCallback<PointerMoveEvent>(PreventScroll);
 
-        if (swipeDistance > swipeDistanceThreshold)
+        if (swipeDistance > swipeDistanceThreshold || maxDeltaPositionX > velocityThreshold)
         {
             // Свайп відбувся, перевіряємо в яку сторону відбувся свайп.
             if (endTouchPosition.x > startTouchPosition.x)

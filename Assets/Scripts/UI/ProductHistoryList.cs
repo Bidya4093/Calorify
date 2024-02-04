@@ -1,12 +1,6 @@
-
 using Firebase.Auth;
-using System;
 using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class ProductHistoryList : MonoBehaviour
@@ -32,12 +26,6 @@ public class ProductHistoryList : MonoBehaviour
 
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
 
-        //for (int i = 0; i < 10; i++)
-        //{
-        //    Todays_history todaysHistory = todaysHistoryManager.InsertRecord(7, 100, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
-        //    ProductHistoryItem productHistoryItem = new ProductHistoryItem(todaysHistory);
-        //}
-
         List<Todays_history> todaysHistoryItems = todaysHistoryManager.GetCurrentUserHistory();
 
 
@@ -47,8 +35,8 @@ public class ProductHistoryList : MonoBehaviour
             items.Insert(0, historyItem);
             historyList.Insert(0, historyItem);
         }
-        lastItem = historyList.Query<ProductHistoryItem>("HistoryItem").Last();
 
+        lastItem = historyList.Query<ProductHistoryItem>("HistoryItem").Last();
     }
 
     static public void CheckEmptyList()

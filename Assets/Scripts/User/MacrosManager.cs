@@ -1,8 +1,5 @@
 using Firebase.Auth;
 using Firebase.Database;
-using System;
-using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class MacrosInfo
@@ -32,9 +29,7 @@ public class MacrosManager : MonoBehaviour
     {
         user = FirebaseAuth.DefaultInstance.CurrentUser;
         DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-        //StartCoroutine(LoadUserMacrosData());
     }
-
 
     static public void CalculateUserNeeds()
     {
@@ -88,37 +83,6 @@ public class MacrosManager : MonoBehaviour
         macrosInfo.fats = (int)(product.fats * (mass / 100f));
         macrosInfo.carbs = (int)(product.carbs * (mass / 100f));
         return macrosInfo;
-    }
-
-    public IEnumerator LoadUserMacrosData()
-    {
-        Task<DataSnapshot> DBTask = DBreference.Child("users").Child(user.UserId).GetValueAsync();
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
-
-        if (DBTask.Exception != null)
-        {
-            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
-        }
-        else if (DBTask.Result.Value == null)
-        {
-            //No data exists yet
-
-        }
-        else
-        {
-            //Data has been retrieved
-            DataSnapshot snapshot = DBTask.Result;
-
-            caloriesEaten = Convert.ToInt32(snapshot.Child("caloriesEaten").Value);
-            caloriesNeeded = Convert.ToInt32(snapshot.Child("caloriesNeeded").Value);
-            protsEaten = Convert.ToInt32(snapshot.Child("protsEaten").Value);
-            protsNeeded = Convert.ToInt32(snapshot.Child("protsNeeded").Value);
-            fatsEaten = Convert.ToInt32(snapshot.Child("fatsEaten").Value);
-            fatsNeeded = Convert.ToInt32(snapshot.Child("fatsNeeded").Value);
-            carbsEaten = Convert.ToInt32(snapshot.Child("carbsEaten").Value);
-            carbsNeeded = Convert.ToInt32(snapshot.Child("carbsNeeded").Value);
-
-        }
     }
 }
 

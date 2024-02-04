@@ -1,79 +1,74 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/ProductPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ProductPanel" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
-    <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
-    <Style src="project://database/Assets/Styles/ProductPanel.uss?fileID=7433441132597879392&amp;guid=0940b9ab884c7cb409527aca10c87212&amp;type=3#ProductPanel" />
-    <Style src="project://database/Assets/Styles/ScanPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ScanPanel" />
-    <ui:VisualElement name="ProductPanelBackground" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.37);" />
-    <ui:VisualElement name="ProductPanelContainer" class="product-panel__container" style="height: auto; margin-top: 550px; margin-bottom: 0;">
-        <ui:VisualElement name="ProductPanelTop" class="product-panel__top">
-            <Shadow name="HistoryItemImageShadow" shadow-color="#00000033" shadow-offset-y="10" shadow-corner-radius="45" shadow-size="-15" class="history-item__image-shadow">
-                <ui:VisualElement name="HistoryItemImage" class="history-item__image">
-                    <ui:VisualElement name="HistoryItemScore" class="nutri-score-badge history-item__score">
-                        <ui:Label tabindex="-1" display-tooltip-when-elided="true" class="history-item__score-text" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; text-overflow: clip; width: 46px;" />
-                    </ui:VisualElement>
-                </ui:VisualElement>
-            </Shadow>
-            <ui:VisualElement name="ProductPanelTopContainer" class="history-item__container" style="flex-grow: 1; padding-bottom: 0; padding-top: 25px; margin-left: 55px;">
-                <ui:VisualElement name="ProductPanelHeader" class="history-item__top" style="margin-bottom: 30px;">
-                    <ui:Label tabindex="-1" text="Назва" display-tooltip-when-elided="true" name="ProductPanelTitle" class="history-item__title" />
-                    <ui:Button display-tooltip-when-elided="true" name="ProductPanelDeleteBtn" select-line-by-triple-click="true" class="btn-icon history-item__edit-btn" style="width: 72px; -unity-background-scale-mode: scale-to-fit; background-image: resource(&apos;Images/trash-icon&apos;);" />
-                </ui:VisualElement>
-                <ui:Label tabindex="-1" text="00:00" display-tooltip-when-elided="true" name="ProductPanelDate" class="history-item__calories" style="font-size: 42px; color: rgb(85, 85, 85);" />
-            </ui:VisualElement>
-        </ui:VisualElement>
-        <Shadow name="ProductPanelMacrosShadow" class="product-panel__macros-shadow">
-            <ui:VisualElement name="ProductPanelMacros" class="product-panel__macros" style="margin-bottom: 0; border-left-color: rgb(195, 195, 195); border-right-color: rgb(195, 195, 195); border-top-color: rgb(195, 195, 195); border-bottom-color: rgb(195, 195, 195);">
-                <ui:Label tabindex="-1" text="Поживна цінність" display-tooltip-when-elided="true" name="MacrosTitle" class="macros__title" />
-                <ui:VisualElement name="MacrosContainer" class="macros__container">
-                    <ui:VisualElement name="MacrosProtsItem" class="macros__item">
-                        <ui:VisualElement name="MacrosItemCircle" class="macros__item-circle" />
-                        <ui:VisualElement name="MacrosInner" class="macros__inner">
-                            <ui:Label tabindex="-1" text="Білки" display-tooltip-when-elided="true" name="MacrosName" class="macros__name" />
-                            <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 240px; justify-content: center;">
-                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="MacrosProtsValue" class="macros__value" />
-                                <ui:Label tabindex="-1" text=" г" display-tooltip-when-elided="true" name="MacrosPostfix" class="macros__postfix" />
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                    </ui:VisualElement>
-                    <ui:VisualElement name="MacrosFatsItem" class="macros__item">
-                        <ui:VisualElement name="MacrosItemCircle" class="macros__item-circle" style="background-color: rgb(85, 95, 184);" />
-                        <ui:VisualElement name="MacrosInner" class="macros__inner">
-                            <ui:Label tabindex="-1" text="Жири" display-tooltip-when-elided="true" name="MacrosName" class="macros__name" />
-                            <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 240px; justify-content: center;">
-                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="MacrosFatsValue" class="macros__value" />
-                                <ui:Label tabindex="-1" text=" г" display-tooltip-when-elided="true" name="MacrosPostfix" class="macros__postfix" />
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                    </ui:VisualElement>
-                    <ui:VisualElement name="MacrosCarbsItem" class="macros__item" style="margin-bottom: 0;">
-                        <ui:VisualElement name="MacrosItemCircle" class="macros__item-circle" style="background-color: rgb(110, 167, 17);" />
-                        <ui:VisualElement name="MacrosInner" class="macros__inner">
-                            <ui:Label tabindex="-1" text="Вуглеводи" display-tooltip-when-elided="true" name="MacrosName" class="macros__name" />
-                            <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 240px; justify-content: center;">
-                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="MacrosCarbsValue" class="macros__value" />
-                                <ui:Label tabindex="-1" text=" г" display-tooltip-when-elided="true" name="MacrosPostfix" class="macros__postfix" />
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                    </ui:VisualElement>
-                    <ui:VisualElement style="flex-grow: 1; margin-top: 45px; margin-bottom: 45px; width: 100%; height: 1px; background-color: rgb(195, 195, 195);" />
-                    <ui:VisualElement name="MacrosCaloriesItem" class="macros__item" style="margin-bottom: 0;">
-                        <ui:VisualElement name="MacrosItemCircle" class="macros__item-circle" style="background-color: rgb(86, 110, 86);" />
-                        <ui:VisualElement name="MacrosInner" class="macros__inner">
-                            <ui:Label tabindex="-1" text="Калорії" display-tooltip-when-elided="true" name="MacrosName" class="macros__name" />
-                            <ui:VisualElement style="flex-grow: 0; flex-direction: row; width: 240px; justify-content: center;">
-                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" name="MacrosCaloriesValue" class="macros__value" />
-                                <ui:Label tabindex="-1" text=" ккал" display-tooltip-when-elided="true" name="MacrosPostfix" class="macros__postfix" />
-                            </ui:VisualElement>
-                        </ui:VisualElement>
+    <ui:VisualElement name="ProductPanelBg" class="transparent-bg" style="flex-grow: 1; display: none;" />
+    <ui:VisualElement name="ProductPanelContainer" style="border-top-left-radius: 45px; border-top-right-radius: 45px; border-bottom-right-radius: 45px; border-bottom-left-radius: 45px; background-color: rgb(255, 255, 255); margin-right: 0; margin-left: 0; flex-grow: 1; padding-bottom: 45px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&amp;guid=adb52135dcca16c44b46cb4ddce45978&amp;type=3#Ubuntu-Regular&apos;); display: flex; max-height: 1650px; padding-top: 12px; position: absolute; right: 60px; left: 60px; bottom: 780px;">
+        <ui:VisualElement name="ProductPanelContent" style="align-items: center;">
+            <ui:VisualElement name="ProductPanelTop" style="margin-right: 0; margin-left: 0; margin-top: 12px; margin-bottom: 60px; flex-direction: row; padding-right: 45px; padding-left: 45px; width: 100%; justify-content: space-between; flex-grow: 0; max-height: 100%; min-height: 80px;">
+                <ui:Label tabindex="-1" text="Гречана каша" display-tooltip-when-elided="true" name="ProductPanelTitle" class="title-md" style="align-self: flex-end; font-size: 48px; white-space: normal; flex-shrink: 1;" />
+                <ui:VisualElement name="ProductPanelNutriScore" style="flex-direction: row; align-items: center; align-self: flex-start; flex-shrink: 0;">
+                    <ui:Label tabindex="-1" text="NUTRI-SCORE:" display-tooltip-when-elided="true" name="ProductPanelNutriScoreText" class="scan-panel__score-text" style="margin-top: 0; margin-right: 20px; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 36px; color: rgb(85, 85, 85); align-self: auto;" />
+                    <ui:VisualElement name="ProductPanelNutriScoreBadge" class="nutri-score-badge nutri-score-badge-a" style="flex-grow: 1;">
+                        <ui:Label tabindex="-1" text="A" display-tooltip-when-elided="true" name="ProductPanelNutriScoreLabel" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-        </Shadow>
-        <ui:VisualElement name="ProductPanelBottom" style="align-items: center;">
-            <ui:IntegerField label="Вага:" value="0" name="ProductPanelWeightInput" placeholder-text="100" is-delayed="false" class="product-panel__weight-input">
-                <ui:Label tabindex="-1" text="гр." display-tooltip-when-elided="true" style="font-size: 42px; align-self: flex-end; color: rgb(85, 85, 85); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+            <ui:VisualElement name="ProductPanelInfo" style="flex-grow: 1; font-size: 54px; width: 100%; padding-right: 60px; padding-left: 60px; padding-bottom: 72px;">
+                <ui:VisualElement name="ProductPanelInfoItem" style="flex-grow: 1; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
+                    <ui:Label tabindex="-1" text="Білки" display-tooltip-when-elided="true" name="ProductPanelInfoItemTitle" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:ProgressBar name="ProductPanelProtsProgressBar" class="scan-panel__info-item-progress-bar progress-bar__proteins">
+                        <ui:VisualElement name="ProtsProgressBarAdditionalContainer" class="progress-bar__additional-container">
+                            <ui:VisualElement name="ProtsProgressBarAdditional" class="progress-bar__additional" style="width: 0;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; font-size: 48px; margin-top: 9px;">
+                            <ui:Label tabindex="-1" text="+0 гр." display-tooltip-when-elided="true" name="ProtsProgressBarMass" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 7px; margin-bottom: 0; margin-left: 0;" />
+                            <ui:Label tabindex="-1" text="(+0%)" display-tooltip-when-elided="true" name="ProtsProgressBarPercentRise" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                    </ui:ProgressBar>
+                </ui:VisualElement>
+                <ui:VisualElement name="ProductPanelInfoItem" style="flex-grow: 1; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
+                    <ui:Label tabindex="-1" text="Жири" display-tooltip-when-elided="true" name="ProductPanelInfoItemTitle" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:ProgressBar name="ProductPanelFatsProgressBar" class="scan-panel__info-item-progress-bar progress-bar__fats">
+                        <ui:VisualElement name="FatsProgressBarAdditionalContainer" class="progress-bar__additional-container" style="flex-grow: 1;">
+                            <ui:VisualElement name="FatsProgressBarAdditional" class="progress-bar__additional" style="width: 0;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; font-size: 48px; margin-top: 9px;">
+                            <ui:Label tabindex="-1" text="+0 гр." display-tooltip-when-elided="true" name="FatsProgressBarMass" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 7px; margin-bottom: 0; margin-left: 0;" />
+                            <ui:Label tabindex="-1" text="(+0%)" display-tooltip-when-elided="true" name="FatsProgressBarPercentRise" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                    </ui:ProgressBar>
+                </ui:VisualElement>
+                <ui:VisualElement name="ProductPanelInfoItem" style="flex-grow: 1; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
+                    <ui:Label tabindex="-1" text="Вуглев." display-tooltip-when-elided="true" name="ProductPanelInfoItemTitle" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:ProgressBar name="ProductPanelCarbsProgressBar" class="scan-panel__info-item-progress-bar progress-bar__carbs">
+                        <ui:VisualElement name="CarbsProgressBarAdditionalContainer" class="progress-bar__additional-container" style="flex-grow: 1;">
+                            <ui:VisualElement name="CarbsProgressBarAdditional" class="progress-bar__additional" style="width: 0;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; font-size: 48px; margin-top: 9px;">
+                            <ui:Label tabindex="-1" text="+0 гр." display-tooltip-when-elided="true" name="CarbsProgressBarMass" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 7px; margin-bottom: 0; margin-left: 0;" />
+                            <ui:Label tabindex="-1" text="(+0%)" display-tooltip-when-elided="true" name="CarbsProgressBarPercentRise" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                    </ui:ProgressBar>
+                </ui:VisualElement>
+                <ui:VisualElement name="ProductPanelInfoItem" style="flex-grow: 1; flex-direction: row; justify-content: space-between; align-items: center;">
+                    <ui:Label tabindex="-1" text="Калорії" display-tooltip-when-elided="true" name="ProductPanelInfoItemTitle" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <ui:ProgressBar name="ProductPanelCaloriesProgressBar" class="scan-panel__info-item-progress-bar progress-bar__calories">
+                        <ui:VisualElement name="CaloriesProgressBarAdditionalContainer" class="progress-bar__additional-container" style="flex-grow: 1;">
+                            <ui:VisualElement name="CaloriesProgressBarAdditional" class="progress-bar__additional" style="width: 0;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; font-size: 48px; margin-top: 9px;">
+                            <ui:Label tabindex="-1" text="+0 ккал " display-tooltip-when-elided="true" name="CaloriesProgressBarMass" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 7px; margin-bottom: 0; margin-left: 0;" />
+                            <ui:Label tabindex="-1" text="(+0%)" display-tooltip-when-elided="true" name="CaloriesProgressBarPercentRise" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(85, 85, 85);" />
+                        </ui:VisualElement>
+                    </ui:ProgressBar>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:IntegerField label="Вага:" name="ProductPanelMassInput" placeholder-text="100" value="100" class="scan-panel__weight-input">
+                <ui:Label tabindex="-1" text="гр." display-tooltip-when-elided="true" class="scan-pane__weight-input-postfix" />
             </ui:IntegerField>
-            <ui:Button text="Зберегти зміни" display-tooltip-when-elided="true" name="ProductPanelBtn" selectable="true" class="btn" style="text-overflow: ellipsis; padding-right: 0; font-size: 42px; -unity-font-definition: url(&apos;project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&amp;guid=adb52135dcca16c44b46cb4ddce45978&amp;type=3#Ubuntu-Regular&apos;);" />
+            <ui:Button text="ДОДАТИ" display-tooltip-when-elided="true" name="ProductPanelBtn" selectable="true" class="btn" style="width: 540px; -unity-text-align: middle-center;">
+                <ui:VisualElement name="ProductPanelBtnIcon" class="btn-icon" style="flex-grow: 1; background-image: resource(&apos;Images/add-icon&apos;);" />
+            </ui:Button>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

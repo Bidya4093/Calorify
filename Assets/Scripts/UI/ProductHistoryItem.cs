@@ -1,3 +1,4 @@
+using Firebase.Auth;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -6,165 +7,101 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class ProductHistoryItem : VisualElement
+public class ProductHistoryItem : ProductItem
 {
-
-    public new class UxmlFactory : UxmlFactory<ProductHistoryItem> { }
+    public new class UxmlFactory : UxmlFactory<ProductHistoryItem, UxmlTraits> { }
+    public new class UxmlTraits : VisualElement.UxmlTraits { }
 
     public TodaysHistoryManager todaysHistoryManager;
     public Todays_history todaysHistory;
-    public products product;
-    public MacrosInfo macrosInfo;
-    public int mass;
 
-    public Label caloriesLabel;
-    public Label weightLabel;
+    public Button editBtn;
 
-    private readonly string ussItem = "history-item";
-    private readonly string ussImageShadow = "history-item__image-shadow";
-    private readonly string ussImage = "history-item__image";
-    private readonly string ussNutriScore = "nutri-score-badge";
-    private readonly string ussItemScore = "history-item__score";
-    private readonly string ussItemContainer = "history-item__container";
-    private readonly string ussItemTop = "history-item__top";
-    private readonly string ussItemTitle = "history-item__title";
     private readonly string ussItemEditBtn = "history-item__edit-btn";
-    private readonly string ussItemBottom = "history-item__bottom";
-    private readonly string ussItemCalories = "history-item__calories";
-    private readonly string ussItemWeight = "history-item__weight";
     private readonly string ussBtnIcon = "btn-icon";
 
-    public ProductHistoryItem() : this(null) { }
+    public ProductHistoryItem() { }
 
     public ProductHistoryItem(Todays_history _todaysHistory)
     {
-        todaysHistoryManager = new TodaysHistoryManager();
 
         todaysHistory = _todaysHistory;
-        AddToClassList(ussItem);
-        name = "HistoryItem";
-        macrosInfo = MacrosManager.CalculateMacrosByMass(todaysHistory.mass, todaysHistory.product_id);
-        product = new ProductsLoader().GetById(todaysHistory.product_id);
+        todaysHistoryManager = new TodaysHistoryManager();
         mass = todaysHistory.mass;
-        
-        Shadow imageShadow = new Shadow();
-        imageShadow.name = "HistoryItemImageShadow";
-        imageShadow.AddToClassList(ussImageShadow);
-        hierarchy.Add(imageShadow);
 
-        VisualElement image = new VisualElement();
-        image.name = "HistoryItemImage";
-        image.AddToClassList(ussImage);
-        imageShadow.Add(image);
+        macrosInfo = MacrosManager.CalculateMacrosByMass(mass, todaysHistory.product_id);
+        product = new ProductsLoader().GetById(todaysHistory.product_id);
+        Init(product.name, mass, macrosInfo.calories, product.nutri_score);
 
-        VisualElement nutriScoreBadge = new VisualElement();
-        nutriScoreBadge.name = "HistoryItemScore";
-        nutriScoreBadge.AddToClassList(ussNutriScore);
-        nutriScoreBadge.AddToClassList(ussNutriScore +$"-{product.nutri_score.ToLower()}");
-        nutriScoreBadge.AddToClassList(ussItemScore);
-        image.Add(nutriScoreBadge);
-
-        Label nutriScoreLabel = new Label(product.nutri_score.ToUpper());
-        nutriScoreBadge.Add(nutriScoreLabel);
-
-        // Container
-        VisualElement itemContainer = new VisualElement();
-        itemContainer.name = "HistoryItemContainer";
-        itemContainer.AddToClassList(ussItemContainer);
-        hierarchy.Add(itemContainer);
-
-        // Top
-        VisualElement itemTop = new VisualElement();
-        itemTop.name = "HistoryItemTop";
-        itemTop.AddToClassList(ussItemTop);
-        itemContainer.Add(itemTop);
-
-        Label title = new Label(product.name);
-        title.name = "HistoryItemTitle";
-        title.AddToClassList(ussItemTitle);
-        itemTop.Add(title);
-
-        Button editBtn = new Button();
-        editBtn.name = "HistoryItemEditBtn";
-        editBtn.AddToClassList(ussItemEditBtn);
-        editBtn.AddToClassList(ussBtnIcon);
-        itemTop.Add(editBtn);
-
-        // Bottom
-        VisualElement itemBottom = new VisualElement();
-        itemBottom.name = "HistoryItemBottom";
-        itemBottom.AddToClassList(ussItemBottom);
-        itemContainer.Add(itemBottom);
-
-        caloriesLabel = new Label($"{macrosInfo.calories} κκΰλ");
-        caloriesLabel.name = "HistoryItemCalories";
-        caloriesLabel.AddToClassList(ussItemCalories);
-        itemBottom.Add(caloriesLabel);
-
-        weightLabel = new Label($"{todaysHistory.mass} γ");
-        weightLabel.name = "HistoryItemWeight";
-        weightLabel.AddToClassList(ussItemWeight);
-        itemBottom.Add(weightLabel);
-
-
-        // Inserting
         if (ProductHistoryList.empty)
             style.marginBottom = 0;
 
         ProductHistoryList.historyList.Insert(0, this);
 
-        editBtn.RegisterCallback<ClickEvent>(OnEditBtnClick);
-
         ProductHistoryList.CheckEmptyList();
     }
 
+    public override void Init(string _name, int mass, int calories, string nutri_score)
+    {
+
+        base.Init(_name, mass, calories, nutri_score);
+
+        editBtn = new Button();
+        editBtn.name = "HistoryItemEditBtn";
+        editBtn.AddToClassList(ussItemEditBtn);
+        editBtn.AddToClassList(ussBtnIcon);
+        topContainer.Add(editBtn);
+
+        editBtn.RegisterCallback<ClickEvent>(OnEditBtnClick);
+    }
+
     private void OnEditBtnClick(ClickEvent evt)
-    {   
-        ProductPanel.productPanelRoot.style.display = DisplayStyle.Flex;
+    {
+        HistoryProductPanel.productPanelRoot.style.display = DisplayStyle.Flex;
         OpenProductPanelWithData();
     }
 
     private void OpenProductPanelWithData()
     {
         UpdateProductPanelData();
-        ProductPanel.massInput.value = todaysHistory.mass;
+        HistoryProductPanel.massInput.value = todaysHistory.mass;
 
-        ProductPanel.deleteBtn.RegisterCallback<ClickEvent>(DeleteItem);
-        ProductPanel.massInput.RegisterValueChangedCallback(ChangeItemData);
-        ProductPanel.saveChangesBtn.RegisterCallback<ClickEvent>(SaveChanges);
-        ProductPanel.productPanelBackground.RegisterCallback<ClickEvent>(CloseProductPanel);
+        HistoryProductPanel.deleteBtn.RegisterCallback<ClickEvent>(DeleteItem);
+        HistoryProductPanel.massInput.RegisterValueChangedCallback(ChangeItemData);
+        HistoryProductPanel.saveChangesBtn.RegisterCallback<ClickEvent>(SaveChanges);
+        HistoryProductPanel.productPanelBackground.RegisterCallback<ClickEvent>(CloseProductPanel);
     }
 
     private void UpdateProductPanelData()
     {
-        ProductPanel.nutriScoreBadge.ClearClassList();
-        ProductPanel.nutriScoreBadge.AddToClassList(ussNutriScore);
-        ProductPanel.nutriScoreBadge.AddToClassList(ussNutriScore + $"-{product.nutri_score.ToLower()}");
-        ProductPanel.nutriScoreBadge.AddToClassList(ussItemScore);
+        HistoryProductPanel.nutriScoreBadge.ClearClassList();
+        HistoryProductPanel.nutriScoreBadge.AddToClassList(ussNutriScore);
+        HistoryProductPanel.nutriScoreBadge.AddToClassList(ussNutriScore + $"-{product.nutri_score.ToLower()}");
+        HistoryProductPanel.nutriScoreBadge.AddToClassList(ussItemScore);
 
-        ProductPanel.nutriScoreLabel.text = product.nutri_score.ToUpper();
-        ProductPanel.title.text = product.name;
-        ProductPanel.dateLabel.text = todaysHistory.date;
+        HistoryProductPanel.nutriScoreLabel.text = product.nutri_score.ToUpper();
+        HistoryProductPanel.title.text = product.name;
+        HistoryProductPanel.dateLabel.text = todaysHistory.date;
 
         UpdateProductMacrosData();
     }
 
     private void UpdateProductMacrosData()
     {
-        ProductPanel.caloriesLabel.text = macrosInfo.calories.ToString();
-        ProductPanel.protsLabel.text = macrosInfo.prots.ToString();
-        ProductPanel.fatsLabel.text = macrosInfo.fats.ToString();
-        ProductPanel.carbsLabel.text = macrosInfo.carbs.ToString();
+        HistoryProductPanel.caloriesLabel.text = macrosInfo.calories.ToString();
+        HistoryProductPanel.protsLabel.text = macrosInfo.prots.ToString();
+        HistoryProductPanel.fatsLabel.text = macrosInfo.fats.ToString();
+        HistoryProductPanel.carbsLabel.text = macrosInfo.carbs.ToString();
     }
 
     private void CloseProductPanel(ClickEvent evt)
     {
-        ProductPanel.productPanelRoot.style.display = DisplayStyle.None;
+        HistoryProductPanel.productPanelRoot.style.display = DisplayStyle.None;
 
-        ProductPanel.deleteBtn.UnregisterCallback<ClickEvent>(DeleteItem);
-        ProductPanel.massInput.UnregisterValueChangedCallback(ChangeItemData);
-        ProductPanel.saveChangesBtn.UnregisterCallback<ClickEvent>(SaveChanges);
-        ProductPanel.productPanelBackground.UnregisterCallback<ClickEvent>(CloseProductPanel);
+        HistoryProductPanel.deleteBtn.UnregisterCallback<ClickEvent>(DeleteItem);
+        HistoryProductPanel.massInput.UnregisterValueChangedCallback(ChangeItemData);
+        HistoryProductPanel.saveChangesBtn.UnregisterCallback<ClickEvent>(SaveChanges);
+        HistoryProductPanel.productPanelBackground.UnregisterCallback<ClickEvent>(CloseProductPanel);
     }
 
     private void DeleteItem(ClickEvent evt)

@@ -9,7 +9,7 @@ public class DataManager
     static private FirebaseUser user;
 
     static private VisualElement mainRoot;
-    static private TemplateContainer scanPanel;
+    static private VisualElement productPanel;
 
     static private RadialProgress caloriesProgress;
     static private RadialProgress fatsProgress;
@@ -33,7 +33,7 @@ public class DataManager
     {
         user = FirebaseAuth.DefaultInstance.CurrentUser;
         mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
-        scanPanel = mainRoot.Q<TemplateContainer>("ScanPage");
+        productPanel = GameObject.Find("ProductPanel").GetComponent<UIDocument>().rootVisualElement;
 
         caloriesProgress = mainRoot.Q<RadialProgress>("CaloriesRadialProgress");
         fatsProgress = mainRoot.Q<RadialProgress>("FatsRadialProgress");
@@ -41,10 +41,10 @@ public class DataManager
         carbsProgress = mainRoot.Q<RadialProgress>("CarbsRadialProgress");
         waterProgressBar = mainRoot.Q<ProgressBar>("WaterProgressBar");
 
-        caloriesProgressBar = scanPanel.Q<ProgressBar>("ScanPanelCaloriesProgressBar");
-        carbsProgressBar = scanPanel.Q<ProgressBar>("ScanPanelCarbsProgressBar");
-        protsProgressBar = scanPanel.Q<ProgressBar>("ScanPanelProtsProgressBar");
-        fatsProgressBar = scanPanel.Q<ProgressBar>("ScanPanelFatsProgressBar");
+        caloriesProgressBar = productPanel.Q<ProgressBar>("ProductPanelCaloriesProgressBar");
+        carbsProgressBar = productPanel.Q<ProgressBar>("ProductPanelCarbsProgressBar");
+        protsProgressBar = productPanel.Q<ProgressBar>("ProductPanelProtsProgressBar");
+        fatsProgressBar = productPanel.Q<ProgressBar>("ProductPanelFatsProgressBar");
 
         caloriesProgressPercent = mainRoot.Q<Label>("CaloriesRadialProgressPercent");
         caloriesProgressLabel = mainRoot.Q<Label>("CaloriesRadialProgressLabel");
@@ -74,6 +74,8 @@ public class DataManager
         RenderWaterData();
         GameObject.Find("WaterPanel").GetComponent<WaterPanel>().LoadWaterData();
     }
+
+    //static public void
 
     static public void RenderWaterData()
     {

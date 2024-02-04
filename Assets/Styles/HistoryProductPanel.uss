@@ -1,0 +1,127 @@
+.product-panel__weight-input {
+    margin: 0 0 60px 0;
+    flex-grow: 1;
+    align-items: center;
+    font-size: 54px;
+    flex-shrink: 0;
+}
+
+.product-panel__weight-input .unity-base-field__input {
+    margin: 0;
+    padding: 0;
+    max-width: 270px;
+    height: 90px;
+    -unity-text-align: middle-center;
+    font-size: 60px;
+    border-width: 0 0 3px 0;
+    border-color: rgb(86, 110, 86);
+    background-color: rgb(225, 225, 225);
+    border-radius: 15px;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+}
+
+.product-panel__container {
+    position: relative;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 550px;
+    margin-right: 90px;
+    margin-left: 90px;
+    margin-bottom: 650px;
+    padding-bottom: 45px;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Regular.ttf?fileID=12800000&guid=adb52135dcca16c44b46cb4ddce45978&type=3#Ubuntu-Regular');
+    display: flex;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-top: 85px;
+}
+
+.product-panel__top {
+    flex-grow: 0;
+    flex-direction: row;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 80px;
+    align-items: center;
+}
+
+.product-panel__macros {
+    margin-bottom: 40px;
+    padding-top: 30px;
+    padding-right: 45px;
+    padding-bottom: 45px;
+    padding-left: 45px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-left-color: rgb(195, 195, 195);
+    border-right-color: rgb(195, 195, 195);
+    border-top-color: rgb(195, 195, 195);
+    border-bottom-color: rgb(195, 195, 195);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    background-color: rgb(238, 238, 238);
+}
+
+.macros__title {
+    font-size: 54px;
+    -unity-text-align: upper-center;
+    color: rgb(85, 85, 85);
+    margin-bottom: 45px;
+}
+
+.macros__container {
+    flex-grow: 1;
+    font-size: 48px;
+}
+
+.macros__item {
+    flex-grow: 1;
+    margin-bottom: 30px;
+    flex-direction: row;
+}
+
+.macros__item-circle {
+    flex-grow: 0;
+    width: 54px;
+    height: 54px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-color: rgb(238, 125, 20);
+    margin-right: 30px;
+}
+
+.macros__inner {
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.macros__name {
+}
+
+.macros__value {
+    flex-shrink: 1;
+}
+
+.macros__postfix {
+    color: rgb(85, 85, 85);
+}
+
+.product-panel__macros-shadow {
+    margin-bottom: 40px;
+    --shadow-corner-radius: 45;
+    --shadow-size: -10;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+}

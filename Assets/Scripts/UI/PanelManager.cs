@@ -6,12 +6,13 @@ using UnityEngine.UIElements;
 public class PanelManager : MonoBehaviour
 {
     private TemplateContainer homePage;
-    private TemplateContainer scanPage;
+    private TemplateContainer productPanelPage;
     private TemplateContainer advicePage;
     private TemplateContainer adviceTopicsPage;
+    private TemplateContainer manualAddProductPage;
+    private TemplateContainer manualAddActivityPage;
     private VisualElement adviceTopicPage;
     private VisualElement homeContainer;
-    private VisualElement scanContainer;
     private VisualElement mainBg;
     private TemplateContainer activityTemplate;
     private VisualElement bottomMenu;
@@ -21,7 +22,6 @@ public class PanelManager : MonoBehaviour
     public VisualElement homeBtn;
     private VisualElement scanBtn;
     private VisualElement adviceBtn;
-    private VisualElement btnSlider;
 
     private Button messageBtn;
     private Button profileBtn;
@@ -29,11 +29,13 @@ public class PanelManager : MonoBehaviour
     private Button rationBtn;
     private Button activityBtn;
     private Button waterBtn;
-    private Button productsBtn;
+    private Button openProductsBtn;
+    private Button openActivityBtn;
 
     public GameObject scanPageObject;
     public GameObject messagePageObject;
     public GameObject profilePageObject;
+    public GameObject historyProductPanelObject;
     public GameObject productPanelObject;
     public GameObject waterPanelObject;
 
@@ -41,6 +43,7 @@ public class PanelManager : MonoBehaviour
     private VisualElement mainRoot;
     private VisualElement profileRoot;
     private VisualElement productPanelRoot;
+    private VisualElement historyProductPanelRoot;
     private VisualElement waterPanelRoot;
     private ProgressBar waterProgressBar;
 
@@ -53,15 +56,16 @@ public class PanelManager : MonoBehaviour
         profileRoot = profilePageObject.GetComponent<UIDocument>().rootVisualElement;
         productPanelRoot = productPanelObject.GetComponent<UIDocument>().rootVisualElement;
         waterPanelRoot = waterPanelObject.GetComponent<UIDocument>().rootVisualElement;
+        historyProductPanelRoot = historyProductPanelObject.GetComponent<UIDocument>().rootVisualElement;
 
         homePage = mainRoot.Q<TemplateContainer>("HomePage");
-        scanPage = mainRoot.Q<TemplateContainer>("ScanPage");
         advicePage = mainRoot.Q<TemplateContainer>("AdvicePage");
         adviceTopicsPage = advicePage.Q<TemplateContainer>("AdviceTopicsPage");
+        manualAddProductPage = mainRoot.Q<TemplateContainer>("ManualAddProduct");
+        manualAddActivityPage = mainRoot.Q<TemplateContainer>("ManualAddActivity");
         adviceTopicPage = advicePage.Q<VisualElement>("AdviceTopicPage");
         homeContainer = homePage.Q<VisualElement>("HomeContainer");
         activityTemplate = homePage.Q<TemplateContainer>("ActivityTemplate");
-        scanContainer = scanPage.Q<VisualElement>("ScanPanelContainer");
         mainBg = mainRoot.Q<VisualElement>("MainBackground");
 
 
@@ -71,22 +75,22 @@ public class PanelManager : MonoBehaviour
         homeBtn = bottomMenu.Q<VisualElement>("home");
         scanBtn = bottomMenu.Q<VisualElement>("scaner");
         adviceBtn = bottomMenu.Q<VisualElement>("advices");
-        btnSlider = homePage.Q<VisualElement>("HomeNavBtnSlider");
 
         profileBtn = mainRoot.Q<Button>("ProfileBtn");
         messageBtn = mainRoot.Q<Button>("MessageBtn");
         rationBtn = homePage.Q<Button>("RationBtn");
         activityBtn = homePage.Q<Button>("ActivityBtn");
         waterBtn = homePage.Q<Button>("WaterPanelBtn");
-        productsBtn = homePage.Q<Button>("ProductSearchBtn");
+        openProductsBtn = homePage.Q<Button>("ProductSearchBtn");
+        openActivityBtn = homePage.Q<Button>("AddActivityBtn");
         closeAdviceTopicBtn = adviceTopicPage.Q<Button>("CloseBtn");
 
 
         messageRoot.style.display = DisplayStyle.None;
         profileRoot.style.display = DisplayStyle.None;
         productPanelRoot.style.display = DisplayStyle.None;
+        historyProductPanelRoot.style.display = DisplayStyle.None;
         waterPanelRoot.style.display = DisplayStyle.None;
-        scanContainer.style.display = DisplayStyle.None;
         mainBg.style.display = DisplayStyle.None;
 
         mainRoot.AddToClassList("home-template");
@@ -101,7 +105,8 @@ public class PanelManager : MonoBehaviour
         profileBtn.clicked += OpenProfilePage;
         activityBtn.clicked += OpenActivityPanel;
         waterBtn.clicked += OpenWaterPanel;
-        //productsBtn.clicked += OpenProductsSearchPage;
+        openProductsBtn.clicked += OpenManualAddProductPage;
+        openActivityBtn.clicked += OpenManualAddActivityPage;
         closeAdviceTopicBtn.clicked += CloseAdviceTopicPage;
 
         waterProgressBar = homePage.Q<ProgressBar>("WaterProgressBar");
@@ -110,6 +115,18 @@ public class PanelManager : MonoBehaviour
 
         waterProgressBar.RegisterValueChangedCallback(ChangeWaterProgress);
         mainRoot.RegisterCallback<TransitionEndEvent>(HandleMainSlideOutEnd);
+    }
+
+    private void OpenManualAddActivityPage()
+    {
+        homePage.style.display = DisplayStyle.None;
+        manualAddActivityPage.style.display = DisplayStyle.Flex;
+    }
+
+    private void OpenManualAddProductPage()
+    {
+        homePage.style.display = DisplayStyle.None;
+        manualAddProductPage.style.display = DisplayStyle.Flex;
     }
 
     private void ChangeWaterProgress(ChangeEvent<float> evt)
@@ -142,7 +159,6 @@ public class PanelManager : MonoBehaviour
     {
         scanPageObject.SetActive(false);
         homePage.style.display = DisplayStyle.None;
-        scanPage.style.display = DisplayStyle.None;
         advicePage.style.display = DisplayStyle.None;
 
         bottomMenuBtns.ForEach((btn) =>
@@ -160,21 +176,20 @@ public class PanelManager : MonoBehaviour
     public void ToHome()
     {
         homePage.style.display = DisplayStyle.Flex;
-        GetComponent<ScanPanelManager>().Hide();
+        GameObject.Find("ProductPanel").GetComponent<ProductPanel>().Hide();
     }
 
     private void OnScanBtnClick(ClickEvent evt)
     {
         OnBottomMenuClick(evt);
         scanPageObject.SetActive(true);
-        scanPage.style.display = DisplayStyle.Flex;
     }
 
     private void OnAdviceBtnClick(ClickEvent evt)
     {
         OnBottomMenuClick(evt);
         advicePage.style.display = DisplayStyle.Flex;
-        GetComponent<ScanPanelManager>().Hide();
+        GameObject.Find("ProductPanel").GetComponent<ProductPanel>().Hide();
     }
 
     private void OpenProfilePage()

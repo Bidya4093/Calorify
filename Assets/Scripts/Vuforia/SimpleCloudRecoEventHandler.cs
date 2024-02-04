@@ -68,14 +68,12 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
             // Вивести інформацію на основі назви об'єкта
             try
             {
-                GameObject.Find("MainPage").GetComponent<ScanPanelManager>().LoadProductData(mTargetId);
+                GameObject.Find("ProductPanel").GetComponent<ScanPanelManager>().LoadProductData(mTargetId);
 
             }
             catch (System.Exception ex)
             {
-                GUIStyle style = new GUIStyle("sdfa");
-                style.fontSize = 60;
-                GUI.Label(new Rect((Screen.width - 600) / 2, (Screen.height - 150) / 2, 600, 150), ex.Message, style);
+                Debug.Log(ex);
             }
 
             // Зупинити сканування, вимкнувши поведінку

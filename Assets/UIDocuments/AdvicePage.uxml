@@ -1,9 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="AdviceTopicPage" src="project://database/Assets/UIDocuments/AdviceTopicsPage.uxml?fileID=9197481963319205126&amp;guid=f8dee475fb5c59e4d8001770b31de475&amp;type=3#AdviceTopicsPage" />
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <Style src="project://database/Assets/Styles/AdviceTopic.uss?fileID=7433441132597879392&amp;guid=a129a5cadf2e670448d4263acfc21ece&amp;type=3#AdviceTopic" />
     <ui:Instance template="AdviceTopicPage" name="AdviceTopicsPage" style="display: flex;" />
     <ui:VisualElement name="AdviceTopicPage" style="display: none;">
-        <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
-        <Style src="project://database/Assets/Styles/AdviceTopic.uss?fileID=7433441132597879392&amp;guid=a129a5cadf2e670448d4263acfc21ece&amp;type=3#AdviceTopic" />
         <ui:VisualElement name="ContentContainer" class="content-container header-margin" style="padding-top: 0;">
             <ui:ScrollView elastic-animation-interval-ms="5" elasticity="0.07" touch-scroll-type="Clamped" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
                 <ui:VisualElement style="flex-grow: 1; padding-top: 45px;">

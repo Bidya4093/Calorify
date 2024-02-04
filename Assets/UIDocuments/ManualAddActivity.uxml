@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
+    <Style src="project://database/Assets/Styles/ManualAdd.uss?fileID=7433441132597879392&amp;guid=359744b44e581004da5d08d9864d3811&amp;type=3#ManualAdd" />
+    <Style src="project://database/Assets/Styles/ProductPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ProductPanel" />
+    <ui:VisualElement name="AddActivityContainer" class="content-container" style="flex-grow: 1; display: flex; padding-bottom: 0;">
+        <ui:VisualElement name="AddActivityTop" style="flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 45px;">
+            <ui:Button display-tooltip-when-elided="true" name="AddActivityCloseBtn" class="btn-icon close-btn" style="margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;" />
+            <ui:TextField picking-mode="Ignore" name="AddActivitySearchInput" placeholder-text="Введіть назву активності" is-delayed="false" class="manual-search" />
+        </ui:VisualElement>
+        <ui:VisualElement name="AddActivityContent" style="flex-grow: 1;">
+            <ui:VisualElement name="AddActivityRecentRequestsContainer">
+                <ui:Label tabindex="-1" text="Останні запити" display-tooltip-when-elided="true" name="AddActivityContentLabel" style="font-size: 40px; color: rgb(85, 85, 85); border-bottom-width: 5px; border-left-color: rgb(217, 217, 217); border-right-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217); padding-bottom: 30px; margin-bottom: 55px;" />
+                <ui:VisualElement name="AddActivityRecentRequests" />
+            </ui:VisualElement>
+            <ui:ScrollView name="AddActivityContentScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" scroll-deceleration-rate="0.01" style="margin-top: -30px;">
+                <ui:VisualElement name="AddActivityScrollContainer" style="flex-grow: 1; padding-top: 30px; padding-bottom: 10px;" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

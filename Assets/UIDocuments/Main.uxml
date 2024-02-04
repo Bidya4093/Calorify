@@ -1,17 +1,19 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="HomePage" src="project://database/Assets/UIDocuments/HomePage.uxml?fileID=9197481963319205126&amp;guid=800f0e35a4ba5ba42ad6b00da76e9f17&amp;type=3#HomePage" />
-    <ui:Template name="ScanPage" src="project://database/Assets/UIDocuments/ScanPage.uxml?fileID=9197481963319205126&amp;guid=a91575f7e47988f409e5623ac1197e1d&amp;type=3#ScanPage" />
     <ui:Template name="AdvicePage" src="project://database/Assets/UIDocuments/AdvicePage.uxml?fileID=9197481963319205126&amp;guid=c8b94afe595d5ab4f8675c1bd44436bd&amp;type=3#AdvicePage" />
     <ui:Template name="BottomMenu" src="project://database/Assets/UIDocuments/BottomMenu.uxml?fileID=9197481963319205126&amp;guid=d484617e92ad0c8488cdb87b417cc233&amp;type=3#BottomMenu" />
+    <ui:Template name="ManualAddProduct" src="project://database/Assets/UIDocuments/ManualAddProduct.uxml?fileID=9197481963319205126&amp;guid=b73a7de85b5255242a128375401de111&amp;type=3#ManualAddProduct" />
+    <ui:Template name="ManualAddActivity" src="project://database/Assets/UIDocuments/ManualAddActivity.uxml?fileID=9197481963319205126&amp;guid=42da8aab76f529c4f9d59020249cb7ab&amp;type=3#ManualAddActivity" />
     <Style src="project://database/Assets/Styles/RadialProgress.uss?fileID=7433441132597879392&amp;guid=54e4e5c72d3a5ef4aa2946f873ef3048&amp;type=3#RadialProgress" />
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
-    <Style src="project://database/Assets/Styles/ScanPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ScanPanel" />
+    <Style src="project://database/Assets/Styles/ProductPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ProductPanel" />
     <Style src="project://database/Assets/Styles/Advice.uss?fileID=7433441132597879392&amp;guid=3a7409e6a5e48ff46a8e137b56aa4f2a&amp;type=3#Advice" />
     <Style src="project://database/Assets/Styles/BottomMenu.uss?fileID=7433441132597879392&amp;guid=ed42d1e45f6a5a2488cc573278a6da0b&amp;type=3#BottomMenu" />
-    <ui:Instance template="HomePage" name="HomePage" style="display: flex; height: 100%;" />
-    <ui:Instance template="ScanPage" name="ScanPage" style="display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;" />
+    <ui:Instance template="HomePage" name="HomePage" style="height: 100%;" />
     <ui:Instance template="AdvicePage" name="AdvicePage" style="display: none;" />
     <ui:Instance template="BottomMenu" name="BottomMenu" style="flex-grow: 1; position: absolute; right: 0; left: 0; bottom: 0;" />
-    <ui:VisualElement name="MainBackground" class="main-bg" style="display: none;" />
+    <ui:VisualElement name="MainBackground" class="main-bg" />
+    <ui:Instance template="ManualAddProduct" name="ManualAddProduct" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none;" />
+    <ui:Instance template="ManualAddActivity" name="ManualAddActivity" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none;" />
 </ui:UXML>

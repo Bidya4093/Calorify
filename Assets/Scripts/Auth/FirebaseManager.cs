@@ -7,7 +7,6 @@ using Firebase.Database;
 using UnityEngine.UIElements;
 using System;
 using Firebase.Extensions;
-using System.Timers;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -36,7 +35,6 @@ public class FirebaseManager : MonoBehaviour
 
     static public bool verificationEmail = false;
     static public float timeRemaining = 20f;
-    //public Timer verificationTimer = new Timer(3000);
 
     void Start()
     {
@@ -118,7 +116,6 @@ public class FirebaseManager : MonoBehaviour
         else
         {
             // Do something with the data in args.Snapshot
-            Debug.Log("HandleDatabaseValueChanged");
             DataSnapshot snapshot = args.Snapshot;
             User.SetUserDataWithSnapshot(snapshot);
         }
@@ -517,7 +514,7 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    static public IEnumerator UpdateUserValue(string nameValue, object value)
+    static public IEnumerator UpdateUserValue(string nameValue, object value, Action onCallback = null)
     {
         if (value is Enum)
             value = (int)value;
@@ -528,14 +525,34 @@ public class FirebaseManager : MonoBehaviour
 
         if (userValueTask.Exception != null)
         {
-            Debug.LogWarning(message: $"Failed to register task with {userValueTask.Exception}");
+            Debug.LogWarning(message: $"Failed to update value task with {userValueTask.Exception}");
         }
         else
         {
             // user value has now been updated
-            //onCallback.Invoke();
+            onCallback?.Invoke();
         }
         
+    }
+
+    static public IEnumerator GetUserValue(string nameValue, Action<object> onCallback = null)
+    {
+        Task<DataSnapshot> userValueTask = DBreference.Child("users").Child(firebaseUser.UserId).Child(nameValue).GetValueAsync();
+
+        yield return new WaitUntil(predicate: () => userValueTask.IsCompleted);
+
+        if (userValueTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to get value task with {userValueTask.Exception}");
+        }
+        else
+        {
+            // user value has now been updated
+            DataSnapshot snapshot = userValueTask.Result;
+
+
+            onCallback?.Invoke(snapshot.Value);
+        }
     }
 
     private async Task CheckEmailVerification()
