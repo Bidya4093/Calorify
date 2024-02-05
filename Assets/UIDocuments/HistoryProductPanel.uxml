@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
-    <Style src="project://database/Assets/Styles/HistoryProductPanel.uss?fileID=7433441132597879392&amp;guid=0940b9ab884c7cb409527aca10c87212&amp;type=3#HistoryProductPanel" />
-    <Style src="project://database/Assets/Styles/ProductPanel.uss?fileID=7433441132597879392&amp;guid=7495748a77b33c641854a61880c8b055&amp;type=3#ProductPanel" />
+    <Style src="project://database/Assets/Styles/ProductPanel.uss?fileID=7433441132597879392&amp;guid=0940b9ab884c7cb409527aca10c87212&amp;type=3#ProductPanel" />
+    <Style src="project://database/Assets/Styles/HistoryProductPanel.uss?fileID=7433441132597879392&amp;guid=be3a3a80794e67945b0d0017e8c1cf8f&amp;type=3#HistoryProductPanel" />
     <ui:VisualElement name="ProductPanelBackground" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.37);" />
     <ui:VisualElement name="ProductPanelContainer" class="product-panel__container" style="height: auto; margin-top: 550px; margin-bottom: 0;">
         <ui:VisualElement name="ProductPanelTop" class="product-panel__top">

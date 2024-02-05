@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: a91575f7e47988f409e5623ac1197e1d, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: f6281d01b05d2c64183403c3692d9be2, type: 3}
   m_SortingOrder: 1
 --- !u!4 &981314680
 Transform:
@@ -408,50 +408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb825b05e541b1342ad4f2db0a89950f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1203995908
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1203995910}
-  - component: {fileID: 1203995909}
-  m_Layer: 0
-  m_Name: TestScriptObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1203995909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203995908}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 036fb8a9f0166634389e5a5468bc326e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1203995910
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203995908}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 563.54395, y: 1036.608, z: -21.116333}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1205989845
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 74dd8eb709c17764383b51d465eed957, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: f6281d01b05d2c64183403c3692d9be2, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 94b139fb43b276942bd3e91e031eb9f2, type: 3}
   m_SortingOrder: 1
 --- !u!4 &1205989847
 Transform:
@@ -1079,4 +1035,3 @@ SceneRoots:
   - {fileID: 778118121}
   - {fileID: 1898785191}
   - {fileID: 240184879}
-  - {fileID: 1203995910}
