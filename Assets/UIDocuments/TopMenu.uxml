@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
-    <ui:VisualElement name="TopMenu" style="flex-grow: 0; height: 120px; flex-direction: row; justify-content: space-between; margin-bottom: 30px; flex-shrink: 0;">
+    <ui:VisualElement name="TopMenu" style="flex-grow: 0; height: 120px; flex-direction: row; justify-content: space-between; flex-shrink: 0;">
         <Shadow name="ProfileBtnShadow" class="shadow-30">
             <ui:Button display-tooltip-when-elided="true" name="ProfileBtn" enable-rich-text="false" selectable="false" class="top-menu-btn" style="background-color: rgb(255, 255, 255);">
                 <ui:VisualElement name="ProfileIcon" class="top-menu-icon" style="background-image: resource(&apos;Images/profile-icon&apos;); width: 50px;" />
