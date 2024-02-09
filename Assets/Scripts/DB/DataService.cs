@@ -1,19 +1,30 @@
 ﻿using SQLite4Unity3d;
 using UnityEngine;
 #if !UNITY_EDITOR
-using System.Collections;
 using System.IO;
 #endif
 using System.Collections.Generic;
 
-public class DataService  {
+public class DataService
+{
 
-	private SQLiteConnection _connection;
+    private SQLiteConnection _connection;
+    string DatabaseName;
 
-	public DataService(string DatabaseName){
+    public DataService(string databaseName, bool reinstallDatabase = false)
+    {
+        DatabaseName = databaseName;
+        string dbPath = GetPath(reinstallDatabase);
+        _connection = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
+        Debug.Log("Final PATH: " + dbPath);
+    }
+
+    private string GetPath(bool reinstallDatabase)
+    {
+        string dbPath;
 
 #if UNITY_EDITOR
-            var dbPath = string.Format(@"Assets/StreamingAssets/{0}", DatabaseName);
+        dbPath = string.Format(@"Assets/StreamingAssets/{0}", DatabaseName);
 #else
         // check if file exists in Application.persistentDataPath
         var filepath = string.Format("{0}/{1}", Application.persistentDataPath, DatabaseName);
@@ -53,47 +64,21 @@ public class DataService  {
 	File.Copy(loadDb, filepath);
 
 #endif
-
-            Debug.Log("Database written");
+        }
+        else if (File.Exists(filepath) && reinstallDatabase)
+        {
+            File.Delete(filepath);
+            return GetPath(false);
         }
 
-        var dbPath = filepath;
+        dbPath = filepath;
 #endif
-        _connection = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
-        Debug.Log("Final PATH: " + dbPath);     
 
-	}
+        return dbPath;
+    }
 
-	public SQLiteConnection GetConnection()
-	{
-		return _connection;
-	}
-
-	//public IEnumerable<products> GetProducts()
-	//{
-	//	return _connection.Table<products>();
-	//}
+    public SQLiteConnection GetConnection()
+    {
+        return _connection;
+    }
 }
-
-	//public IEnumerable<Person> GetPersons(){
-	//	return _connection.Table<Person>();
-	//}
-
-	//public IEnumerable<Person> GetPersonsNamedRoberto(){
-	//	return _connection.Table<Person>().Where(x => x.Name == "Roberto");
-	//}
-
-	//public Person GetJohnny(){
-	//	return _connection.Table<Person>().Where(x => x.Name == "Johnny").FirstOrDefault();
-	//}
-
-	//public Person CreatePerson(){
-	//	var p = new Person{
-	//			Name = "Johnny",
-	//			Surname = "Mnemonic",
-	//			Age = 21
-	//	};
-	//	_connection.Insert (p);
-	//	return p;
-	//}
-
