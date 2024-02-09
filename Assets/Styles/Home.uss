@@ -1,25 +1,12 @@
 .top-menu-btn {
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-top: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-left: 0;
     background-color: rgba(255, 255, 255, 0);
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-left-color: rgba(0, 0, 0, 0);
-    border-right-color: rgba(0, 0, 0, 0);
-    border-top-color: rgba(0, 0, 0, 0);
-    border-bottom-color: rgba(0, 0, 0, 0);
+    border-radius: 30px;
+    border-color: rgba(0, 0, 0, 0);
     width: 120px;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    margin: 0;
 }
 
 .top-menu-icon {
@@ -50,9 +37,7 @@
 .history-item {
     flex-grow: 1;
     flex-direction: row;
-    margin-right: 15px;
-    margin-left: 15px;
-    margin-bottom: 80px;
+    margin: 0 15px 80px 15px;
     align-items: center;
 }
 
@@ -62,18 +47,12 @@
     width: 210px;
     height: 210px;
     -unity-background-scale-mode: scale-to-fit;
-    border-top-left-radius: 45px;
-    border-top-right-radius: 45px;
-    border-bottom-right-radius: 45px;
-    border-bottom-left-radius: 45px;
+    border-radius: 45px;
 }
 
 .history-item__container {
     flex-grow: 1;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 0;
-    padding-left: 0;
+    padding: 20px 0 20px 0;
     margin-left: 45px;
 }
 
@@ -109,25 +88,13 @@
 .history-item__calories {
     font-size: 48px;
     -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Light.ttf?fileID=12800000&guid=83e473fdc1f9c154bbb06385ccdbb0b0&type=3#Ubuntu-Light');
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-top: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-left: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .history-item__weight {
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-top: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-left: 0;
+    margin: 0;
+    padding: 0;
     color: rgb(162, 162, 162);
     font-size: 42px;
 }

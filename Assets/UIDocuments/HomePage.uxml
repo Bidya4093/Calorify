@@ -1,84 +1,82 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="TopMenu" src="project://database/Assets/UIDocuments/TopMenu.uxml?fileID=9197481963319205126&amp;guid=7be0b6e660666744ba8ade54e9f02f9f&amp;type=3#TopMenu" />
     <ui:Template name="WaterProgressBar" src="project://database/Assets/UIDocuments/WaterProgressBar.uxml?fileID=9197481963319205126&amp;guid=e32c39e3627c0ac41a5795809a4d17ae&amp;type=3#WaterProgressBar" />
     <ui:Template name="EmptyContainer" src="project://database/Assets/EmptyContainer.uxml?fileID=9197481963319205126&amp;guid=2342d334e58b5ff41bd39bbd53effc98&amp;type=3#EmptyContainer" />
     <ui:Template name="ActivityPage" src="project://database/Assets/UIDocuments/ActivityPage.uxml?fileID=9197481963319205126&amp;guid=bbc182239366a14419a938593ffdc566&amp;type=3#ActivityPage" />
-    <ui:Template name="TopMenu" src="project://database/Assets/UIDocuments/TopMenu.uxml?fileID=9197481963319205126&amp;guid=7be0b6e660666744ba8ade54e9f02f9f&amp;type=3#TopMenu" />
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/Home.uss?fileID=7433441132597879392&amp;guid=c7cab36b6ad755549ac7338c2df83eb3&amp;type=3#Home" />
     <Style src="project://database/Assets/Styles/RadialProgress.uss?fileID=7433441132597879392&amp;guid=54e4e5c72d3a5ef4aa2946f873ef3048&amp;type=3#RadialProgress" />
-    <ui:VisualElement name="Bg" style="flex-grow: 1; background-color: rgb(240, 240, 240);">
-        <ui:Instance template="TopMenu" name="TopMenu" style="padding-top: 45px; padding-right: 45px; padding-left: 45px; background-color: rgb(240, 240, 240); margin-bottom: 30px;" />
-        <ui:VisualElement name="MainContainer" class="content-container" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; visibility: visible; background-color: rgba(240, 240, 240, 0);">
-            <ui:VisualElement name="HomeContainer" class="home-container" style="display: flex;">
-                <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" scroll-deceleration-rate="0.01" style="margin-top: -30px;">
-                    <ui:VisualElement name="HomeScrollContainer" class="scroll-container" style="flex-grow: 1;">
-                        <Shadow name="MainSectionShadow" shadow-size="133" shadow-corner-radius="154" class="shadow-45" style="margin-bottom: 30px; flex-shrink: 0;">
-                            <ui:VisualElement name="MainSection" class="wrapper" style="padding-bottom: 45px; margin-bottom: 0; color: rgb(0, 0, 0);">
-                                <ui:VisualElement name="TopContainer" style="flex-grow: 0; padding-top: 0; margin-right: 60px; margin-left: 60px; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
-                                    <ui:Label tabindex="-1" text="Статистика за день" display-tooltip-when-elided="true" name="MainSectionTitle" class="home-title" />
-                                    <ui:Button display-tooltip-when-elided="true" name="NutritionStatsBtn" class="btn-icon" style="background-image: resource(&apos;Images/nutrition-stats-icon&apos;); height: 100%; width: 72px;" />
-                                </ui:VisualElement>
-                                <ui:VisualElement name="ChartsContainer" style="flex-grow: 0; margin-bottom: 55px;">
-                                    <ui:VisualElement name="MacrosContainer" style="flex-grow: 0; flex-direction: row; margin-right: 60px; margin-left: 60px; align-items: center; justify-content: space-between; -unity-text-align: upper-center; margin-bottom: 40px;">
-                                        <ui:VisualElement name="ProteinsChart" style="flex-grow: 1; flex-shrink: 0; justify-content: flex-start; align-items: center; width: 240px;">
-                                            <MyUILibrary.RadialProgress name="ProteinsRadialProgress" progress="0" focusable="false" class="radial-progress proteins-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; justify-content: center;">
-                                                <ui:Label tabindex="-1" text="Білки" display-tooltip-when-elided="true" style="font-size: 48px;" />
-                                            </MyUILibrary.RadialProgress>
-                                            <ui:Label tabindex="-1" name="ProteinsRadialProgressLabel" text="0 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-                                        </ui:VisualElement>
-                                        <ui:VisualElement name="FatsChart" style="flex-grow: 1; flex-shrink: 0; margin-right: 72px; margin-left: 72px; align-items: center; width: 240px;">
-                                            <MyUILibrary.RadialProgress name="FatsRadialProgress" progress="0" focusable="false" class="radial-progress fats-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center;">
-                                                <ui:Label tabindex="-1" text="Жири" display-tooltip-when-elided="true" style="font-size: 48px;" />
-                                            </MyUILibrary.RadialProgress>
-                                            <ui:Label tabindex="-1" name="FatsRadialProgressLabel" text="0 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-                                        </ui:VisualElement>
-                                        <ui:VisualElement name="CarbsChart" style="flex-grow: 1; flex-shrink: 0; width: 240px; align-items: center;">
-                                            <MyUILibrary.RadialProgress name="CarbsRadialProgress" focusable="false" class="radial-progress carbs-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center;">
-                                                <ui:Label tabindex="-1" text="Вуглев." display-tooltip-when-elided="true" select-line-by-triple-click="true" style="font-size: 48px;" />
-                                            </MyUILibrary.RadialProgress>
-                                            <ui:Label tabindex="-1" name="CarbsRadialProgressLabel" text="0 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-                                        </ui:VisualElement>
+    <ui:Instance template="TopMenu" name="TopMenu" style="padding-top: 45px; padding-right: 45px; padding-left: 45px; background-color: rgb(240, 240, 240); padding-bottom: 30px;" />
+    <ui:VisualElement name="MainContainer" class="content-container" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; visibility: visible; background-color: rgb(240, 240, 240);">
+        <ui:VisualElement name="HomeContainer" class="home-container" style="display: flex;">
+            <ui:ScrollView name="HistoryScroll" vertical-scroller-visibility="Hidden" touch-scroll-type="Clamped" elastic-animation-interval-ms="5" elasticity="0.07" horizontal-scroller-visibility="Hidden" scroll-deceleration-rate="0.01" style="margin-top: -30px;">
+                <ui:VisualElement name="HomeScrollContainer" class="scroll-container" style="flex-grow: 1;">
+                    <Shadow name="MainSectionShadow" shadow-size="133" shadow-corner-radius="154" class="shadow-45" style="margin-bottom: 30px; flex-shrink: 0;">
+                        <ui:VisualElement name="MainSection" class="wrapper" style="padding-bottom: 45px; margin-bottom: 0; color: rgb(0, 0, 0);">
+                            <ui:VisualElement name="TopContainer" style="flex-grow: 0; padding-top: 0; margin-right: 60px; margin-left: 60px; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 60px;">
+                                <ui:Label tabindex="-1" text="Статистика за день" display-tooltip-when-elided="true" name="MainSectionTitle" class="home-title" />
+                                <ui:Button display-tooltip-when-elided="true" name="NutritionStatsBtn" class="btn-icon" style="background-image: resource(&apos;Images/nutrition-stats-icon&apos;); height: 100%; width: 72px;" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="ChartsContainer" style="flex-grow: 0; margin-bottom: 55px;">
+                                <ui:VisualElement name="MacrosContainer" style="flex-grow: 0; flex-direction: row; margin-right: 60px; margin-left: 60px; align-items: center; justify-content: space-between; -unity-text-align: upper-center; margin-bottom: 40px;">
+                                    <ui:VisualElement name="ProteinsChart" style="flex-grow: 1; flex-shrink: 0; justify-content: flex-start; align-items: center; width: 240px;">
+                                        <MyUILibrary.RadialProgress name="ProteinsRadialProgress" progress="0" focusable="false" class="radial-progress proteins-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; justify-content: center;">
+                                            <ui:Label tabindex="-1" text="Білки" display-tooltip-when-elided="true" style="font-size: 48px;" />
+                                        </MyUILibrary.RadialProgress>
+                                        <ui:Label tabindex="-1" name="ProteinsRadialProgressLabel" text="0 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                     </ui:VisualElement>
-                                    <ui:VisualElement name="ChartsInnerContainer" style="flex-grow: 0; flex-direction: row; margin-right: 45px; margin-left: 75px; justify-content: space-between;">
-                                        <ui:VisualElement name="CaloriesChart" style="flex-grow: 0; flex-shrink: 0; width: 360px; align-items: center;">
-                                            <MyUILibrary.RadialProgress name="CaloriesRadialProgress" progress="0" focusable="false" class="radial-progress carbs-progress calories-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 325px; height: 360px; align-items: stretch; -unity-text-align: middle-center;">
-                                                <ui:Label tabindex="-1" text="30%" display-tooltip-when-elided="true" select-line-by-triple-click="true" name="CaloriesRadialProgressPercent" style="font-size: 78px;" />
-                                            </MyUILibrary.RadialProgress>
-                                            <ui:Label tabindex="-1" name="CaloriesRadialProgressLabel" text="0 / 2200 ккал." display-tooltip-when-elided="true" style="font-size: 48px; color: rgb(85, 85, 85); margin-top: 18px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-items: stretch; -unity-text-align: upper-center;" />
-                                        </ui:VisualElement>
-                                        <ui:VisualElement name="ChartsBtnContainer" style="flex-grow: 1; justify-content: center; align-items: flex-end;">
-                                            <ui:Button text="ВОДА" display-tooltip-when-elided="true" name="WaterPanelBtn" class="btn btn-reverse" style="margin-bottom: 45px;">
-                                                <ui:VisualElement name="AddFoodIcon" class="btn-icon btn-icon-reverse" style="background-image: resource(&apos;Images/add-icon&apos;); width: 45px; height: 45px;" />
-                                            </ui:Button>
-                                            <ui:Button text="СТРАВА" display-tooltip-when-elided="true" name="ProductSearchBtn" class="btn">
-                                                <ui:VisualElement name="AddFoodIcon" class="btn-icon" style="background-image: resource(&apos;Images/add-icon&apos;);" />
-                                            </ui:Button>
-                                        </ui:VisualElement>
+                                    <ui:VisualElement name="FatsChart" style="flex-grow: 1; flex-shrink: 0; margin-right: 72px; margin-left: 72px; align-items: center; width: 240px;">
+                                        <MyUILibrary.RadialProgress name="FatsRadialProgress" progress="0" focusable="false" class="radial-progress fats-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center;">
+                                            <ui:Label tabindex="-1" text="Жири" display-tooltip-when-elided="true" style="font-size: 48px;" />
+                                        </MyUILibrary.RadialProgress>
+                                        <ui:Label tabindex="-1" name="FatsRadialProgressLabel" text="0 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="CarbsChart" style="flex-grow: 1; flex-shrink: 0; width: 240px; align-items: center;">
+                                        <MyUILibrary.RadialProgress name="CarbsRadialProgress" focusable="false" class="radial-progress carbs-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 240px; align-items: stretch; -unity-text-align: middle-center;">
+                                            <ui:Label tabindex="-1" text="Вуглев." display-tooltip-when-elided="true" select-line-by-triple-click="true" style="font-size: 48px;" />
+                                        </MyUILibrary.RadialProgress>
+                                        <ui:Label tabindex="-1" name="CarbsRadialProgressLabel" text="0 / 134 г" display-tooltip-when-elided="true" style="font-size: 36px; color: rgb(85, 85, 85); margin-top: 15px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                     </ui:VisualElement>
                                 </ui:VisualElement>
-                                <ui:VisualElement name="WaterContainer" style="flex-grow: 0; margin-right: 45px; margin-left: 45px; background-color: rgb(240, 240, 240); height: 150px; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; font-size: 36px; padding-top: 15px; padding-right: 45px; padding-bottom: 30px; padding-left: 45px; justify-content: space-between;">
-                                    <ui:VisualElement name="WaterTextContainer" style="flex-direction: row; align-items: flex-end; justify-content: space-between; width: auto;">
-                                        <ui:Label tabindex="-1" text="Спожито води" display-tooltip-when-elided="true" />
-                                        <ui:Label tabindex="-1" text="1.8 / 2.4 л." display-tooltip-when-elided="true" name="WaterProgressBarLabel" />
+                                <ui:VisualElement name="ChartsInnerContainer" style="flex-grow: 0; flex-direction: row; margin-right: 45px; margin-left: 75px; justify-content: space-between;">
+                                    <ui:VisualElement name="CaloriesChart" style="flex-grow: 0; flex-shrink: 0; width: 360px; align-items: center;">
+                                        <MyUILibrary.RadialProgress name="CaloriesRadialProgress" progress="0" focusable="false" class="radial-progress carbs-progress calories-progress" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 325px; height: 360px; align-items: stretch; -unity-text-align: middle-center;">
+                                            <ui:Label tabindex="-1" text="30%" display-tooltip-when-elided="true" select-line-by-triple-click="true" name="CaloriesRadialProgressPercent" style="font-size: 78px;" />
+                                        </MyUILibrary.RadialProgress>
+                                        <ui:Label tabindex="-1" name="CaloriesRadialProgressLabel" text="0 / 2200 ккал." display-tooltip-when-elided="true" style="font-size: 48px; color: rgb(85, 85, 85); margin-top: 18px; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-items: stretch; -unity-text-align: upper-center;" />
                                     </ui:VisualElement>
-                                    <ui:VisualElement name="WaterProgressBarContainer" style="flex-grow: 0;">
-                                        <ui:Instance template="WaterProgressBar" name="WaterProgressBar" />
+                                    <ui:VisualElement name="ChartsBtnContainer" style="flex-grow: 1; justify-content: center; align-items: flex-end;">
+                                        <ui:Button text="ВОДА" display-tooltip-when-elided="true" name="WaterPanelBtn" class="btn btn-reverse" style="margin-bottom: 45px;">
+                                            <ui:VisualElement name="AddFoodIcon" class="btn-icon btn-icon-reverse" style="background-image: resource(&apos;Images/add-icon&apos;); width: 45px; height: 45px;" />
+                                        </ui:Button>
+                                        <ui:Button text="СТРАВА" display-tooltip-when-elided="true" name="ProductSearchBtn" class="btn">
+                                            <ui:VisualElement name="AddFoodIcon" class="btn-icon" style="background-image: resource(&apos;Images/add-icon&apos;);" />
+                                        </ui:Button>
                                     </ui:VisualElement>
                                 </ui:VisualElement>
                             </ui:VisualElement>
-                        </Shadow>
-                        <Shadow name="HistoryShadow" class="shadow-45" style="flex-shrink: 0;">
-                            <ui:VisualElement name="HistorySection" class="wrapper" style="padding-right: 60px; padding-left: 60px; margin-bottom: 0;">
-                                <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="home-title" style="margin-bottom: 30px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-left: 0;" />
-                                <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">
-                                    <ui:Instance template="EmptyContainer" name="HistoryEmptyContainer" />
+                            <ui:VisualElement name="WaterContainer" style="flex-grow: 0; margin-right: 45px; margin-left: 45px; background-color: rgb(240, 240, 240); height: 150px; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; font-size: 36px; padding-top: 15px; padding-right: 45px; padding-bottom: 30px; padding-left: 45px; justify-content: space-between;">
+                                <ui:VisualElement name="WaterTextContainer" style="flex-direction: row; align-items: flex-end; justify-content: space-between; width: auto;">
+                                    <ui:Label tabindex="-1" text="Спожито води" display-tooltip-when-elided="true" />
+                                    <ui:Label tabindex="-1" text="1.8 / 2.4 л." display-tooltip-when-elided="true" name="WaterProgressBarLabel" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="WaterProgressBarContainer" style="flex-grow: 0;">
+                                    <ui:Instance template="WaterProgressBar" name="WaterProgressBar" />
                                 </ui:VisualElement>
                             </ui:VisualElement>
-                        </Shadow>
-                    </ui:VisualElement>
-                </ui:ScrollView>
-            </ui:VisualElement>
-            <ui:Instance template="ActivityPage" name="ActivityTemplate" class="activity-container" style="flex-grow: 1; width: 100%; visibility: visible; bottom: 0; top: 0;" />
+                        </ui:VisualElement>
+                    </Shadow>
+                    <Shadow name="HistoryShadow" class="shadow-45" style="flex-shrink: 0;">
+                        <ui:VisualElement name="HistorySection" class="wrapper" style="padding-right: 60px; padding-left: 60px; margin-bottom: 0;">
+                            <ui:Label tabindex="-1" text="Історія" display-tooltip-when-elided="true" name="HistoryTitle" class="home-title" style="margin-bottom: 30px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-left: 0;" />
+                            <ui:VisualElement name="HistoryContainer" style="flex-grow: 1; padding-top: 24px;">
+                                <ui:Instance template="EmptyContainer" name="HistoryEmptyContainer" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </Shadow>
+                </ui:VisualElement>
+            </ui:ScrollView>
         </ui:VisualElement>
+        <ui:Instance template="ActivityPage" name="ActivityTemplate" class="activity-container" style="flex-grow: 1; width: 100%; visibility: hidden; bottom: 0; top: 0;" />
     </ui:VisualElement>
 </ui:UXML>

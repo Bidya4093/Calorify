@@ -3,16 +3,13 @@
 public class WaterButton : Button
 {
     public new class UxmlFactory : UxmlFactory<WaterButton, UxmlTraits> { }
-
     public new class UxmlTraits : Button.UxmlTraits
     {
         UxmlIntAttributeDescription m_WaterAmountAttr = new UxmlIntAttributeDescription { name = "water-amount", defaultValue = 0 };
-
         public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
         {
             base.Init(ve, bag, cc);
-            var ate = ve as WaterButton;
-
+            WaterButton ate = ve as WaterButton;
             ate.waterAmount = m_WaterAmountAttr.GetValueFromBag(bag, cc);
         }
     }
