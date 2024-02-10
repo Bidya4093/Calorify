@@ -21,16 +21,6 @@ public class NotificationManager : MonoBehaviour
         StartCoroutine(RequestNotificationPermission());
 
         SendNotification("First time", "Please be gentle with me. It is my first time. Click on me with love.");
-        //AndroidNotificationCenter.NotificationReceivedCallback receivedNotificationHandler =
-        //delegate (AndroidNotificationIntentData data)
-        //{
-        //    var msg = "Notification received : " + data.Id + "\n";
-        //    msg += "\n Notification received: ";
-        //    msg += "\n .Title: " + data.Notification.Title;
-        //    msg += "\n .Body: " + data.Notification.Text;
-        //    msg += "\n .Channel: " + data.Channel;
-        //    Debug.Log(msg);
-        //};
 
         AndroidNotificationCenter.OnNotificationReceived += ReceivedNotificationHandler;
     }
@@ -87,18 +77,5 @@ public class NotificationManager : MonoBehaviour
         while (request.Status == PermissionStatus.RequestPending)
             yield return null;
         // here use request.Status to determine users response
-
-        var notification = new AndroidNotification();
-        notification.Title = "Your Title";
-        notification.Text = "Your Text";
-        notification.FireTime = System.DateTime.Now.AddMinutes(1);
-
-        AndroidNotificationCenter.SendNotification(notification, "channel_id");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

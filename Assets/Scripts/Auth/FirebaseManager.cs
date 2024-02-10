@@ -137,6 +137,7 @@ public class FirebaseManager : MonoBehaviour
                 DataManager.LoadChartsData();
                 DataManager.LoadProfileData();
                 DataManager.LoadSettingsData();
+                ProductHistoryList.Render();
             }
         });
     }

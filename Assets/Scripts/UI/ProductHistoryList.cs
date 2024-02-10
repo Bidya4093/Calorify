@@ -12,14 +12,7 @@ public class ProductHistoryList : MonoBehaviour
     static public VisualElement lastItem;
     static public bool empty = true;
 
-    void Start()
-    {
-        if (FirebaseAuth.DefaultInstance.CurrentUser == null) return;
-        Render();
-        CheckEmptyList();
-    }
-
-    public void Render()
+    static public void Render()
     {
         mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
         historyList = mainRoot.Q<VisualElement>("HistoryContainer");

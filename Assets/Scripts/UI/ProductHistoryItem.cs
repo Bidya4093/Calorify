@@ -29,7 +29,9 @@ public class ProductHistoryItem : ProductItem
         todaysHistoryManager = new TodaysHistoryManager();
         mass = todaysHistory.mass;
 
+
         macrosInfo = MacrosManager.CalculateMacrosByMass(mass, todaysHistory.product_id);
+
         product = new ProductsLoader().GetById(todaysHistory.product_id);
         Init(product.name, mass, macrosInfo.calories, product.nutri_score);
 
