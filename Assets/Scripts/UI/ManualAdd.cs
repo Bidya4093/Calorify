@@ -96,6 +96,8 @@ public class ManualAdd : MonoBehaviour
     {
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
         Todays_history todaysHistory = todaysHistoryManager.InsertRecord(product.product_id, productPanel.massInput.value, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
+        Debug.Log(todaysHistory);
+
         ProductHistoryItem productHistoryItem = new ProductHistoryItem(todaysHistory);
         ProductHistoryList.items.Add(productHistoryItem);
 
