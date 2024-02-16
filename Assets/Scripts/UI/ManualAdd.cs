@@ -1,6 +1,7 @@
 using Firebase.Auth;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -190,7 +191,7 @@ public class ManualAdd : MonoBehaviour
         addActivitySearchInput.value = "";
     }
 
-    void SearchProduct(ChangeEvent<string> evt)
+    async void SearchProduct(ChangeEvent<string> evt)
     {
         productScrollContainer.Clear();
 
@@ -200,7 +201,7 @@ public class ManualAdd : MonoBehaviour
         }
         else { 
             productRecentRequestsContainer.style.display = DisplayStyle.None;
-            foreach (products item in productsLoader.IncludeSubstring(evt.newValue))
+            foreach (products item in await productsLoader.IncludeSubstringAsync(evt.newValue))
             {
                 ManualAddProductItem productItem = new ManualAddProductItem(item);
                 productScrollContainer.Add(productItem);

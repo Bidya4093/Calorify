@@ -31,9 +31,39 @@ public class ProductsLoader
         return returnList;
     }
 
+    public async Task<List<products>> IncludeSubstringAsync(string substr)
+    {
+        List<products> returnList = new List<products>();
+
+        // Отримуємо дані з Firebase
+        DataSnapshot snapshot = await DBreference.Child("products").GetValueAsync();
+
+        // Перевіряємо, чи є дані
+        if (snapshot.Exists)
+        {
+            // Проходимося по всіх даних
+            foreach (var childSnapshot in snapshot.Children)
+            {
+                // Отримуємо дані продукту
+                var productData = childSnapshot.Value as Dictionary<string, object>;
+
+                // Перевіряємо, чи ім'я продукту містить підстроку
+                if (productData.ContainsKey("name") && productData["name"].ToString().ToLower().Contains(substr.ToLower()))
+                {
+                    // Створюємо об'єкт продукту і додаємо його до списку
+                    products product = new products(childSnapshot);
+                    returnList.Add(product);
+                }
+            }
+        }
+
+        return returnList;
+    }
+
+
     // returns dish by its id. If not found - returns null
     public async Task<products> GetById(int id)
-    {
+        {
         products product = null;
         try
         {
@@ -45,7 +75,6 @@ public class ProductsLoader
                 foreach (var childSnapshot in snapshot.Children)
                 {
                     // Access the data of the found item.
-                    Debug.Log(childSnapshot.Key + ": " + childSnapshot.GetRawJsonValue());
                     product = new products(childSnapshot);
                     break; // Assuming you only need the first product
                 }
@@ -62,39 +91,6 @@ public class ProductsLoader
         Debug.Log(product);
         return product;
     }
-
-    //public Task<products> GetByVuforiaId(string vuforia_id)
-    //{
-    //    products product = null;
-    //    Task<DataSnapshot> DBTask = DBreference.Child("products").OrderByChild("vuforia_id").EqualTo(vuforia_id).GetValueAsync();
-
-    //    yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
-
-    //    if (DBTask.Exception != null)
-    //    {
-    //        Debug.LogWarning($"Error occurred while querying the database with  {DBTask.Exception}.");
-    //    }
-    //    else
-    //    {
-    //        DataSnapshot snapshot = DBTask.Result;
-    //        if (snapshot.Exists)
-    //        {
-    //            // Loop through the snapshot to access the found items.
-    //            foreach (var childSnapshot in snapshot.Children)
-    //            {
-    //                // Access the data of the found item.
-    //                Debug.Log(childSnapshot.Key + ": " + childSnapshot.GetRawJsonValue());
-    //                Debug.Log(new products(childSnapshot));
-    //                product = new products(childSnapshot);
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("No item found with the specified value.");
-    //        }
-    //    }
-    //    return product;
-    //}
 
     public async Task<products> GetByVuforiaIdAsync(string vuforia_id)
     {
@@ -125,14 +121,5 @@ public class ProductsLoader
         }
         Debug.Log(product);
         return product;
-    }
-
-
-    private void ToList(IEnumerable<products> products)
-    {
-        foreach (var product in products)
-        {
-            dishes.Add(product);
-        }
     }
 }

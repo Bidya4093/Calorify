@@ -42,7 +42,11 @@ public class products
         prots = Convert.ToSingle(snapshot.Child("prots").Value);
         fats = Convert.ToSingle(snapshot.Child("fats").Value);
         carbs = Convert.ToSingle(snapshot.Child("carbs").Value);
-        vuforia_id = snapshot.Child("vuforia_id").Value.ToString();
+        if (snapshot.Child("vuforia_id").Exists)
+        {
+            vuforia_id = snapshot.Child("vuforia_id").Value.ToString();
+        }
+
     }
 
     public override string ToString()
