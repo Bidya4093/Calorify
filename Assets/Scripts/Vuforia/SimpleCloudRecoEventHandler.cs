@@ -68,7 +68,7 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
             // Вивести інформацію на основі назви об'єкта
             try
             {
-                GameObject.Find("ProductPanel").GetComponent<ScanPanelManager>().LoadProductData(mTargetId);
+                GameObject.Find("ProductPanel").GetComponent<ScanPanelManager>().LoadProductDataAsync(mTargetId);
 
             }
             catch (System.Exception ex)

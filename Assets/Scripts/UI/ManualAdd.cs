@@ -96,7 +96,8 @@ public class ManualAdd : MonoBehaviour
     {
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
         Todays_history todaysHistory = todaysHistoryManager.InsertRecord(product.product_id, productPanel.massInput.value, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
-        ProductHistoryItem productHistoryItem = new ProductHistoryItem(todaysHistory);
+        ProductHistoryItem productHistoryItem = new ProductHistoryItem();
+        productHistoryItem.InitializeAsync(todaysHistory);
         ProductHistoryList.items.Add(productHistoryItem);
 
         User.AddToEaten(productHistoryItem.macrosInfo);
@@ -158,10 +159,10 @@ public class ManualAdd : MonoBehaviour
         }
     }
 
-    public void LoadProductData(int productId)
+    public async void LoadProductData(int productId)
     {
         productPanel.Show(true);
-        product = productsLoader.GetById(productId);
+        product = await productsLoader.GetById(productId);
         productPanel.SetProductData(product);
         productPanel.addProductBtn.RegisterCallback<ClickEvent>(AddProductToDailyList);
     }

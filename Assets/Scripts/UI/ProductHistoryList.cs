@@ -15,9 +15,7 @@ public class ProductHistoryList : MonoBehaviour
     void Start()
     {
         mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
-        Debug.Log(mainRoot);
         historyList = mainRoot.Q<VisualElement>("HistoryContainer");
-        Debug.Log(historyList);
     }
 
     static public void Render()
@@ -29,7 +27,8 @@ public class ProductHistoryList : MonoBehaviour
 
         foreach (Todays_history item in todaysHistoryItems)
         {
-            ProductHistoryItem historyItem = new ProductHistoryItem(item);
+            ProductHistoryItem historyItem = new ProductHistoryItem();
+            historyItem.InitializeAsync(item);
             items.Insert(0, historyItem);
             Debug.Log(historyItem);
             historyList.Insert(0, historyItem);

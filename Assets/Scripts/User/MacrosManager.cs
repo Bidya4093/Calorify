@@ -1,5 +1,6 @@
 using Firebase.Auth;
 using Firebase.Database;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class MacrosInfo
@@ -74,10 +75,11 @@ public class MacrosManager : MonoBehaviour
         User.Instance.ProtsNeeded = protsNeeded;
     }
     
-    static public MacrosInfo CalculateMacrosByMass(int mass, int productId)
+    static public async Task<MacrosInfo> CalculateMacrosByMass(int mass, products product)
     {
         MacrosInfo macrosInfo = new MacrosInfo();
-        products product = new ProductsLoader().GetById(productId);
+
+        //products product = await new ProductsLoader().GetById(productId);
         macrosInfo.calories = (int)(product.calories * (mass / 100f));
         macrosInfo.prots = (int)(product.prots * (mass / 100f));
         macrosInfo.fats = (int)(product.fats * (mass / 100f));

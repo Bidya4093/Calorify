@@ -49,13 +49,14 @@ public class ProductItem : VisualElement
     public ProductItem(products _product)
     {
         product = _product;
-        macrosInfo = MacrosManager.CalculateMacrosByMass(mass, product.product_id);
 
         Init(product.name, mass, macrosInfo.calories, product.nutri_score);
     }
 
-    public virtual void Init(string _name, int mass, int calories, string nutri_score)
+    public async virtual Task Init(string _name, int mass, int calories, string nutri_score)
     {
+        macrosInfo = await MacrosManager.CalculateMacrosByMass(mass, product);
+
         AddToClassList(ussItem);
         name = "HistoryItem";
 

@@ -138,6 +138,8 @@ public class FirebaseManager : MonoBehaviour
                 DataManager.LoadProfileData();
                 DataManager.LoadSettingsData();
                 ProductHistoryList.Render();
+                //Debug.Log(new ProductsLoader().GetByVuforiaIdAsync("28a212786884484e86e14250e23eeb1c"));
+
             }
         });
     }
