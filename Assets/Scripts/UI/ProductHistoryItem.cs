@@ -29,7 +29,7 @@ public class ProductHistoryItem : ProductItem
         mass = todaysHistory.mass;
 
         product = await new ProductsLoader().GetById(todaysHistory.product_id);
-        macrosInfo = await MacrosManager.CalculateMacrosByMass(mass, product);
+        macrosInfo = MacrosManager.CalculateMacrosByMass(mass, product);
         Init(product.name, mass, macrosInfo.calories, product.nutri_score);
 
         if (ProductHistoryList.empty)
@@ -40,10 +40,10 @@ public class ProductHistoryItem : ProductItem
         ProductHistoryList.CheckEmptyList();
     }
 
-    public async override Task Init(string _name, int mass, int calories, string nutri_score)
+    public override void Init(string _name, int mass, int calories, string nutri_score)
     {
 
-        await base.Init(_name, mass, calories, nutri_score);
+        base.Init(_name, mass, calories, nutri_score);
 
         editBtn = new Button();
         editBtn.name = "HistoryItemEditBtn";
@@ -118,11 +118,11 @@ public class ProductHistoryItem : ProductItem
         CloseProductPanel(evt);
     }
 
-    private async void ChangeItemData(ChangeEvent<int> evt)
+    private void ChangeItemData(ChangeEvent<int> evt)
     {
         mass = (evt.target as IntegerField).value;
         User.SubtractFromEatem(macrosInfo);
-        macrosInfo = await MacrosManager.CalculateMacrosByMass(mass, product);
+        macrosInfo = MacrosManager.CalculateMacrosByMass(mass, product);
         User.AddToEaten(macrosInfo);
         UpdateProductMacrosData();
     }

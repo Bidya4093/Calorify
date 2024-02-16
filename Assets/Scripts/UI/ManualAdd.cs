@@ -92,12 +92,12 @@ public class ManualAdd : MonoBehaviour
     //    throw new NotImplementedException();
     //}
 
-    private void AddProductToDailyList(ClickEvent evt)
+    private async void AddProductToDailyList(ClickEvent evt)
     {
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
         Todays_history todaysHistory = todaysHistoryManager.InsertRecord(product.product_id, productPanel.massInput.value, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
         ProductHistoryItem productHistoryItem = new ProductHistoryItem();
-        productHistoryItem.InitializeAsync(todaysHistory);
+        await productHistoryItem.InitializeAsync(todaysHistory);
         ProductHistoryList.items.Add(productHistoryItem);
 
         User.AddToEaten(productHistoryItem.macrosInfo);

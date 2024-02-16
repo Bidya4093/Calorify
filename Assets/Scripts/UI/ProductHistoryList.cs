@@ -18,7 +18,7 @@ public class ProductHistoryList : MonoBehaviour
         historyList = mainRoot.Q<VisualElement>("HistoryContainer");
     }
 
-    static public void Render()
+    static public async void Render()
     {
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
 
@@ -28,9 +28,8 @@ public class ProductHistoryList : MonoBehaviour
         foreach (Todays_history item in todaysHistoryItems)
         {
             ProductHistoryItem historyItem = new ProductHistoryItem();
-            historyItem.InitializeAsync(item);
+            await historyItem.InitializeAsync(item);
             items.Insert(0, historyItem);
-            Debug.Log(historyItem);
             historyList.Insert(0, historyItem);
         }
 
