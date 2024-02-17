@@ -665,7 +665,10 @@ GameObject:
   - component: {fileID: 1898785196}
   - component: {fileID: 1898785201}
   - component: {fileID: 1898785202}
+<<<<<<< Updated upstream
   - component: {fileID: 1898785203}
+=======
+>>>>>>> Stashed changes
   m_Layer: 5
   m_Name: MainPage
   m_TagString: Untagged
@@ -805,6 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98c6d969ca611d438f55f90e86f5555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
 --- !u!114 &1898785203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,6 +821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3fc2a5909feca469e2faf074080683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1949728723
 GameObject:
   m_ObjectHideFlags: 0
