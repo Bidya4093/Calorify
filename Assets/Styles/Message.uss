@@ -97,3 +97,11 @@
 .message-template--slide-in {
     translate: 0 0;
 }
+
+    
+.message-item__container {
+    transition-property: translate;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    translate: 0 0;
+}

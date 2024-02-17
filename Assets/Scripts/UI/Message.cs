@@ -13,6 +13,7 @@ public class Message : MonoBehaviour
     private VisualElement mainBg;
     static private VisualElement messageEmptyContainer;
     static public VisualElement messageList;
+    static public ScrollView messageScroll;
     //public List<MessageComponent> messageList;
     static public bool empty;
 
@@ -24,6 +25,8 @@ public class Message : MonoBehaviour
         mainBg = mainRoot.Q<VisualElement>("MainBackground");
         messageEmptyContainer = messageRoot.Q<VisualElement>("MessageEmptyContainer");
         messageList = messageRoot.Q<VisualElement>("MessageScrollContainer");
+        messageScroll = messageRoot.Q<ScrollView>("MessageScroll");
+
         closeBtn = messageRoot.Q<Button>("CloseBtn");
         closeBtn.RegisterCallback<ClickEvent>(CloseMessagePage);
         messageRoot.RegisterCallback<TransitionEndEvent>(HandleMessageSlideInEnd);
@@ -31,6 +34,8 @@ public class Message : MonoBehaviour
 
     private void CloseMessagePage(ClickEvent evt)
     {
+        Debug.Log("Close message page");
+
         mainRoot.style.display = DisplayStyle.Flex;
         messageRoot.RemoveFromClassList("message-template--slide-in");
         mainRoot.RemoveFromClassList("home-template--slide-out-left");
@@ -50,7 +55,7 @@ public class Message : MonoBehaviour
     {
         messageEmptyContainer = messageRoot.Q<VisualElement>("MessageEmptyContainer");
 
-        if (messageList.Query<MessageComponent>("MessageItemContainer").ToList().Count == 0)
+        if (messageList.Query<MessageComponent>().ToList().Count == 0)
         {
             messageEmptyContainer.style.display = DisplayStyle.Flex;
             empty = true;
