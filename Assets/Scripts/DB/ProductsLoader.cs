@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 public class ProductsLoader
 {
-<<<<<<< Updated upstream
     public List<products> dishes;
 
     public ProductsLoader() 
@@ -24,45 +23,6 @@ public class ProductsLoader
         return returnList;
     }
 
-=======
-    public DatabaseReference DBreference;
-
-    public ProductsLoader() 
-    {
-        DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-    }
-
-    public async Task<List<products>> IncludeSubstringAsync(string substr)
-    {
-        List<products> returnList = new List<products>();
-
-        // Отримуємо дані з Firebase
-        DataSnapshot snapshot = await DBreference.Child("products").GetValueAsync();
-
-        // Перевіряємо, чи є дані
-        if (snapshot.Exists)
-        {
-            // Проходимося по всіх даних
-            foreach (var childSnapshot in snapshot.Children)
-            {
-                // Отримуємо дані продукту
-                var productData = childSnapshot.Value as Dictionary<string, object>;
-
-                // Перевіряємо, чи ім'я продукту містить підстроку
-                if (productData.ContainsKey("name") && productData["name"].ToString().ToLower().Contains(substr.ToLower()))
-                {
-                    // Створюємо об'єкт продукту і додаємо його до списку
-                    products product = new products(childSnapshot);
-                    returnList.Add(product);
-                }
-            }
-        }
-
-        return returnList;
-    }
-
-
->>>>>>> Stashed changes
     // returns dish by its id. If not found - returns null
     public products GetById(int id)
     {

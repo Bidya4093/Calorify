@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine.UIElements;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class MessageComponent : VisualElement
 {
@@ -14,7 +15,7 @@ public class MessageComponent : VisualElement
 
     public new class UxmlTraits : VisualElement.UxmlTraits
     {
-        UxmlStringAttributeDescription m_MessageAttr = new UxmlStringAttributeDescription { name = "message", defaultValue = "" };
+        UxmlStringAttributeDescription m_MessageAttr = new UxmlStringAttributeDescription { name = "message", defaultValue = "j" };
         UxmlBoolAttributeDescription m_IsNewAttr = new UxmlBoolAttributeDescription { name = "isNew", defaultValue = false };
         public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
         {
@@ -43,6 +44,7 @@ public class MessageComponent : VisualElement
         get => m_Message;
         set
         {
+
             messageLabel.text = value;
             m_Message = value;
         }
@@ -61,6 +63,7 @@ public class MessageComponent : VisualElement
         get => m_IsNew;
         set
         {
+
             m_IsNew = value;
             UpdateNewBadge(value);
         }
@@ -68,7 +71,7 @@ public class MessageComponent : VisualElement
 
 
     public MessageComponent() {
-        Init("Нове сповіщення", DateTime.Now, true);
+        Init("Нове сповіщення", DateTime.Now, m_IsNew);
     }
 
     public MessageComponent(string _message, DateTime _date, bool _isNew)
@@ -105,11 +108,9 @@ public class MessageComponent : VisualElement
         date = _date;
         isNew = _isNew;
 
-        //Debug.Log(parent.childCount);
-
-        //Debug.Log();
-        if (Message.empty)
-            style.marginBottom = 0;
+        //Message.CheckEmptyList();
+        //if (Message.messageList.Query<MessageComponent>("MessageItemContainer").ToList().Count == 0)
+        //    style.marginBottom = 30;
 
 
         // Зареєструвати калбек видалення свайпом.
@@ -122,8 +123,8 @@ public class MessageComponent : VisualElement
 
     private void OnDetachFromPanelEvent(DetachFromPanelEvent evt)
     {
-        Debug.Log((evt.originPanel as VisualElement));
-        Debug.Log((evt.originPanel as VisualElement).childCount);
+        Debug.Log((evt.originPanel.visualTree));
+        //Debug.Log((evt.originPanel as VisualElement).Children);
     }
 
     private void OnTransitonEndEvent(TransitionEndEvent evt)
@@ -151,21 +152,24 @@ public class MessageComponent : VisualElement
     {
         if (_isNew)
         {
-            newBadgeShadow = new Shadow();
-            newBadgeShadow.name = "MessageItemNewShadow";
-            newBadgeShadow.AddToClassList(ussNewBadgeShadow);
-            messageContainer.Add(newBadgeShadow);
-
-            newBadgeLabel = new Label("NEW");
-            newBadgeLabel.name = "MessageItemNew";
-            newBadgeLabel.AddToClassList(ussNewBadge);
-            newBadgeShadow.Add(newBadgeLabel);
-        } else
-        {
-            if (Contains(newBadgeShadow))
+            if (!Contains(newBadgeShadow))
             {
-                newBadgeShadow.RemoveFromHierarchy();
+                newBadgeShadow = new Shadow();
+                newBadgeShadow.name = "MessageItemNewShadow";
+                newBadgeShadow.AddToClassList(ussNewBadgeShadow);
+                messageContainer.Add(newBadgeShadow);
+
+                newBadgeLabel = new Label("NEW");
+                newBadgeLabel.name = "MessageItemNew";
+                newBadgeLabel.AddToClassList(ussNewBadge);
+                newBadgeShadow.Add(newBadgeLabel);
             }
+
+        }
+        else
+        {
+            if (Contains(newBadgeShadow)) 
+                newBadgeShadow.RemoveFromHierarchy();
         }
     }
 

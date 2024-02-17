@@ -8,7 +8,7 @@ public class Message : MonoBehaviour
 {
     private Button closeBtn;
     public GameObject mainObjectPage;
-    private VisualElement messageRoot;
+    static private VisualElement messageRoot;
     static private VisualElement mainRoot;
     private VisualElement mainBg;
     static private VisualElement messageEmptyContainer;
@@ -22,7 +22,8 @@ public class Message : MonoBehaviour
         messageRoot = GetComponent<UIDocument>().rootVisualElement;
         mainRoot = mainObjectPage.GetComponent<UIDocument>().rootVisualElement;
         mainBg = mainRoot.Q<VisualElement>("MainBackground");
-
+        messageEmptyContainer = messageRoot.Q<VisualElement>("MessageEmptyContainer");
+        messageList = messageRoot.Q<VisualElement>("MessageScrollContainer");
         closeBtn = messageRoot.Q<Button>("CloseBtn");
         closeBtn.RegisterCallback<ClickEvent>(CloseMessagePage);
         messageRoot.RegisterCallback<TransitionEndEvent>(HandleMessageSlideInEnd);
@@ -47,7 +48,7 @@ public class Message : MonoBehaviour
 
     static public void CheckEmptyList()
     {
-        messageEmptyContainer = mainRoot.Q<VisualElement>("MessageEmptyContainer");
+        messageEmptyContainer = messageRoot.Q<VisualElement>("MessageEmptyContainer");
 
         if (messageList.Query<MessageComponent>("MessageItemContainer").ToList().Count == 0)
         {
