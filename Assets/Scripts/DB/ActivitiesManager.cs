@@ -6,7 +6,7 @@ public class ActivitiesManager
 
     public ActivitiesManager() 
     {
-        var dataService = new DataService("activitiesdb.db");
+        var dataService = new DataService("activitiesdb.db", true);
         var activities = dataService.GetConnection().Table<Activity>();
         activitiesList = new List<Activity>();
         ToList(activities);
