@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine.UIElements;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class MessageComponent : VisualElement
 {
@@ -50,6 +49,7 @@ public class MessageComponent : VisualElement
     string m_Message;
     DateTime m_Date;
     bool m_IsNew;
+    public bool isReviewed = false;
 
     public string message
     {
@@ -121,10 +121,13 @@ public class MessageComponent : VisualElement
         date = _date;
         isNew = _isNew;
 
-        //Message.CheckEmptyList();
+
+        Message.CheckEmptyList();
         if (Message.empty)
             style.marginBottom = 30;
 
+        Message.messageList.Insert(0, this);
+        Message.messages.Add(this);
 
         // Зареєструвати калбек видалення свайпом.
         RegisterCallback<PointerDownEvent>(OnPointerDownEvent, TrickleDown.TrickleDown);
@@ -274,10 +277,22 @@ public class MessageComponent : VisualElement
         }
     }
 
-    public void Delete()
+    private void Delete()
     {
         RemoveFromHierarchy();
+        if (Message.messageList.Query<MessageComponent>().Last() != null)
+            Message.messageList.Query<MessageComponent>().Last().style.marginBottom = 30;
+
         Message.CheckEmptyList();
+    }
+
+    public void DeleteWithAnimation()
+    {
+        translateXPercent = 100;
+        SetTranslate();
+
+        //Починаємо відслідковувати закінчення плавного переходу.
+        RegisterCallback<TransitionEndEvent>(OnTransitionEndEvent);
     }
 }
 

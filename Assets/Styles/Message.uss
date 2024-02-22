@@ -98,10 +98,31 @@
     translate: 0 0;
 }
 
-    
 .message-item__container {
     transition-property: translate;
     transition-duration: 200ms;
     transition-timing-function: ease-out;
     translate: 0 0;
+}
+
+.message__delete-all-btn {
+    width: 500px;
+    height: 120px;
+    padding-right: 0;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 51, 51);
+    font-size: 42px;
+}
+
+.message__delete-all-container {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 60px;
 }
