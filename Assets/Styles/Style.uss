@@ -196,14 +196,13 @@
     padding-right: 0;
     padding-bottom: 0;
     padding-left: 0;
+    color: rgb(0, 0, 0);
 }
 
 .title {
     font-size: 66px;
     margin-bottom: 60px;
 }
-
-
 
 .shadow-45 {
     --shadow-color: rgba(0, 0, 0, 0.1);
