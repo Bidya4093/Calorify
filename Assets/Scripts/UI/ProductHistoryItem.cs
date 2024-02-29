@@ -28,6 +28,7 @@ public class ProductHistoryItem : ProductItem
         todaysHistoryManager = new TodaysHistoryManager();
         mass = todaysHistory.mass;
 
+
         product = await new ProductsLoader().GetById(todaysHistory.product_id);
         macrosInfo = MacrosManager.CalculateMacrosByMass(mass, product);
         Init(product.name, mass, macrosInfo.calories, product.nutri_score);
@@ -138,7 +139,7 @@ public class ProductHistoryItem : ProductItem
 
     private void UpdateCaloriesAndMass()
     {
-        caloriesLabel.text = $"{macrosInfo.calories} ккал";
-        weightLabel.text = $"{mass} г";
+        caloriesLabel.text = $"{macrosInfo.calories} пїЅпїЅпїЅпїЅ";
+        weightLabel.text = $"{mass} пїЅ";
     }
 }
