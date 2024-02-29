@@ -49,6 +49,7 @@ public class MessageComponent : VisualElement
     string m_Message;
     DateTime m_Date;
     bool m_IsNew;
+    public int id;
     public bool isReviewed = false;
 
     public string message
@@ -83,12 +84,20 @@ public class MessageComponent : VisualElement
 
 
     public MessageComponent() {
+        id = Message.messages.Count;
         Init("Нове сповіщення", DateTime.Now, m_IsNew);
     }
 
     public MessageComponent(string _message, DateTime _date, bool _isNew)
     {
+        id = Message.messages.Count;
         Init(_message, _date, _isNew);
+    }
+
+    public MessageComponent(Notification notification)
+    {
+        Init(notification.message, DateTime.Parse(notification.date), Convert.ToBoolean(notification.is_new));
+        id = notification.notification_id;
     }
 
     public void Init(string _message, DateTime _date, bool _isNew)
@@ -279,7 +288,9 @@ public class MessageComponent : VisualElement
 
     private void Delete()
     {
+        Message.notificationDBManager.DeleteRecordById(id);
         RemoveFromHierarchy();
+        Message.messages.Remove(this);
         if (Message.messageList.Query<MessageComponent>().Last() != null)
             Message.messageList.Query<MessageComponent>().Last().style.marginBottom = 30;
 

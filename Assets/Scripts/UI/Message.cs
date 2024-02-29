@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -19,7 +20,7 @@ public class Message : MonoBehaviour
     static public List<MessageComponent> messages = new List<MessageComponent>();
     static public bool empty = true;
     private float maxScrollValue = 0;
-
+    static public NotificationDBManager notificationDBManager;
     void Start()
     {
         messageRoot = GetComponent<UIDocument>().rootVisualElement;
@@ -36,12 +37,29 @@ public class Message : MonoBehaviour
         messageRoot.RegisterCallback<TransitionEndEvent>(HandleMessageSlideInEnd);
         // Ціль по калоріях <color=#33B333>виконано</color>
         // Ви споживаєте надмірну к-сть жирів, це може бути <color=#FF3333>шкідливо для вашого здоров
-        for (int i = 0; i < 20; i++)
-        {
-            new MessageComponent("Ціль по калоріях <color=#33B333>виконано</color>", DateTime.Now, true);
-        }
+        notificationDBManager = new NotificationDBManager();
+
+        Render();
 
         messageScroll.verticalScroller.valueChanged += Reviewing;
+        messageScroll.RegisterCallback<ChangeEvent<float>>(Reviewing);
+    }
+
+    private void Reviewing(ChangeEvent<float> evt)
+    {
+
+        if (Math.Abs(evt.newValue - evt.previousValue) < 0.05) {
+            Debug.Log("Scroll previous value" + evt.previousValue);
+            Debug.Log("Scroll new value" + evt.newValue);
+        }
+    }
+
+    public void Render()
+    {
+
+        List<Notification> notifications = notificationDBManager.GetCurrentUserHistory();
+
+        notifications.ForEach(item => { new MessageComponent(item); });
     }
 
     private void DeleteAllMessages(ClickEvent evt)
@@ -63,6 +81,7 @@ public class Message : MonoBehaviour
     {
         if (value > maxScrollValue)
             maxScrollValue = value;
+        //Debug.Log("Scroll value" + value);
     }
 
     private void CloseMessagePage(ClickEvent evt)
@@ -72,11 +91,12 @@ public class Message : MonoBehaviour
         mainRoot.RemoveFromClassList("home-template--slide-out-left");
         mainBg.RemoveFromClassList("main-bg--active");
 
-        foreach (MessageComponent message in messages)
+        foreach (MessageComponent message in messages.Where(m => m.isNew == true))
         {
             if (message.localBound.yMin - maxScrollValue < messageScroll.resolvedStyle.height)
             {
-                message.isReviewed = true;
+                message.isNew = false;
+                notificationDBManager.UpdateStateNew(message.id, message.isNew);
             }
         }
 

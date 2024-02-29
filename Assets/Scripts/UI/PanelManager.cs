@@ -221,10 +221,10 @@ public class PanelManager : MonoBehaviour
         mainRoot.AddToClassList("home-template--slide-out-left");
         mainBg.AddToClassList("main-bg--active");
 
-        foreach (MessageComponent message in Message.messages)
-        {
-            if (message.isReviewed) message.isNew = false;
-        }
+        //foreach (MessageComponent message in Message.messages)
+        //{
+        //    if (message.isReviewed) message.isNew = false;
+        //}
 
     }
 

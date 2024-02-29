@@ -208,7 +208,7 @@ public class ManualAdd : MonoBehaviour
             }
         }
     }
-
+    
     void SearchActivity(ChangeEvent<string> evt)
     {
         //activityScrollContainer.Clear();
