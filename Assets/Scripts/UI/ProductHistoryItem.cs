@@ -22,15 +22,14 @@ public class ProductHistoryItem : ProductItem
 
     public ProductHistoryItem() { }
 
-    public ProductHistoryItem(Todays_history _todaysHistory)
+    public async Task InitializeAsync(Todays_history _todaysHistory)
     {
-
         todaysHistory = _todaysHistory;
         todaysHistoryManager = new TodaysHistoryManager();
         mass = todaysHistory.mass;
 
-        macrosInfo = MacrosManager.CalculateMacrosByMass(mass, todaysHistory.product_id);
-        product = new ProductsLoader().GetById(todaysHistory.product_id);
+        product = await new ProductsLoader().GetById(todaysHistory.product_id);
+        macrosInfo = MacrosManager.CalculateMacrosByMass(mass, product);
         Init(product.name, mass, macrosInfo.calories, product.nutri_score);
 
         if (ProductHistoryList.empty)
@@ -123,7 +122,7 @@ public class ProductHistoryItem : ProductItem
     {
         mass = (evt.target as IntegerField).value;
         User.SubtractFromEatem(macrosInfo);
-        macrosInfo = MacrosManager.CalculateMacrosByMass(mass, todaysHistory.product_id);
+        macrosInfo = MacrosManager.CalculateMacrosByMass(mass, product);
         User.AddToEaten(macrosInfo);
         UpdateProductMacrosData();
     }

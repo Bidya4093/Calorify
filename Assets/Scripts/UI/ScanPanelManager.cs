@@ -1,5 +1,6 @@
 using Firebase.Auth;
 using System;
+using System.Threading.Tasks;
 using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -20,11 +21,12 @@ public class ScanPanelManager : MonoBehaviour
         productPanel = GetComponent<ProductPanel>();
     }
 
-    private void AddProductToDailyList(ClickEvent evt)
+    private async void AddProductToDailyList(ClickEvent evt)
     {
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
         Todays_history todaysHistory = todaysHistoryManager.InsertRecord(product.product_id, productPanel.massInput.value, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
-        ProductHistoryItem productHistoryItem = new ProductHistoryItem(todaysHistory);
+        ProductHistoryItem productHistoryItem = new ProductHistoryItem();
+        await productHistoryItem.InitializeAsync(todaysHistory);
         ProductHistoryList.items.Add(productHistoryItem);
 
         User.AddToEaten(productHistoryItem.macrosInfo);
@@ -40,11 +42,11 @@ public class ScanPanelManager : MonoBehaviour
         productPanel.addProductBtn.UnregisterCallback<ClickEvent>(AddProductToDailyList);
     }
 
-    public void LoadProductData(string vuforiaId)
+    public async void LoadProductDataAsync(string vuforiaId)
     {
 
         productPanel.Show();
-        product = productsLoader.GetByVuforiaId(vuforiaId);
+        product = await productsLoader.GetByVuforiaIdAsync(vuforiaId);
         productPanel.SetProductData(product);
 
         productPanel.addProductBtn.RegisterCallback<ClickEvent>(AddProductToDailyList);

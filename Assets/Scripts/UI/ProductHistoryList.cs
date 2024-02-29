@@ -14,16 +14,12 @@ public class ProductHistoryList : MonoBehaviour
 
     void Start()
     {
-        if (FirebaseAuth.DefaultInstance.CurrentUser == null) return;
-        Render();
-        CheckEmptyList();
-    }
-
-    public void Render()
-    {
         mainRoot = GameObject.Find("MainPage").GetComponent<UIDocument>().rootVisualElement;
         historyList = mainRoot.Q<VisualElement>("HistoryContainer");
+    }
 
+    static public async void Render()
+    {
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
 
         List<Todays_history> todaysHistoryItems = todaysHistoryManager.GetCurrentUserHistory();
@@ -31,12 +27,14 @@ public class ProductHistoryList : MonoBehaviour
 
         foreach (Todays_history item in todaysHistoryItems)
         {
-            ProductHistoryItem historyItem = new ProductHistoryItem(item);
+            ProductHistoryItem historyItem = new ProductHistoryItem();
+            await historyItem.InitializeAsync(item);
             items.Insert(0, historyItem);
             historyList.Insert(0, historyItem);
         }
 
         lastItem = historyList.Query<ProductHistoryItem>("HistoryItem").Last();
+        CheckEmptyList();
     }
 
     static public void CheckEmptyList()

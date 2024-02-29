@@ -1,5 +1,0 @@
-D:/User/Desktop/Programing/c#/unity/projects/Calorify/.utmp/RelWithDebInfo/3v17513g/arm64-v8a/CMakeFiles/edit_cache.dir
-D:/User/Desktop/Programing/c#/unity/projects/Calorify/.utmp/RelWithDebInfo/3v17513g/arm64-v8a/CMakeFiles/rebuild_cache.dir
-D:/User/Desktop/Programing/c#/unity/projects/Calorify/.utmp/RelWithDebInfo/3v17513g/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
-D:/User/Desktop/Programing/c#/unity/projects/Calorify/.utmp/RelWithDebInfo/3v17513g/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
-D:/User/Desktop/Programing/c#/unity/projects/Calorify/.utmp/RelWithDebInfo/3v17513g/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir
