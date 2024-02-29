@@ -13,8 +13,9 @@ public class Message : MonoBehaviour
     static private VisualElement mainRoot;
     private VisualElement mainBg;
     private Button closeBtn;
-    private Button deleteAllBtn;
+    static private Button deleteAllBtn;
     static private VisualElement messageEmptyContainer;
+    static public VisualElement messageIconState;
     static public VisualElement messageList;
     static public ScrollView messageScroll;
     static public List<MessageComponent> messages = new List<MessageComponent>();
@@ -27,6 +28,7 @@ public class Message : MonoBehaviour
         mainRoot = mainObjectPage.GetComponent<UIDocument>().rootVisualElement;
         mainBg = mainRoot.Q<VisualElement>("MainBackground");
         messageEmptyContainer = messageRoot.Q<VisualElement>("MessageEmptyContainer");
+        messageIconState = mainRoot.Q<VisualElement>("MessageIconState");
         messageList = messageRoot.Q<VisualElement>("MessageScrollContainer");
         messageScroll = messageRoot.Q<ScrollView>("MessageScroll");
 
@@ -42,30 +44,17 @@ public class Message : MonoBehaviour
         Render();
 
         messageScroll.verticalScroller.valueChanged += Reviewing;
-        messageScroll.RegisterCallback<ChangeEvent<float>>(Reviewing);
-    }
-
-    private void Reviewing(ChangeEvent<float> evt)
-    {
-
-        if (Math.Abs(evt.newValue - evt.previousValue) < 0.05) {
-            Debug.Log("Scroll previous value" + evt.previousValue);
-            Debug.Log("Scroll new value" + evt.newValue);
-        }
     }
 
     public void Render()
     {
-
         List<Notification> notifications = notificationDBManager.GetCurrentUserHistory();
-
         notifications.ForEach(item => { new MessageComponent(item); });
     }
 
     private void DeleteAllMessages(ClickEvent evt)
     {
         StartCoroutine(DeleteAllMessagesCoroutine(evt));
-        deleteAllBtn.visible = false;
     }
 
     private IEnumerator DeleteAllMessagesCoroutine(ClickEvent evt)
@@ -75,13 +64,16 @@ public class Message : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
             message.DeleteWithAnimation();
         }
+        messages.Clear();
+        notificationDBManager.ClearTable();
+        messageList.Clear();
+        CheckEmptyList();
     }
 
     private void Reviewing(float value)
     {
         if (value > maxScrollValue)
             maxScrollValue = value;
-        //Debug.Log("Scroll value" + value);
     }
 
     private void CloseMessagePage(ClickEvent evt)
@@ -98,6 +90,10 @@ public class Message : MonoBehaviour
                 message.isNew = false;
                 notificationDBManager.UpdateStateNew(message.id, message.isNew);
             }
+        }
+        if (!messages.Any(m => m.isNew == true))
+        {
+            messageIconState.visible = false;
         }
 
         maxScrollValue = 0;
@@ -120,11 +116,14 @@ public class Message : MonoBehaviour
         if (messageList.Query<MessageComponent>().ToList().Count == 0)
         {
             messageEmptyContainer.style.display = DisplayStyle.Flex;
+            deleteAllBtn.visible = false;
             empty = true;
+
         }
         else
         {
             messageEmptyContainer.style.display = DisplayStyle.None;
+            deleteAllBtn.visible = true;
             empty = false;
         }
         return empty;

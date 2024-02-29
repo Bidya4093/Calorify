@@ -130,7 +130,6 @@ public class MessageComponent : VisualElement
         date = _date;
         isNew = _isNew;
 
-
         Message.CheckEmptyList();
         if (Message.empty)
             style.marginBottom = 30;
@@ -277,7 +276,7 @@ public class MessageComponent : VisualElement
                 newBadgeLabel.AddToClassList(ussNewBadge);
                 newBadgeShadow.Add(newBadgeLabel);
             }
-
+            Message.messageIconState.visible = true;
         }
         else
         {
@@ -302,8 +301,6 @@ public class MessageComponent : VisualElement
         translateXPercent = 100;
         SetTranslate();
 
-        //Починаємо відслідковувати закінчення плавного переходу.
-        RegisterCallback<TransitionEndEvent>(OnTransitionEndEvent);
     }
 }
 

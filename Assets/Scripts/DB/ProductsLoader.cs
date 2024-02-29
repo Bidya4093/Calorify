@@ -13,10 +13,6 @@ public class ProductsLoader
 
     public ProductsLoader() 
     {
-        //var dataService = new DataService("productsdb.db", true);
-        //var products = dataService.GetConnection().Table<products>();
-        //dishes = new List<products>();
-        //ToList(products);
         DBreference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
