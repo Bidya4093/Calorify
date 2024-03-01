@@ -7,7 +7,6 @@ using static UnityEditor.Progress;
 
 public class NotificationDBManager
 {
-    //public List<Notification> notificationsList;
     private List<Notification> records;
     private List<Notification> currentUserRecords;
     SQLiteConnection connection;
@@ -35,7 +34,7 @@ public class NotificationDBManager
         return currentUserRecords;
     }
 
-    public Notification InsertRecord(string title, string message, string type, bool is_new, string user_id)
+    public Notification InsertRecord(string title, string message, string type, string user_id, bool is_new = true, bool viewed_as_push_message = false)
     {
         DateTime date = DateTime.Now;
         Notification newRecord = new Notification
@@ -45,6 +44,7 @@ public class NotificationDBManager
             type = type,
             date = date.ToString("HH:mm     dd.MM.yyyy"),
             is_new = Convert.ToInt32(is_new),
+            viewed_as_push_message = Convert.ToInt32(viewed_as_push_message),
             user_id = user_id
         };
 
@@ -72,17 +72,34 @@ public class NotificationDBManager
         }
     }
 
-    public void UpdateStateNew(int id, bool isNew)
+    public void UpdateState(int id, Action<Notification> onCallback)
     {
         Notification updatedRecord = connection.Find<Notification>(id);
         if (updatedRecord != null)
         {
-            updatedRecord.is_new = Convert.ToInt32(isNew);
+            onCallback?.Invoke(updatedRecord);
             connection.Update(updatedRecord);
-        } else
+        }
+        else
         {
             Debug.Log("Id not found!");
         }
+    }
+
+    public void UpdateStateViewedAsPushMessage(int id, bool viewed_as_push_message)
+    {
+        UpdateState(id, (Notification updatedRecord) =>
+        {
+            updatedRecord.viewed_as_push_message = Convert.ToInt32(viewed_as_push_message);
+        });
+    }
+
+    public void UpdateStateNew(int id, bool isNew)
+    {
+        UpdateState(id, (Notification updatedRecord) =>
+        {
+            updatedRecord.is_new = Convert.ToInt32(isNew);
+        });
     }
 
     // returns activity by its id. If not found - returns null

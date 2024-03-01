@@ -145,7 +145,6 @@ public class SwipeMenu : MonoBehaviour
 
         if (maxDeltaPositionX < Mathf.Abs(evt.deltaPosition.x))
             maxDeltaPositionX = Mathf.Abs(evt.deltaPosition.x);
-        Debug.Log("maxDeltaPositionX: " + maxDeltaPositionX);
         // Записуємо обраховану позицію елементам
         SetTranslate();
     }
@@ -202,8 +201,6 @@ public class SwipeMenu : MonoBehaviour
         // Знаходимо відстань свайпу.
         endTouchPosition = evt.position;
         float swipeDistance = (endTouchPosition - startTouchPosition).magnitude;
-        Debug.Log("velocity threshold: " + (maxDeltaPositionX > velocityThreshold));
-        Debug.Log("swipe threshold: " + (swipeDistance > swipeDistanceThreshold));
         // Починаємо відслідковувати закінчення плавного переходу.
         homeContainer.RegisterCallback<TransitionEndEvent>(OnHomeTranstitionEnd);
         activityTemplate.RegisterCallback<TransitionEndEvent>(OnActivityTranstitionEnd);
@@ -218,13 +215,11 @@ public class SwipeMenu : MonoBehaviour
             if (endTouchPosition.x > startTouchPosition.x)
             {
                 // Виконати дії для swipe вправо, переключаємось на панельку харчування
-                Debug.Log("Swipe to right");
                 ToRationPanel();
             }
             else
             {
                 // Виконати дії для swipe вліво, переключаємось на панельку активності
-                Debug.Log("Swipe to left");
                 ToActivityPanel();
             }
         }

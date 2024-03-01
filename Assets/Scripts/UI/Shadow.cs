@@ -30,7 +30,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-class Shadow : VisualElement
+public class Shadow : VisualElement
 {
 
     private Vertex[] k_Vertices;

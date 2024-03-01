@@ -13,12 +13,12 @@ public class Message : MonoBehaviour
     static private VisualElement mainRoot;
     private VisualElement mainBg;
     private Button closeBtn;
-    static private Button deleteAllBtn;
+    static public Button deleteAllBtn;
     static private VisualElement messageEmptyContainer;
     static public VisualElement messageIconState;
     static public VisualElement messageList;
     static public ScrollView messageScroll;
-    static public List<MessageComponent> messages = new List<MessageComponent>();
+    static public List<PageMessage> messages = new List<PageMessage>();
     static public bool empty = true;
     private float maxScrollValue = 0;
     static public NotificationDBManager notificationDBManager;
@@ -49,7 +49,11 @@ public class Message : MonoBehaviour
     public void Render()
     {
         List<Notification> notifications = notificationDBManager.GetCurrentUserHistory();
-        notifications.ForEach(item => { new MessageComponent(item); });
+        notifications.ForEach(item => {
+            PageMessage message = new PageMessage(item);
+            messageList.Insert(0, message);
+        });
+        CheckEmptyList();
     }
 
     private void DeleteAllMessages(ClickEvent evt)
@@ -59,7 +63,7 @@ public class Message : MonoBehaviour
 
     private IEnumerator DeleteAllMessagesCoroutine(ClickEvent evt)
     {
-        foreach (MessageComponent message in messages)
+        foreach (PageMessage message in messages)
         {
             yield return new WaitForSeconds(0.05f);
             message.DeleteWithAnimation();
@@ -83,7 +87,7 @@ public class Message : MonoBehaviour
         mainRoot.RemoveFromClassList("home-template--slide-out-left");
         mainBg.RemoveFromClassList("main-bg--active");
 
-        foreach (MessageComponent message in messages.Where(m => m.isNew == true))
+        foreach (PageMessage message in messages.Where(m => m.isNew == true))
         {
             if (message.localBound.yMin - maxScrollValue < messageScroll.resolvedStyle.height)
             {
@@ -112,8 +116,8 @@ public class Message : MonoBehaviour
     static public bool CheckEmptyList()
     {
         messageEmptyContainer = messageRoot.Q<VisualElement>("MessageEmptyContainer");
-
-        if (messageList.Query<MessageComponent>().ToList().Count == 0)
+        Debug.Log(messageList.Query<PageMessage>().ToList().Count);
+        if (messageList.Query<PageMessage>().ToList().Count == 0)
         {
             messageEmptyContainer.style.display = DisplayStyle.Flex;
             deleteAllBtn.visible = false;

@@ -126,3 +126,10 @@
     justify-content: flex-end;
     padding-bottom: 60px;
 }
+
+.message-item__container--push {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}

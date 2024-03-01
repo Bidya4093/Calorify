@@ -4,25 +4,21 @@ using UnityEngine;
 
 public class MessageComponent : VisualElement
 {
+    protected Shadow shadowContainer;
+    protected VisualElement messageContainer;
+    protected Label dateLabel;
+    protected Label messageLabel;
+    protected Shadow newBadgeShadow;
+    protected Label newBadgeLabel;
 
-    private Shadow shadowContainer;
-    private VisualElement messageContainer;
-    private Label dateLabel;
-    private Label messageLabel;
-    private Shadow newBadgeShadow;
-    private Label newBadgeLabel;
+    protected Vector2 startTouchPosition;
+    protected Vector2 endTouchPosition;
 
-    private Vector2 startTouchPosition;
-    private Vector2 endTouchPosition;
-
-    private float swipeDistanceThreshold = 300;
-    private float swipeInitHorizontalThreshold = 80;
-    private float swipeInitVerticalThreshold = 40;
-    private bool isSwipeStarted = false;
-    private bool isScrollStarted = false;
-    private float translateXPercent = 0;
-    private float currentTranslate;
-
+    protected float swipeDistanceThreshold = 300;
+    protected float swipeInitHorizontalThreshold = 80;
+    protected bool isSwipeStarted = false;
+    protected float translateXPercent = 0;
+    protected float currentTranslate;
 
     public new class UxmlTraits : VisualElement.UxmlTraits
     {
@@ -50,7 +46,6 @@ public class MessageComponent : VisualElement
     DateTime m_Date;
     bool m_IsNew;
     public int id;
-    public bool isReviewed = false;
 
     public string message
     {
@@ -76,12 +71,10 @@ public class MessageComponent : VisualElement
         get => m_IsNew;
         set
         {
-
             m_IsNew = value;
             UpdateNewBadge(value);
         }
     }
-
 
     public MessageComponent() {
         id = Message.messages.Count;
@@ -100,7 +93,7 @@ public class MessageComponent : VisualElement
         id = notification.notification_id;
     }
 
-    public void Init(string _message, DateTime _date, bool _isNew)
+    public virtual void Init(string _message, DateTime _date, bool _isNew)
     {
         name = "MessageItemContainer";
         AddToClassList(ussContainer);
@@ -130,20 +123,13 @@ public class MessageComponent : VisualElement
         date = _date;
         isNew = _isNew;
 
-        Message.CheckEmptyList();
-        if (Message.empty)
-            style.marginBottom = 30;
-
-        Message.messageList.Insert(0, this);
-        Message.messages.Add(this);
-
         // Зареєструвати калбек видалення свайпом.
         RegisterCallback<PointerDownEvent>(OnPointerDownEvent, TrickleDown.TrickleDown);
         RegisterCallback<PointerMoveEvent>(OnPointerMoveEvent, TrickleDown.TrickleDown);
         RegisterCallback<PointerUpEvent>(OnPointerUpEvent, TrickleDown.TrickleDown);
     }
 
-    private void OnTransitionEndEvent(TransitionEndEvent evt)
+    public void OnTransitionEndEvent(TransitionEndEvent evt)
     {
         // Визначаємо видимість панельки харчування, коли закінчився перехід.
         if (translateXPercent == 100)
@@ -152,16 +138,13 @@ public class MessageComponent : VisualElement
         UnregisterCallback<TransitionEndEvent>(OnTransitionEndEvent);
     }
 
-    private void OnPointerDownEvent(PointerDownEvent evt)
+    public virtual void OnPointerDownEvent(PointerDownEvent evt)
     {
         startTouchPosition = evt.position;
-        DisableScroll();
     }
 
-    private void OnPointerUpEvent(PointerUpEvent evt)
+    public virtual void OnPointerUpEvent(PointerUpEvent evt)
     {
-        isScrollStarted = false;
-
         if (!isSwipeStarted) return;
         isSwipeStarted = false;
 
@@ -171,9 +154,6 @@ public class MessageComponent : VisualElement
 
         // Починаємо відслідковувати закінчення плавного переходу.
         RegisterCallback<TransitionEndEvent>(OnTransitionEndEvent);
-
-        // Вертаємо можливість руху скроллів.
-        Message.messageScroll.contentContainer.UnregisterCallback<PointerMoveEvent>(PreventScroll);
 
         if (swipeDistance > swipeDistanceThreshold)
         {
@@ -194,23 +174,8 @@ public class MessageComponent : VisualElement
         SetTranslate();
     }
 
-    private void OnPointerMoveEvent(PointerMoveEvent evt)
+    public void UpdateTranslate(PointerMoveEvent evt)
     {
-        // Встановлюємо поріг активації свайпу і скролу.
-        // Якщо по вертикалі вийшли за поріг - активовуємо скрол, якщо по горизонталі - свайп.
-        if ((startTouchPosition.x - swipeInitHorizontalThreshold > evt.position.x ||
-            startTouchPosition.x + swipeInitHorizontalThreshold < evt.position.x) && !isScrollStarted)
-        {
-            if (!isSwipeStarted) StartSwipe();
-        }
-        else if ((startTouchPosition.y - swipeInitVerticalThreshold > evt.position.y ||
-            startTouchPosition.y + swipeInitVerticalThreshold < evt.position.y) && !isSwipeStarted)
-        {
-            if (!isScrollStarted) EnableScroll(evt);
-            return;
-        }
-        else return;
-        
         if (worldBound.x + evt.deltaPosition.x < 0)
         {
             translateXPercent = 0;
@@ -220,12 +185,26 @@ public class MessageComponent : VisualElement
             // Якщо в межах лімітів, тоді оновлюємо позицію відносно руху користувача
             translateXPercent += (evt.deltaPosition.x / resolvedStyle.width) * 100;
         }
+    }
+
+    public virtual void OnPointerMoveEvent(PointerMoveEvent evt)
+    {
+        // Встановлюємо поріг активації свайпу і скролу.
+        // Якщо по вертикалі вийшли за поріг - активовуємо скрол, якщо по горизонталі - свайп.
+        if ((startTouchPosition.x - swipeInitHorizontalThreshold > evt.position.x ||
+            startTouchPosition.x + swipeInitHorizontalThreshold < evt.position.x))
+        {
+            if (!isSwipeStarted) StartSwipe();
+        }
+        else return;
+
+        UpdateTranslate(evt);
 
         // Записуємо обраховану позицію елементам
         SetTranslate();
     }
 
-    private void StartSwipe()
+    public virtual void StartSwipe()
     {
         isSwipeStarted = true;
 
@@ -233,32 +212,11 @@ public class MessageComponent : VisualElement
         currentTranslate = translateXPercent;
     }
 
-    private void EnableScroll(PointerMoveEvent evt)
-    {
-        // Включаємо можливість руху скроллів.
-        Message.messageScroll.contentContainer.UnregisterCallback<PointerMoveEvent>(PreventScroll);
-        isScrollStarted = true;
-    }
-
-
-    private void PreventScroll(PointerMoveEvent evt)
-    {
-        if (isSwipeStarted || !isScrollStarted) evt.StopPropagation();
-    }
-
-    private void DisableScroll()
-    {
-        // Виключаємо можливість руху скроллів.
-        Message.messageScroll.contentContainer.RegisterCallback<PointerMoveEvent>(PreventScroll);
-        isScrollStarted = false;
-    }
-
-    private void SetTranslate()
+    public virtual void SetTranslate()
     {
         // Записуємо обраховану позицію елементу
         style.translate = new Translate(Length.Percent(translateXPercent), 0);
     }
-
 
     public void UpdateNewBadge(bool _isNew)
     {
@@ -285,22 +243,15 @@ public class MessageComponent : VisualElement
         }
     }
 
-    private void Delete()
+    public virtual void Delete()
     {
-        Message.notificationDBManager.DeleteRecordById(id);
         RemoveFromHierarchy();
-        Message.messages.Remove(this);
-        if (Message.messageList.Query<MessageComponent>().Last() != null)
-            Message.messageList.Query<MessageComponent>().Last().style.marginBottom = 30;
-
-        Message.CheckEmptyList();
     }
 
-    public void DeleteWithAnimation()
+    public virtual void DeleteWithAnimation()
     {
         translateXPercent = 100;
         SetTranslate();
-
     }
 }
 

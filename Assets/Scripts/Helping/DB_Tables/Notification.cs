@@ -11,9 +11,10 @@ public class Notification
     public string type { get; set; }
     public string date { get; set; }
     public int is_new { get; set; }
+    public int viewed_as_push_message { get; set; }
 
     public override string ToString()
     {
-        return $"id:{notification_id}, user_id:{user_id}, title:{title}, message:{message}, type:{type} date:{date} new:{is_new};";
+        return $"id:{notification_id}, user_id:{user_id}, title:{title}, message:{message}, type:{type} date:{date} new:{is_new}; viewed_as_push_message: {viewed_as_push_message}";
     }
 }

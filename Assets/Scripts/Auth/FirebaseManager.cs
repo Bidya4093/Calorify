@@ -7,6 +7,7 @@ using Firebase.Database;
 using UnityEngine.UIElements;
 using System;
 using Firebase.Extensions;
+using System.Collections.Generic;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -140,10 +141,20 @@ public class FirebaseManager : MonoBehaviour
 
                 NotificationDBManager notificationDBManager = new NotificationDBManager();
 
-                for (int i = 0; i < 10; i++)
+                List<Notification> notifications = notificationDBManager.GetCurrentUserHistory();
+                notifications.ForEach(item => {
+                    if (!Convert.ToBoolean(item.viewed_as_push_message))
+                    {
+                        InnerPushMessageManager innerPushMessageManager = GameObject.Find("PushMessageContainer").GetComponent<InnerPushMessageManager>();
+                        innerPushMessageManager.AddToQueue(new PushMessage(item));
+                    }
+                });
+
+
+
+                for (int i = 0; i < 3; i++)
                 {
                     DateTime now = DateTime.Now;
-                    //new MessageComponent("Ціль по калоріях <color=#33B333>виконано</color>", now, true);
                     Notification notification = new Notification
                     {
                         title = "Title for notification",
@@ -151,10 +162,10 @@ public class FirebaseManager : MonoBehaviour
                         type = "Нагадувальні",
                         date = now.AddMinutes(i).ToString(),
                         is_new = 1,
+                        viewed_as_push_message = 0,
                         user_id = firebaseUser.UserId
                     };
                     notificationDBManager.InsertRecord(notification);
-
                 }
                 ProductHistoryList.Render();
 

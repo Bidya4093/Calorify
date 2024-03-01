@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
+    <Style src="project://database/Assets/Styles/Message.uss?fileID=7433441132597879392&amp;guid=32315167952c6f84c823a647bbd6a947&amp;type=3#Message" />
+    <ui:VisualElement name="PushMessageContainer" style="flex-grow: 1; top: -100%; justify-content: flex-end;" />
+</ui:UXML>
