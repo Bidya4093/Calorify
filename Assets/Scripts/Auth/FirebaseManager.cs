@@ -57,7 +57,7 @@ public class FirebaseManager : MonoBehaviour
         dependencyStatus = DependencyTask.Result;
         if (dependencyStatus == DependencyStatus.Available)
         {
-            //If they are avalible Initialize Firebase
+            //If they are available Initialize Firebase
             InitializeFirebase();
             yield return new WaitForEndOfFrame();
             if (enableAutoLogin)
@@ -137,6 +137,28 @@ public class FirebaseManager : MonoBehaviour
                 DataManager.LoadChartsData();
                 DataManager.LoadProfileData();
                 DataManager.LoadSettingsData();
+
+                NotificationDBManager notificationDBManager = new NotificationDBManager();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    DateTime now = DateTime.Now;
+                    //new MessageComponent("Ціль по калоріях <color=#33B333>виконано</color>", now, true);
+                    Notification notification = new Notification
+                    {
+                        title = "Title for notification",
+                        message = "Ціль по калоріях <color=#33B333>виконано</color>",
+                        type = "Нагадувальні",
+                        date = now.AddMinutes(i).ToString(),
+                        is_new = 1,
+                        user_id = firebaseUser.UserId
+                    };
+                    notificationDBManager.InsertRecord(notification);
+
+                }
+                ProductHistoryList.Render();
+                //Debug.Log(new ProductsLoader().GetByVuforiaIdAsync("28a212786884484e86e14250e23eeb1c"));
+
             }
         });
     }
@@ -171,13 +193,13 @@ public class FirebaseManager : MonoBehaviour
                 && auth.CurrentUser.IsValid();
             if (!signedIn && firebaseUser != null)
             {
-                Debug.Log("Signed out " + firebaseUser.Email);
+                Debug.Log("Signed out " + firebaseUser.Email + ", Id: " + firebaseUser.UserId);
             }
             firebaseUser = auth.CurrentUser;
 
             if (signedIn)
             {
-                Debug.Log("Signed in " + firebaseUser.Email);
+                Debug.Log("Signed in " + firebaseUser.Email + ", Id: " + firebaseUser.UserId);
                 FirebaseDatabase.DefaultInstance.GetReference("users/"+firebaseUser.UserId).ValueChanged += HandleDatabaseValueChanged;
             }
         }

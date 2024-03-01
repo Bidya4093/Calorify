@@ -2,6 +2,7 @@ using Firebase.Auth;
 using SQLite4Unity3d;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class TodaysHistoryManager
@@ -46,7 +47,7 @@ public class TodaysHistoryManager
             mass = mass,
             water_amount = water_amount,
             date = date.ToString("HH:mm"),
-            user_id = user_id
+            user_id = user_id,
         };
         connection.Insert(newRecord);
         return newRecord;

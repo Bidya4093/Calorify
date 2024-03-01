@@ -3,27 +3,16 @@
     <Style src="project://database/Assets/Styles/Style.uss?fileID=7433441132597879392&amp;guid=c052a8e61ad107c419c57ce6fcef9a0f&amp;type=3#Style" />
     <Style src="project://database/Assets/Styles/Message.uss?fileID=7433441132597879392&amp;guid=32315167952c6f84c823a647bbd6a947&amp;type=3#Message" />
     <ui:VisualElement name="ContentContainer" class="content-container header-margin" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
-        <ui:ScrollView elasticity="0.07" elastic-animation-interval-ms="5" touch-scroll-type="Clamped" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="display: flex;">
-            <Shadow name="MessageItemShadow" shadow-size="30" shadow-corner-radius="0" class="message-item__shadow message-item__first shadow-45">
-                <ui:VisualElement name="MessageItem" class="message-item">
-                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
-                    <ui:Label tabindex="-1" text="Ви споживаєте надмірну к-сть жирів, це може бути &lt;color=#FF3333&gt;шкідливо для вашого здоров" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
-                    <Shadow shadow-offset-x="0" shadow-offset-y="0" shadow-corner-radius="45" shadow-size="-5" shadow-color="#00000026" name="MessageItemNewShadow" class="message-item__new-shadow">
-                        <ui:Label tabindex="-1" text="NEW" display-tooltip-when-elided="true" name="MessageItemNew" class="message-item__new" style="border-bottom-left-radius: 45px; width: 180px; height: 60px;" />
-                    </Shadow>
-                </ui:VisualElement>
-            </Shadow>
-            <Shadow name="MessageItemShadow" class="message-item__shadow shadow-45">
-                <ui:VisualElement name="MessageItem" class="message-item">
-                    <ui:Label tabindex="-1" text="01:33 AM     12.11.2023" display-tooltip-when-elided="true" name="MessageItemDate" class="message-item__date" />
-                    <ui:Label tabindex="-1" text="Ціль по калоріях &lt;color=#33B333&gt;виконано&lt;/color&gt;" display-tooltip-when-elided="true" name="MessageItemText" class="message-item__text" />
-                </ui:VisualElement>
-            </Shadow>
+        <ui:ScrollView elasticity="0.07" elastic-animation-interval-ms="5" touch-scroll-type="Clamped" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" name="MessageScroll" scroll-deceleration-rate="0.01" style="display: flex;">
+            <ui:VisualElement name="MessageScrollContainer" style="flex-grow: 1; display: flex;" />
         </ui:ScrollView>
-        <ui:VisualElement name="MessagePlaceholder" class="message-placeholder" style="display: none;">
-            <ui:Label tabindex="-1" text="Немає сповіщень" display-tooltip-when-elided="true" name="MessagePlaceholderTitle" class="message-placeholder__title" />
-            <ui:Label tabindex="-1" text="Тут будуть з’являтись нагадування, поради та ін." display-tooltip-when-elided="true" name="MessagePlaceholderText" class="message-placeholder__text" />
+        <ui:VisualElement name="MessageEmptyContainer" style="flex-grow: 1; color: rgb(128, 128, 128); font-size: 36px; -unity-text-align: upper-center; justify-content: center; display: flex;">
+            <ui:Label tabindex="-1" text="Немає сповіщень" display-tooltip-when-elided="true" name="MessageEmptyTitle" style="font-size: 72px; margin-bottom: 45px;" />
+            <ui:Label tabindex="-1" text="Тут будуть з’являтись&#10;нагадування, поради та ін." display-tooltip-when-elided="true" name="MessageEmptyLabel" />
         </ui:VisualElement>
+        <Shadow name="MessageDeleteAllShadow" shadow-size="0" shadow-corner-radius="45" shadow-color="#0000000D" style="position: absolute; bottom: 60px; left: 290px; right: 290px;">
+            <ui:Button text="ВИДАЛИТИ ВСЕ" display-tooltip-when-elided="true" name="MessageDeleteAllBtn" class="btn message-delete-all-btn message__delete-all-btn" />
+        </Shadow>
     </ui:VisualElement>
     <ui:Instance template="Header" class="header__container" />
 </ui:UXML>

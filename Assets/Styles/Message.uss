@@ -1,3 +1,48 @@
+.message-item {
+    flex-grow: 1;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    margin-bottom: 0;
+    padding-top: 30px;
+    padding-bottom: 45px;
+    padding-right: 45px;
+    padding-left: 45px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    font-size: 36px;
+}
+
+.message-item__date {
+    color: rgb(128, 128, 128);
+}
+
+.message-item__text {
+    -unity-text-align: upper-center;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 15px;
+    white-space: normal;
+    font-size: 48px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.message-item__new {
+    position: absolute;
+    right: 0;
+    top: 0;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
+    color: rgb(255, 255, 255);
+    background-color: rgb(162, 185, 113);
+    padding-top: 12px;
+    padding-right: 45px;
+    padding-bottom: 12px;
+    padding-left: 45px;
+    border-bottom-left-radius: 45px;
+}
+
 .message-placeholder {
     flex-grow: 1;
     font-size: 36px;
@@ -18,9 +63,10 @@
 }
 
 .message-item__shadow {
-    margin-bottom: 30px;
+    margin-bottom: 0;
     margin-left: 45px;
     margin-right: 45px;
+    margin-top: 45px;
 }
 
 .message-item__first {
@@ -35,7 +81,7 @@
     width: 180px;
     --shadow-corner-radius: 45;
     --shadow-size: -5;
-    --shadow-color: rgba(0,0,0,0.15);
+    --shadow-color: rgba(0, 0, 0, 0.15);
 }
 
 .message-template {
@@ -49,5 +95,34 @@
 }
 
 .message-template--slide-in {
-    translate: 0% 0;
+    translate: 0 0;
+}
+
+.message-item__container {
+    transition-property: translate;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    translate: 0 0;
+}
+
+.message__delete-all-btn {
+    width: 500px;
+    height: 120px;
+    padding-right: 0;
+    -unity-font-definition: url('project://database/Assets/Fonts/Ubuntu-Medium.ttf?fileID=12800000&guid=dca4865c624e76f48b83f1a5ae3ca00e&type=3#Ubuntu-Medium');
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 51, 51);
+    font-size: 42px;
+}
+
+.message__delete-all-container {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 60px;
 }
