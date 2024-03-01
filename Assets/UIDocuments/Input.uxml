@@ -1,5 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <ui:IntegerField label="Вага:" name="ProductPanelMassInput" placeholder-text="100" value="100" class="scan-panel__weight-input">
-        <ui:Label tabindex="-1" text="гр." display-tooltip-when-elided="true" class="scan-pane__weight-input-postfix" />
-    </ui:IntegerField>
-</ui:UXML>
