@@ -140,7 +140,7 @@ public class FirebaseManager : MonoBehaviour
 
                 NotificationDBManager notificationDBManager = new NotificationDBManager();
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     DateTime now = DateTime.Now;
                     //new MessageComponent("Ціль по калоріях <color=#33B333>виконано</color>", now, true);
@@ -157,7 +157,6 @@ public class FirebaseManager : MonoBehaviour
 
                 }
                 ProductHistoryList.Render();
-                //Debug.Log(new ProductsLoader().GetByVuforiaIdAsync("28a212786884484e86e14250e23eeb1c"));
 
             }
         });

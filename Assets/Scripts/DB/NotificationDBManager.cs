@@ -98,4 +98,9 @@ public class NotificationDBManager
             records.Add(activity);
         }
     }
+
+    public void ClearTable()
+    {
+        connection.DeleteAll<Notification>();
+    }
 }

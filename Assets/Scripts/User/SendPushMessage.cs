@@ -91,7 +91,7 @@ public class SendPushMessage : MonoBehaviour
 
     void NotificationReceived(Notification notification)
     {
-        Debug.Log($"Received notification with title: {notification.Title}");
+        //Debug.Log($"Received notification with title: {notification.Title}");
     }
 
 }
