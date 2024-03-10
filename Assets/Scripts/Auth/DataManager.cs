@@ -75,11 +75,8 @@ public class DataManager
         GameObject.Find("WaterPanel").GetComponent<WaterPanel>().LoadWaterData();
     }
 
-    //static public void
-
     static public void RenderWaterData()
     {
-
         waterProgressBar.value = ((float)User.Instance.WaterDrunk / (float)User.Instance.WaterNeeded) * 100f;
         waterProgressBarLabel.text = ((float)User.Instance.WaterDrunk / 1000).ToString() + " / " + ((float)User.Instance.WaterNeeded / 1000).ToString() + " ë.";
     }

@@ -7,6 +7,7 @@ using Firebase.Database;
 using UnityEngine.UIElements;
 using System;
 using Firebase.Extensions;
+using System.Collections.Generic;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -57,7 +58,7 @@ public class FirebaseManager : MonoBehaviour
         dependencyStatus = DependencyTask.Result;
         if (dependencyStatus == DependencyStatus.Available)
         {
-            //If they are avalible Initialize Firebase
+            //If they are available Initialize Firebase
             InitializeFirebase();
             yield return new WaitForEndOfFrame();
             if (enableAutoLogin)
@@ -137,6 +138,37 @@ public class FirebaseManager : MonoBehaviour
                 DataManager.LoadChartsData();
                 DataManager.LoadProfileData();
                 DataManager.LoadSettingsData();
+
+                NotificationDBManager notificationDBManager = new NotificationDBManager();
+
+                List<Notification> notifications = notificationDBManager.GetCurrentUserHistory();
+                notifications.ForEach(item => {
+                    if (!Convert.ToBoolean(item.viewed_as_push_message))
+                    {
+                        InnerPushMessageManager innerPushMessageManager = GameObject.Find("PushMessageContainer").GetComponent<InnerPushMessageManager>();
+                        innerPushMessageManager.AddToQueue(new PushMessage(item));
+                    }
+                });
+
+
+
+                for (int i = 0; i < 3; i++)
+                {
+                    DateTime now = DateTime.Now;
+                    Notification notification = new Notification
+                    {
+                        title = "Title for notification",
+                        message = "Ціль по калоріях <color=#33B333>виконано</color>",
+                        type = "Нагадувальні",
+                        date = now.AddMinutes(i).ToString(),
+                        is_new = 1,
+                        viewed_as_push_message = 0,
+                        user_id = firebaseUser.UserId
+                    };
+                    notificationDBManager.InsertRecord(notification);
+                }
+                ProductHistoryList.Render();
+
             }
         });
     }
@@ -171,13 +203,13 @@ public class FirebaseManager : MonoBehaviour
                 && auth.CurrentUser.IsValid();
             if (!signedIn && firebaseUser != null)
             {
-                Debug.Log("Signed out " + firebaseUser.Email);
+                Debug.Log("Signed out " + firebaseUser.Email + ", Id: " + firebaseUser.UserId);
             }
             firebaseUser = auth.CurrentUser;
 
             if (signedIn)
             {
-                Debug.Log("Signed in " + firebaseUser.Email);
+                Debug.Log("Signed in " + firebaseUser.Email + ", Id: " + firebaseUser.UserId);
                 FirebaseDatabase.DefaultInstance.GetReference("users/"+firebaseUser.UserId).ValueChanged += HandleDatabaseValueChanged;
             }
         }

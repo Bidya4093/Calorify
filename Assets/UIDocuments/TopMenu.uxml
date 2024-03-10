@@ -16,7 +16,9 @@
         </Shadow>
         <Shadow name="MessageBtnShadow" class="shadow-30">
             <ui:Button display-tooltip-when-elided="true" name="MessageBtn" enable-rich-text="false" class="top-menu-btn" style="background-color: rgb(255, 255, 255);">
-                <ui:VisualElement name="MessageIcon" style="flex-grow: 0; background-image: resource(&apos;Images/message-icon&apos;); display: flex; -unity-background-scale-mode: scale-to-fit; width: 72px; height: 78px; flex-shrink: 1; -unity-background-image-tint-color: rgb(0, 0, 0);" />
+                <ui:VisualElement name="MessageIcon" style="flex-grow: 0; background-image: resource(&apos;Images/message-icon&apos;); display: flex; -unity-background-scale-mode: scale-to-fit; width: 72px; height: 78px; flex-shrink: 1; -unity-background-image-tint-color: rgb(0, 0, 0);">
+                    <ui:VisualElement name="MessageIconState" style="width: 30px; height: 30px; background-color: rgb(255, 51, 51); border-top-left-radius: 50%; border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%; position: absolute; right: -10px; top: -5px; visibility: hidden;" />
+                </ui:VisualElement>
             </ui:Button>
         </Shadow>
     </ui:VisualElement>

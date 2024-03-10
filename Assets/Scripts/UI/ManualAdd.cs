@@ -1,6 +1,7 @@
 using Firebase.Auth;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -92,11 +93,12 @@ public class ManualAdd : MonoBehaviour
     //    throw new NotImplementedException();
     //}
 
-    private void AddProductToDailyList(ClickEvent evt)
+    private async void AddProductToDailyList(ClickEvent evt)
     {
         TodaysHistoryManager todaysHistoryManager = new TodaysHistoryManager();
         Todays_history todaysHistory = todaysHistoryManager.InsertRecord(product.product_id, productPanel.massInput.value, FirebaseAuth.DefaultInstance.CurrentUser.UserId);
-        ProductHistoryItem productHistoryItem = new ProductHistoryItem(todaysHistory);
+        ProductHistoryItem productHistoryItem = new ProductHistoryItem();
+        await productHistoryItem.InitializeAsync(todaysHistory);
         ProductHistoryList.items.Add(productHistoryItem);
 
         User.AddToEaten(productHistoryItem.macrosInfo);
@@ -158,10 +160,10 @@ public class ManualAdd : MonoBehaviour
         }
     }
 
-    public void LoadProductData(int productId)
+    public async void LoadProductData(int productId)
     {
         productPanel.Show(true);
-        product = productsLoader.GetById(productId);
+        product = await productsLoader.GetById(productId);
         productPanel.SetProductData(product);
         productPanel.addProductBtn.RegisterCallback<ClickEvent>(AddProductToDailyList);
     }
@@ -189,7 +191,7 @@ public class ManualAdd : MonoBehaviour
         addActivitySearchInput.value = "";
     }
 
-    void SearchProduct(ChangeEvent<string> evt)
+    async void SearchProduct(ChangeEvent<string> evt)
     {
         productScrollContainer.Clear();
 
@@ -199,14 +201,14 @@ public class ManualAdd : MonoBehaviour
         }
         else { 
             productRecentRequestsContainer.style.display = DisplayStyle.None;
-            foreach (products item in productsLoader.IncludeSubstring(evt.newValue))
+            foreach (products item in await productsLoader.IncludeSubstringAsync(evt.newValue))
             {
                 ManualAddProductItem productItem = new ManualAddProductItem(item);
                 productScrollContainer.Add(productItem);
             }
         }
     }
-
+    
     void SearchActivity(ChangeEvent<string> evt)
     {
         //activityScrollContainer.Clear();

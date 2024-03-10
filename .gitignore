@@ -22,6 +22,14 @@
 
 # Visual Studio cache directory
 .vs/
+.vscode/
+
+#
+.utmp/
+
+# SQLite database
+[Aa]ssets/StreamingAssets/*.db
+[Aa]ssets/StreamingAssets/*.db.meta
 
 # Gradle cache directory
 .gradle/
@@ -63,3 +71,5 @@ crashlytics-build.properties
 
 # vuforia
 /vuforia_BackUpThisFolder_ButDontShipItWithYourGame/
+
+

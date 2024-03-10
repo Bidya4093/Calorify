@@ -71,12 +71,6 @@ public class Auth : MonoBehaviour
         ageInput = signUpPage.Q<IntegerField>("AgeInput");
         sexRadio = signUpPage.Q<RadioButtonGroup>("SexRadioGroup");
 
-        //verificationContinueBtn.SetEnabled(false);
-        nameInput.value = "Bohdan";
-        heightInput.value = 180f;
-        weightInput.value = 70f;
-        ageInput.value = 40;
-
     }
 
     private void RegisterValidation(Button btn, NextPageCallback ValidateCallback)

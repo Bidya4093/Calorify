@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -219,6 +220,12 @@ public class PanelManager : MonoBehaviour
         messageRoot.AddToClassList("message-template--slide-in");
         mainRoot.AddToClassList("home-template--slide-out-left");
         mainBg.AddToClassList("main-bg--active");
+
+        //foreach (MessageComponent message in Message.messages)
+        //{
+        //    if (message.isReviewed) message.isNew = false;
+        //}
+
     }
 
     private void OpenWaterPanel()
